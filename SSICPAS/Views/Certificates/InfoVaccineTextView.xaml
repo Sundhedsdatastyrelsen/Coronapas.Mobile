@@ -1,0 +1,833 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<ContentView
+    x:Class="SSICPAS.Views.Certificates.InfoVaccineTextView"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controls="clr-namespace:SSICPAS.Controls;assembly=SSICPAS"
+    xmlns:viewmodel="clr-namespace:SSICPAS.ViewModels.Certificates;assembly=SSICPAS"
+    x:DataType="viewmodel:InfoVaccineTextViewModel">
+    <ContentView.Content>
+        <Grid
+            Margin="0,0,0,0"
+            Padding="0,0,0,20"
+            BackgroundColor="{StaticResource SSIWhite}">
+            <StackLayout Spacing="0">
+                <Grid Margin="20,5,20,30" IsVisible="{Binding ShowHeader}">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="70" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Image
+                        Grid.Row="0"
+                        Grid.RowSpan="2"
+                        Grid.Column="0"
+                        HorizontalOptions="Start"
+                        Source="covid_19_vaccine_icon.png"
+                        VerticalOptions="Center" />
+                    <Label
+                        Grid.Row="0"
+                        Grid.Column="1"
+                        AutomationProperties.Name="{Binding Strings[INTERNATIONAL_TRAVEL_INFORMATION_LABEL_VACCINE_ACCESSIBILITY]}"
+                        AutomationProperties.IsInAccessibleTree="True"
+                        HorizontalOptions="Start"
+                        Style="{StaticResource InfoPaneHeaderStyle}"
+                        Text="{Binding VaccineHeaderText}"
+                        VerticalOptions="Center">
+                        <Label.Effects>
+                            <controls:FontSizeLabelEffect />
+                        </Label.Effects>
+                    </Label>
+                    <Label
+                        Grid.Row="1"
+                        Grid.Column="1"
+                        HorizontalOptions="Start"
+                        Style="{StaticResource InfoPaneSubHeaderStyle}"
+                        Text="{Binding VaccineHeaderValue}"
+                        VerticalOptions="Center">
+                        <Label.Effects>
+                            <controls:FontSizeLabelEffect />
+                        </Label.Effects>
+                    </Label>
+                </Grid>
+                <BoxView
+                    Margin="20,0,20,10"
+                    BackgroundColor="{StaticResource DefaultBackgroundColor}"
+                    HeightRequest="1"
+                    HorizontalOptions="FillAndExpand"
+                    IsVisible="{Binding ShowHeader}"
+                    VerticalOptions="Center" />
+                <Grid Margin="20,0,20,0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+
+                    <!--  vaccination date  -->
+                    <Grid
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        Margin="0,10,0,10"
+                        RowSpacing="0.2">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Label
+                            Grid.Row="0"
+                            IsVisible="{Binding ShowCertificate}"
+                            HorizontalOptions="Start"
+                            Style="{StaticResource InfoPaneItemHeaderMedium}"
+                            Text="{Binding VaccineDateOfVaccinationTextInEnglish}"
+                            AutomationProperties.IsInAccessibleTree="{Binding ShouldUseDanishForAccessibility, Converter={StaticResource BoolToInverseBoolConverter}}">
+                            <Label.Effects>
+                                <controls:FontSizeLabelEffect />
+                            </Label.Effects>
+                        </Label>
+                         <Label
+                            Grid.Row="1"
+                            HorizontalOptions="Start"
+                            Style="{StaticResource InfoPaneItemHeaderLight}"
+                            Text="{Binding VaccineDateOfVaccinationTextInDanishOrAppLanguage}"
+                            AutomationProperties.IsInAccessibleTree="{Binding ShouldUseDanishForAccessibility}">
+                            <Label.Effects>
+                                <controls:FontSizeLabelEffect />
+                            </Label.Effects>
+                        </Label>
+                    </Grid>
+                    <StackLayout Grid.Row="1">
+                        <FlexLayout
+                            Direction="Row"
+                            Wrap="Wrap"
+                            HorizontalOptions="FillAndExpand"
+                            JustifyContent="Start"
+                            AlignContent="Start"
+                            AlignItems="Start">
+                            <Label
+                                IsVisible="{Binding ShowCertificate}"
+                                HorizontalOptions="Start"
+                                AutomationProperties.IsInAccessibleTree="{Binding ShouldUseDanishForAccessibility, Converter={StaticResource BoolToInverseBoolConverter}}"
+                                AutomationProperties.Name="{Binding VaccineVaccinationDateValueInEnglish}"
+                                Style="{StaticResource InfoPaneItemValueBold}">
+                                <Label.Effects>
+                                    <controls:FontSizeLabelEffect />
+                                </Label.Effects>
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="{Binding VaccineVaccinationDateValueInEnglish}" Style="{StaticResource InfoPaneItemValue}"/>
+                                        <Span Text=" | " Style="{StaticResource InfoPaneSeparatorLight}"/>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                            <Label
+                                HorizontalOptions="Start"
+                                Style="{StaticResource InfoPaneItemValueExtraLight}"
+                                Text="{Binding VaccineVaccinationDateValueInDanishOrAppLanguage}"
+                                AutomationProperties.IsInAccessibleTree="{Binding ShouldUseDanishForAccessibility}">
+                                <Label.Effects>
+                                    <controls:FontSizeLabelEffect />
+                                </Label.Effects>
+                            </Label>
+                        </FlexLayout>
+                    </StackLayout>
+                    <BoxView
+                        Grid.Row="2"
+                        Grid.Column="0"
+                        Margin="0,20,0,10"
+                        BackgroundColor="{StaticResource DefaultBackgroundColor}"
+                        HeightRequest="1"
+                        HorizontalOptions="FillAndExpand"
+                        VerticalOptions="Center" />
+
+                    <!--  Marketing Authorization holder  -->
+                    <Grid
+                        Grid.Row="3"
+                        Grid.Column="0"
+                        Margin="0,10,0,10"
+                        RowSpacing="0.2">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Label
+                            Grid.Row="0"
+                            IsVisible="{Binding ShowCertificate}"
+                            HorizontalOptions="Start"
+                            Style="{StaticResource InfoPaneItemHeaderMedium}"
+                            Text="{Binding VaccineMarketingAuthorizationTextInEnglish}"
+                            AutomationProperties.IsInAccessibleTree="{Binding ShouldUseDanishForAccessibility, Converter={StaticResource BoolToInverseBoolConverter}}">
+                            <Label.Effects>
+                                <controls:FontSizeLabelEffect />
+                            </Label.Effects>
+                        </Label>
+                         <Label
+                            Grid.Row="1"
+                            HorizontalOptions="Start"
+                            Style="{StaticResource InfoPaneItemHeaderLight}"
+                            Text="{Binding VaccineMarketingAuthorizationTextInDanishOrAppLanguage}"
+                            AutomationProperties.IsInAccessibleTree="{Binding ShouldUseDanishForAccessibility}">
+                            <Label.Effects>
+                                <controls:FontSizeLabelEffect />
+                            </Label.Effects>
+                        </Label>
+                    </Grid>
+                    <StackLayout Grid.Row="4">
+                        <FlexLayout
+                            Direction="Row"
+                            Wrap="Wrap"
+                            HorizontalOptions="FillAndExpand"
+                            JustifyContent="Start"
+                            AlignContent="Start"
+                            AlignItems="Start">
+                            <Label
+                                IsVisible="{Binding ShowCertificate}"
+                                HorizontalOptions="Start"
+                                AutomationProperties.IsInAccessibleTree="{Binding ShouldUseDanishForAccessibility, Converter={StaticResource BoolToInverseBoolConverter}}"
+                                AutomationProperties.Name="{Binding VaccineMarketingAuthorizationValue}"
+                                Style="{StaticResource InfoPaneItemValueBold}">
+                                <Label.Effects>
+                                    <controls:FontSizeLabelEffect />
+                                </Label.Effects>
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="{Binding VaccineMarketingAuthorizationValue}" Style="{StaticResource InfoPaneItemValue}"/>
+                                        <Span Text=" | " Style="{StaticResource InfoPaneSeparatorLight}"/>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                            <Label
+                                HorizontalOptions="Start"
+                                Style="{StaticResource InfoPaneItemValueExtraLight}"
+                                Text="{Binding VaccineMarketingAuthorizationValue}"
+                                AutomationProperties.IsInAccessibleTree="{Binding ShouldUseDanishForAccessibility}">
+                                <Label.Effects>
+                                    <controls:FontSizeLabelEffect />
+                                </Label.Effects>
+                            </Label>
+                        </FlexLayout>
+                    </StackLayout>
+                    <BoxView
+                        Grid.Row="5"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="2"
+                        Margin="0,20,0,10"
+                        BackgroundColor="{StaticResource DefaultBackgroundColor}"
+                        HeightRequest="1"
+                        HorizontalOptions="FillAndExpand"
+                        VerticalOptions="Center" />
+
+                    <!--  current dose text  -->
+                    <Grid
+                        Grid.Row="6"
+                        Grid.Column="0"
+                        Margin="0,10,0,10"
+                        RowSpacing="0.2">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Label
+                            Grid.Row="0"
+                            IsVisible="{Binding ShowCertificate}"
+                            HorizontalOptions="Start"
+                            Style="{StaticResource InfoPaneItemHeaderMedium}"
+                            Text="{Binding VaccineDoseTitleTextInEnglish}"
+                            AutomationProperties.IsInAccessibleTree="{Binding ShouldUseDanishForAccessibility, Converter={StaticResource BoolToInverseBoolConverter}}">
+                            <Label.Effects>
+                                <controls:FontSizeLabelEffect />
+                            </Label.Effects>
+                        </Label>
+                         <Label
+                            Grid.Row="1"
+                            HorizontalOptions="Start"
+                            Style="{StaticResource InfoPaneItemHeaderLight}"
+                            Text="{Binding VaccineDoseTitleTextInDanishOrAppLanguage}"
+                            AutomationProperties.IsInAccessibleTree="{Binding ShouldUseDanishForAccessibility}">
+                            <Label.Effects>
+                                <controls:FontSizeLabelEffect />
+                            </Label.Effects>
+                        </Label>
+                    </Grid>
+                    <StackLayout Grid.Row="7">
+                        <FlexLayout
+                            Direction="Row"
+                            Wrap="Wrap"
+                            HorizontalOptions="FillAndExpand"
+                            JustifyContent="Start"
+                            AlignContent="Start"
+                            AlignItems="Start">
+                            <Label
+                                IsVisible="{Binding ShowCertificate}"
+                                HorizontalOptions="Start"
+                                AutomationProperties.IsInAccessibleTree="{Binding ShouldUseDanishForAccessibility, Converter={StaticResource BoolToInverseBoolConverter}}"
+                                AutomationProperties.Name="{Binding VaccineCurrentDoseValueInEnglish}"
+                                Style="{StaticResource InfoPaneItemValueBold}">
+                                <Label.Effects>
+                                    <controls:FontSizeLabelEffect />
+                                </Label.Effects>
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="{Binding VaccineCurrentDoseValueInEnglish}" Style="{StaticResource InfoPaneItemValue}"/>
+                                        <Span Text=" | " Style="{StaticResource InfoPaneSeparatorLight}"/>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                            <Label
+                                HorizontalOptions="Start"
+                                Style="{StaticResource InfoPaneItemValueExtraLight}"
+                                Text="{Binding VaccineCurrentDoseValueInDanishOrAppLanguage}"
+                                AutomationProperties.IsInAccessibleTree="{Binding ShouldUseDanishForAccessibility}">
+                                <Label.Effects>
+                                    <controls:FontSizeLabelEffect />
+                                </Label.Effects>
+                            </Label>
+                        </FlexLayout>
+                    </StackLayout>
+                    <BoxView
+                        Grid.Row="8"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="2"
+                        Margin="0,20,0,10"
+                        BackgroundColor="{StaticResource DefaultBackgroundColor}"
+                        HeightRequest="1"
+                        HorizontalOptions="FillAndExpand"
+                        VerticalOptions="Center" />
+
+                    <!--  Targeted Disease  -->
+                    <Grid
+                        Grid.Row="9"
+                        Grid.Column="0"
+                        Margin="0,10,0,10"
+                        RowSpacing="0.2">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Label
+                            Grid.Row="0"
+                            IsVisible="{Binding ShowCertificate}"
+                            HorizontalOptions="Start"
+                            Style="{StaticResource InfoPaneItemHeaderMedium}"
+                            Text="{Binding VaccineDiseaseTextInEnglish}"
+                            AutomationProperties.IsInAccessibleTree="{Binding ShouldUseDanishForAccessibility, Converter={StaticResource BoolToInverseBoolConverter}}">
+                            <Label.Effects>
+                                <controls:FontSizeLabelEffect />
+                            </Label.Effects>
+                        </Label>
+                         <Label
+                            Grid.Row="1"
+                            HorizontalOptions="Start"
+                            Style="{StaticResource InfoPaneItemHeaderLight}"
+                            Text="{Binding VaccineDiseaseTextInDanishOrAppLanguage}"
+                            AutomationProperties.IsInAccessibleTree="{Binding ShouldUseDanishForAccessibility}">
+                            <Label.Effects>
+                                <controls:FontSizeLabelEffect />
+                            </Label.Effects>
+                        </Label>
+                    </Grid>
+                    <StackLayout Grid.Row="10">
+                        <FlexLayout
+                            Direction="Row"
+                            Wrap="Wrap"
+                            HorizontalOptions="FillAndExpand"
+                            JustifyContent="Start"
+                            AlignContent="Start"
+                            AlignItems="Start">
+                            <Label
+                                IsVisible="{Binding ShowCertificate}"
+                                HorizontalOptions="Start"
+                                AutomationProperties.IsInAccessibleTree="{Binding ShouldUseDanishForAccessibility, Converter={StaticResource BoolToInverseBoolConverter}}"
+                                AutomationProperties.Name="{Binding VaccineTargetDiseaseInEnglish}"
+                                Style="{StaticResource InfoPaneItemValueBold}">
+                                <Label.Effects>
+                                    <controls:FontSizeLabelEffect />
+                                </Label.Effects>
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="{Binding VaccineTargetDiseaseInEnglish}" Style="{StaticResource InfoPaneItemValue}"/>
+                                        <Span Text=" | " Style="{StaticResource InfoPaneSeparatorLight}"/>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                            <Label
+                                HorizontalOptions="Start"
+                                Style="{StaticResource InfoPaneItemValueExtraLight}"
+                                Text="{Binding VaccineTargetDiseaseInDanishOrAppLanguage}"
+                                AutomationProperties.IsInAccessibleTree="{Binding ShouldUseDanishForAccessibility}">
+                                <Label.Effects>
+                                    <controls:FontSizeLabelEffect />
+                                </Label.Effects>
+                            </Label>
+                        </FlexLayout>
+                    </StackLayout>
+                    <BoxView
+                        Grid.Row="11"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="2"
+                        Margin="0,20,0,10"
+                        BackgroundColor="{StaticResource DefaultBackgroundColor}"
+                        HeightRequest="1"
+                        HorizontalOptions="FillAndExpand"
+                        VerticalOptions="Center" />
+
+                    <!--  Vaccine prophylasis text  -->
+                    <Grid
+                        Grid.Row="12"
+                        Grid.Column="0"
+                        Margin="0,10,0,10"
+                        RowSpacing="0.2">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Label
+                            Grid.Row="0"
+                            IsVisible="{Binding ShowCertificate}"
+                            HorizontalOptions="Start"
+                            Style="{StaticResource InfoPaneItemHeaderMedium}"
+                            Text="{Binding VaccineTypeTextInEnglish}"
+                            AutomationProperties.IsInAccessibleTree="{Binding ShouldUseDanishForAccessibility, Converter={StaticResource BoolToInverseBoolConverter}}">
+                            <Label.Effects>
+                                <controls:FontSizeLabelEffect />
+                            </Label.Effects>
+                        </Label>
+                         <Label
+                            Grid.Row="1"
+                            HorizontalOptions="Start"
+                            Style="{StaticResource InfoPaneItemHeaderLight}"
+                            Text="{Binding VaccineTypeTextInDanishOrAppLanguage}"
+                            AutomationProperties.IsInAccessibleTree="{Binding ShouldUseDanishForAccessibility}">
+                            <Label.Effects>
+                                <controls:FontSizeLabelEffect />
+                            </Label.Effects>
+                        </Label>
+                    </Grid>
+                    <StackLayout Grid.Row="13">
+                        <FlexLayout
+                            Direction="Row"
+                            Wrap="Wrap"
+                            HorizontalOptions="FillAndExpand"
+                            JustifyContent="Start"
+                            AlignContent="Start"
+                            AlignItems="Start">
+                            <Label
+                                IsVisible="{Binding ShowCertificate}"
+                                HorizontalOptions="Start"
+                                AutomationProperties.IsInAccessibleTree="{Binding ShouldUseDanishForAccessibility, Converter={StaticResource BoolToInverseBoolConverter}}"
+                                AutomationProperties.Name="{Binding VaccineTypeValue}"
+                                Style="{StaticResource InfoPaneItemValueBold}">
+                                <Label.Effects>
+                                    <controls:FontSizeLabelEffect />
+                                </Label.Effects>
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="{Binding VaccineTypeValue}" Style="{StaticResource InfoPaneItemValue}"/>
+                                        <Span Text=" | " Style="{StaticResource InfoPaneSeparatorLight}"/>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                            <Label
+                                HorizontalOptions="Start"
+                                Style="{StaticResource InfoPaneItemValueExtraLight}"
+                                Text="{Binding VaccineTypeValue}"
+                                AutomationProperties.IsInAccessibleTree="{Binding ShouldUseDanishForAccessibility}">
+                                <Label.Effects>
+                                    <controls:FontSizeLabelEffect />
+                                </Label.Effects>
+                            </Label>
+                        </FlexLayout>
+                    </StackLayout>
+                    <BoxView
+                        Grid.Row="14"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="2"
+                        Margin="0,20,0,10"
+                        BackgroundColor="{StaticResource DefaultBackgroundColor}"
+                        HeightRequest="1"
+                        HorizontalOptions="FillAndExpand"
+                        VerticalOptions="Center" />
+
+                    <!--  vaccine medicinal product  -->
+                    <Grid
+                        Grid.Row="15"
+                        Grid.Column="0"
+                        Margin="0,10,0,10"
+                        RowSpacing="0.2">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Label
+                            Grid.Row="0"
+                            IsVisible="{Binding ShowCertificate}"
+                            HorizontalOptions="Start"
+                            Style="{StaticResource InfoPaneItemHeaderMedium}"
+                            Text="{Binding VaccineVaccineNameTextInEnglish}"
+                            AutomationProperties.IsInAccessibleTree="{Binding ShouldUseDanishForAccessibility, Converter={StaticResource BoolToInverseBoolConverter}}">
+                            <Label.Effects>
+                                <controls:FontSizeLabelEffect />
+                            </Label.Effects>
+                        </Label>
+                         <Label
+                            Grid.Row="1"
+                            HorizontalOptions="Start"
+                            Style="{StaticResource InfoPaneItemHeaderLight}"
+                            Text="{Binding VaccineVaccineNameTextInDanishOrAppLanguage}"
+                            AutomationProperties.IsInAccessibleTree="{Binding ShouldUseDanishForAccessibility}">
+                            <Label.Effects>
+                                <controls:FontSizeLabelEffect />
+                            </Label.Effects>
+                        </Label>
+                    </Grid>
+                    <StackLayout Grid.Row="16">
+                        <FlexLayout
+                            Direction="Row"
+                            Wrap="Wrap"
+                            HorizontalOptions="FillAndExpand"
+                            JustifyContent="Start"
+                            AlignContent="Start"
+                            AlignItems="Start">
+                            <Label
+                                IsVisible="{Binding ShowCertificate}"
+                                HorizontalOptions="Start"
+                                AutomationProperties.IsInAccessibleTree="{Binding ShouldUseDanishForAccessibility, Converter={StaticResource BoolToInverseBoolConverter}}"
+                                AutomationProperties.Name="{Binding VaccineVaccineNameValue}"
+                                Style="{StaticResource InfoPaneItemValueBold}">
+                                <Label.Effects>
+                                    <controls:FontSizeLabelEffect />
+                                </Label.Effects>
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="{Binding VaccineVaccineNameValue}" Style="{StaticResource InfoPaneItemValue}"/>
+                                        <Span Text=" | " Style="{StaticResource InfoPaneSeparatorLight}"/>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                            <Label
+                                HorizontalOptions="Start"
+                                Style="{StaticResource InfoPaneItemValueExtraLight}"
+                                Text="{Binding VaccineVaccineNameValue}"
+                                AutomationProperties.IsInAccessibleTree="{Binding ShouldUseDanishForAccessibility}">
+                                <Label.Effects>
+                                    <controls:FontSizeLabelEffect />
+                                </Label.Effects>
+                            </Label>
+                        </FlexLayout>
+                    </StackLayout>
+                    <BoxView
+                        Grid.Row="17"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="2"
+                        Margin="0,20,0,10"
+                        BackgroundColor="{StaticResource DefaultBackgroundColor}"
+                        HeightRequest="1"
+                        HorizontalOptions="FillAndExpand"
+                        VerticalOptions="Center" />
+
+                    <!--  MemberState  -->
+                    <Grid
+                        Grid.Row="18"
+                        Grid.Column="0"
+                        Margin="0,10,0,10"
+                        RowSpacing="0.2">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Label
+                            Grid.Row="0"
+                            IsVisible="{Binding ShowCertificate}"
+                            HorizontalOptions="Start"
+                            Style="{StaticResource InfoPaneItemHeaderMedium}"
+                            Text="{Binding VaccineVaccinationCountryTextInEnglish}"
+                            AutomationProperties.IsInAccessibleTree="{Binding ShouldUseDanishForAccessibility, Converter={StaticResource BoolToInverseBoolConverter}}">
+                            <Label.Effects>
+                                <controls:FontSizeLabelEffect />
+                            </Label.Effects>
+                        </Label>
+                         <Label
+                            Grid.Row="1"
+                            HorizontalOptions="Start"
+                            Style="{StaticResource InfoPaneItemHeaderLight}"
+                            Text="{Binding VaccineVaccinationCountryTextInDanishOrAppLanguage}"
+                            AutomationProperties.IsInAccessibleTree="{Binding ShouldUseDanishForAccessibility}">
+                            <Label.Effects>
+                                <controls:FontSizeLabelEffect />
+                            </Label.Effects>
+                        </Label>
+                    </Grid>
+                    <StackLayout Grid.Row="19">
+                        <FlexLayout
+                            Direction="Row"
+                            Wrap="Wrap"
+                            HorizontalOptions="FillAndExpand"
+                            JustifyContent="Start"
+                            AlignContent="Start"
+                            AlignItems="Start">
+                            <Label
+                                IsVisible="{Binding ShowCertificate}"
+                                HorizontalOptions="Start"
+                                AutomationProperties.IsInAccessibleTree="{Binding ShouldUseDanishForAccessibility, Converter={StaticResource BoolToInverseBoolConverter}}"
+                                AutomationProperties.Name="{Binding VaccineVaccinationCountryValueInEnglish}"
+                                Style="{StaticResource InfoPaneItemValueBold}">
+                                <Label.Effects>
+                                    <controls:FontSizeLabelEffect />
+                                </Label.Effects>
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="{Binding VaccineVaccinationCountryValueInEnglish}" Style="{StaticResource InfoPaneItemValue}"/>
+                                        <Span Text=" | " Style="{StaticResource InfoPaneSeparatorLight}"/>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                            <Label
+                                HorizontalOptions="Start"
+                                Style="{StaticResource InfoPaneItemValueExtraLight}"
+                                Text="{Binding VaccineVaccinationCountryValueInDanishOrAppLanguage}"
+                                AutomationProperties.IsInAccessibleTree="{Binding ShouldUseDanishForAccessibility}">
+                                <Label.Effects>
+                                    <controls:FontSizeLabelEffect />
+                                </Label.Effects>
+                            </Label>
+                        </FlexLayout>
+                    </StackLayout>
+                    <BoxView
+                        Grid.Row="20"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="2"
+                        Margin="0,20,0,20"
+                        BackgroundColor="{StaticResource DefaultBackgroundColor}"
+                        HeightRequest="1"
+                        HorizontalOptions="FillAndExpand"
+                        IsVisible="{Binding ShowCertificate}"
+                        VerticalOptions="Center" />
+
+                    <!--  Certificate Issuer  -->
+                    <Label
+                        Grid.Row="21"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="2"
+                        HorizontalOptions="Start"
+                        IsVisible="{Binding ShowCertificate}"
+                        Style="{StaticResource InfoPaneSectionHeader}"
+                        Text="{Binding VaccineCertificateHeaderText}">
+                        <Label.Effects>
+                            <controls:FontSizeLabelEffect />
+                        </Label.Effects>
+                    </Label>
+                    <Grid
+                        Grid.Row="22"
+                        Grid.Column="0"
+                        Margin="0,10,0,10"
+                        RowSpacing="0.2"
+                        IsVisible="{Binding ShowCertificate}">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Label
+                            Grid.Row="0"
+                            HorizontalOptions="Start"
+                            Style="{StaticResource InfoPaneItemHeaderMedium}"
+                            Text="{Binding VaccineCertificateIssuerTextInEnglish}"
+                            AutomationProperties.IsInAccessibleTree="{Binding ShouldUseDanishForAccessibility, Converter={StaticResource BoolToInverseBoolConverter}}">
+                            <Label.Effects>
+                                <controls:FontSizeLabelEffect />
+                            </Label.Effects>
+                        </Label>
+                         <Label
+                            Grid.Row="1"
+                            HorizontalOptions="Start"
+                            Style="{StaticResource InfoPaneItemHeaderLight}"
+                            Text="{Binding VaccineCertificateIssuerTextInDanishOrAppLanguage}"
+                            AutomationProperties.IsInAccessibleTree="{Binding ShouldUseDanishForAccessibility}">
+                            <Label.Effects>
+                                <controls:FontSizeLabelEffect />
+                            </Label.Effects>
+                        </Label>
+                    </Grid>
+                    <StackLayout Grid.Row="23" IsVisible="{Binding ShowCertificate}">
+                        <FlexLayout
+                            Direction="Row"
+                            Wrap="Wrap"
+                            HorizontalOptions="FillAndExpand"
+                            JustifyContent="Start"
+                            AlignContent="Start"
+                            AlignItems="Start">
+                            <Label
+                                HorizontalOptions="Start"
+                                AutomationProperties.IsInAccessibleTree="{Binding ShouldUseDanishForAccessibility, Converter={StaticResource BoolToInverseBoolConverter}}"
+                                AutomationProperties.Name="{Binding VaccineCertificateIssuerValueInEnglish}"
+                                Style="{StaticResource InfoPaneItemValueBold}">
+                                <Label.Effects>
+                                    <controls:FontSizeLabelEffect />
+                                </Label.Effects>
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="{Binding VaccineCertificateIssuerValueInEnglish}" Style="{StaticResource InfoPaneItemValue}"/>
+                                        <Span Text=" | " Style="{StaticResource InfoPaneSeparatorLight}"/>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                            <Label
+                                HorizontalOptions="Start"
+                                Style="{StaticResource InfoPaneItemValueExtraLight}"
+                                Text="{Binding VaccineCertificateIssuerValueInDanishOrAppLanguage}"
+                                AutomationProperties.IsInAccessibleTree="{Binding ShouldUseDanishForAccessibility}">
+                                <Label.Effects>
+                                    <controls:FontSizeLabelEffect />
+                                </Label.Effects>
+                            </Label>
+                        </FlexLayout>
+                    </StackLayout>
+                    <BoxView
+                        Grid.Row="24"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="2"
+                        Margin="0,20,0,10"
+                        BackgroundColor="{StaticResource DefaultBackgroundColor}"
+                        HeightRequest="1"
+                        HorizontalOptions="FillAndExpand"
+                        IsVisible="{Binding ShowCertificate}"
+                        VerticalOptions="Center" />
+
+                    <!--  Certificate Id  -->
+                    <Grid
+                        Grid.Row="25"
+                        Grid.Column="0"
+                        Margin="0,10,0,10"
+                        RowSpacing="0.2"
+                        IsVisible="{Binding ShowCertificate}">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Label
+                            Grid.Row="0"
+                            HorizontalOptions="Start"
+                            Style="{StaticResource InfoPaneItemHeaderMedium}"
+                            Text="{Binding VaccinePassportNumberTextInEnglish}"
+                            AutomationProperties.IsInAccessibleTree="{Binding ShouldUseDanishForAccessibility, Converter={StaticResource BoolToInverseBoolConverter}}">
+                            <Label.Effects>
+                                <controls:FontSizeLabelEffect />
+                            </Label.Effects>
+                        </Label>
+                         <Label
+                            Grid.Row="1"
+                            HorizontalOptions="Start"
+                            Style="{StaticResource InfoPaneItemHeaderLight}"
+                            Text="{Binding VaccinePassportNumberTextInDanishOrAppLanguage}"
+                            AutomationProperties.IsInAccessibleTree="{Binding ShouldUseDanishForAccessibility}">
+                            <Label.Effects>
+                                <controls:FontSizeLabelEffect />
+                            </Label.Effects>
+                        </Label>
+                    </Grid>
+                    <StackLayout Grid.Row="26" IsVisible="{Binding ShowCertificate}">
+                        <FlexLayout
+                            Direction="Row"
+                            Wrap="Wrap"
+                            HorizontalOptions="FillAndExpand"
+                            JustifyContent="Start"
+                            AlignContent="Start"
+                            AlignItems="Start">
+                            <Label
+                                HorizontalOptions="Start"
+                                AutomationProperties.IsInAccessibleTree="{Binding ShouldUseDanishForAccessibility, Converter={StaticResource BoolToInverseBoolConverter}}"
+                                AutomationProperties.Name="{Binding VaccinePassportNumberValue}"
+                                Style="{StaticResource InfoPaneItemValueBold}">
+                                <Label.Effects>
+                                    <controls:FontSizeLabelEffect />
+                                </Label.Effects>
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="{Binding VaccinePassportNumberValue}" Style="{StaticResource InfoPaneItemValue}"/>
+                                        <Span Text="&#160;| " Style="{StaticResource InfoPaneSeparatorLight}"/>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                            <Label
+                                HorizontalOptions="Start"
+                                Style="{StaticResource InfoPaneItemValueExtraLight}"
+                                Text="{Binding VaccinePassportNumberValue}"
+                                AutomationProperties.IsInAccessibleTree="{Binding ShouldUseDanishForAccessibility}">
+                                <Label.Effects>
+                                    <controls:FontSizeLabelEffect />
+                                </Label.Effects>
+                            </Label>
+                        </FlexLayout>
+                    </StackLayout>
+                    <BoxView
+                        Grid.Row="27"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="2"
+                        Margin="0,20,0,0"
+                        BackgroundColor="{StaticResource DefaultBackgroundColor}"
+                        HeightRequest="1"
+                        HorizontalOptions="FillAndExpand"
+                        IsVisible="{Binding ShowCertificate}"
+                        VerticalOptions="Center" />
+                </Grid>
+            </StackLayout>
+        </Grid>
+    </ContentView.Content>
+</ContentView>

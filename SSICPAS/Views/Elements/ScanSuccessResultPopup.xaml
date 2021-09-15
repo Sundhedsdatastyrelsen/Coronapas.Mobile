@@ -1,0 +1,144 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+
+<pages:PopupPage
+    x:Class="SSICPAS.Views.Elements.ScanSuccessResultPopup"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+    xmlns:animations="clr-namespace:Rg.Plugins.Popup.Animations;assembly=Rg.Plugins.Popup"
+    xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+    xmlns:effects="clr-namespace:SSICPAS.Controls"
+    BackgroundColor="{StaticResource SSIDark60}"
+    NavigationPage.HasNavigationBar="False"
+    CloseWhenBackgroundIsClicked="False"
+    ios:Application.EnableAccessibilityScalingForNamedFontSizes="true">
+
+    <pages:PopupPage.Animation>
+        <animations:ScaleAnimation
+            DurationIn="400"
+            DurationOut="300"
+            EasingIn="SinOut"
+            EasingOut="SinIn"
+            HasBackgroundAnimation="True"
+            PositionIn="Bottom"
+            PositionOut="Bottom" />
+    </pages:PopupPage.Animation>
+
+
+    <Frame
+        Padding="0,0,0,70"
+        Margin="0, 40"
+        BackgroundColor="White"
+        CornerRadius="16"
+        HasShadow="False"
+        IsClippedToBounds="True"
+        TranslationY="70"
+        VerticalOptions="End">
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <ImageButton Grid.Row="0"
+                         VerticalOptions="Center"
+                         HorizontalOptions="End"
+                         Source="{StaticResource XMark}"
+                         Command="{Binding ClosePopupCommand}"
+                         Padding="30, 30"
+                         BackgroundColor="Transparent"
+                         AutomationProperties.HelpText="{Binding Strings[BIOMETRIC_DISMISS]}"
+                         AutomationProperties.Name=""/>
+
+            <StackLayout Grid.Row="1"
+                         Orientation="Horizontal"
+                         HorizontalOptions="Center"
+                         VerticalOptions="Center"
+                         Margin="0, 0, 0, 20">
+                <Image Source="{StaticResource ValidPassportIconGreen}"
+                       Margin="5, 0"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center"/>
+                <Label Text="{Binding ValidText}"
+                       Style="{StaticResource TitleStyle}"
+                       FontSize="32"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center"
+                       VerticalTextAlignment="Center"
+                       HorizontalTextAlignment="Center"/>
+            </StackLayout>
+
+            <StackLayout Grid.Row="2"
+                         HorizontalOptions="Center"
+                         VerticalOptions="Center"
+                         Spacing="5"
+                         Margin="0, 20"
+                         Padding="20"
+                         IsVisible="{Binding FullName, Converter={StaticResource NullToVisibilityConverter}}">
+                <Label Text="{Binding FullName}"
+                       Style="{StaticResource TitleStyle}"
+                       HorizontalOptions="Center"
+                       HorizontalTextAlignment="Center"
+                       VerticalOptions="Center"
+                       effects:FontSizeLabelEffectParams.MaxFontSize="26.00"
+                       effects:FontSizeLabelEffectParams.MinFontSize="14.00">
+                    <Label.Effects>
+                        <effects:FontSizeLabelEffect/>
+                    </Label.Effects>
+                </Label>
+                <Label Text="{Binding DateOfBirth}"
+                       Style="{StaticResource ContentStyle}"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center" 
+                       effects:FontSizeLabelEffectParams.MaxFontSize="20.00"
+                       effects:FontSizeLabelEffectParams.MinFontSize="10.00">
+                    <Label.Effects>
+                        <effects:FontSizeLabelEffect/>
+                    </Label.Effects>
+                </Label>
+            </StackLayout>
+
+            <Grid Grid.Row="3"
+                  BackgroundColor="{StaticResource SuccessBorderColor}">
+                <Label Text="{Binding SuccessBannerText}"
+                       MaxLines="1"
+                       LineBreakMode="NoWrap"
+                       FontFamily="IBMPlexSansSemibold"
+                       TextColor="{StaticResource SSIWhiteTextColor}"
+                       FontSize="13"
+                       Margin="-25, 0"
+                       Padding="0, 5"
+                       VerticalTextAlignment="Center"
+                       AutomationProperties.IsInAccessibleTree="False"/>
+            </Grid>
+
+            <ProgressBar Grid.Row="4"
+                         x:Name="ProgressBar"
+                         Margin="50, 20, 50, 0"
+                         VerticalOptions="Center"
+                         HorizontalOptions="Fill"
+                         ProgressColor="{StaticResource SSIButtonBlue}"
+                         AutomationProperties.IsInAccessibleTree="False"/>
+            <Label Grid.Row="5"
+                   Text="{Binding SecondsRemainingText}"
+                   Style="{StaticResource TertierStyle}"
+                   FontSize="Small"
+                   TextColor="{StaticResource SSILightTextColor}"
+                   Opacity="0.7"
+                   LineBreakMode="TailTruncation"
+                   HorizontalOptions="Center"
+                   VerticalOptions="Center" 
+                   effects:FontSizeLabelEffectParams.MaxFontSize="16.00"
+                   effects:FontSizeLabelEffectParams.MinFontSize="10.00">
+                <Label.Effects>
+                    <effects:FontSizeLabelEffect/>
+                </Label.Effects>
+            </Label>
+        </Grid>
+    </Frame>
+</pages:PopupPage>

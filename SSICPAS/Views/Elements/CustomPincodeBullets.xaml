@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentView
+    x:Class="SSICPAS.Views.Elements.CustomPincodeBullets"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:localview="clr-namespace:SSICPAS.Views.Elements">
+    <Grid
+        x:Name="ShakingAnimationGrid"
+        Margin="0,20,0,10"
+        Padding="20,0,20,0"
+        ColumnSpacing="19"
+        VerticalOptions="CenterAndExpand">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60" />
+        </Grid.RowDefinitions>
+        <Grid Grid.Column="0">
+            <localview:PinCodeView
+                HorizontalOptions="Fill"
+                State="{Binding FirstCode}"
+                VerticalOptions="Fill" />
+        </Grid>
+        <Grid Grid.Column="1">
+            <localview:PinCodeView
+                HorizontalOptions="Fill"
+                State="{Binding SecondCode}"
+                VerticalOptions="Fill" />
+        </Grid>
+        <Grid Grid.Column="2">
+            <localview:PinCodeView
+                HorizontalOptions="Fill"
+                State="{Binding ThirdCode}"
+                VerticalOptions="Fill" />
+        </Grid>
+        <Grid Grid.Column="3">
+            <localview:PinCodeView
+                HorizontalOptions="Fill"
+                State="{Binding FourthCode}"
+                VerticalOptions="Fill" />
+        </Grid>
+
+    </Grid>
+</ContentView>

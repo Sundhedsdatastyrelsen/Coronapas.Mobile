@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<ContentView
+    x:Class="SSICPAS.Views.Certificates.ExpiredPassportView"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controls="clr-namespace:SSICPAS.Controls"
+    xmlns:viewmodel="clr-namespace:SSICPAS.ViewModels.Certificates;assembly=SSICPAS"
+    xmlns:effects="clr-namespace:SSICPAS.Controls"
+    xmlns:certificates="clr-namespace:SSICPAS.Views.Certificates;assembly=SSICPAS"
+    x:DataType="viewmodel:PassportPageViewModel"
+    BackgroundColor="Transparent"
+    IsClippedToBounds="True">
+    <Frame
+        Padding="20"
+        CornerRadius="10"
+        HasShadow="False"
+        HorizontalOptions="Center"
+        VerticalOptions="StartAndExpand">
+        <StackLayout Orientation="Vertical">
+            <Image
+                Margin="0,10,0,0"
+                HeightRequest="35"
+                HorizontalOptions="Center"
+                Source="information_icon.png"
+                VerticalOptions="Center"
+                WidthRequest="35" />
+            <Label
+                Padding="0,5,0,10"
+                HorizontalOptions="Center"
+                HorizontalTextAlignment="Center"
+                Style="{StaticResource TitleStyle}"
+                Text="{Binding Strings[EXPIRED_PASSPORT_HEADER]}"
+                VerticalOptions="Center"
+                IsVisible="{Binding IsInternationalPage, Converter={StaticResource BoolToInverseBoolConverter}}">
+                <Label.Effects>
+                    <controls:FontSizeLabelEffect />
+                </Label.Effects>
+            </Label>
+            <Label
+                Padding="0,10,0,0"
+                FontSize="Medium"
+                HorizontalTextAlignment="Center"
+                Style="{StaticResource TitleStyle}"
+                Text="{Binding Strings[EXPIRED_PASSPORT_SUBHEADER]}"
+                IsVisible="{Binding IsInternationalPage, Converter={StaticResource BoolToInverseBoolConverter}}">
+                <Label.Effects>
+                    <controls:FontSizeLabelEffect />
+                </Label.Effects>
+            </Label>
+            <Label
+                Padding="0,5,0,10"
+                HorizontalOptions="Center"
+                HorizontalTextAlignment="Center"
+                Style="{StaticResource TitleStyle}"
+                Text="{Binding Strings[EXPIRED_PASSPORT_HEADER_EU]}"
+                VerticalOptions="Center"
+                IsVisible="{Binding IsInternationalPage}">
+                <Label.Effects>
+                    <controls:FontSizeLabelEffect />
+                </Label.Effects>
+            </Label>
+            <Label
+                Padding="0,10,0,0"
+                FontSize="Medium"
+                HorizontalTextAlignment="Center"
+                Style="{StaticResource TitleStyle}"
+                Text="{Binding Strings[EXPIRED_PASSPORT_SUBHEADER_EU]}"
+                IsVisible="{Binding IsInternationalPage}">
+                <Label.Effects>
+                    <controls:FontSizeLabelEffect />
+                </Label.Effects>
+            </Label>
+            <certificates:NoPassportDkInfoView 
+                IsVisible="{Binding IsInternationalPage, Converter={StaticResource BoolToInverseBoolConverter}}"/>
+            <certificates:NoPassportEuInfoView 
+                IsVisible="{Binding IsInternationalPage}"/>
+
+            <BoxView
+                Margin="-20,0,-20,0"
+                BackgroundColor="{StaticResource MainPageBackgroundColor}"
+                HeightRequest="1" />
+            <StackLayout
+                Padding="0,5,0,0"
+                HorizontalOptions="Center"
+                Orientation="Horizontal">
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding HelpButtonCommand}" />
+                </StackLayout.GestureRecognizers>
+                <Image
+                    BackgroundColor="Transparent"
+                    HeightRequest="24"
+                    Source="{StaticResource QuestionMarkBlue}"
+                    WidthRequest="24">
+                    <Image.Margin>
+                        <OnPlatform x:TypeArguments="Thickness">
+                            <On Platform="Android" Value="0,5,0,0"/>
+                        </OnPlatform>
+                    </Image.Margin>
+                    </Image>
+                <Label
+                    HorizontalOptions="Center"
+                    LineHeight="1"
+                    Style="{StaticResource ContentStyle}"
+                    Text="{Binding Strings[MENU_HELP_PAGE]}"
+                    TextColor="{StaticResource SSILinkColor}"
+                    VerticalOptions="Center"
+                    VerticalTextAlignment="Center">
+                    <Label.Effects>
+                        <controls:FontSizeLabelEffect />
+                    </Label.Effects>
+                </Label>
+            </StackLayout>
+        </StackLayout>
+    </Frame>
+</ContentView>

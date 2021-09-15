@@ -1,0 +1,105 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="SSICPAS.Views.BaseErrorPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controls="clr-namespace:SSICPAS.Controls"
+    xmlns:effects="clr-namespace:SSICPAS.Controls"
+    xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+    ios:Page.UseSafeArea="true"
+    BackgroundColor="{StaticResource DefaultBackgroundColor}"
+    NavigationPage.HasNavigationBar="False">
+
+    <ContentPage.Content>
+        <Grid Padding="0,30,0,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <Label
+                Grid.Row="0"
+                AutomationProperties.IsInAccessibleTree="False"
+                effects:FontSizeLabelEffectParams.MaxFontSize="32"
+                effects:FontSizeLabelEffectParams.MinFontSize="12"
+                HorizontalTextAlignment="Center"
+                LineHeight="1"
+                Style="{StaticResource TitleStyle}"
+                Text="CORONAPAS">
+                <Label.Effects>
+                    <effects:FontSizeLabelEffect />
+                </Label.Effects>
+
+            </Label>
+
+            <ImageButton
+                Grid.Row="0"
+                AutomationId="ExpiredCertificateView_GoToCertificateHelpPage"
+                AutomationProperties.IsInAccessibleTree="True"
+                AutomationProperties.Name="{Binding Strings[HELP]}"
+                BackgroundColor="Transparent"
+                Command="{Binding HelpButtonCommand}"
+                HorizontalOptions="End"
+                Source="{StaticResource HelpIconBlue}"
+                VerticalOptions="Start"
+                Padding="30">
+                <ImageButton.Margin>
+                    <OnPlatform x:TypeArguments="Thickness">
+                        <On Platform="Android" Value="0,-27,-17,0" />
+                        <On Platform="iOS" Value="0,-20,-15,0" />
+                    </OnPlatform>
+                </ImageButton.Margin>
+            </ImageButton>
+            <ScrollView Grid.Row="1">
+
+                <Grid Padding="0,70,0,0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+
+                    <Image Grid.Row="0">
+                        <Image.Source>
+                            <FileImageSource File="{Binding ImageSource}" />
+                        </Image.Source>
+                    </Image>
+
+                    <Label
+                        Grid.Row="1"
+                        Margin="36,40,36,40"
+                        HorizontalTextAlignment="Center"
+                        LineHeight="1"
+                        Style="{StaticResource TitleStyle}"
+                        Text="{Binding ErrorTitle}" />
+
+                    <Label
+                        Grid.Row="2"
+                        Margin="36,0,36,0"
+                        HorizontalTextAlignment="Center"
+                        Style="{StaticResource ContentStyle}"
+                        Text="{Binding ErrorSubtitle}" />
+
+                </Grid>
+            </ScrollView>
+            <Grid Grid.Row="2" VerticalOptions="End">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <controls:SingleLineButton
+                    Grid.Row="2"
+                    Margin="20,0,20,30"
+                    BackgroundColor="{StaticResource ErrorPageButtonColor}"
+                    BorderWidth="1"
+                    Command="{Binding OkButtonCommand}"
+                    CornerRadius="5"
+                    HeightRequest="60"
+                    Text="{Binding ButtonTitle}"
+                    TextColor="#FFFFFF" />
+            </Grid>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

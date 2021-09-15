@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<ContentPage
+    x:Class="SSICPAS.Views.Menu.MenuPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:effects="clr-namespace:SSICPAS.Controls"
+    xmlns:elements="clr-namespace:SSICPAS.Views.Elements"
+    xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+    xmlns:viewModels="clr-namespace:SSICPAS.ViewModels.Menu"
+    ios:Page.UseSafeArea="False"
+    x:DataType="viewModels:MenuPageViewModel"
+    BackgroundColor="{StaticResource NavigationHeaderBackgroundColor}"
+    NavigationPage.HasNavigationBar="False">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="SourceLicenseBtnStyle" TargetType="Button">
+                <Setter Property="FontSize" Value="Small" />
+                <Setter Property="FontFamily" Value="IBMPlexSansRegular" />
+                <Setter Property="TextColor" Value="{StaticResource SSILightTextColor}" />
+                <Setter Property="effects:FontSizeLabelEffectParams.MaxFontSize" Value="30" />
+                <Setter Property="effects:FontSizeLabelEffectParams.MinFontSize" Value="10" />
+                <Setter Property="VisualStateManager.VisualStateGroups">
+                    <VisualStateGroupList>
+                        <VisualStateGroup x:Name="CommonStates">
+                            <VisualState x:Name="Normal">
+                                <VisualState.Setters>
+                                    <Setter Property="BackgroundColor" Value="Transparent" />
+                                </VisualState.Setters>
+                            </VisualState>
+                            <VisualState x:Name="Pressed">
+                                <VisualState.Setters>
+                                    <Setter Property="BackgroundColor" Value="Transparent" />
+                                </VisualState.Setters>
+                            </VisualState>
+                        </VisualStateGroup>
+                    </VisualStateGroupList>
+                </Setter>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.Content>
+        <Grid BackgroundColor="{StaticResource NavigationHeaderBackgroundColor}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+
+            </Grid.RowDefinitions>
+            <Grid.Padding>
+                <OnPlatform x:TypeArguments="Thickness">
+                    <On Platform="iOS" Value="0,50,0,0" />
+                    <On Platform="Android" Value="0,0,0,0" />
+                </OnPlatform>
+            </Grid.Padding>
+            <elements:NavigationHeader
+                CenterLabelAccessibilityText=""
+                CenterLabelText="{Binding Strings[MENU_TITLE]}"
+                LeftButtonCommand="{Binding BackCommand}"
+                LeftButtonHeightRequest="50"
+                LeftButtonImageSource="{StaticResource ArrowBack}" />
+            <ScrollView Grid.Row="1">
+                <Grid RowSpacing="15">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+
+                    <Image
+                        Grid.Row="0"
+                        HeightRequest="76"
+                        HorizontalOptions="Center"
+                        Source="{StaticResource SplashLogo}"
+                        WidthRequest="118" />
+
+                    <StackLayout
+                        Grid.Row="1"
+                        Orientation="Vertical"
+                        Spacing="0">
+                        <Grid
+                            ColumnSpacing="16"
+                            MinimumHeightRequest="58"
+                            Margin="0,5">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <Image
+                                Grid.Column="0"
+                                Margin="20,0,0,0"
+                                AutomationProperties.IsInAccessibleTree="False"
+                                HeightRequest="24"
+                                Source="{StaticResource MenuInfoIcon}"
+                                VerticalOptions="Center"
+                                WidthRequest="24" />
+                            <Label
+                                Grid.Column="1"
+                                AutomationProperties.IsInAccessibleTree="False"
+                                HorizontalOptions="StartAndExpand"
+                                LineBreakMode="WordWrap"
+                                LineHeight="1"
+                                Text="{Binding Strings[MENU_ABOUT_PAGE]}"
+                                Style="{StaticResource ContentStyle}"
+                               
+                                VerticalOptions="CenterAndExpand"
+                                VerticalTextAlignment="Center">
+                                <Label.Effects>
+                                    <effects:FontSizeLabelEffect />
+                                </Label.Effects>
+                            </Label>
+                            <Image
+                                Grid.Column="2"
+                                Margin="0,0,20,0"
+                                AutomationProperties.IsInAccessibleTree="False"
+                                HeightRequest="14"
+                                Source="{StaticResource ArrowNext}"
+                                VerticalOptions="Center"
+                                WidthRequest="24" />
+                            <Button
+                                Grid.Column="0"
+                                Grid.ColumnSpan="3"
+                                AutomationProperties.IsInAccessibleTree="True"
+                                AutomationProperties.HelpText="{Binding Strings [MENU_ABOUT_PAGE_INFORMATION]}"
+                                Command="{Binding OpenAboutPage}"
+                                Style="{StaticResource MenuButtonStyle}" />
+                        </Grid>
+                        <Grid
+                            ColumnSpacing="16"
+                            MinimumHeightRequest="58"
+                            Margin="0,5"
+                            IsVisible="{Binding IsLoggedIn}">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <Image
+                                Grid.Column="0"
+                                Margin="20,0,0,0"
+                                HeightRequest="24"
+                                Source="{StaticResource MenuTermsIcon}"
+                                VerticalOptions="Center"
+                                WidthRequest="24"
+                                AutomationProperties.IsInAccessibleTree="False"/>
+                            <Label
+                                Grid.Column="1"
+                                AutomationProperties.IsInAccessibleTree="False"
+                                HorizontalOptions="StartAndExpand"
+                                LineBreakMode="WordWrap"
+                                LineHeight="1"
+                                Style="{StaticResource ContentStyle}"
+                                Text="{Binding Strings[MENU_TERMS_PAGE]}"
+                                VerticalOptions="CenterAndExpand"
+                                VerticalTextAlignment="Center">
+                                <Label.Effects>
+                                    <effects:FontSizeLabelEffect />
+                                </Label.Effects>
+                            </Label>
+                            <Image
+                                Grid.Column="2"
+                                Margin="0,0,20,0"
+                                HeightRequest="14"
+                                Source="{StaticResource ArrowNext}"
+                                VerticalOptions="Center"
+                                WidthRequest="24" />
+                            <Button
+                                Grid.Column="0"
+                                Grid.ColumnSpan="3"
+                                AutomationProperties.IsInAccessibleTree="True"
+                                AutomationProperties.HelpText="{Binding Strings[MENU_TERMS_PAGE_NFORMATION]}"
+                                Command="{Binding OpenTermsAndUsePage}"
+                                Style="{StaticResource MenuButtonStyle}" />
+                        </Grid>
+                        <Grid
+                            ColumnSpacing="16"
+                            MinimumHeightRequest="58"
+                            Margin="0,5">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <Image
+                                Grid.Column="0"
+                                Margin="20,0,0,0"
+                                HeightRequest="24"
+                                Source="{StaticResource MenuSettingIcon}"
+                                VerticalOptions="Center"
+                                WidthRequest="24"
+                                AutomationProperties.IsInAccessibleTree="False"/>
+                            <Label
+                                Grid.Column="1"
+                                AutomationProperties.IsInAccessibleTree="False"
+                                HorizontalOptions="StartAndExpand"
+                                LineHeight="1"
+                                Style="{StaticResource ContentStyle}"
+                                Text="{Binding Strings[MENU_SETTINGS_PAGE]}"
+                                VerticalOptions="CenterAndExpand"
+                                VerticalTextAlignment="Center">
+                                <Label.Effects>
+                                    <effects:FontSizeLabelEffect />
+                                </Label.Effects>
+                            </Label>
+                            <Image
+                                Grid.Column="2"
+                                Margin="0,0,20,0"
+                                HeightRequest="14"
+                                Source="{StaticResource ArrowNext}"
+                                VerticalOptions="Center"
+                                WidthRequest="24" />
+                            <Button
+                                Grid.Column="0"
+                                Grid.ColumnSpan="3"
+                                AutomationProperties.IsInAccessibleTree="True"
+                                AutomationProperties.HelpText="{Binding Strings[MENU_SETTINGS_PAGE_INFORMATION]}"
+                                Command="{Binding OpenSettingsPage}"
+                                Style="{StaticResource MenuButtonStyle}"/>
+                        </Grid>
+                        <Grid
+                            ColumnSpacing="16"
+                            MinimumHeightRequest="58"
+                            Margin="0,5">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <Image
+                                Grid.Column="0"
+                                Margin="20,0,0,0"
+                                HeightRequest="24"
+                                Source="{StaticResource MenuHelpIcon}"
+                                VerticalOptions="Center"
+                                WidthRequest="24"
+                                AutomationProperties.IsInAccessibleTree="False"/>
+                            <Label
+                                Grid.Column="1"
+                                AutomationProperties.IsInAccessibleTree="False"
+                                HorizontalOptions="StartAndExpand"
+                                LineBreakMode="WordWrap"
+                                LineHeight="1"
+                                Style="{StaticResource ContentStyle}"
+                                Text="{Binding Strings[MENU_HELP_PAGE]}"
+                                VerticalOptions="CenterAndExpand"
+                                VerticalTextAlignment="Center">
+                                <Label.Effects>
+                                    <effects:FontSizeLabelEffect />
+                                </Label.Effects>
+                            </Label>
+                            <Image
+                                Grid.Column="2"
+                                Margin="0,0,20,0"
+                                HeightRequest="14"
+                                Source="{StaticResource ArrowNext}"
+                                VerticalOptions="Center"
+                                WidthRequest="24" />
+                            <Button
+                                Grid.Column="0"
+                                Grid.ColumnSpan="3"
+                                AutomationProperties.IsInAccessibleTree="True"
+                                AutomationProperties.HelpText="{Binding Strings[MENU_HELP_PAGE_INFORMATION]}"
+                                Command="{Binding OpenSupportPage}"
+                                Style="{StaticResource MenuButtonStyle}" />
+                        </Grid>
+                    </StackLayout>
+
+                    <Grid
+                        Grid.Row="2"
+                        BackgroundColor="{StaticResource DefaultBackgroundColor}"
+                        Padding="0,20,0,20">
+                    <Label
+                        HorizontalOptions="CenterAndExpand"
+                        HorizontalTextAlignment="Center"
+                        Style="{StaticResource SecondaryContentBoldStyle}"
+                        Text="{Binding VersionNumber}"
+                        TextColor="{StaticResource SSIDarkTextColor}"
+                        AutomationProperties.IsInAccessibleTree="True"
+                        VerticalTextAlignment="End"
+                        VerticalOptions="EndAndExpand">
+                        <Label.Effects>
+                            <effects:FontSizeLabelEffect />
+                        </Label.Effects>
+                    </Label>
+                        </Grid>
+                </Grid>
+            </ScrollView>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage> 

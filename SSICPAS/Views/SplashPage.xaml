@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:forms="clr-namespace:Lottie.Forms;assembly=Lottie.Forms" 
+             x:Class="SSICPAS.Views.SplashPage"
+             NavigationPage.HasNavigationBar="False"
+             BackgroundColor="{StaticResource DefaultBackgroundColor}"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             ios:Page.UseSafeArea="true">
+    <ContentPage.Content>
+        <StackLayout
+            VerticalOptions="Center">
+
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="300"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <StackLayout
+                    Grid.Row="1"
+                    VerticalOptions="FillAndExpand"
+                    HorizontalOptions="FillAndExpand">
+                    <forms:AnimationView x:Name="animationView"
+                        VerticalOptions="FillAndExpand"
+                        HorizontalOptions="FillAndExpand"
+                        HeightRequest="100"
+                        WidthRequest="100"
+                        Animation="loading.json"
+                        Loop="True"
+                        AutoPlay="True"/>
+                </StackLayout>
+
+                <StackLayout
+                    Grid.Row="2"
+                    Margin="0,20,0,0"
+                    VerticalOptions="Start" 
+                    HorizontalOptions="CenterAndExpand">
+
+                    <Label Text="{Binding LoadingText}"
+                        TextColor="{StaticResource SSIBaseTextColor}"
+                        FontAttributes="None"
+                        FontSize="Body"/>
+                </StackLayout>
+            </Grid>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

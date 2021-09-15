@@ -1,0 +1,531 @@
+# Global variables
+variables:
+  macAgentsPool: 'MacOS'
+  windowsAgentsPool: 'Default'
+  solution: '**/*.sln'
+  # Do not change startBuildNumber or it will reset the counter to 1.
+  startBuildNumber: 1 
+  ${{ if eq( or(eq( variables['Build.SourceBranchName'], 'test'), eq( variables['Build.SourceBranchName'], 'beta'), eq( variables['Build.SourceBranchName'], 'master')), true) }}:
+    buildNumber: $[counter(variables['startBuildNumber'] , 1)]
+  ${{ if eq( or(eq( variables['Build.SourceBranchName'], 'test'), eq( variables['Build.SourceBranchName'], 'beta'), eq( variables['Build.SourceBranchName'], 'master')), false) }}:
+    buildNumber: 1
+
+stages:
+
+## ===== CI START=====
+  - stage: 'CI_build_and_unit_tests'
+    jobs:
+    - job: 'build_and_test_debug'
+      displayName: Build solution and run tests (Unit and UI)
+      pool: 
+        name: $(macAgentsPool)
+
+      variables:
+        buildPlatform: 'Any CPU'
+        buildConfiguration: 'Debug'
+
+      steps:
+        - task: NuGetToolInstaller@1
+          displayName: 'Install NuGet'
+
+        - task: NuGetCommand@2
+          displayName: 'Restore NuGet packages'
+          inputs:
+            command: 'restore'
+            restoreSolution: '$(solution)'
+
+        - task: MSBuild@1
+          displayName: 'Build solution'
+          inputs:
+            solution: '$(solution)'
+            platform: '$(buildPlatform)'
+            configuration: '$(buildConfiguration)'
+            msbuildArguments: '/maxcpucount /nodeReuse:False /p:PackageLocation="$(build.artifactStagingDirectory)"'
+            clean: true
+            restoreNugetPackages: true
+            createLogFile: true
+        
+        - task: DotNetCoreCLI@2
+          displayName: 'Unit Tests'
+          inputs:
+            command: test
+            projects: '**/*.Tests/*.csproj'
+            arguments: '-c $(BuildConfiguration) --no-restore'
+
+        - task: DotNetCoreCLI@2
+          displayName: 'UI Tests'
+          inputs:
+            command: test
+            projects: '**/*.UiTests/*.csproj'
+            arguments: '-c $(BuildConfiguration) --no-restore'
+## ===== CI END=====
+
+## ===== CD TEST START=====
+  - stage: 'CD_TEST'
+    condition: eq( variables['Build.SourceBranchName'], 'test')
+    jobs:
+    - job: 'android_appcenter'
+      displayName: 'Android - Build and distribute to App Center testers'
+      pool: $(macAgentsPool)
+
+      variables:
+        - group: 'SSICPAS - App CI'
+        - name: buildConfiguration
+          value: 'Test'
+        - name: buildPlatform
+          value: 'Any CPU'
+        - name: outputDirectory
+          value: '$(build.binariesDirectory)/$(buildConfiguration)'
+
+      steps:
+      - task: DownloadSecureFile@1
+        name: downloadKeyStore
+        displayName: 'Download Keystore file from Secure Files'
+        inputs:
+          secureFile: 'SSICPAS.keystore'
+
+      - task: NuGetToolInstaller@1
+
+      - task: NuGetCommand@2
+        inputs:
+          restoreSolution: '$(solution)'
+
+      - task: android-manifest-version@1
+        displayName: 'Setting Android build number to $(buildNumber)'
+        inputs:
+          sourcePath: '$(androidManifestPath)'
+          versionCodeOption: 'buildid'
+          versionCode: '$(buildNumber)'
+          versionName: 
+          printFile: true
+      
+      - task: XamarinAndroid@1
+        displayName: 'Building and signing Android app [$(buildConfiguration)|$(buildPlatform)]'
+        inputs:
+          projectFile: '**/*Android*.csproj'
+          outputDirectory: '$(outputDirectory)'
+          configuration: '$(buildConfiguration)' 
+          msbuildArguments: '-restore /t:SignAndroidPackage /p:AndroidBuildApplicationPackage=True /p:AndroidPackageFormat=aab /p:OutputPath=$(outputDirectory) /p:AndroidKeyStore=True /p:AndroidSigningKeyStore=$(downloadKeyStore.secureFilePath) /p:AndroidSigningStorePass=$(keystorePassword) /p:AndroidSigningKeyAlias=$(keyAlias) /p:AndroidSigningKeyPass=$(keyPassword)'
+
+      - script: |
+          rm $(outputDirectory)/coronapas.apks $(outputDirectory)/toc.pb $(outputDirectory)/universal.apk
+          bundletool build-apks --bundle=$(outputDirectory)/dk.sum.ssicpas-Signed.aab --output=$(outputDirectory)/coronapas.apks --mode=universal --ks=$(downloadKeyStore.secureFilePath) --ks-pass=pass:$(keystorePassword) --ks-key-alias=$(keyAlias) --key-pass=pass:$(keyPassword)
+          unzip $(outputDirectory)/coronapas.apks -d $(outputDirectory)
+        displayName: 'Unpacking AAB to APK for distribution'
+
+      - script: |
+          mv $(outputDirectory)/*-Signed.aab $(outputDirectory)/$(buildNumber).aab
+          mv $(outputDirectory)/universal.apk $(outputDirectory)/$(buildNumber).apk
+        displayName: 'Renaming .aab and .apk to $(buildNumber).aab and $(buildNumber).apk'   
+
+      - task: CopyFiles@2
+        displayName: 'Copying signed apk file to Staging directory'
+        inputs:
+          sourceFolder: $(outputDirectory)
+          contents: |
+            $(buildNumber).aab
+            $(buildNumber).apk
+          targetFolder: $(Build.ArtifactStagingDirectory)
+
+      - task: PublishBuildArtifacts@1
+        displayName: 'Publishing Android artifact in pipeline'
+        inputs:
+          ArtifactName: 'cpas-android-test'
+
+      - task: AppCenterDistribute@3
+        displayName: 'Distributing Android apk to App Center'
+        inputs:
+          serverEndpoint: 'SSICPAS App Center'
+          appSlug: '$(androidAppCenterAppSlug)'
+          appFile: '$(Build.ArtifactStagingDirectory)/*.apk'
+          symbolsOption: 'Android'
+          releaseNotesOption: 'input'
+          releaseNotesInput: '$(androidAppCenterTestReleaseNotes)'
+          destinationType: 'groups'
+          distributionGroupId: '$(androidAppCenterDistributionGroupId)'
+    
+    - job: 'iOS_appcenter'
+      displayName: 'iOS - Build and distribute to App Center testers'
+      pool: $(macAgentsPool)
+      
+      variables:
+        - group: 'SSICPAS - App CI'
+        - name: buildConfiguration
+          value: 'Test'
+        - name: outputDirectory
+          value: '$(build.binariesDirectory)/$(buildConfiguration)'
+
+      steps:
+      - task: NuGetToolInstaller@1
+
+      - task: ios-bundle-version@1
+        displayName: 'Setting iOS buildnumber to $(buildNumber)'
+        inputs:
+          sourcePath: '$(infoPlistPath)'
+          versionCodeOption: 'buildid'
+          versionCode: '$(buildNumber)'
+          versionName: 
+          printFile: true
+
+      - task: InstallAppleProvisioningProfile@1
+        inputs:
+          provisioningProfileLocation: 'secureFiles'
+          provProfileSecureFile: 'SSICPAS_Ad_Hoc.mobileprovision'
+          removeProfile: true
+
+      - task: XamariniOS@2
+        displayName: 'Building and signing iOS app (Build $(buildNumber)) [$(buildConfiguration)]'
+        inputs:
+          solutionFile: '$(solution)'
+          configuration: $(buildConfiguration)
+          packageApp: true
+          buildForSimulator: false
+          runNugetRestore: false
+          signingIdentity: '$(appleCertIdentity)'
+          signingProvisioningProfileID: '$(APPLE_PROV_PROFILE_UUID)'
+          args: '-restore /t:Clean;Build /p:OutputPath="$(outputDirectory)"'
+
+      - task: CopyFiles@2
+        inputs:
+          sourceFolder: $(outputDirectory)
+          contents: |
+            *.ipa
+          targetFolder: $(Build.ArtifactStagingDirectory)
+
+      - task: PublishBuildArtifacts@1
+        displayName: 'Publishing iOS artifact in pipeline'
+        inputs:
+          ArtifactName: 'cpas-ios-test'
+
+      - task: AppCenterDistribute@3
+        displayName: 'Distributing iOS .ipa file to App Center'
+        inputs:
+          serverEndpoint: 'SSICPAS App Center'
+          appSlug: '$(iOSAppCenterAppSlug)'
+          appFile: '$(Build.ArtifactStagingDirectory)/*.ipa'
+          symbolsOption: Apple
+          releaseNotesOption: 'input'
+          releaseNotesInput: '$(iOSAppCenterTestReleaseNotes)'
+          destinationType: 'groups'
+          distributionGroupId: '$(iOSAppCenterDistributionGroupId)'
+## ===== CD TEST END=====
+
+## ===== CD PRE-PRODUCTION (BETA) START=====
+  - stage: 'CD_BETA'
+    condition: eq( variables['Build.SourceBranchName'], 'beta')
+    jobs:
+    - job: 'android_appstore_beta'
+      displayName: 'Android - Build and distribute to beta testers'
+      pool: $(macAgentsPool)
+
+      variables:
+        - group: 'SSICPAS - App CI'
+        - name: buildConfiguration
+          value: 'AppStoreBeta'
+        - name: buildPlatform
+          value: 'Any CPU'
+        - name: outputDirectory
+          value: '$(build.binariesDirectory)/$(buildConfiguration)'
+
+      steps:
+      - task: NuGetToolInstaller@1
+
+      - task: NuGetCommand@2
+        inputs:
+          restoreSolution: '$(solution)'
+
+      - task: DownloadSecureFile@1
+        name: downloadKeyStore
+        displayName: 'Download Keystore file from Secure Files'
+        inputs:
+          secureFile: 'SSICPAS.keystore'
+
+      - task: DownloadSecureFile@1
+        name: downloadJsonKey
+        displayName: 'Download JSON key file from Secure Files for service account'
+        inputs:
+          secureFile: 'SSICPAS_ServiceAccountKey.json'
+
+      - task: android-manifest-version@1
+        displayName: 'Setting Android build number to $(buildNumber)'
+        inputs:
+          sourcePath: '$(androidManifestPath)'
+          versionCodeOption: 'buildid'
+          versionCode: '$(buildNumber)'
+          versionName: 
+          printFile: true
+
+      - task: XamarinAndroid@1
+        displayName: 'Building and signing Android app [$(buildConfiguration)|$(buildPlatform)]'
+        inputs:
+          projectFile: '**/*Android*.csproj'
+          outputDirectory: '$(outputDirectory)'
+          configuration: '$(buildConfiguration)' 
+          msbuildArguments: '/p:DebugSymbols=true /p:DebugType=pdbonly -restore /t:SignAndroidPackage /p:AndroidBuildApplicationPackage=True /p:AndroidPackageFormat=aab /p:OutputPath=$(outputDirectory) /p:AndroidKeyStore=True /p:AndroidSigningKeyStore=$(downloadKeyStore.secureFilePath) /p:AndroidSigningStorePass=$(keystorePassword) /p:AndroidSigningKeyAlias=$(keyAlias) /p:AndroidSigningKeyPass=$(keyPassword)'
+
+      - script: |
+          rm $(outputDirectory)/coronapas.apks $(outputDirectory)/toc.pb $(outputDirectory)/universal.apk
+          bundletool build-apks --bundle=$(outputDirectory)/dk.sum.ssicpas-Signed.aab --output=$(outputDirectory)/coronapas.apks --mode=universal --ks=$(downloadKeyStore.secureFilePath) --ks-pass=pass:$(keystorePassword) --ks-key-alias=$(keyAlias) --key-pass=pass:$(keyPassword)
+          unzip $(outputDirectory)/coronapas.apks -d $(outputDirectory)
+        displayName: 'Unpacking AAB to APK for distribution'
+
+      - script: |
+          mv $(outputDirectory)/*-Signed.aab $(outputDirectory)/$(buildNumber).aab
+          mv $(outputDirectory)/universal.apk $(outputDirectory)/$(buildNumber).apk
+        displayName: 'Renaming .aab and .apk to $(buildNumber).aab and $(buildNumber).apk'
+
+      - task: CopyFiles@2
+        displayName: 'Copying signed .aab and .apk file to Staging directory'
+        inputs:
+          sourceFolder: $(outputDirectory)
+          contents: |
+            $(buildNumber).aab
+            $(buildNumber).apk
+          targetFolder: $(Build.ArtifactStagingDirectory)
+
+      - task: PublishBuildArtifacts@1
+        displayName: 'Publishing Android artifact in pipeline'
+        inputs:
+          ArtifactName: 'cpas-android-appstore-beta'
+
+      - task: Bash@3
+        displayName: 'Upload AAB file to Google Play Console'
+        inputs:
+          targetType: 'inline'
+          script: fastlane supply --aab $(Build.ArtifactStagingDirectory)/*.aab --json-key $(downloadJsonKey.secureFilePath) --package-name $(androidPackageName) --track internal --release-status draft --verbose
+
+    - job: 'iOS_appstore_beta'
+      displayName: 'iOS - Build and distribute Beta to TestFlight'
+      pool: $(macAgentsPool)
+      
+      variables:
+        - group: 'SSICPAS - App CI'
+        - name: buildConfiguration
+          value: 'AppStoreBeta'
+        - name: outputDirectory
+          value: '$(build.binariesDirectory)/$(buildConfiguration)'
+
+      steps:
+      - task: NuGetToolInstaller@1
+
+      - task: NuGetCommand@2
+        inputs:
+          restoreSolution: '$(solution)'
+      
+      - task: ios-bundle-version@1
+        displayName: 'Setting iOS build number to $(buildNumber)'
+        inputs:
+          sourcePath: '$(infoPlistPath)'
+          versionCodeOption: 'buildid'
+          versionCode: '$(buildNumber)'
+          versionName: 
+          printFile: true
+
+      - task: InstallAppleProvisioningProfile@1
+        inputs:
+          provisioningProfileLocation: 'secureFiles'
+          provProfileSecureFile: 'SSICPAS_AppStore.mobileprovision'
+          removeProfile: true
+      
+      - task: XamariniOS@2
+        displayName: 'Building and signing iOS app (Build $(buildNumber)) [$(buildConfiguration)]'
+        inputs:
+          solutionFile: '$(solution)'
+          configuration: $(buildConfiguration)
+          packageApp: true
+          buildForSimulator: false
+          runNugetRestore: false
+          signingIdentity: '$(appleCertIdentity)'
+          signingProvisioningProfileID: '$(APPLE_PROV_PROFILE_UUID)'
+          args: '/p:OutputPath="$(outputDirectory)"'
+      
+      - task: CopyFiles@2
+        inputs:
+          sourceFolder: $(outputDirectory)
+          contents: |
+            *.ipa
+          targetFolder: $(Build.ArtifactStagingDirectory)
+
+      - task: PublishBuildArtifacts@1
+        displayName: 'Publishing iOS artifact in pipeline'
+        inputs:
+          ArtifactName: 'cpas-ios-appstore-beta'
+
+      - task: AppStoreRelease@1
+        displayName: 'Releasing Coronapas (Build $(buildNumber)) to TestFlight'
+        inputs:
+          authType: 'UserAndPass'
+          username: '$(fastLaneAuthUsername)'
+          password: '$(fastLaneAuthPassword)'
+          isTwoFactorAuth: true
+          appSpecificPassword: '$(adoAppStorePassword)'
+          appIdentifier: '$(iOSAppIdentifier)'
+          appType: 'iOS'
+          ipaPath: '$(Build.ArtifactStagingDirectory)/*.ipa'
+          releaseTrack: 'TestFlight'
+          shouldSkipWaitingForProcessing: true
+          appSpecificId: '$(iOSAppSpecificId)'
+          shouldSkipSubmission: true
+          installFastlane: false
+          fastlaneArguments: --verbose
+## ===== CD PRE-PRODUCTION (BETA) START=====
+
+## ===== CD PRODUCTION START=====
+  - stage: 'CD_PRODUCTION'
+    condition: eq( variables['Build.SourceBranchName'], 'master')
+    jobs:
+    - job: 'android_appstore'
+      displayName: 'Android - Build and distribute to beta testers'
+      pool: $(macAgentsPool)
+
+      variables:
+        - group: 'SSICPAS - App CI'
+        - name: buildConfiguration
+          value: 'AppStore'
+        - name: buildPlatform
+          value: 'Any CPU'
+        - name: outputDirectory
+          value: '$(build.binariesDirectory)/$(buildConfiguration)'
+
+      steps:
+      - task: NuGetToolInstaller@1
+
+      - task: NuGetCommand@2
+        inputs:
+          restoreSolution: '$(solution)'
+
+      - task: DownloadSecureFile@1
+        name: downloadKeyStore
+        displayName: 'Download Keystore file from Secure Files'
+        inputs:
+          secureFile: 'SSICPAS.keystore'
+
+      - task: DownloadSecureFile@1
+        name: downloadJsonKey
+        displayName: 'Download JSON key file from Secure Files for service account'
+        inputs:
+          secureFile: 'SSICPAS_ServiceAccountKey.json'
+
+      - task: android-manifest-version@1
+        displayName: 'Setting Android build number to $(buildNumber)'
+        inputs:
+          sourcePath: '$(androidManifestPath)'
+          versionCodeOption: 'buildid'
+          versionCode: '$(buildNumber)'
+          versionName: 
+          printFile: true
+
+      - task: XamarinAndroid@1
+        displayName: 'Building and signing Android app [$(buildConfiguration)|$(buildPlatform)]'
+        inputs:
+          projectFile: '**/*Android*.csproj'
+          outputDirectory: '$(outputDirectory)'
+          configuration: '$(buildConfiguration)' 
+          msbuildArguments: '/p:DebugSymbols=true /p:DebugType=pdbonly -restore /t:SignAndroidPackage /p:AndroidBuildApplicationPackage=True /p:AndroidPackageFormat=aab /p:OutputPath=$(outputDirectory) /p:AndroidKeyStore=True /p:AndroidSigningKeyStore=$(downloadKeyStore.secureFilePath) /p:AndroidSigningStorePass=$(keystorePassword) /p:AndroidSigningKeyAlias=$(keyAlias) /p:AndroidSigningKeyPass=$(keyPassword)'
+
+      - script: |
+          rm $(outputDirectory)/coronapas.apks $(outputDirectory)/toc.pb $(outputDirectory)/universal.apk
+          bundletool build-apks --bundle=$(outputDirectory)/dk.sum.ssicpas-Signed.aab --output=$(outputDirectory)/coronapas.apks --mode=universal --ks=$(downloadKeyStore.secureFilePath) --ks-pass=pass:$(keystorePassword) --ks-key-alias=$(keyAlias) --key-pass=pass:$(keyPassword)
+          unzip $(outputDirectory)/coronapas.apks -d $(outputDirectory)
+        displayName: 'Unpacking AAB to APK for distribution'
+
+      - script: |
+          mv $(outputDirectory)/*-Signed.aab $(outputDirectory)/$(buildNumber).aab
+          mv $(outputDirectory)/universal.apk $(outputDirectory)/$(buildNumber).apk
+        displayName: 'Renaming .aab and .apk to $(buildNumber).aab and $(buildNumber).apk'
+
+      - task: CopyFiles@2
+        displayName: 'Copying signed .aab and .apk file to Staging directory'
+        inputs:
+          sourceFolder: $(outputDirectory)
+          contents: |
+            $(buildNumber).aab
+            $(buildNumber).apk
+          targetFolder: $(Build.ArtifactStagingDirectory)
+
+      - task: PublishBuildArtifacts@1
+        displayName: 'Publishing Android artifact in pipeline'
+        inputs:
+          ArtifactName: 'cpas-android-appstore'
+
+      - task: Bash@3
+        displayName: 'Upload AAB file to Google Play Console'
+        inputs:
+          targetType: 'inline'
+          script: fastlane supply --aab $(Build.ArtifactStagingDirectory)/*.aab --json-key $(downloadJsonKey.secureFilePath) --package-name $(androidPackageName) --track internal --release-status draft --verbose
+
+    - job: 'iOS_appstore'
+      displayName: 'iOS - Build and distribute to TestFlight'
+      pool: $(macAgentsPool)
+      
+      variables:
+        - group: 'SSICPAS - App CI'
+        - name: buildConfiguration
+          value: 'AppStore'
+        - name: outputDirectory
+          value: '$(build.binariesDirectory)/$(buildConfiguration)'
+
+      steps:
+      - task: NuGetToolInstaller@1
+
+      - task: NuGetCommand@2
+        inputs:
+          restoreSolution: '$(solution)'
+      
+      - task: ios-bundle-version@1
+        displayName: 'Setting iOS build number to $(buildNumber)'
+        inputs:
+          sourcePath: '$(infoPlistPath)'
+          versionCodeOption: 'buildid'
+          versionCode: '$(buildNumber)'
+          versionName: 
+          printFile: true
+
+      - task: InstallAppleProvisioningProfile@1
+        inputs:
+          provisioningProfileLocation: 'secureFiles'
+          provProfileSecureFile: 'SSICPAS_AppStore.mobileprovision'
+          removeProfile: true
+      
+      - task: XamariniOS@2
+        displayName: 'Building and signing iOS app (Build $(buildNumber)) [$(buildConfiguration)]'
+        inputs:
+          solutionFile: '$(solution)'
+          configuration: $(buildConfiguration)
+          packageApp: true
+          buildForSimulator: false
+          runNugetRestore: false
+          signingIdentity: '$(appleCertIdentity)'
+          signingProvisioningProfileID: '$(APPLE_PROV_PROFILE_UUID)'
+          args: '/p:OutputPath="$(outputDirectory)"'
+      
+      - task: CopyFiles@2
+        inputs:
+          sourceFolder: $(outputDirectory)
+          contents: |
+            *.ipa
+          targetFolder: $(Build.ArtifactStagingDirectory)
+
+      - task: PublishBuildArtifacts@1
+        displayName: 'Publishing iOS artifact in pipeline'
+        inputs:
+          ArtifactName: 'cpas-ios-appstore'
+
+      - task: AppStoreRelease@1
+        displayName: 'Releasing Coronapas (Build $(buildNumber)) to TestFlight'
+        inputs:
+          authType: 'UserAndPass'
+          username: '$(fastLaneAuthUsername)'
+          password: '$(fastLaneAuthPassword)'
+          isTwoFactorAuth: true
+          appSpecificPassword: '$(adoAppStorePassword)'
+          appIdentifier: '$(iOSAppIdentifier)'
+          appType: 'iOS'
+          ipaPath: '$(Build.ArtifactStagingDirectory)/*.ipa'
+          releaseTrack: 'TestFlight'
+          shouldSkipWaitingForProcessing: true
+          appSpecificId: '$(iOSAppSpecificId)'
+          shouldSkipSubmission: true
+          installFastlane: false
+          fastlaneArguments: --verbose
+## ===== CD PRODUCTION END=====

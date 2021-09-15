@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<ContentView
+    x:Class="SSICPAS.Views.Certificates.AwaitingPassportView"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controls="clr-namespace:SSICPAS.Controls"
+    xmlns:viewmodel="clr-namespace:SSICPAS.ViewModels.Certificates;assembly=SSICPAS"
+    xmlns:effects="clr-namespace:SSICPAS.Controls"
+    xmlns:certificates="clr-namespace:SSICPAS.Views.Certificates;assembly=SSICPAS"
+    x:DataType="viewmodel:PassportPageViewModel"
+    BackgroundColor="Transparent"
+    IsClippedToBounds="True">
+    <Frame
+        Padding="20"
+        CornerRadius="10"
+        HasShadow="False"
+        HorizontalOptions="Center"
+        VerticalOptions="StartAndExpand">
+        <StackLayout Orientation="Vertical">
+
+            <Label
+                Padding="0,10,0,10"
+                HorizontalOptions="Center"
+                HorizontalTextAlignment="Center"
+                Style="{StaticResource TitleStyle}"
+                Text="{Binding Strings[AWAITING_PASSPORT_HEADER]}"
+                VerticalOptions="Center"
+                IsVisible="{Binding IsInternationalPage, Converter={StaticResource BoolToInverseBoolConverter}}"
+                AutomationProperties.IsInAccessibleTree="True">
+                <Label.Effects>
+                    <controls:FontSizeLabelEffect />
+                </Label.Effects>
+            </Label>
+            <Label
+                Padding="0,0,0,0"
+                FontSize="Small"
+                Style="{StaticResource TitleStyle}"
+                HorizontalTextAlignment="Center"
+                VerticalTextAlignment="Start"
+                Text="{Binding Strings[AWAITING_PASSPORT_SUBHEADER]}"
+                IsVisible="{Binding IsInternationalPage, Converter={StaticResource BoolToInverseBoolConverter}}"
+                AutomationProperties.IsInAccessibleTree="True">
+                <Label.Effects>
+                    <controls:FontSizeLabelEffect />
+                </Label.Effects>
+            </Label>
+
+            <Label
+                Padding="0,10,0,10"
+                HorizontalOptions="Center"
+                HorizontalTextAlignment="Center"
+                Style="{StaticResource TitleStyle}"
+                Text="{Binding AwaitingPassportHeader}"
+                VerticalOptions="Center"
+                IsVisible="{Binding IsInternationalPage}"
+                AutomationProperties.IsInAccessibleTree="True">
+                <Label.Effects>
+                    <controls:FontSizeLabelEffect />
+                </Label.Effects>
+            </Label>
+            <Label
+                Padding="0,10,0,0"
+                FontSize="Small"
+                Style="{StaticResource TitleStyle}"
+                HorizontalTextAlignment="Center"
+                VerticalTextAlignment="Start"
+                Text="{Binding Strings[AWAITING_PASSPORT_SUBHEADER_EU]}"
+                IsVisible="{Binding IsInternationalPage}"
+                AutomationProperties.IsInAccessibleTree="True">
+                <Label.Effects>
+                    <controls:FontSizeLabelEffect />
+                </Label.Effects>
+            </Label>
+
+            <certificates:NoPassportDkInfoView 
+                IsVisible="{Binding IsInternationalPage, Converter={StaticResource BoolToInverseBoolConverter}}"/>
+            <certificates:NoPassportEuInfoView 
+                IsVisible="{Binding IsInternationalPage}"/>
+            <BoxView
+                Margin="-20,0,-20,0"
+                BackgroundColor="{StaticResource MainPageBackgroundColor}"
+                HeightRequest="1" />
+
+            <StackLayout
+                Padding="0,20,0,0"
+                HorizontalOptions="Center"
+                Orientation="Horizontal">
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding HelpButtonCommand}" />
+                </StackLayout.GestureRecognizers>
+                <Image
+                    BackgroundColor="Transparent"
+                    HeightRequest="24"
+                    VerticalOptions="Center"
+                    Source="{StaticResource QuestionMarkBlue}"
+                    WidthRequest="24">
+                    <Image.Margin>
+                        <OnPlatform x:TypeArguments="Thickness">
+                            <On Platform="Android" Value="0,5,0,0"/>
+                        </OnPlatform>
+                    </Image.Margin>
+                    </Image>
+                <Label
+                    controls:FontSizeLabelEffectParams.MaxFontSize="24"
+                    HorizontalOptions="Center"
+                    Style="{StaticResource LinkButtonStyle}"
+                    Text="{Binding Strings[MENU_HELP_PAGE]}"
+                    TextColor="{StaticResource SSILinkColor}"
+                    VerticalOptions="Center"
+                    AutomationProperties.IsInAccessibleTree="True"
+                    AutomationProperties.Name="{Binding Strings [MENU_HELP_PAGE_INFORMATION]}">
+                    <Label.Effects>
+                        <controls:FontSizeLabelEffect />
+                    </Label.Effects>
+                </Label>
+            </StackLayout>
+        </StackLayout>
+    </Frame>
+</ContentView>

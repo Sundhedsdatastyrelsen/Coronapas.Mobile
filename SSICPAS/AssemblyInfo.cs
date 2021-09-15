@@ -1,0 +1,16 @@
+using Xamarin.Forms;
+
+[assembly: ExportFont("IBMPlexSans-Bold.ttf", Alias = "IBMPlexSansBold")]
+[assembly: ExportFont("IBMPlexSans-BoldItalic.ttf", Alias = "IBMPlexSansBoldItalic")]
+[assembly: ExportFont("IBMPlexSans-ExtraLight.ttf", Alias = "IBMPlexSansExtraLight")]
+[assembly: ExportFont("IBMPlexSans-ExtraLightItalic.ttf", Alias = "IBMPlexSansExtraLightItalic")]
+[assembly: ExportFont("IBMPlexSans-Italic.ttf", Alias = "IBMPlexSansItalic")]
+[assembly: ExportFont("IBMPlexSans-Light.ttf", Alias = "IBMPlexSansLight")]
+[assembly: ExportFont("IBMPlexSans-LightItalic.ttf", Alias = "IBMPlexSansLightItalic")]
+[assembly: ExportFont("IBMPlexSans-Medium.ttf", Alias = "IBMPlexSansMedium")]
+[assembly: ExportFont("IBMPlexSans-MediumItalic.ttf", Alias = "IBMPlexSansMediumItalic")]
+[assembly: ExportFont("IBMPlexSans-Regular.ttf", Alias = "IBMPlexSansRegular")]
+[assembly: ExportFont("IBMPlexSans-SemiBold.ttf", Alias = "IBMPlexSansSemiBold")]
+[assembly: ExportFont("IBMPlexSans-SemiBoldItalic.ttf", Alias = "IBMPlexSansSemiBoldItalic")]
+[assembly: ExportFont("IBMPlexSans-Thin.ttf", Alias = "IBMPlexSansThin")]
+[assembly: ExportFont("IBMPlexSans-ThinItalic.ttf", Alias = "IBMPlexSansThinItalic")]

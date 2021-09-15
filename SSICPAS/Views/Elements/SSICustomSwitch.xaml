@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView
+    x:Class="SSICPAS.Views.Elements.SSICustomSwitch"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:effects="clr-namespace:SSICPAS.Controls"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+    <Grid HorizontalOptions="Center">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="38" />
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="176" />
+        </Grid.ColumnDefinitions>
+        
+        <!--  Background Frame  -->
+        <Frame
+            Grid.Row="0"
+            Padding="4,3,4,3"
+            BackgroundColor="#EAF1F1"
+            HasShadow="False"
+            HeightRequest="38"
+            HorizontalOptions="Center"
+            VerticalOptions="Center"
+            WidthRequest="176">
+            <Frame.CornerRadius>
+                <OnPlatform x:TypeArguments="x:Single">
+                    <On Platform="iOS" Value="19" />
+                    <On Platform="Android" Value="19" />
+                </OnPlatform>
+            </Frame.CornerRadius>
+        </Frame>
+
+        <!--  Running Frame  -->
+        <Frame
+            x:Name="runningFrame"
+            Margin="0,0,0,0"
+            Padding="0"
+            BackgroundColor="#3B37E2"
+            HasShadow="False"
+            HeightRequest="32"
+            HorizontalOptions="Start"
+            VerticalOptions="Center"
+            WidthRequest="84">
+            <Frame.CornerRadius>
+                <OnPlatform x:TypeArguments="x:Single">
+                    <On Platform="iOS" Value="16" />
+                    <On Platform="Android" Value="16" />
+                </OnPlatform>
+            </Frame.CornerRadius>
+        </Frame>
+
+
+        <!--  Selection text1  -->
+        <StackLayout
+            Margin="4,3,0,3"
+            HeightRequest="32"
+            HorizontalOptions="Start"
+            Orientation="Horizontal"
+            VerticalOptions="Center"
+            WidthRequest="84">
+            <StackLayout.GestureRecognizers>
+                <PanGestureRecognizer PanUpdated="PanGestureRecognizer_PanUpdated" />
+                <TapGestureRecognizer Tapped="OnText1Tapped" />
+            </StackLayout.GestureRecognizers>
+            <effects:LabelWithNoFontPadding
+                x:Name="text1"
+                effects:FontSizeLabelEffectParams.MaxFontSize="20"
+                effects:FontSizeLabelEffectParams.MinFontSize="10"
+                FontAttributes="Bold"
+                FontFamily="IBMPlexSansSemiBold"
+                FontSize="Body"
+                HorizontalOptions="CenterAndExpand"
+                HorizontalTextAlignment="Center"
+                LineHeight="1"
+                AutomationProperties.IsInAccessibleTree="True"
+                AutomationProperties.HelpText="{Binding Strings[SETTINGS_BUTTON_DANISH_SWITCH]}"
+                Text="{Binding Strings[SETTINGS_BUTTON_DANISH]}"
+                TextColor="White"
+                VerticalOptions="Center">
+                <Label.Effects>
+                    <effects:FontSizeLabelEffect />
+                </Label.Effects>
+            </effects:LabelWithNoFontPadding>
+        </StackLayout>
+
+        <!--  Selection text2  -->
+        <StackLayout
+            Margin="0,3,4,3"
+            BackgroundColor="Transparent"
+            HeightRequest="32"
+            HorizontalOptions="End"
+            Orientation="Horizontal"
+            VerticalOptions="Center"
+            WidthRequest="84">
+            <StackLayout.GestureRecognizers>
+                <PanGestureRecognizer PanUpdated="PanGestureRecognizer_PanUpdated" />
+                <TapGestureRecognizer Tapped="OnText2Tapped" />
+            </StackLayout.GestureRecognizers>
+            <effects:LabelWithNoFontPadding
+                x:Name="text2"
+                effects:FontSizeLabelEffectParams.MaxFontSize="20"
+                effects:FontSizeLabelEffectParams.MinFontSize="10"
+                FontFamily="IBMPlexSansRegular"
+                FontSize="Body"
+                HorizontalOptions="CenterAndExpand"
+                HorizontalTextAlignment="Center"
+                LineHeight="1"
+                AutomationProperties.IsInAccessibleTree="True"
+                AutomationProperties.HelpText="{Binding Strings[SETTINGS_BUTTON_ENGLISH_SWITCH]}"
+                Text="{Binding Strings[SETTINGS_BUTTON_ENGLISH]}"
+                TextColor="#47526F"
+                VerticalOptions="Center">
+                <Label.Effects>
+                    <effects:FontSizeLabelEffect />
+                </Label.Effects>
+            </effects:LabelWithNoFontPadding>
+        </StackLayout>
+
+    </Grid>
+</ContentView>

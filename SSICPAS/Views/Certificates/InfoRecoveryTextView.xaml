@@ -1,0 +1,866 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<ContentView
+    x:Class="SSICPAS.Views.Certificates.InfoRecoveryTextView"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controls="clr-namespace:SSICPAS.Controls;assembly=SSICPAS"
+    xmlns:viewmodel="clr-namespace:SSICPAS.ViewModels.Certificates;assembly=SSICPAS"
+    x:DataType="viewmodel:InfoRecoveryTextViewModel">
+    <ContentView.Content>
+        <Grid
+            Margin="0,0,0,0"
+            Padding="0,0,0,20"
+            BackgroundColor="{StaticResource SSIWhite}">
+            <StackLayout Spacing="0">
+                <Grid Margin="20,5,20,30" IsVisible="{Binding ShowHeader}">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="70" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Image
+                        Grid.Row="0"
+                        Grid.RowSpan="2"
+                        Grid.Column="0"
+                        HorizontalOptions="Start"
+                        Source="covid_19_recovery_icon.png"
+                        VerticalOptions="Center" />
+                    <Label
+                        Grid.Row="0"
+                        Grid.Column="1"
+                        AutomationId="InfoVaccineHeader"
+                        AutomationProperties.Name="{Binding Strings[INTERNATIONAL_TRAVEL_INFORMATION_LABEL_RECOVERY_ACCESSIBILITY]}"
+                        AutomationProperties.IsInAccessibleTree="True"
+                        HorizontalOptions="Start"
+                        Style="{StaticResource InfoPaneHeaderStyle}"
+                        Text="{Binding RecoveryHeaderText}"
+                        VerticalOptions="Center">
+                        <Label.Effects>
+                            <controls:FontSizeLabelEffect />
+                        </Label.Effects>
+                    </Label>
+                    <Label
+                        Grid.Row="1"
+                        Grid.Column="1"
+                        HorizontalOptions="Start"
+                        Style="{StaticResource InfoPaneSubHeaderStyle}"
+                        Text="{Binding RecoveryHeaderValue}"
+                        VerticalOptions="Center">
+                        <Label.Effects>
+                            <controls:FontSizeLabelEffect />
+                        </Label.Effects>
+                    </Label>
+                </Grid>
+                <BoxView
+                    Margin="20,0,20,10"
+                    BackgroundColor="{StaticResource DefaultBackgroundColor}"
+                    HeightRequest="1"
+                    HorizontalOptions="FillAndExpand"
+                    IsVisible="{Binding ShowHeader}"
+                    VerticalOptions="Center" />
+                <Grid Margin="20,0,20,0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+
+                    <!-- Certificate -->
+                    <!--  Time since positive test-->
+                    <Grid
+                        IsVisible="{Binding ShowCertificate}"
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        Margin="0,10,0,10"
+                        RowSpacing="0.2">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Label
+                            Grid.Row="0"
+                            HorizontalOptions="Start"
+                            Style="{StaticResource InfoPaneItemHeaderMedium}"
+                            Text="{Binding RecoveryTimeAfterTextInEnglish}"
+                            AutomationProperties.IsInAccessibleTree="{Binding ShouldUseDanishForAccessibility, Converter={StaticResource BoolToInverseBoolConverter}}">
+                            <Label.Effects>
+                                <controls:FontSizeLabelEffect />
+                            </Label.Effects>
+                        </Label>
+                         <Label
+                            Grid.Row="1"
+                            HorizontalOptions="Start"
+                            Style="{StaticResource InfoPaneItemHeaderLight}"
+                            Text="{Binding RecoveryTimeAfterTextInDanishOrAppLanguage}"
+                            AutomationProperties.IsInAccessibleTree="{Binding ShouldUseDanishForAccessibility}">
+                            <Label.Effects>
+                                <controls:FontSizeLabelEffect />
+                            </Label.Effects>
+                        </Label>
+                    </Grid>
+                    <StackLayout
+                        Grid.Row="1"
+                        IsVisible="{Binding ShowCertificate}">
+                        <FlexLayout
+                            Direction="Row"
+                            Wrap="Wrap"
+                            HorizontalOptions="FillAndExpand"
+                            JustifyContent="Start"
+                            AlignContent="Start"
+                            AlignItems="Start">
+                            <Label
+                                HorizontalOptions="Start"
+                                AutomationProperties.IsInAccessibleTree="{Binding ShouldUseDanishForAccessibility, Converter={StaticResource BoolToInverseBoolConverter}}"
+                                AutomationProperties.Name="{Binding RecoveryTimeAfterValueInEnglish}"
+                                Style="{StaticResource InfoPaneItemValueBold}">
+                                <Label.Effects>
+                                    <controls:FontSizeLabelEffect />
+                                </Label.Effects>
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="{Binding RecoveryTimeAfterValueInEnglish}" Style="{StaticResource InfoPaneItemValue}"/>
+                                        <Span Text=" | " Style="{StaticResource InfoPaneSeparatorLight}"/>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                            <Label
+                                HorizontalOptions="Start"
+                                Style="{StaticResource InfoPaneItemValueExtraLight}"
+                                Text="{Binding RecoveryTimeAfterValueInDanishOrAppLanguage}"
+                                AutomationProperties.IsInAccessibleTree="{Binding ShouldUseDanishForAccessibility}">
+                                <Label.Effects>
+                                    <controls:FontSizeLabelEffect />
+                                </Label.Effects>
+                            </Label>
+                        </FlexLayout>
+                    </StackLayout>
+                    <BoxView
+                        IsVisible="{Binding ShowCertificate}"
+                        Grid.Row="2"
+                        Grid.Column="0"
+                        Margin="0,20,0,10"
+                        BackgroundColor="{StaticResource DefaultBackgroundColor}"
+                        HeightRequest="1"
+                        HorizontalOptions="FillAndExpand"
+                        VerticalOptions="Center" />
+
+                    <!--  Valid (in total)-->
+                    <Grid
+                        IsVisible="{Binding ShowCertificate}"
+                        Grid.Row="3"
+                        Grid.Column="0"
+                        Margin="0,10,0,10"
+                        RowSpacing="0.2">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Label
+                            Grid.Row="0"
+                            IsVisible="{Binding ShowCertificate}"
+                            HorizontalOptions="Start"
+                            Style="{StaticResource InfoPaneItemHeaderMedium}"
+                            Text="{Binding RecoveryValidTextInEnglish}"
+                            AutomationProperties.IsInAccessibleTree="{Binding ShouldUseDanishForAccessibility, Converter={StaticResource BoolToInverseBoolConverter}}">
+                            <Label.Effects>
+                                <controls:FontSizeLabelEffect />
+                            </Label.Effects>
+                        </Label>
+                         <Label
+                            Grid.Row="1"
+                            HorizontalOptions="Start"
+                            Style="{StaticResource InfoPaneItemHeaderLight}"
+                            Text="{Binding RecoveryValidTextInDanishOrAppLanguage}"
+                            AutomationProperties.IsInAccessibleTree="{Binding ShouldUseDanishForAccessibility}">
+                            <Label.Effects>
+                                <controls:FontSizeLabelEffect />
+                            </Label.Effects>
+                        </Label>
+                    </Grid>
+                    <StackLayout
+                        Grid.Row="4"
+                        IsVisible="{Binding ShowCertificate}">
+                        <FlexLayout
+                            Direction="Row"
+                            Wrap="Wrap"
+                            HorizontalOptions="FillAndExpand"
+                            JustifyContent="Start"
+                            AlignContent="Start"
+                            AlignItems="Start">
+                            <Label
+                                IsVisible="{Binding ShowCertificate}"
+                                HorizontalOptions="Start"
+                                AutomationProperties.IsInAccessibleTree="{Binding ShouldUseDanishForAccessibility, Converter={StaticResource BoolToInverseBoolConverter}}"
+                                AutomationProperties.Name="{Binding RecoveryValidMonthsValueInEnglish}"
+                                Style="{StaticResource InfoPaneItemValueBold}">
+                                <Label.Effects>
+                                    <controls:FontSizeLabelEffect />
+                                </Label.Effects>
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="{Binding RecoveryValidMonthsValueInEnglish}" Style="{StaticResource InfoPaneItemValue}"/>
+                                        <Span Text=" | " Style="{StaticResource InfoPaneSeparatorLight}"/>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                            <Label
+                                HorizontalOptions="Start"
+                                Style="{StaticResource InfoPaneItemValueExtraLight}"
+                                Text="{Binding RecoveryValidMonthsValueInDanishOrAppLanguage}"
+                                AutomationProperties.IsInAccessibleTree="{Binding ShouldUseDanishForAccessibility}">
+                                <Label.Effects>
+                                    <controls:FontSizeLabelEffect />
+                                </Label.Effects>
+                            </Label>
+                        </FlexLayout>
+                    </StackLayout> 
+                    <BoxView
+                        IsVisible="{Binding ShowCertificate}"
+                        Grid.Row="5"
+                        Grid.Column="0"
+                        Margin="0,20,0,10"
+                        BackgroundColor="{StaticResource DefaultBackgroundColor}"
+                        HeightRequest="1"
+                        HorizontalOptions="FillAndExpand"
+                        VerticalOptions="Center" />
+                    
+                    <!--  My Page  -->
+                    <!--  Valid From and to  -->
+                    <Label
+                        Grid.Row="6"
+                        Grid.Column="0"
+                        IsVisible="{Binding ShowCertificate, Converter={StaticResource BoolToInverseBoolConverter}}"
+                        HorizontalOptions="Start"
+                        Style="{StaticResource InfoPaneItemHeaderLight}"
+                        LineBreakMode="WordWrap"
+                        Text="{Binding RecoveryValidFromTextInDanishOrAppLanguage}">
+                        <Label.Effects>
+                            <controls:FontSizeLabelEffect />
+                        </Label.Effects>
+                    </Label>
+                    <Label
+                        Grid.Row="7"
+                        Grid.Column="0"
+                        Margin="0,10,0,0"
+                        IsVisible="{Binding ShowCertificate, Converter={StaticResource BoolToInverseBoolConverter}}"
+                        HorizontalOptions="Start"
+                        Style="{StaticResource InfoPaneItemValueExtraLight}"
+                        LineBreakMode="WordWrap"
+                        Text="{Binding RecoveryValidFromValueInDanishOrAppLanguage}">
+                        <Label.Effects>
+                            <controls:FontSizeLabelEffect />
+                        </Label.Effects>
+                    </Label>
+                    
+                    <!-- Certificate -->
+                    <!--Valid from-->
+                    <Grid
+                        IsVisible="{Binding ShowCertificate}"
+                        Grid.Row="6"
+                        Grid.Column="0"
+                        Margin="0,10,0,10"
+                        RowSpacing="0.2">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Label
+                            Grid.Row="0"
+                            HorizontalOptions="Start"
+                            Style="{StaticResource InfoPaneItemHeaderMedium}"
+                            Text="{Binding RecoveryValidFromTextInEnglish}"
+                            AutomationProperties.IsInAccessibleTree="{Binding ShouldUseDanishForAccessibility, Converter={StaticResource BoolToInverseBoolConverter}}">
+                            <Label.Effects>
+                                <controls:FontSizeLabelEffect />
+                            </Label.Effects>
+                        </Label>
+                        <Label
+                            Grid.Row="1"
+                            HorizontalOptions="Start"
+                            Style="{StaticResource InfoPaneItemHeaderLight}"
+                            Text="{Binding RecoveryValidFromTextInDanishOrAppLanguage}"
+                            AutomationProperties.IsInAccessibleTree="{Binding ShouldUseDanishForAccessibility}">
+                            <Label.Effects>
+                                <controls:FontSizeLabelEffect />
+                            </Label.Effects>
+                        </Label>
+                    </Grid>
+                    <StackLayout
+                        Grid.Row="7"
+                        IsVisible="{Binding ShowCertificate}">
+                        <FlexLayout
+                            Direction="Row"
+                            Wrap="Wrap"
+                            HorizontalOptions="FillAndExpand"
+                            JustifyContent="Start"
+                            AlignContent="Start"
+                            AlignItems="Start">
+                            <Label
+                                HorizontalOptions="Start"
+                                AutomationProperties.IsInAccessibleTree="{Binding ShouldUseDanishForAccessibility, Converter={StaticResource BoolToInverseBoolConverter}}"
+                                AutomationProperties.Name="{Binding RecoveryValidFromValueInEnglish}"
+                                Style="{StaticResource InfoPaneItemValueBold}">
+                                <Label.Effects>
+                                    <controls:FontSizeLabelEffect />
+                                </Label.Effects>
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="{Binding RecoveryValidFromValueInEnglish}" Style="{StaticResource InfoPaneItemValue}"/>
+                                        <Span Text=" | " Style="{StaticResource InfoPaneSeparatorLight}"/>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                            <Label
+                                HorizontalOptions="Start"
+                                Style="{StaticResource InfoPaneItemValueExtraLight}"
+                                Text="{Binding RecoveryValidFromValueInDanishOrAppLanguage}"
+                                AutomationProperties.IsInAccessibleTree="{Binding ShouldUseDanishForAccessibility}">
+                                <Label.Effects>
+                                    <controls:FontSizeLabelEffect />
+                                </Label.Effects>
+                            </Label>
+                        </FlexLayout>
+                    </StackLayout>
+                    <BoxView
+                        Grid.Row="8"
+                        Grid.Column="0"
+                        Margin="0,20,0,10"
+                        BackgroundColor="{StaticResource DefaultBackgroundColor}"
+                        HeightRequest="1"
+                        HorizontalOptions="FillAndExpand"
+                        VerticalOptions="Center"/>
+
+                    <!--Certificate valid until-->
+                    <Grid
+                        Grid.Row="9"
+                        Grid.Column="0"
+                        Margin="0,10,0,10"
+                        RowSpacing="0.2">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Label
+                            Grid.Row="0"
+                            IsVisible="{Binding ShowCertificate}"
+                            HorizontalOptions="Start"
+                            Style="{StaticResource InfoPaneItemHeaderMedium}"
+                            Text="{Binding RecoveryValidToTextInEnglish}"
+                            AutomationProperties.IsInAccessibleTree="{Binding ShouldUseDanishForAccessibility, Converter={StaticResource BoolToInverseBoolConverter}}">
+                            <Label.Effects>
+                                <controls:FontSizeLabelEffect />
+                            </Label.Effects>
+                        </Label>
+                         <Label
+                            Grid.Row="1"
+                            HorizontalOptions="Start"
+                            Style="{StaticResource InfoPaneItemHeaderLight}"
+                            Text="{Binding RecoveryValidToTextInDanishOrAppLanguage}"
+                            AutomationProperties.IsInAccessibleTree="{Binding ShouldUseDanishForAccessibility}">
+                            <Label.Effects>
+                                <controls:FontSizeLabelEffect />
+                            </Label.Effects>
+                        </Label>
+                    </Grid>
+                    <StackLayout Grid.Row="10">
+                        <FlexLayout
+                            Direction="Row"
+                            Wrap="Wrap"
+                            HorizontalOptions="FillAndExpand"
+                            JustifyContent="Start"
+                            AlignContent="Start"
+                            AlignItems="Start">
+                            <Label
+                                IsVisible="{Binding ShowCertificate}"
+                                HorizontalOptions="Start"
+                                AutomationProperties.IsInAccessibleTree="{Binding ShouldUseDanishForAccessibility, Converter={StaticResource BoolToInverseBoolConverter}}"
+                                AutomationProperties.Name="{Binding RecoveryValidToValueInEnglish}"
+                                Style="{StaticResource InfoPaneItemValueBold}">
+                                <Label.Effects>
+                                    <controls:FontSizeLabelEffect />
+                                </Label.Effects>
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="{Binding RecoveryValidToValueInEnglish}" Style="{StaticResource InfoPaneItemValue}"/>
+                                        <Span Text=" | " Style="{StaticResource InfoPaneSeparatorLight}"/>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                            <Label
+                                HorizontalOptions="Start"
+                                Style="{StaticResource InfoPaneItemValueExtraLight}"
+                                Text="{Binding RecoveryValidToValueInDanishOrAppLanguage}"
+                                AutomationProperties.IsInAccessibleTree="{Binding ShouldUseDanishForAccessibility}">
+                                <Label.Effects>
+                                    <controls:FontSizeLabelEffect />
+                                </Label.Effects>
+                            </Label>
+                        </FlexLayout>
+                    </StackLayout>
+                    <BoxView
+                        Grid.Row="11"
+                        Grid.Column="0"
+                        Margin="0,20,0,10"
+                        BackgroundColor="{StaticResource DefaultBackgroundColor}"
+                        HeightRequest="1"
+                        HorizontalOptions="FillAndExpand"
+                        VerticalOptions="Center" />
+
+                    <!--  Date of first result  -->
+                    <Grid
+                        Grid.Row="12"
+                        Grid.Column="0"
+                        Margin="0,10,0,10"
+                        RowSpacing="0.2">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Label
+                            Grid.Row="0"
+                            IsVisible="{Binding ShowCertificate}"
+                            HorizontalOptions="Start"
+                            Style="{StaticResource InfoPaneItemHeaderMedium}"
+                            Text="{Binding RecoveryDateTextInEnglish}"
+                            AutomationProperties.IsInAccessibleTree="{Binding ShouldUseDanishForAccessibility, Converter={StaticResource BoolToInverseBoolConverter}}">
+                            <Label.Effects>
+                                <controls:FontSizeLabelEffect />
+                            </Label.Effects>
+                        </Label>
+                         <Label
+                            Grid.Row="1"
+                            HorizontalOptions="Start"
+                            Style="{StaticResource InfoPaneItemHeaderLight}"
+                            Text="{Binding RecoveryDateTextInDanishOrAppLanguage}"
+                            AutomationProperties.IsInAccessibleTree="{Binding ShouldUseDanishForAccessibility}">
+                            <Label.Effects>
+                                <controls:FontSizeLabelEffect />
+                            </Label.Effects>
+                        </Label>
+                    </Grid>
+                    <StackLayout Grid.Row="13">
+                        <FlexLayout
+                            Direction="Row"
+                            Wrap="Wrap"
+                            HorizontalOptions="FillAndExpand"
+                            JustifyContent="Start"
+                            AlignContent="Start"
+                            AlignItems="Start">
+                            <Label
+                                IsVisible="{Binding ShowCertificate}"
+                                HorizontalOptions="Start"
+                                AutomationProperties.IsInAccessibleTree="{Binding ShouldUseDanishForAccessibility, Converter={StaticResource BoolToInverseBoolConverter}}"
+                                AutomationProperties.Name="{Binding RecoveryDateOfFirstPositiveResultValueInEnglish}"
+                                Style="{StaticResource InfoPaneItemValueBold}">
+                                <Label.Effects>
+                                    <controls:FontSizeLabelEffect />
+                                </Label.Effects>
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="{Binding RecoveryDateOfFirstPositiveResultValueInEnglish}" Style="{StaticResource InfoPaneItemValue}"/>
+                                        <Span Text=" | " Style="{StaticResource InfoPaneSeparatorLight}"/>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                            <Label
+                                HorizontalOptions="Start"
+                                Style="{StaticResource InfoPaneItemValueExtraLight}"
+                                Text="{Binding RecoveryDateOfFirstPositiveResultValueInDanishOrAppLanguage}"
+                                AutomationProperties.IsInAccessibleTree="{Binding ShouldUseDanishForAccessibility}">
+                                <Label.Effects>
+                                    <controls:FontSizeLabelEffect />
+                                </Label.Effects>
+                            </Label>
+                        </FlexLayout>
+                    </StackLayout>
+                    <BoxView
+                        Grid.Row="14"
+                        Grid.Column="0"
+                        Margin="0,20,0,10"
+                        BackgroundColor="{StaticResource DefaultBackgroundColor}"
+                        HeightRequest="1"
+                        HorizontalOptions="FillAndExpand"
+                        VerticalOptions="Center" />
+
+                    <!--  Disease  -->
+                    <Grid
+                        Grid.Row="15"
+                        Grid.Column="0"
+                        Margin="0,10,0,10"
+                        RowSpacing="0.2">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Label
+                            Grid.Row="0"
+                            IsVisible="{Binding ShowCertificate}"
+                            HorizontalOptions="Start"
+                            Style="{StaticResource InfoPaneItemHeaderMedium}"
+                            Text="{Binding RecoveryDiseaseTextInEnglish}"
+                            AutomationProperties.IsInAccessibleTree="{Binding ShouldUseDanishForAccessibility, Converter={StaticResource BoolToInverseBoolConverter}}">
+                            <Label.Effects>
+                                <controls:FontSizeLabelEffect />
+                            </Label.Effects>
+                        </Label>
+                         <Label
+                            Grid.Row="1"
+                            HorizontalOptions="Start"
+                            Style="{StaticResource InfoPaneItemHeaderLight}"
+                            Text="{Binding RecoveryDiseaseTextInDanishOrAppLanguage}"
+                            AutomationProperties.IsInAccessibleTree="{Binding ShouldUseDanishForAccessibility}">
+                            <Label.Effects>
+                                <controls:FontSizeLabelEffect />
+                            </Label.Effects>
+                        </Label>
+                    </Grid>
+                    <StackLayout Grid.Row="16">
+                        <FlexLayout
+                            Direction="Row"
+                            Wrap="Wrap"
+                            HorizontalOptions="FillAndExpand"
+                            JustifyContent="Start"
+                            AlignContent="Start"
+                            AlignItems="Start">
+                            <Label
+                                IsVisible="{Binding ShowCertificate}"
+                                HorizontalOptions="Start"
+                                AutomationProperties.IsInAccessibleTree="{Binding ShouldUseDanishForAccessibility, Converter={StaticResource BoolToInverseBoolConverter}}"
+                                AutomationProperties.Name="{Binding RecoveryDiseaseValueInEnglish}"
+                                Style="{StaticResource InfoPaneItemValueBold}">
+                                <Label.Effects>
+                                    <controls:FontSizeLabelEffect />
+                                </Label.Effects>
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="{Binding RecoveryDiseaseValueInEnglish}" Style="{StaticResource InfoPaneItemValue}"/>
+                                        <Span Text=" | " Style="{StaticResource InfoPaneSeparatorLight}"/>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                            <Label
+                                HorizontalOptions="Start"
+                                Style="{StaticResource InfoPaneItemValueExtraLight}"
+                                Text="{Binding RecoveryDiseaseValueInDanishOrAppLanguage}"
+                                AutomationProperties.IsInAccessibleTree="{Binding ShouldUseDanishForAccessibility}">
+                                <Label.Effects>
+                                    <controls:FontSizeLabelEffect />
+                                </Label.Effects>
+                            </Label>
+                        </FlexLayout>
+                    </StackLayout>
+                    <BoxView
+                        Grid.Row="17"
+                        Grid.Column="0"
+                        Margin="0,20,0,10"
+                        BackgroundColor="{StaticResource DefaultBackgroundColor}"
+                        HeightRequest="1"
+                        HorizontalOptions="FillAndExpand"
+                        VerticalOptions="Center" />
+
+                    <!--  Country  -->
+                    <Grid
+                        Grid.Row="18"
+                        Grid.Column="0"
+                        Margin="0,10,0,10"
+                        RowSpacing="0.2">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Label
+                            Grid.Row="0"
+                            IsVisible="{Binding ShowCertificate}"
+                            HorizontalOptions="Start"
+                            Style="{StaticResource InfoPaneItemHeaderMedium}"
+                            Text="{Binding RecoveryCountryTextInEnglish}"
+                            AutomationProperties.IsInAccessibleTree="{Binding ShouldUseDanishForAccessibility, Converter={StaticResource BoolToInverseBoolConverter}}">
+                            <Label.Effects>
+                                <controls:FontSizeLabelEffect />
+                            </Label.Effects>
+                        </Label>
+                         <Label
+                            Grid.Row="1"
+                            HorizontalOptions="Start"
+                            Style="{StaticResource InfoPaneItemHeaderLight}"
+                            Text="{Binding RecoveryCountryTextInDanishOrAppLanguage}"
+                            AutomationProperties.IsInAccessibleTree="{Binding ShouldUseDanishForAccessibility}">
+                            <Label.Effects>
+                                <controls:FontSizeLabelEffect />
+                            </Label.Effects>
+                        </Label>
+                    </Grid>
+                    <StackLayout Grid.Row="19">
+                        <FlexLayout
+                            Direction="Row"
+                            Wrap="Wrap"
+                            HorizontalOptions="FillAndExpand"
+                            JustifyContent="Start"
+                            AlignContent="Start"
+                            AlignItems="Start">
+                            <Label
+                                IsVisible="{Binding ShowCertificate}"
+                                HorizontalOptions="Start"
+                                AutomationProperties.IsInAccessibleTree="{Binding ShouldUseDanishForAccessibility, Converter={StaticResource BoolToInverseBoolConverter}}"
+                                AutomationProperties.Name="{Binding RecoveryCountryValueInEnglish}"
+                                Style="{StaticResource InfoPaneItemValueBold}">
+                                <Label.Effects>
+                                    <controls:FontSizeLabelEffect />
+                                </Label.Effects>
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="{Binding RecoveryCountryValueInEnglish}" Style="{StaticResource InfoPaneItemValue}"/>
+                                        <Span Text=" | " Style="{StaticResource InfoPaneSeparatorLight}"/>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                            <Label
+                                HorizontalOptions="Start"
+                                Style="{StaticResource InfoPaneItemValueExtraLight}"
+                                Text="{Binding RecoveryCountryValueInDanishOrAppLanguage}"
+                                AutomationProperties.IsInAccessibleTree="{Binding ShouldUseDanishForAccessibility}">
+                                <Label.Effects>
+                                    <controls:FontSizeLabelEffect />
+                                </Label.Effects>
+                            </Label>
+                        </FlexLayout>
+                    </StackLayout>
+                    <BoxView
+                        Grid.Row="20"
+                        Grid.Column="0"
+                        Margin="0,20,0,20"
+                        BackgroundColor="{StaticResource DefaultBackgroundColor}"
+                        HeightRequest="1"
+                        HorizontalOptions="FillAndExpand"
+                        IsVisible="{Binding ShowCertificate}"
+                        VerticalOptions="Center" />
+
+                    <!--  Cert issuer  -->
+                    <Label
+                        Grid.Row="21"
+                        Grid.Column="0"
+                        HorizontalOptions="Start"
+                        IsVisible="{Binding ShowCertificate}"
+                        Style="{StaticResource InfoPaneSectionHeader}"
+                        LineBreakMode="WordWrap"
+                        Text="{Binding RecoveryCertificateHeaderText}">
+                        <Label.Effects>
+                            <controls:FontSizeLabelEffect />
+                        </Label.Effects>
+                    </Label>
+                    <Grid
+                        Grid.Row="22"
+                        Grid.Column="0"
+                        Margin="0,10,0,10"
+                        RowSpacing="0.2"
+                        IsVisible="{Binding ShowCertificate}">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Label
+                            Grid.Row="0"
+                            HorizontalOptions="Start"
+                            Style="{StaticResource InfoPaneItemHeaderMedium}"
+                            Text="{Binding RecoveryIssuerTextInEnglish}"
+                            AutomationProperties.IsInAccessibleTree="{Binding ShouldUseDanishForAccessibility, Converter={StaticResource BoolToInverseBoolConverter}}">
+                            <Label.Effects>
+                                <controls:FontSizeLabelEffect />
+                            </Label.Effects>
+                        </Label>
+                         <Label
+                            Grid.Row="1"
+                            HorizontalOptions="Start"
+                            Style="{StaticResource InfoPaneItemHeaderLight}"
+                            Text="{Binding RecoveryIssuerTextInDanishOrAppLanguage}"
+                            AutomationProperties.IsInAccessibleTree="{Binding ShouldUseDanishForAccessibility}">
+                            <Label.Effects>
+                                <controls:FontSizeLabelEffect />
+                            </Label.Effects>
+                        </Label>
+                    </Grid>
+                    <StackLayout
+                        Grid.Row="23"
+                        IsVisible="{Binding ShowCertificate}">
+                        <FlexLayout
+                            Direction="Row"
+                            Wrap="Wrap"
+                            HorizontalOptions="FillAndExpand"
+                            JustifyContent="Start"
+                            AlignContent="Start"
+                            AlignItems="Start">
+                            <Label
+                                HorizontalOptions="Start"
+                                AutomationProperties.IsInAccessibleTree="{Binding ShouldUseDanishForAccessibility, Converter={StaticResource BoolToInverseBoolConverter}}"
+                                AutomationProperties.Name="{Binding RecoveryCertificateIssuerValueInEnglish}"
+                                Style="{StaticResource InfoPaneItemValueBold}">
+                                <Label.Effects>
+                                    <controls:FontSizeLabelEffect />
+                                </Label.Effects>
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="{Binding RecoveryCertificateIssuerValueInEnglish}" Style="{StaticResource InfoPaneItemValue}"/>
+                                        <Span Text=" | " Style="{StaticResource InfoPaneSeparatorLight}"/>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                            <Label
+                                HorizontalOptions="Start"
+                                Style="{StaticResource InfoPaneItemValueExtraLight}"
+                                Text="{Binding RecoveryCertificateIssuerValueInDanishOrAppLanguage}"
+                                AutomationProperties.IsInAccessibleTree="{Binding ShouldUseDanishForAccessibility}">
+                                <Label.Effects>
+                                    <controls:FontSizeLabelEffect />
+                                </Label.Effects>
+                            </Label>
+                        </FlexLayout>
+                    </StackLayout>
+                    <BoxView
+                        Grid.Row="24"
+                        Grid.Column="0"
+                        Margin="0,20,0,10"
+                        BackgroundColor="{StaticResource DefaultBackgroundColor}"
+                        HeightRequest="1"
+                        HorizontalOptions="FillAndExpand"
+                        IsVisible="{Binding ShowCertificate}"
+                        VerticalOptions="Center" />
+
+                    <!--  Cert ID  -->
+                    <Grid
+                        Grid.Row="25"
+                        Grid.Column="0"
+                        Margin="0,10,0,10"
+                        RowSpacing="0.2"
+                        IsVisible="{Binding ShowCertificate}">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Label
+                            Grid.Row="0"
+                            HorizontalOptions="Start"
+                            Style="{StaticResource InfoPaneItemHeaderMedium}"
+                            Text="{Binding RecoveryCertificateIdTextInEnglish}"
+                            AutomationProperties.IsInAccessibleTree="{Binding ShouldUseDanishForAccessibility, Converter={StaticResource BoolToInverseBoolConverter}}">
+                            <Label.Effects>
+                                <controls:FontSizeLabelEffect />
+                            </Label.Effects>
+                        </Label>
+                         <Label
+                            Grid.Row="1"
+                            HorizontalOptions="Start"
+                            Style="{StaticResource InfoPaneItemHeaderLight}"
+                            Text="{Binding RecoveryCertificateIdTextInDanishOrAppLanguage}"
+                            AutomationProperties.IsInAccessibleTree="{Binding ShouldUseDanishForAccessibility}">
+                            <Label.Effects>
+                                <controls:FontSizeLabelEffect />
+                            </Label.Effects>
+                        </Label>
+                    </Grid>
+                    <StackLayout
+                        Grid.Row="26"
+                        IsVisible="{Binding ShowCertificate}">
+                        <FlexLayout
+                            Direction="Row"
+                            Wrap="Wrap"
+                            HorizontalOptions="FillAndExpand"
+                            JustifyContent="Start"
+                            AlignContent="Start"
+                            AlignItems="Start">
+                            <Label
+                                HorizontalOptions="Start"
+                                AutomationProperties.IsInAccessibleTree="{Binding ShouldUseDanishForAccessibility, Converter={StaticResource BoolToInverseBoolConverter}}"
+                                AutomationProperties.Name="{Binding RecoveryCertIdValue}"
+                                Style="{StaticResource InfoPaneItemValueBold}">
+                                <Label.Effects>
+                                    <controls:FontSizeLabelEffect />
+                                </Label.Effects>
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="{Binding RecoveryCertIdValue}" Style="{StaticResource InfoPaneItemValue}"/>
+                                        <Span Text="&#160;| " Style="{StaticResource InfoPaneSeparatorLight}"/>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                            <Label
+                                HorizontalOptions="Start"
+                                Style="{StaticResource InfoPaneItemValueExtraLight}"
+                                Text="{Binding RecoveryCertIdValue}"
+                                AutomationProperties.IsInAccessibleTree="{Binding ShouldUseDanishForAccessibility}">
+                                <Label.Effects>
+                                    <controls:FontSizeLabelEffect />
+                                </Label.Effects>
+                            </Label>
+                        </FlexLayout>
+                    </StackLayout>
+                    <BoxView
+                        Grid.Row="27"
+                        Grid.Column="0"
+                        Margin="0,20,0,0"
+                        BackgroundColor="{StaticResource DefaultBackgroundColor}"
+                        HeightRequest="1"
+                        HorizontalOptions="FillAndExpand"
+                        IsVisible="{Binding ShowCertificate}"
+                        VerticalOptions="Center" />
+                </Grid>
+            </StackLayout>
+        </Grid>
+    </ContentView.Content>
+</ContentView>

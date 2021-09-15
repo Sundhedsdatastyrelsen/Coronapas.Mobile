@@ -1,0 +1,1109 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="SSICPAS.Views.Menu.TermsPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:effects="clr-namespace:SSICPAS.Controls"
+    xmlns:elements="clr-namespace:SSICPAS.Views.Elements"
+    xmlns:forms="clr-namespace:Lottie.Forms;assembly=Lottie.Forms"
+    xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+    xmlns:viewModels="clr-namespace:SSICPAS.ViewModels.Menu"
+    xmlns:xct="clr-namespace:Xamarin.CommunityToolkit.UI.Views;assembly=Xamarin.CommunityToolkit"
+    ios:Page.UseSafeArea="False"
+    x:DataType="viewModels:TermsPageViewModel"
+    BackgroundColor="{StaticResource NavigationHeaderBackgroundColor}"
+    NavigationPage.HasNavigationBar="False">
+    <ContentPage.Content>
+        <Grid BackgroundColor="{StaticResource NavigationHeaderBackgroundColor}" RowSpacing="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Grid.Padding>
+                <OnPlatform x:TypeArguments="Thickness">
+                    <On Platform="iOS" Value="0,50,0,0" />
+                    <On Platform="Android" Value="0,0,0,0" />
+                </OnPlatform>
+            </Grid.Padding>
+            <elements:NavigationHeader
+                CenterLabelAccessibilityText="{Binding Strings[TERMS_PAGE_TITLE]}"
+                CenterLabelText="{Binding Strings[TERMS_PAGE_TITLE]}"
+                LeftButtonCommand="{Binding BackCommand}"
+                LeftButtonHeightRequest="50"
+                LeftButtonImageSource="{StaticResource ArrowBack}" />
+            <BoxView
+                Grid.Row="1"
+                BackgroundColor="{StaticResource CheckBoxBorderColor}"
+                HeightRequest="1"
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="End" />
+            <ScrollView Grid.Row="2" BackgroundColor="{StaticResource DefaultBackgroundColor}">
+                <Grid RowSpacing="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="15" />
+                        <ColumnDefinition Width="auto" />
+                        <ColumnDefinition Width="15" />
+                    </Grid.ColumnDefinitions>
+
+                    <Label
+                        Grid.Row="0"
+                        Grid.Column="1"
+                        Margin="0,25"
+                        Style="{StaticResource ContentStyle}"
+                        Text="{Binding Strings[ACCEPT_DATA_SUBTITLE_TEXT]}"
+                        TextColor="{StaticResource SSIIndicatorSelected}">
+                        <Label.Effects>
+                            <effects:FontSizeLabelEffect />
+                        </Label.Effects>
+                    </Label>
+
+                    <xct:Expander
+                        Grid.Row="1"
+                        Grid.Column="1"
+                        Margin="0,20"
+                        IsExpanded="{Binding IsVoiceOverEnabled}"
+                        IsEnabled="{Binding IsVoiceOverEnabled, Converter={StaticResource BoolToInverseBoolConverter}}">
+                        <xct:Expander.Header>
+                            <Grid
+                                AutomationProperties.IsInAccessibleTree="True"
+                                AutomationProperties.Name="{Binding Strings[ACCEPT_DATA_DROPDOWN1_TITLE_TEXT]}"
+                                AutomationProperties.HelpText="{Binding Strings[ACCEPT_DATA_DROPDOWN_IMAGE]}" >
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+                                <Label
+                                    Grid.Row="0"
+                                    Grid.Column="0"
+                                    AutomationId="InfoNegativeTestHeader"
+                                    AutomationProperties.Name="{Binding Strings[ACCEPT_DATA_DROPDOWN1_TITLE_TEXT]}"
+                                    AutomationProperties.IsInAccessibleTree="False"
+                                    HorizontalOptions="Start"
+                                    Style="{StaticResource ContentTitleStyle}"
+                                    Text="{Binding Strings[ACCEPT_DATA_DROPDOWN1_TITLE_TEXT]}"
+                                    VerticalOptions="Center">
+                                    <Label.Effects>
+                                        <effects:FontSizeLabelEffect />
+                                    </Label.Effects>
+                                </Label>
+                                <Image
+                                    Grid.Row="0"
+                                    Grid.Column="0"
+                                    Grid.ColumnSpan="2"
+                                    WidthRequest="30"
+                                    HeightRequest="50"
+                                    BackgroundColor="Transparent">
+                                 </Image>
+                                <Image
+                                    Grid.Row="0"
+                                    Grid.Column="1"
+                                    AutomationProperties.IsInAccessibleTree="False"
+                                    AutomationProperties.Name="{Binding Strings[ACCEPT_DATA_DROPDOWN_IMAGE]}"
+                                    HorizontalOptions="Center"
+                                    Source="expanded_icon.png"
+                                    VerticalOptions="Center">
+                                    <Image.Triggers>
+                                        <DataTrigger
+                                            Binding="{Binding Source={RelativeSource AncestorType={x:Type xct:Expander}}, Path=IsExpanded}"
+                                            TargetType="Image"
+                                            Value="True">
+                                            <Setter Property="Source" Value="collapsed_icon.png" />
+                                        </DataTrigger>
+                                    </Image.Triggers>
+                                </Image>
+                            </Grid>
+                        </xct:Expander.Header>
+                        <ScrollView Margin="0,10,0,0">
+                            <Label Style="{StaticResource ContentStyle}" Text="{Binding Strings[ACCEPT_DATA_DROPDOWN1_TEXT_CHECKBOX]}">
+                                <Label.Effects>
+                                    <effects:FontSizeLabelEffect />
+                                </Label.Effects>
+                            </Label>
+                        </ScrollView>
+                    </xct:Expander>
+                    <BoxView
+                        Grid.Row="2"
+                        Grid.Column="1"
+                        Grid.ColumnSpan="1"
+                        Margin="0,20,0,10"
+                        BackgroundColor="{StaticResource MainPageBackgroundColor}"
+                        HeightRequest="1"
+                        HorizontalOptions="FillAndExpand"
+                        VerticalOptions="Center" />
+                    <xct:Expander
+                        Grid.Row="3"
+                        Grid.Column="1"
+                        Margin="0,10,0,0"
+                        IsExpanded="{Binding IsVoiceOverEnabled}"
+                        IsEnabled="{Binding IsVoiceOverEnabled, Converter={StaticResource BoolToInverseBoolConverter}}">
+                        <xct:Expander.Header>
+                            <Grid
+                                AutomationProperties.IsInAccessibleTree="True"
+                                AutomationProperties.Name="{Binding Strings[ACCEPT_DATA_DROPDOWN2_TITLE_TEXT]}"
+                                AutomationProperties.HelpText="{Binding Strings[ACCEPT_DATA_DROPDOWN_IMAGE]}">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="30" />
+                                </Grid.ColumnDefinitions>
+                                <Label
+                                    Grid.Row="0"
+                                    Grid.Column="0"
+                                    AutomationId="InfoNegativeTestHeader"
+                                    AutomationProperties.Name="{Binding Strings[ACCEPT_DATA_DROPDOWN2_TITLE_TEXT]}"
+                                    AutomationProperties.IsInAccessibleTree="False"
+                                    HorizontalOptions="Start"
+                                    Style="{StaticResource ContentTitleStyle}"
+                                    Text="{Binding Strings[ACCEPT_DATA_DROPDOWN2_TITLE_TEXT]}"
+                                    VerticalOptions="Center">
+                                    <Label.Effects>
+                                        <effects:FontSizeLabelEffect />
+                                    </Label.Effects>
+                                </Label>
+                                <Image
+                                    Grid.Row="0"
+                                    Grid.Column="0"
+                                    Grid.ColumnSpan="2"
+                                    WidthRequest="30"
+                                    HeightRequest="50"
+                                    BackgroundColor="Transparent">
+                                 </Image>
+                                <Image
+                                    Grid.Row="0"
+                                    Grid.Column="1"
+                                    AutomationProperties.IsInAccessibleTree="False"
+                                    AutomationProperties.Name="{Binding Strings[ACCEPT_DATA_DROPDOWN_IMAGE]}"
+                                    HorizontalOptions="End"
+                                    Source="expanded_icon.png"
+                                    VerticalOptions="Center">
+                                    <Image.Triggers>
+                                        <DataTrigger
+                                            Binding="{Binding Source={RelativeSource AncestorType={x:Type xct:Expander}}, Path=IsExpanded}"
+                                            TargetType="Image"
+                                            Value="True">
+                                            <Setter Property="Source" Value="collapsed_icon.png" />
+                                        </DataTrigger>
+                                    </Image.Triggers>
+                                </Image>
+                            </Grid>
+                        </xct:Expander.Header>
+                        <ScrollView Margin="0,10,0,0">
+                            <Label Style="{StaticResource ContentStyle}" Text="{Binding Strings[ACCEPT_DATA_DROPDOWN2_TEXT]}">
+                                <Label.Effects>
+                                    <effects:FontSizeLabelEffect />
+                                </Label.Effects>
+                            </Label>
+                        </ScrollView>
+                    </xct:Expander>
+                    <BoxView
+                        Grid.Row="4"
+                        Grid.Column="1"
+                        Grid.ColumnSpan="1"
+                        Margin="0,30,0,10"
+                        BackgroundColor="{StaticResource MainPageBackgroundColor}"
+                        HeightRequest="1"
+                        HorizontalOptions="FillAndExpand"
+                        VerticalOptions="Center" />
+                    <xct:Expander
+                        Grid.Row="5"
+                        Grid.Column="1"
+                        Margin="0,10,0,0"
+                        IsExpanded="{Binding IsVoiceOverEnabled}"
+                        IsEnabled="{Binding IsVoiceOverEnabled, Converter={StaticResource BoolToInverseBoolConverter}}">
+                        <xct:Expander.Header>
+                            <Grid
+                                AutomationProperties.IsInAccessibleTree="True"
+                                AutomationProperties.Name="{Binding Strings[ACCEPT_DATA_DROPDOWN3_TITLE_TEXT]}"
+                                AutomationProperties.HelpText="{Binding Strings[ACCEPT_DATA_DROPDOWN_IMAGE]}">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="30" />
+                                </Grid.ColumnDefinitions>
+                                <Label
+                                    Grid.Row="0"
+                                    Grid.Column="0"
+                                    AutomationId="InfoNegativeTestHeader"
+                                    AutomationProperties.Name="{Binding Strings[ACCEPT_DATA_DROPDOWN3_TITLE_TEXT]}"
+                                    AutomationProperties.IsInAccessibleTree="False"
+                                    HorizontalOptions="Start"
+                                    Style="{StaticResource ContentTitleStyle}"
+                                    Text="{Binding Strings[ACCEPT_DATA_DROPDOWN3_TITLE_TEXT]}"
+                                    VerticalOptions="Center">
+                                    <Label.Effects>
+                                        <effects:FontSizeLabelEffect />
+                                    </Label.Effects>
+                                </Label>
+                                <Image
+                                    Grid.Row="0"
+                                    Grid.Column="0"
+                                    Grid.ColumnSpan="2"
+                                    WidthRequest="30"
+                                    HeightRequest="50"
+                                    BackgroundColor="Transparent">
+                                 </Image>
+                                <Image
+                                    Grid.Row="0"
+                                    Grid.Column="1"
+                                    AutomationProperties.IsInAccessibleTree="False"
+                                    AutomationProperties.Name="{Binding Strings[ACCEPT_DATA_DROPDOWN_IMAGE]}"
+                                    HorizontalOptions="End"
+                                    Source="expanded_icon.png"
+                                    VerticalOptions="Center">
+                                    <Image.Triggers>
+                                        <DataTrigger
+                                            Binding="{Binding Source={RelativeSource AncestorType={x:Type xct:Expander}}, Path=IsExpanded}"
+                                            TargetType="Image"
+                                            Value="True">
+                                            <Setter Property="Source" Value="collapsed_icon.png" />
+                                        </DataTrigger>
+                                    </Image.Triggers>
+                                </Image>
+                            </Grid>
+                        </xct:Expander.Header>
+                        <ScrollView Margin="0,10,0,0">
+                            <StackLayout>
+                                <Label Style="{StaticResource ContentStyle}" Text="{Binding Strings[ACCEPT_DATA_DROPDOWN3_TEXT_1]}">
+                                    <Label.Effects>
+                                        <effects:FontSizeLabelEffect />
+                                    </Label.Effects>
+                                </Label>
+                                <StackLayout Margin="10,10,0,0" Orientation="Vertical">
+                                    <Label
+                                        Margin="0,5"
+                                        Style="{StaticResource ContentStyle}"
+                                        Text="{Binding Strings[ACCEPT_DATA_DROPDOWN3_BULLET_TEXT_1]}" />
+                                    <Label
+                                        Margin="0,5"
+                                        Style="{StaticResource ContentStyle}"
+                                        Text="{Binding Strings[ACCEPT_DATA_DROPDOWN3_BULLET_TEXT_2]}" />
+                                    <Label
+                                        Margin="0,5"
+                                        Style="{StaticResource ContentStyle}"
+                                        Text="{Binding Strings[ACCEPT_DATA_DROPDOWN3_BULLET_TEXT_3]}" />
+                                    <Label
+                                        Margin="0,5"
+                                        Style="{StaticResource ContentStyle}"
+                                        Text="{Binding Strings[ACCEPT_DATA_DROPDOWN3_BULLET_TEXT_4]}" />
+                                </StackLayout>
+                                <Label Style="{StaticResource ContentStyle}" Text="{Binding Strings[ACCEPT_DATA_DROPDOWN3_TEXT_2]}">
+                                    <Label.Effects>
+                                        <effects:FontSizeLabelEffect />
+                                    </Label.Effects>
+                                </Label>
+                            </StackLayout>
+                        </ScrollView>
+                    </xct:Expander>
+
+                    <BoxView
+                        Grid.Row="6"
+                        Grid.Column="1"
+                        Grid.ColumnSpan="1"
+                        Margin="0,30,0,10"
+                        BackgroundColor="{StaticResource MainPageBackgroundColor}"
+                        HeightRequest="1"
+                        HorizontalOptions="FillAndExpand"
+                        VerticalOptions="Center" />
+                    <xct:Expander
+                        Grid.Row="7"
+                        Grid.Column="1"
+                        Margin="0,10,0,0"
+                        IsExpanded="{Binding IsVoiceOverEnabled}"
+                        IsEnabled="{Binding IsVoiceOverEnabled, Converter={StaticResource BoolToInverseBoolConverter}}">
+                        <xct:Expander.Header>
+                            <Grid
+                                AutomationProperties.IsInAccessibleTree="True"
+                                AutomationProperties.Name="{Binding Strings[ACCEPT_DATA_DROPDOWN4_TITLE_TEXT]}"
+                                AutomationProperties.HelpText="{Binding Strings[ACCEPT_DATA_DROPDOWN_IMAGE]}">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="30" />
+                                </Grid.ColumnDefinitions>
+                                <Label
+                                    Grid.Row="0"
+                                    Grid.Column="0"
+                                    AutomationId="InfoNegativeTestHeader"
+                                    AutomationProperties.Name="{Binding Strings[ACCEPT_DATA_DROPDOWN4_TITLE_TEXT]}"
+                                    AutomationProperties.IsInAccessibleTree="False"
+                                    HorizontalOptions="Start"
+                                    Style="{StaticResource ContentTitleStyle}"
+                                    Text="{Binding Strings[ACCEPT_DATA_DROPDOWN4_TITLE_TEXT]}"
+                                    VerticalOptions="Center">
+                                    <Label.Effects>
+                                        <effects:FontSizeLabelEffect />
+                                    </Label.Effects>
+                                </Label>
+                                <Image
+                                    Grid.Row="0"
+                                    Grid.Column="0"
+                                    Grid.ColumnSpan="2"
+                                    WidthRequest="30"
+                                    HeightRequest="50"
+                                    BackgroundColor="Transparent">
+                                 </Image>
+                                <Image
+                                    Grid.Row="0"
+                                    Grid.Column="1"
+                                    AutomationProperties.IsInAccessibleTree="False"
+                                    AutomationProperties.Name="{Binding Strings[ACCEPT_DATA_DROPDOWN_IMAGE]}"
+                                    HorizontalOptions="End"
+                                    Source="expanded_icon.png"
+                                    VerticalOptions="Center">
+                                    <Image.Triggers>
+                                        <DataTrigger
+                                            Binding="{Binding Source={RelativeSource AncestorType={x:Type xct:Expander}}, Path=IsExpanded}"
+                                            TargetType="Image"
+                                            Value="True">
+                                            <Setter Property="Source" Value="collapsed_icon.png" />
+                                        </DataTrigger>
+                                    </Image.Triggers>
+                                </Image>
+                            </Grid>
+                        </xct:Expander.Header>
+                        <ScrollView Margin="0,10,0,0">
+                            <Label Style="{StaticResource ContentStyle}" Text="{Binding Strings[ACCEPT_DATA_DROPDOWN4_TEXT_CHECKBOX]}">
+                                <Label.Effects>
+                                    <effects:FontSizeLabelEffect />
+                                </Label.Effects>
+                            </Label>
+                        </ScrollView>
+                    </xct:Expander>
+                    <BoxView
+                        Grid.Row="8"
+                        Grid.Column="1"
+                        Grid.ColumnSpan="1"
+                        Margin="0,30,0,10"
+                        BackgroundColor="{StaticResource MainPageBackgroundColor}"
+                        HeightRequest="1"
+                        HorizontalOptions="FillAndExpand"
+                        VerticalOptions="Center" />
+                    <xct:Expander
+                        Grid.Row="9"
+                        Grid.Column="1"
+                        Margin="0,10,0,0"
+                        IsExpanded="{Binding IsVoiceOverEnabled}"
+                        IsEnabled="{Binding IsVoiceOverEnabled, Converter={StaticResource BoolToInverseBoolConverter}}">
+                        <xct:Expander.Header>
+                            <Grid
+                                AutomationProperties.IsInAccessibleTree="True"
+                                AutomationProperties.Name="{Binding Strings[ACCEPT_DATA_DROPDOWN5_TITLE_TEXT]}"
+                                AutomationProperties.HelpText="{Binding Strings[ACCEPT_DATA_DROPDOWN_IMAGE]}">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="30" />
+                                </Grid.ColumnDefinitions>
+                                <Label
+                                    Grid.Row="0"
+                                    Grid.Column="0"
+                                    AutomationId="InfoNegativeTestHeader"
+                                    AutomationProperties.Name="{Binding Strings[ACCEPT_DATA_DROPDOWN5_TITLE_TEXT]}"
+                                    AutomationProperties.IsInAccessibleTree="False"
+                                    HorizontalOptions="Start"
+                                    Style="{StaticResource ContentTitleStyle}"
+                                    Text="{Binding Strings[ACCEPT_DATA_DROPDOWN5_TITLE_TEXT]}"
+                                    VerticalOptions="Center">
+                                    <Label.Effects>
+                                        <effects:FontSizeLabelEffect />
+                                    </Label.Effects>
+                                </Label>
+                                <Image
+                                    Grid.Row="0"
+                                    Grid.Column="0"
+                                    Grid.ColumnSpan="2"
+                                    WidthRequest="30"
+                                    HeightRequest="50"
+                                    BackgroundColor="Transparent">
+                                 </Image>
+                                <Image
+                                    Grid.Row="0"
+                                    Grid.Column="1"
+                                    AutomationProperties.IsInAccessibleTree="False"
+                                    HorizontalOptions="End"
+                                    Source="expanded_icon.png"
+                                    VerticalOptions="Center">
+                                    <Image.Triggers>
+                                        <DataTrigger
+                                            Binding="{Binding Source={RelativeSource AncestorType={x:Type xct:Expander}}, Path=IsExpanded}"
+                                            TargetType="Image"
+                                            Value="True">
+                                            <Setter Property="Source" Value="collapsed_icon.png" />
+                                        </DataTrigger>
+                                    </Image.Triggers>
+                                </Image>
+                            </Grid>
+                        </xct:Expander.Header>
+                        <ScrollView Margin="0,10,0,0">
+                            <Label Style="{StaticResource ContentStyle}" Text="{Binding Strings[ACCEPT_DATA_DROPDOWN5_TEXT]}">
+                                <Label.Effects>
+                                    <effects:FontSizeLabelEffect />
+                                </Label.Effects>
+                            </Label>
+                        </ScrollView>
+                    </xct:Expander>
+                    <BoxView
+                        Grid.Row="10"
+                        Grid.Column="1"
+                        Grid.ColumnSpan="1"
+                        Margin="0,30,0,10"
+                        BackgroundColor="{StaticResource MainPageBackgroundColor}"
+                        HeightRequest="1"
+                        HorizontalOptions="FillAndExpand"
+                        VerticalOptions="Center" />
+                    <xct:Expander
+                        Grid.Row="11"
+                        Grid.Column="1"
+                        Margin="0,10,0,0"
+                        IsExpanded="{Binding IsVoiceOverEnabled}"
+                        IsEnabled="{Binding IsVoiceOverEnabled, Converter={StaticResource BoolToInverseBoolConverter}}">
+                        <xct:Expander.Header>
+                            <Grid
+                                AutomationProperties.IsInAccessibleTree="True"
+                                AutomationProperties.Name="{Binding Strings[ACCEPT_DATA_DROPDOWN6_TITLE_TEXT]}"
+                                AutomationProperties.HelpText="{Binding Strings[ACCEPT_DATA_DROPDOWN_IMAGE]}">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="30" />
+                                </Grid.ColumnDefinitions>
+                                <Label
+                                    Grid.Row="0"
+                                    Grid.Column="0"
+                                    AutomationId="InfoNegativeTestHeader"
+                                    AutomationProperties.Name="{Binding Strings[ACCEPT_DATA_DROPDOWN6_TITLE_TEXT]}"
+                                    AutomationProperties.IsInAccessibleTree="False"
+                                    HorizontalOptions="Start"
+                                    Style="{StaticResource ContentTitleStyle}"
+                                    Text="{Binding Strings[ACCEPT_DATA_DROPDOWN6_TITLE_TEXT]}"
+                                    VerticalOptions="Center">
+                                    <Label.Effects>
+                                        <effects:FontSizeLabelEffect />
+                                    </Label.Effects>
+                                </Label>
+                                <Image
+                                    Grid.Row="0"
+                                    Grid.Column="0"
+                                    Grid.ColumnSpan="2"
+                                    WidthRequest="30"
+                                    HeightRequest="50"
+                                    BackgroundColor="Transparent">
+                                 </Image>
+                                <Image
+                                    Grid.Row="0"
+                                    Grid.Column="1"
+                                    AutomationProperties.IsInAccessibleTree="False"
+                                    AutomationProperties.Name="{Binding Strings[ACCEPT_DATA_DROPDOWN_IMAGE]}"
+                                    HorizontalOptions="End"
+                                    Source="expanded_icon.png"
+                                    VerticalOptions="Center">
+                                    <Image.Triggers>
+                                        <DataTrigger
+                                            Binding="{Binding Source={RelativeSource AncestorType={x:Type xct:Expander}}, Path=IsExpanded}"
+                                            TargetType="Image"
+                                            Value="True">
+                                            <Setter Property="Source" Value="collapsed_icon.png" />
+                                        </DataTrigger>
+                                    </Image.Triggers>
+                                </Image>
+                            </Grid>
+                        </xct:Expander.Header>
+                        <ScrollView Margin="0,10,0,0">
+                            <StackLayout Orientation="Vertical">
+                                <Label Style="{StaticResource ContentStyle}" Text="{Binding Strings[ACCEPT_DATA_DROPDOWN6_TEXT_1]}">
+                                    <Label.Effects>
+                                        <effects:FontSizeLabelEffect />
+                                    </Label.Effects>
+                                </Label>
+                                <StackLayout Margin="10,10,0,0" Orientation="Vertical">
+                                    <Label
+                                        Margin="0,5"
+                                        Style="{StaticResource ContentStyle}"
+                                        Text="{Binding Strings[ACCEPT_DATA_DROPDOWN6_BULLET_TEXT_1]}" />
+                                    <Label
+                                        Margin="0,5"
+                                        Style="{StaticResource ContentStyle}"
+                                        Text="{Binding Strings[ACCEPT_DATA_DROPDOWN6_BULLET_TEXT_2]}" />
+                                    <Label
+                                        Margin="0,5"
+                                        Style="{StaticResource ContentStyle}"
+                                        Text="{Binding Strings[ACCEPT_DATA_DROPDOWN6_BULLET_TEXT_3]}" />
+                                    <Label
+                                        Margin="0,5"
+                                        Style="{StaticResource ContentStyle}"
+                                        Text="{Binding Strings[ACCEPT_DATA_DROPDOWN6_BULLET_TEXT_4]}" />
+                                    <Label
+                                        Margin="0,5"
+                                        Style="{StaticResource ContentStyle}"
+                                        Text="{Binding Strings[ACCEPT_DATA_DROPDOWN6_BULLET_TEXT_5]}" />
+                                </StackLayout>
+                                <Label Style="{StaticResource ContentStyle}" Text="{Binding Strings[ACCEPT_DATA_DROPDOWN6_TEXT_2]}">
+                                    <Label.Effects>
+                                        <effects:FontSizeLabelEffect />
+                                    </Label.Effects>
+                                </Label>
+                            </StackLayout>
+                        </ScrollView>
+                    </xct:Expander>
+                    <BoxView
+                        Grid.Row="12"
+                        Grid.Column="1"
+                        Grid.ColumnSpan="1"
+                        Margin="0,30,0,10"
+                        BackgroundColor="{StaticResource MainPageBackgroundColor}"
+                        HeightRequest="1"
+                        HorizontalOptions="FillAndExpand"
+                        VerticalOptions="Center" />
+                    <xct:Expander
+                        Grid.Row="13"
+                        Grid.Column="1"
+                        Margin="0,10,0,0"
+                        IsExpanded="{Binding IsVoiceOverEnabled}"
+                        IsEnabled="{Binding IsVoiceOverEnabled, Converter={StaticResource BoolToInverseBoolConverter}}">
+                        <xct:Expander.Header>
+                            <Grid
+                                AutomationProperties.IsInAccessibleTree="True"
+                                AutomationProperties.Name="{Binding Strings[ACCEPT_DATA_DROPDOWN7_TITLE_TEXT]}"
+                                AutomationProperties.HelpText="{Binding Strings[ACCEPT_DATA_DROPDOWN_IMAGE]}">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="30" />
+                                </Grid.ColumnDefinitions>
+                                <Label
+                                    Grid.Row="0"
+                                    Grid.Column="0"
+                                    AutomationId="InfoNegativeTestHeader"
+                                    AutomationProperties.Name="{Binding Strings[ACCEPT_DATA_DROPDOWN7_TITLE_TEXT]}"
+                                    AutomationProperties.IsInAccessibleTree="False"
+                                    HorizontalOptions="Start"
+                                    Style="{StaticResource ContentTitleStyle}"
+                                    Text="{Binding Strings[ACCEPT_DATA_DROPDOWN7_TITLE_TEXT]}"
+                                    VerticalOptions="Center">
+                                    <Label.Effects>
+                                        <effects:FontSizeLabelEffect />
+                                    </Label.Effects>
+                                </Label>
+                                <Image
+                                    Grid.Row="0"
+                                    Grid.Column="0"
+                                    Grid.ColumnSpan="2"
+                                    WidthRequest="30"
+                                    HeightRequest="50"
+                                    BackgroundColor="Transparent">
+                                 </Image>
+                                <Image
+                                    Grid.Row="0"
+                                    Grid.Column="1"
+                                    AutomationProperties.IsInAccessibleTree="False"
+                                    AutomationProperties.Name="{Binding Strings[ACCEPT_DATA_DROPDOWN_IMAGE]}"
+                                    HorizontalOptions="End"
+                                    Source="expanded_icon.png"
+                                    VerticalOptions="Center">
+                                    <Image.Triggers>
+                                        <DataTrigger
+                                            Binding="{Binding Source={RelativeSource AncestorType={x:Type xct:Expander}}, Path=IsExpanded}"
+                                            TargetType="Image"
+                                            Value="True">
+                                            <Setter Property="Source" Value="collapsed_icon.png" />
+                                        </DataTrigger>
+                                    </Image.Triggers>
+                                </Image>
+                            </Grid>
+                        </xct:Expander.Header>
+                        <ScrollView Margin="0,10,0,0">
+                            <StackLayout Orientation="Vertical">
+                                <Label Style="{StaticResource ContentStyle}" Text="{Binding Strings[ACCEPT_DATA_DROPDOWN7_TEXT_1]}">
+                                    <Label.Effects>
+                                        <effects:FontSizeLabelEffect />
+                                    </Label.Effects>
+                                </Label>
+                                <Grid Margin="0,10,0,0" VerticalOptions="Center">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Grid Grid.Row="0" HorizontalOptions="CenterAndExpand">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto" />
+                                            <ColumnDefinition Width="20" />
+                                        </Grid.ColumnDefinitions>
+                                        <Label
+                                            Style="{StaticResource ContentStyle}"
+                                            Text="{Binding Strings[ACCEPT_DATA_DROPDOWN7_COOKIE_NOTICE_URL_BUTTON]}"
+                                            TextColor="{StaticResource SSIDialogButton}"
+                                            VerticalTextAlignment="Center"
+                                            AutomationProperties.IsInAccessibleTree="True">
+                                            <Label.Effects>
+                                                <effects:FontSizeLabelEffect />
+                                            </Label.Effects>
+                                        </Label>
+                                        <Image
+                                            Grid.Column="1"
+                                            Margin="0,3,0,0"
+                                            Source="{StaticResource ShareIcon}"
+                                            VerticalOptions="Center"
+                                            AutomationProperties.IsInAccessibleTree="False"/>
+                                    </Grid>
+                                    <Button
+                                        Grid.ColumnSpan="1"
+                                        Command="{Binding OpenCookieNoticeLinkCommand}"
+                                        Style="{StaticResource SecondaryButtonStyle}"
+                                        AutomationProperties.HelpText="{Binding Strings[ACCEPT_DATA_DROPDOWN7_COOKIE_NOTICE_URL_BUTTON]}"
+                                        AutomationProperties.IsInAccessibleTree="False"/>
+                                </Grid>
+                                <Label Style="{StaticResource ContentStyle}" Text="{Binding Strings[ACCEPT_DATA_DROPDOWN7_TEXT_2]}">
+                                    <Label.Effects>
+                                        <effects:FontSizeLabelEffect />
+                                    </Label.Effects>
+                                </Label>
+                                <Grid Margin="0,10,0,10" VerticalOptions="Center">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Grid Grid.Row="0" HorizontalOptions="CenterAndExpand">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto" />
+                                            <ColumnDefinition Width="20" />
+                                        </Grid.ColumnDefinitions>
+                                        <Label
+                                            Style="{StaticResource ContentStyle}"
+                                            HorizontalTextAlignment="Center"
+                                            Text="{Binding Strings[ACCEPT_DATA_DROPDOWN7_COOKIE_GUIDE_URL_BUTTON]}"
+                                            TextColor="{StaticResource SSIDialogButton}"
+                                            VerticalTextAlignment="Center"
+                                            AutomationProperties.IsInAccessibleTree="True">
+                                            <Label.Effects>
+                                                <effects:FontSizeLabelEffect />
+                                            </Label.Effects>
+                                        </Label>
+                                        <Image
+                                            Grid.Column="1"
+                                            Margin="0,3,0,0"
+                                            Source="{StaticResource ShareIcon}"
+                                            VerticalOptions="Center"
+                                            AutomationProperties.IsInAccessibleTree="False"/>
+                                    </Grid>
+                                    <Button
+                                        Grid.ColumnSpan="1"
+                                        Command="{Binding OpenCookieGuideLinkCommand}"
+                                        Style="{StaticResource SecondaryButtonStyle}"
+                                        AutomationProperties.HelpText="{Binding Strings[ACCEPT_DATA_DROPDOWN7_COOKIE_GUIDE_URL_BUTTON]}"
+                                        AutomationProperties.IsInAccessibleTree="False"/>
+                                </Grid>
+                            </StackLayout>
+                        </ScrollView>
+                    </xct:Expander>
+                    <BoxView
+                        Grid.Row="14"
+                        Grid.Column="1"
+                        Grid.ColumnSpan="1"
+                        Margin="0,20,0,10"
+                        BackgroundColor="{StaticResource MainPageBackgroundColor}"
+                        HeightRequest="1"
+                        HorizontalOptions="FillAndExpand"
+                        VerticalOptions="Center" />
+                    <xct:Expander
+                        Grid.Row="15"
+                        Grid.Column="1"
+                        Margin="0,10,0,0"
+                        IsExpanded="{Binding IsVoiceOverEnabled}"
+                        IsEnabled="{Binding IsVoiceOverEnabled, Converter={StaticResource BoolToInverseBoolConverter}}">
+                        <xct:Expander.Header>
+                            <Grid
+                                AutomationProperties.IsInAccessibleTree="True"
+                                AutomationProperties.Name="{Binding Strings[ACCEPT_DATA_DROPDOWN8_TITLE_TEXT]}"
+                                AutomationProperties.HelpText="{Binding Strings[ACCEPT_DATA_DROPDOWN_IMAGE]}">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="30" />
+                                </Grid.ColumnDefinitions>
+                                <Label
+                                    Grid.Row="0"
+                                    Grid.Column="0"
+                                    AutomationId="InfoNegativeTestHeader"
+                                    AutomationProperties.Name="{Binding Strings[ACCEPT_DATA_DROPDOWN8_TITLE_TEXT]}"
+                                    AutomationProperties.IsInAccessibleTree="False"
+                                    HorizontalOptions="Start"
+                                    Style="{StaticResource ContentTitleStyle}"
+                                    Text="{Binding Strings[ACCEPT_DATA_DROPDOWN8_TITLE_TEXT]}"
+                                    VerticalOptions="Center">
+                                    <Label.Effects>
+                                        <effects:FontSizeLabelEffect />
+                                    </Label.Effects>
+                                </Label>
+                                <Image
+                                    Grid.Row="0"
+                                    Grid.Column="0"
+                                    Grid.ColumnSpan="2"
+                                    WidthRequest="30"
+                                    HeightRequest="50"
+                                    BackgroundColor="Transparent">
+                                 </Image>
+                                <Image
+                                    Grid.Row="0"
+                                    Grid.Column="1"
+                                    AutomationProperties.IsInAccessibleTree="False"
+                                    AutomationProperties.Name="{Binding Strings[ACCEPT_DATA_DROPDOWN_IMAGE]}"
+                                    HorizontalOptions="End"
+                                    Source="expanded_icon.png"
+                                    VerticalOptions="Center">
+                                    <Image.Triggers>
+                                        <DataTrigger
+                                            Binding="{Binding Source={RelativeSource AncestorType={x:Type xct:Expander}}, Path=IsExpanded}"
+                                            TargetType="Image"
+                                            Value="True">
+                                            <Setter Property="Source" Value="collapsed_icon.png" />
+                                        </DataTrigger>
+                                    </Image.Triggers>
+                                </Image>
+                            </Grid>
+                        </xct:Expander.Header>
+                        <ScrollView Margin="0,10,0,10">
+                            <StackLayout Orientation="Vertical">
+                                <Label Style="{StaticResource ContentStyle}" Text="{Binding Strings[ACCEPT_DATA_DROPDOWN8_TEXT]}">
+                                    <Label.Effects>
+                                        <effects:FontSizeLabelEffect />
+                                    </Label.Effects>
+                                </Label>
+                                <Grid Margin="0,10,0,0" VerticalOptions="Center">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Grid Grid.Row="0" HorizontalOptions="CenterAndExpand">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto" />
+                                            <ColumnDefinition Width="20" />
+                                        </Grid.ColumnDefinitions>
+                                        <Label
+                                            Style="{StaticResource ContentStyle}"
+                                            Text="{Binding Strings[ACCEPT_DATA_DROPDOWN8_PRIVACY_POLICY_URL_BUTTON]}"
+                                            TextColor="{StaticResource SSIDialogButton}"
+                                            VerticalTextAlignment="Center"
+                                            AutomationProperties.IsInAccessibleTree="True">
+                                            <Label.Effects>
+                                                <effects:FontSizeLabelEffect />
+                                            </Label.Effects>
+                                        </Label>
+                                        <Image
+                                            Grid.Column="1"
+                                            Margin="0,3,0,0"
+                                            Source="{StaticResource ShareIcon}"
+                                            VerticalOptions="Center"
+                                            AutomationProperties.IsInAccessibleTree="False"/>
+                                    </Grid>
+                                    <Button
+                                        Grid.ColumnSpan="1"
+                                        Command="{Binding OpenAppPrivacyPolicyLinkCommand}"
+                                        Style="{StaticResource SecondaryButtonStyle}"
+                                        AutomationProperties.HelpText="{Binding Strings[ACCEPT_DATA_DROPDOWN8_PRIVACY_POLICY_URL_BUTTON]}"
+                                        AutomationProperties.IsInAccessibleTree="False"/>
+                                </Grid>
+                            </StackLayout>
+                        </ScrollView>
+                    </xct:Expander>
+                    <BoxView
+                        Grid.Row="16"
+                        Grid.Column="1"
+                        Grid.ColumnSpan="1"
+                        Margin="0,20,0,10"
+                        BackgroundColor="{StaticResource MainPageBackgroundColor}"
+                        HeightRequest="1"
+                        HorizontalOptions="FillAndExpand"
+                        VerticalOptions="Center" />
+                    <xct:Expander
+                        Grid.Row="17"
+                        Grid.Column="1"
+                        Margin="0,10,0,0"
+                        IsExpanded="{Binding IsVoiceOverEnabled}"
+                        IsEnabled="{Binding IsVoiceOverEnabled, Converter={StaticResource BoolToInverseBoolConverter}}">
+                        <xct:Expander.Header>
+                            <Grid
+                                AutomationProperties.IsInAccessibleTree="True"
+                                AutomationProperties.Name="{Binding Strings[ACCEPT_DATA_DROPDOWN9_TITLE_TEXT]}"
+                                AutomationProperties.HelpText="{Binding Strings[ACCEPT_DATA_DROPDOWN_IMAGE]}">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="30" />
+                                </Grid.ColumnDefinitions>
+                                <Label
+                                    Grid.Row="0"
+                                    Grid.Column="0"
+                                    AutomationId="InfoNegativeTestHeader"
+                                    AutomationProperties.Name="{Binding Strings[ACCEPT_DATA_DROPDOWN9_TITLE_TEXT]}"
+                                    AutomationProperties.IsInAccessibleTree="False"
+                                    HorizontalOptions="Start"
+                                    Style="{StaticResource ContentTitleStyle}"
+                                    Text="{Binding Strings[ACCEPT_DATA_DROPDOWN9_TITLE_TEXT]}"
+                                    VerticalOptions="Center">
+                                    <Label.Effects>
+                                        <effects:FontSizeLabelEffect />
+                                    </Label.Effects>
+                                </Label>
+                                <Image
+                                    Grid.Row="0"
+                                    Grid.Column="0"
+                                    Grid.ColumnSpan="2"
+                                    WidthRequest="30"
+                                    HeightRequest="50"
+                                    BackgroundColor="Transparent">
+                                 </Image>
+                                <Image
+                                    Grid.Row="0"
+                                    Grid.Column="1"
+                                    AutomationProperties.IsInAccessibleTree="False"
+                                    HorizontalOptions="End"
+                                    Source="expanded_icon.png"
+                                    VerticalOptions="Center">
+                                    <Image.Triggers>
+                                        <DataTrigger
+                                            Binding="{Binding Source={RelativeSource AncestorType={x:Type xct:Expander}}, Path=IsExpanded}"
+                                            TargetType="Image"
+                                            Value="True">
+                                            <Setter Property="Source" Value="collapsed_icon.png" />
+                                        </DataTrigger>
+                                    </Image.Triggers>
+                                </Image>
+                            </Grid>
+                        </xct:Expander.Header>
+                        <ScrollView Margin="0,10,0,0">
+                            <StackLayout Orientation="Vertical">
+                                <Label Style="{StaticResource ContentStyle}" Text="{Binding Strings[ACCEPT_DATA_DROPDOWN9_TEXT_1]}">
+                                    <Label.Effects>
+                                        <effects:FontSizeLabelEffect />
+                                    </Label.Effects>
+                                </Label>
+                                <Label Style="{StaticResource ContentStyle}" Text="{Binding Strings[ACCEPT_DATA_DROPDOWN9_TEXT_2]}">
+                                    <Label.Effects>
+                                        <effects:FontSizeLabelEffect />
+                                    </Label.Effects>
+                                </Label>
+                            </StackLayout>
+                        </ScrollView>
+                    </xct:Expander>
+                    <BoxView
+                        Grid.Row="18"
+                        Grid.Column="1"
+                        Grid.ColumnSpan="1"
+                        Margin="0,20,0,10"
+                        BackgroundColor="{StaticResource MainPageBackgroundColor}"
+                        HeightRequest="1"
+                        HorizontalOptions="FillAndExpand"
+                        VerticalOptions="Center" />
+                    <xct:Expander
+                        Grid.Row="19"
+                        Grid.Column="1"
+                        Margin="0,10,0,0"
+                        IsExpanded="{Binding IsVoiceOverEnabled}"
+                        IsEnabled="{Binding IsVoiceOverEnabled, Converter={StaticResource BoolToInverseBoolConverter}}">
+                        <xct:Expander.Header>
+                            <Grid
+                                AutomationProperties.IsInAccessibleTree="True"
+                                AutomationProperties.Name="{Binding Strings[ACCEPT_DATA_DROPDOWN10_TITLE_TEXT]}"
+                                AutomationProperties.HelpText="{Binding Strings[ACCEPT_DATA_DROPDOWN_IMAGE]}">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="30" />
+                                </Grid.ColumnDefinitions>
+                                <Label
+                                    Grid.Row="0"
+                                    Grid.Column="0"
+                                    AutomationId="InfoNegativeTestHeader"
+                                    AutomationProperties.Name="{Binding Strings[ACCEPT_DATA_DROPDOWN10_TITLE_TEXT]}"
+                                    AutomationProperties.IsInAccessibleTree="False"
+                                    HorizontalOptions="Start"
+                                    Style="{StaticResource ContentTitleStyle}"
+                                    Text="{Binding Strings[ACCEPT_DATA_DROPDOWN10_TITLE_TEXT]}"
+                                    VerticalOptions="Center">
+                                    <Label.Effects>
+                                        <effects:FontSizeLabelEffect />
+                                    </Label.Effects>
+                                </Label>
+                                <Image
+                                    Grid.Row="0"
+                                    Grid.Column="0"
+                                    Grid.ColumnSpan="2"
+                                    WidthRequest="30"
+                                    HeightRequest="50"
+                                    BackgroundColor="Transparent">
+                                 </Image>
+                                <Image
+                                    Grid.Row="0"
+                                    Grid.Column="1"
+                                    AutomationProperties.IsInAccessibleTree="False"
+                                    AutomationProperties.Name="{Binding Strings[ACCEPT_DATA_DROPDOWN_IMAGE]}"
+                                    HorizontalOptions="End"
+                                    Source="expanded_icon.png"
+                                    VerticalOptions="Center">
+                                    <Image.Triggers>
+                                        <DataTrigger
+                                            Binding="{Binding Source={RelativeSource AncestorType={x:Type xct:Expander}}, Path=IsExpanded}"
+                                            TargetType="Image"
+                                            Value="True">
+                                            <Setter Property="Source" Value="collapsed_icon.png" />
+                                        </DataTrigger>
+                                    </Image.Triggers>
+                                </Image>
+                            </Grid>
+                        </xct:Expander.Header>
+                        <ScrollView Margin="0,10,0,0">
+                            <StackLayout Orientation="Vertical">
+                                <Label Style="{StaticResource ContentStyle}" Text="{Binding Strings[ACCEPT_DATA_DROPDOWN10_TEXT]}">
+                                    <Label.Effects>
+                                        <effects:FontSizeLabelEffect />
+                                    </Label.Effects>
+                                </Label>
+                            </StackLayout>
+                        </ScrollView>
+                    </xct:Expander>
+                    <BoxView
+                        Grid.Row="20"
+                        Grid.Column="1"
+                        Grid.ColumnSpan="1"
+                        Margin="0,20,0,10"
+                        BackgroundColor="{StaticResource MainPageBackgroundColor}"
+                        HeightRequest="1"
+                        HorizontalOptions="FillAndExpand"
+                        VerticalOptions="Center" />
+                    <Label
+                        Grid.Row="21"
+                        Grid.Column="1"
+                        Margin="0,10,0,0"
+                        Style="{StaticResource ContentStyle}"
+                        Text="{Binding Strings[ACCEPT_DATA_PRIVACY_POLICY]}">
+                        <Label.Effects>
+                            <effects:FontSizeLabelEffect />
+                        </Label.Effects>
+                    </Label>
+                    <Grid
+                        Grid.Row="22"
+                        Grid.Column="1"
+                        Margin="0,10,0,10">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid Grid.Row="0" HorizontalOptions="CenterAndExpand">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="20" />
+                            </Grid.ColumnDefinitions>
+                            <Label
+                                Grid.Column="0"
+                                Style="{StaticResource ContentStyle}"
+                                Text="{Binding Strings[ACCEPT_DATA_PRIVACY_POLICY_BUTTON]}"
+                                TextColor="{StaticResource SSIDialogButton}"
+                                VerticalOptions="Center"
+                                AutomationProperties.IsInAccessibleTree="True">
+                                <Label.Effects>
+                                    <effects:FontSizeLabelEffect />
+                                </Label.Effects>
+                            </Label>
+                            <Image
+                                Grid.Column="1"
+                                Margin="0,3,0,0"
+                                VerticalOptions="Center"
+                                Source="{StaticResource ShareIcon}"
+                                AutomationProperties.IsInAccessibleTree="False"/>
+                        </Grid>
+                        <Button
+                            Grid.ColumnSpan="1"
+                            Command="{Binding OpenLinkCommand}"
+                            Style="{StaticResource SecondaryButtonStyle}"
+                            AutomationProperties.HelpText="{Binding Strings[ACCEPT_DATA_PRIVACY_POLICY_BUTTON]}"
+                            AutomationProperties.IsInAccessibleTree="False"/>
+                    </Grid>
+                    <BoxView
+                        Grid.Row="23"
+                        Grid.Column="1"
+                        Grid.ColumnSpan="1"
+                        Margin="0,10,0,5"
+                        BackgroundColor="{StaticResource MainPageBackgroundColor}"
+                        HeightRequest="0"
+                        HorizontalOptions="FillAndExpand"
+                        VerticalOptions="Center" />
+                </Grid>
+            </ScrollView>
+            <forms:AnimationView
+                x:Name="animationView"
+                Grid.Row="2"
+                Animation="success.json"
+                AutoPlay="True"
+                HeightRequest="60"
+                IsVisible="{Binding VisibleLottie}"
+                Loop="True"
+                VerticalOptions="Center"
+                WidthRequest="60" />
+            <BoxView
+                Grid.Row="3"
+                BackgroundColor="{StaticResource DefaultBackgroundColor}"
+                TranslationY="-20" />
+            <Grid
+                Grid.Row="3"
+                Padding="20,0,20,22"
+                BackgroundColor="{StaticResource DefaultBackgroundColor}"
+                VerticalOptions="End">
+                <effects:SingleLineButton
+                    BackgroundColor="{StaticResource SSIButtonBlue}"
+                    Command="{Binding ConsentButtonCommand}"
+                    HeightRequest="60"
+                    Style="{StaticResource DialogButtonPrimaryStyle}"
+                    Text="{Binding ConsentButtonText}"
+                    AutomationProperties.HelpText="{Binding ConsentButtonText}">
+                    <Button.Effects>
+                                <effects:FontSizeLabelEffect />
+                            </Button.Effects>
+                    </effects:SingleLineButton>
+            </Grid>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

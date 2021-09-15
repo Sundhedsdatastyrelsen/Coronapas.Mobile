@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<ContentView
+    x:Class="SSICPAS.Views.Certificates.QRView"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:effects="clr-namespace:SSICPAS.Controls;assembly=SSICPAS"
+    xmlns:forms="clr-namespace:Lottie.Forms;assembly=Lottie.Forms"
+    xmlns:localview="clr-namespace:SSICPAS.Views.Elements;assembly=SSICPAS"
+    xmlns:viewmodel="clr-namespace:SSICPAS.ViewModels.Certificates;assembly=SSICPAS"
+    x:DataType="viewmodel:PassportPageViewModel"
+    BackgroundColor="Transparent"
+    IsClippedToBounds="True">
+    <effects:FrameWithShadow
+        x:Name="QRFrame"
+        Padding="0"
+        CornerRadius="10"
+        HasShadow="False"
+        HorizontalOptions="Fill"
+        IsClippedToBounds="True"
+        VerticalOptions="Start">
+        <Grid
+            BackgroundColor="White"
+            ColumnSpacing="0"
+            RowSpacing="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <localview:QrCode
+                x:Name="QRImage"
+                Grid.Row="0"
+                Margin="2"
+                HeightRequest="{Binding Width, Source={x:Reference QRImage}}"
+                HorizontalOptions="FillAndExpand"
+                Level="Q"
+                Color="{StaticResource SSIDarkTextColor}" />
+            <localview:GyroReactiveView
+                x:Name="BottomImage"
+                Grid.Row="1"
+                Grid.Column="0"
+                Density="9"
+                MinimumHeightRequest="52"
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="FillAndExpand">
+                <localview:GyroReactiveView.AnimationRate>
+                    <OnPlatform x:TypeArguments="x:Single">
+                        <On Platform="iOS" Value="0.5" />
+                        <On Platform="Android" Value="0.25" />
+                    </OnPlatform>
+                </localview:GyroReactiveView.AnimationRate>
+            </localview:GyroReactiveView>
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <forms:AnimationView
+                    x:Name="BadgeIconAnimation"
+                    AutomationProperties.IsInAccessibleTree="False"
+                    Grid.Row="0"
+                    Margin="20,0,10,0"   
+                    AutoPlay="{Binding IsGyroNotEnabled}"
+                    Loop="{Binding IsGyroNotEnabled}"
+                    HeightRequest="28"
+                    HorizontalOptions="Center"
+                    Speed="1"
+                    VerticalOptions="Center"
+                    WidthRequest="28" />
+                <Image
+                    x:Name="BadgeInvalidIcon"
+                    Grid.Column="0"
+                    Margin="20,0,10,0"
+                    IsVisible="False"
+                    Source="{StaticResource ExclamationIconBlue}"
+                    VerticalOptions="Center" />
+                <Label
+                    x:Name="BadgeLabel"
+                    Grid.Column="1"
+                    FontAttributes="Bold"
+                    FontSize="Medium"
+                    FontFamily="IBMPlexSansSemiBold"
+                    TextColor="White"
+                    VerticalOptions="Center"
+                    LineBreakMode="WordWrap">
+                    <Label.Effects>
+                        <effects:FontSizeLabelEffect />
+                    </Label.Effects>
+                </Label>
+                <Grid Grid.Column="2" HeightRequest="52">
+                    <ImageButton
+                        x:Name="BadgeInfoButton"
+                        Margin="0,0,15,0"
+                        AutomationProperties.Name="{Binding Strings[PASSPORT_PAGE_DK_PASSPORT_DETAIL_BUTTON_TEXT]}"
+                        BackgroundColor="Transparent"
+                        HeightRequest="25"
+                        HorizontalOptions="End"
+                        VerticalOptions="Center"
+                        WidthRequest="25" />
+                </Grid>
+            </Grid>
+        </Grid>
+    </effects:FrameWithShadow>
+</ContentView>

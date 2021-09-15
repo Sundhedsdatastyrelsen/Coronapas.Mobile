@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<ContentView
+    x:Class="SSICPAS.Views.InfoPages.PersonalPageLocked"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:effects="clr-namespace:SSICPAS.Controls"
+    xmlns:controls="clr-namespace:SSICPAS.Controls"
+    xmlns:elements="clr-namespace:SSICPAS.Views.Elements"
+    xmlns:ia="clr-namespace:IntelliAbb.Xamarin.Controls;assembly=IntelliAbb.Xamarin.Controls"
+    xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+    ios:Page.UseSafeArea="True"
+    NavigationPage.HasNavigationBar="False">
+    <StackLayout
+        Orientation="Vertical"
+        Spacing="16"
+        VerticalOptions="CenterAndExpand">
+        <Frame
+            Margin="0,10,0,0"
+            Padding="0"
+            BackgroundColor="{StaticResource SSIWhite}"
+            CornerRadius="32"
+            HasShadow="False"
+            HeightRequest="64"
+            HorizontalOptions="Center"
+            VerticalOptions="End"
+            WidthRequest="64">
+            <Image
+                HorizontalOptions="Center"
+                Source="{StaticResource LockIcon}"
+                VerticalOptions="Center" />
+        </Frame>
+        <Label
+            Margin="0,16,0,0"
+            AutomationProperties.IsInAccessibleTree="True"
+            HorizontalOptions="Center"
+            HorizontalTextAlignment="Center"
+            Style="{StaticResource TitleStyle}"
+            Text="{Binding Strings[TABBAR_ITEM_TITLE_INFO]}"
+            VerticalOptions="Center">
+            <Label.Effects>
+                <effects:FontSizeLabelEffect />
+            </Label.Effects>
+        </Label>
+
+        <Label
+            AutomationProperties.IsInAccessibleTree="True"
+            HorizontalOptions="Center"
+            HorizontalTextAlignment="Center"
+            Style="{StaticResource ContentStyle}"
+            Text="{Binding Strings[MY_PAGE_INFO_SECTION_1]}"
+            VerticalOptions="Start">
+            <Label.Effects>
+                <effects:FontSizeLabelEffect />
+            </Label.Effects>
+        </Label>
+
+        <Label
+            Margin="0,16,0,0"
+            AutomationProperties.IsInAccessibleTree="True"
+            HorizontalOptions="Center"
+            HorizontalTextAlignment="Center"
+            Style="{StaticResource ContentStyle}"
+            Text="{Binding Strings[MY_PAGE_INFO_SECTION_2]}"
+            VerticalOptions="Start">
+            <Label.Effects>
+                <effects:FontSizeLabelEffect />
+            </Label.Effects>
+        </Label>
+
+        <Grid Margin="0,32,0,0" ColumnSpacing="12">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.2*" />
+                <ColumnDefinition Width="0.8*" />
+            </Grid.ColumnDefinitions>
+
+            <ia:Checkbox
+                x:Name="CheckBox"
+                Grid.Column="0"
+                AutomationProperties.HelpText="{Binding CheckBoxAccessibilityText}"
+                AutomationProperties.IsInAccessibleTree="True"
+                BackgroundColor="{StaticResource SSIWhite}"
+                CheckColor="{StaticResource SSIWhite}"
+                FillColor="{StaticResource SSIButtonBlue}"
+                HeightRequest="32"
+                HorizontalOptions="End"
+                IsCheckedChanged="CheckBox_IsCheckedChanged"
+                OutlineColor="{StaticResource SSIIndicatorSelected}"
+                OutlineWidth="4"
+                Shape="Rectangle"
+                WidthRequest="32" />
+
+            <Label
+                Grid.Column="1"
+                VerticalOptions="Center"
+                AutomationProperties.IsInAccessibleTree="True"
+                HorizontalOptions="Start"
+                Style="{StaticResource ContentStyle}"
+                Text="{Binding Strings[MY_PAGE_INFO_CHECK]}">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
+                </Label.GestureRecognizers>
+                <Label.Effects>
+                    <effects:FontSizeLabelEffect />
+                </Label.Effects>
+            </Label>
+                </Grid>
+        <Grid Margin="0,32,0,0">
+          <controls:SingleLineButton
+                    AutomationId="ShowInformationButton"
+                    AutomationProperties.IsInAccessibleTree="True"
+                    AutomationProperties.Name="{Binding Strings[MY_PAGE_SHOW_INFO_ACCESSIBILITY]}"
+                    Clicked="Button_Clicked"
+                    Style="{StaticResource CombinedButtonPrimaryStyle}"
+                    Text="{Binding Strings[MY_PAGE_SHOW_INFO]}"
+                    effects:FontSizeLabelEffectParams.MaxFontSize="25"
+                    effects:FontSizeLabelEffectParams.MinFontSize="12">
+                    <Button.Effects>
+                        <effects:FontSizeLabelEffect />
+                    </Button.Effects>
+                </controls:SingleLineButton>
+        </Grid>
+    </StackLayout>
+</ContentView>

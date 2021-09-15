@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<Grid
+    x:Class="SSICPAS.Views.Elements.PassportPageNavigationHeader"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:SSICPAS.Controls"
+    x:Name="HeaderGrid"
+    BackgroundColor="{StaticResource NavigationHeaderBackgroundColor}">
+
+    <StackLayout Margin="10,10" Orientation="Horizontal" VerticalOptions="FillAndExpand">
+        <Grid WidthRequest="40"
+              HorizontalOptions="Start"
+              > 
+        <ImageButton
+            x:Name="LeftButton"
+            Padding="10,0,10,0"
+            AutomationId="LeftButton"
+            BackgroundColor="Transparent"
+            VerticalOptions="CenterAndExpand"
+            HorizontalOptions="Center"
+        />
+        </Grid>
+
+        <Label
+            x:Name="CenterLabel"
+            Margin="0,0,0,2"
+            local:FontSizeLabelEffectParams.MaxFontSize="17"
+            local:FontSizeLabelEffectParams.MinFontSize="12"
+            AutomationId="CenterLabel"
+            HorizontalOptions="CenterAndExpand"
+            HorizontalTextAlignment="Center"
+            LineBreakMode="NoWrap"
+            InputTransparent="True"
+            Style="{StaticResource SubtitleStyle}"
+            Text="{Binding CenterLabelText}"
+            TextColor="{StaticResource SSIIndicatorSelected}"
+            VerticalOptions="Center"
+            VerticalTextAlignment="Center">
+            <Label.Effects>
+                <local:FontSizeLabelEffect />
+            </Label.Effects>
+        </Label>
+        
+        <Image
+            x:Name="CenterImage"
+            AutomationId="CoronapasLogo"
+            BackgroundColor="Transparent"
+            HorizontalOptions="CenterAndExpand"
+            />
+
+        <Grid WidthRequest="40"
+              HorizontalOptions="End"
+        > 
+        <ImageButton
+            x:Name="RightButton"
+            Padding="5,0,5,0"
+            Margin="0,0,0,5"
+            AutomationId="RightButton"
+            BackgroundColor="Transparent"
+            VerticalOptions="CenterAndExpand"
+            HorizontalOptions="Center"/>
+        </Grid>
+    </StackLayout>
+</Grid>

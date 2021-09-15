@@ -1,0 +1,272 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:elements="clr-namespace:SSICPAS.Views.Elements"
+    xmlns:effects="clr-namespace:SSICPAS.Controls"
+    xmlns:controls="clr-namespace:SSICPAS.Controls"
+    x:Class="SSICPAS.Views.InfoPages.PersonalPage"
+    xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+    xmlns:view="clr-namespace:SSICPAS.Views.InfoPages"
+    xmlns:viewmodel="clr-namespace:SSICPAS.ViewModels.InfoPages"
+    x:DataType="viewmodel:PersonalPageViewModel"
+    ios:Page.UseSafeArea="True"
+    NavigationPage.HasNavigationBar="False">
+    <ContentPage.Content>
+        <Grid RowSpacing="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <elements:NavigationHeader
+                LeftButtonAccessibilityText="{Binding Strings[MENU_BUTTON_TEXT]}"
+                LeftButtonCommand="{Binding OpenMenuPage}"
+                LeftButtonImageSource="{StaticResource HamburgerMenu}"
+                CenterImageSource="{StaticResource CoronapasLogo}">
+                <elements:NavigationHeader.LeftButtonHeightRequest>
+                    <OnPlatform x:TypeArguments="x:Int32">
+                        <On Platform="iOS" Value="50" />
+                        <On Platform="Android" Value="50" />
+                    </OnPlatform>
+                </elements:NavigationHeader.LeftButtonHeightRequest>
+            </elements:NavigationHeader>
+
+            <ScrollView Grid.Row="1"
+                        BackgroundColor="{StaticResource DefaultBackgroundColor}"
+                        Padding="20,0,20,40">
+                <StackLayout>
+                    <view:NoPersonalPage
+                        IsVisible="{Binding ShowNoPersonalPage}"
+                        x:Name="NoPersonalPageView"
+                        HorizontalOptions="FillAndExpand"
+                        VerticalOptions="FillAndExpand" />
+
+                    <view:PersonalPageLocked
+                        IsVisible="{Binding ShowPersonalPageLocked, Mode=OneWay}"
+                        x:Name="PersonalPageLockedView"
+                        HorizontalOptions="FillAndExpand"
+                        VerticalOptions="FillAndExpand" />
+
+                    <StackLayout
+                        IsVisible="{Binding ShowPersonalPage, Mode=OneWay}"
+                        Orientation="Vertical"
+                        VerticalOptions="FillAndExpand"
+                        Spacing="16">
+                        <Label
+                            VerticalOptions="Start"
+                            HorizontalOptions="Center"
+                            Margin="0,40,0,0"
+                            AutomationProperties.IsInAccessibleTree="True"
+                            Text="{Binding Strings[TABBAR_ITEM_TITLE_INFO]}"
+                            Style="{StaticResource SubtitleStyle}">
+                            <Label.Effects>
+                                <effects:FontSizeLabelEffect />
+                            </Label.Effects>
+                        </Label>
+
+                        <Label
+                            VerticalOptions="Start"
+                            HorizontalOptions="Center"
+                            HorizontalTextAlignment="Center"
+                            AutomationProperties.IsInAccessibleTree="True"
+                            Text="{Binding Strings[MY_PAGE_SECTION_1]}"
+                            Style="{StaticResource ContentStyle}">
+                            <Label.Effects>
+                                <effects:FontSizeLabelEffect />
+                            </Label.Effects>
+                        </Label>
+
+                        <StackLayout>
+                            <controls:FrameWithShadow
+                            HorizontalOptions="CenterAndExpand"
+                            VerticalOptions="Center"
+                            HasShadow="True"
+                            Padding="0,20,0,20"
+                            CornerRadius="5"
+                            IsVisible="{Binding IsVaccineAvailable}"
+                            AutomationProperties.IsInAccessibleTree="False"
+                            AutomationProperties.HelpText="{Binding Strings[MY_PAGE_SHOW_VACCINE_INFO_BUTTON_ACCESSIBILITY]}">
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding ShowVaccineInfoCommand}" />
+                                </Frame.GestureRecognizers>
+                                <Grid RowSpacing="0"
+                                  ColumnSpacing="16"
+                                  Padding="20,0,5,0"
+                                  >
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="2.5*" />
+                                        <ColumnDefinition Width="7.5*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                    </Grid.RowDefinitions>
+                                    <Image
+                                    Grid.Column="0"
+                                    Grid.Row="0"
+                                    HeightRequest="56"                                       
+                                    Grid.RowSpan="2"
+                                    HorizontalOptions="Start"
+                                    Source="{StaticResource Covid19VaccineIcon}" />
+                                    <StackLayout Grid.Row="0"
+                                             Grid.Column="1"
+                                             Orientation="Vertical"
+                                             VerticalOptions="CenterAndExpand">
+                                        <Label
+                                        HorizontalOptions="StartAndExpand"
+                                        VerticalOptions="Center"
+                                        AutomationProperties.IsInAccessibleTree="True"
+                                        AutomationProperties.HelpText="{Binding Strings[MY_PAGE_SHOW_VACCINE_INFO_BUTTON_ACCESSIBILITY]}"
+                                        Text="{Binding Strings[INFO_VACCINE_HEADER_TEXT]}"
+                                        Style="{StaticResource SubtitleStyle}">
+                                            <Label.Effects>
+                                                <effects:FontSizeLabelEffect />
+                                            </Label.Effects>
+                                        </Label>
+                                    </StackLayout>
+                                    <Label
+                                    Grid.Row="1"
+                                    Grid.Column="1"
+                                    VerticalOptions="Center"
+                                    HorizontalOptions="StartAndExpand"
+                                    Text="{Binding VaccineHeaderValue}"
+                                    AutomationProperties.IsInAccessibleTree="True"
+                                    Style="{StaticResource SecondaryContentItalicStyle}">
+                                        <Label.Effects>
+                                            <effects:FontSizeLabelEffect />
+                                        </Label.Effects>
+                                    </Label>
+                                </Grid>
+                            </controls:FrameWithShadow>
+
+                            <controls:FrameWithShadow
+                            HorizontalOptions="CenterAndExpand"
+                            VerticalOptions="Center"
+                            HasShadow="True"
+                            Padding="0,20,0,20"
+                            CornerRadius="5"
+                            IsVisible="{Binding IsTestAvailable}"
+                            AutomationProperties.IsInAccessibleTree="False"
+                            AutomationProperties.HelpText="{Binding Strings[MY_PAGE_SHOW_TEST_INFO_BUTTON_ACCESSIBILITY]}">
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding ShowTestInfoCommand}" />
+                                </Frame.GestureRecognizers>
+                                <Grid RowSpacing="0"
+                                  ColumnSpacing="16"
+                                  Padding="20,0,5,0">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="2.5*" />
+                                        <ColumnDefinition Width="7.5*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                    </Grid.RowDefinitions>
+                                    <Image
+                                    Grid.Column="0"
+                                    Grid.Row="0"
+                                    HeightRequest="56"                                       
+                                    Grid.RowSpan="2"
+                                    HorizontalOptions="Start"
+                                    AutomationProperties.IsInAccessibleTree="False"
+                                    Source="{StaticResource Covid19NegativeTestIcon}" />
+                                    <StackLayout Grid.Row="0"
+                                                 Orientation="Vertical"
+                                      Grid.Column="1"
+                                      VerticalOptions="CenterAndExpand">
+                                        <Label
+                                        HorizontalOptions="StartAndExpand"
+                                            VerticalOptions="Center"
+                                        AutomationProperties.IsInAccessibleTree="True"
+                                         AutomationProperties.HelpText="{Binding Strings[MY_PAGE_SHOW_TEST_INFO_BUTTON_ACCESSIBILITY]}" 
+                                        Text="{Binding Strings[MY_PAGE_NEGATIVE_TEST_HEADER]}"
+                                        Style="{StaticResource SubtitleStyle}">
+                                            <Label.Effects>
+                                                <effects:FontSizeLabelEffect />
+                                            </Label.Effects>
+                                        </Label>
+                                    </StackLayout>
+                                    <Label
+                                        Grid.Row="1"
+                                        Grid.Column="1"
+                                        VerticalOptions="Center"
+                                        HorizontalOptions="StartAndExpand"
+                                        Text="{Binding NegativeTestHeaderValue}"
+                                        AutomationProperties.IsInAccessibleTree="True"
+                                        Style="{StaticResource SecondaryContentItalicStyle}">
+                                            <Label.Effects>
+                                                <effects:FontSizeLabelEffect />
+                                            </Label.Effects>
+                                        </Label>
+                                </Grid>
+                            </controls:FrameWithShadow>
+
+                            <controls:FrameWithShadow
+                            HorizontalOptions="CenterAndExpand"
+                            VerticalOptions="Center"
+                            HasShadow="True"
+                            Padding="0,20,0,20"
+                            CornerRadius="5"
+                            IsVisible="{Binding IsRecoveryAvailable}"
+                            AutomationProperties.IsInAccessibleTree="False"
+                            AutomationProperties.HelpText="{Binding Strings[MY_PAGE_SHOW_IMMUNITY_INFO_BUTTON_ACCESSIBILITY]}">
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding ShowImmunityInfoCommand}" />
+                                </Frame.GestureRecognizers>
+                                <Grid RowSpacing="0"
+                                  ColumnSpacing="16"
+                                  Padding="20,0,5,0">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="2.5*" />
+                                        <ColumnDefinition Width="7.5*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                    </Grid.RowDefinitions>
+                                    <Image
+                                    Grid.Column="0"
+                                    Grid.Row="0"
+                                    HeightRequest="56"                                       
+                                    Grid.RowSpan="2"
+                                    HorizontalOptions="Start"
+                                    AutomationProperties.IsInAccessibleTree="False"
+                                    Source="{StaticResource Covid19RecoveryIcon}" />
+                                    <StackLayout Grid.Row="0"
+                                      Grid.Column="1"
+                                                 Orientation="Vertical"
+                                      VerticalOptions="CenterAndExpand">
+                                        <Label
+                                        HorizontalOptions="StartAndExpand"
+                                            VerticalOptions="Center"
+                                        AutomationProperties.IsInAccessibleTree="True"
+                                        AutomationProperties.HelpText="{Binding Strings[MY_PAGE_SHOW_IMMUNITY_INFO_BUTTON_ACCESSIBILITY]}"
+                                        Text="{Binding Strings[MY_PAGE_IMMUNITY_HEADER]}"
+                                        Style="{StaticResource SubtitleStyle}">
+                                            <Label.Effects>
+                                                <effects:FontSizeLabelEffect />
+                                            </Label.Effects>
+                                        </Label>
+                                    </StackLayout>
+                                    <Label
+                                        Grid.Row="1"
+                                        Grid.Column="1"
+                                    VerticalOptions="Center"
+                                        HorizontalOptions="StartAndExpand"
+                                        Text="{Binding RecoveryHeaderValue}"
+                                        AutomationProperties.IsInAccessibleTree="True"
+                                        Style="{StaticResource SecondaryContentItalicStyle}">
+                                            <Label.Effects>
+                                                <effects:FontSizeLabelEffect />
+                                            </Label.Effects>
+                                        </Label>
+                                </Grid>
+                            </controls:FrameWithShadow>
+                        </StackLayout>
+                    </StackLayout>
+                </StackLayout>
+            </ScrollView>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

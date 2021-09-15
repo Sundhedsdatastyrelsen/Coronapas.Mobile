@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            x:Class="SSICPAS.Views.MainTabbedPage"
+            AutomationId="MainView"
+            AutomationProperties.IsInAccessibleTree="True"
+            BackgroundColor="{StaticResource DefaultBackgroundColor}"
+            xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+            ios:Page.UseSafeArea="true"
+            NavigationPage.HasNavigationBar="False"
+            android:TabbedPage.BarSelectedItemColor="{StaticResource TabbarItemSelectedColor}"
+            xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
+            android:TabbedPage.ToolbarPlacement="Bottom"
+            android:TabbedPage.BarItemColor="{StaticResource TabbarItemColor}">
+
+</TabbedPage>

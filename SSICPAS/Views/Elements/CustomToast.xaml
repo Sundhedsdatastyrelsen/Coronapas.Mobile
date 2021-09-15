@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<extra:ToastView
+    x:Class="SSICPAS.Views.Elements.CustomToast"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:extra="clr-namespace:AiForms.Dialogs.Abstractions;assembly=AiForms.Dialogs.Abstractions"
+    xmlns:effects="clr-namespace:SSICPAS.Controls"
+    Padding="0,0,0,25"
+    HorizontalLayoutAlignment="Fill"
+    VerticalLayoutAlignment="End"
+    Duration="{Binding Duration}">
+
+    <Grid
+        Margin="20,0,20,0">
+        <BoxView
+            Grid.Row="0"
+            Grid.Column="0"
+            CornerRadius="5"
+            BackgroundColor="{StaticResource SSIGreenSuccessColor}" />
+        <StackLayout
+            Grid.Row="0"
+            Grid.Column="0"
+            Margin="20,0,20,0"
+            Spacing="8"
+            Orientation="Horizontal"
+            HorizontalOptions="FillAndExpand">
+            <Image
+                x:Name="image"
+                HorizontalOptions="Start"
+                AutomationProperties.IsInAccessibleTree="False" />
+            <Label
+                HorizontalOptions="StartAndExpand"
+                VerticalOptions="Center"
+                Margin="0,4,0,4"
+                AutomationProperties.IsInAccessibleTree="False"
+                Text="{Binding Title}"
+                Style="{StaticResource ToastMessageStyle}"
+                effects:FontSizeLabelEffectParams.MaxFontSize="20"
+                effects:FontSizeLabelEffectParams.MinFontSize="12">
+                <Label.Effects>
+                    <effects:FontSizeLabelEffect />
+                </Label.Effects>
+            </Label>
+        </StackLayout>
+    </Grid>
+
+</extra:ToastView>

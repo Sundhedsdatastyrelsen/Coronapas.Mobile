@@ -1,0 +1,320 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage
+    x:Class="SSICPAS.Views.Certificates.PassportContent"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:certificates="clr-namespace:SSICPAS.ViewModels.Certificates"
+    xmlns:elements="clr-namespace:SSICPAS.Views.Elements"
+    xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+    xmlns:controls="clr-namespace:SSICPAS.Controls;assembly=SSICPAS"
+    ios:Page.UseSafeArea="True"
+    x:DataType="certificates:PassportContentViewModel"
+    NavigationPage.HasNavigationBar="False">
+    <ContentPage.Content>
+        <Grid BackgroundColor="{StaticResource DefaultBackgroundColor}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <elements:NavigationHeader
+                Grid.Row="0"
+                BackgroundColor="{StaticResource NavigationHeaderBackgroundColor}"
+                CenterLabelAccessibilityText=""
+                CenterLabelText="{Binding Strings[PASSPORT_CONTENT_TITLE]}"
+                LeftButtonAccessibilityText="{Binding Strings [ACCESSIBILITY_BACK_BUTTON_HELP_TEXT]}"
+                LeftButtonCommand="{Binding BackCommand}"
+                LeftButtonHeightRequest="50"
+                LeftButtonImageSource="{StaticResource ArrowBack}" />
+
+            <ScrollView Grid.Row="1">
+                <StackLayout Orientation="Vertical" Margin="20, 10, 25, 0">
+                    <Label
+                        Style="{StaticResource SubtitleStyle}"
+                           Text="{Binding Strings[PASSPORT_CONTENT_HEADER_1]}">
+                        <Label.Effects>
+                            <controls:FontSizeLabelEffect />
+                        </Label.Effects>
+                    </Label>
+
+                    <StackLayout Orientation="Horizontal" Margin="0, 20, 0, 0">
+                        <Label
+                            Padding="0,0,2,0"
+                            Style="{StaticResource ContentTitleStyle}"
+                            AutomationProperties.IsInAccessibleTree="False"
+                            Text="&#x2022; ">
+                            <Label.Effects>
+                                <controls:FontSizeLabelEffect />
+                            </Label.Effects>
+                        </Label>
+                        <Label
+                            Margin="0,2,0,0"
+                            Style="{StaticResource ContentBoldStyle}"
+                            Text="{Binding Strings[PASSPORT_CONTENT_ITEM_1_HEADER]}">
+                            <Label.Effects>
+                                <controls:FontSizeLabelEffect />
+                            </Label.Effects>
+                        </Label>
+                    </StackLayout>
+
+                    <StackLayout Padding="0,0,0,0" Orientation="Horizontal">
+                        <Label
+                            Style="{StaticResource ContentTitleStyle}"
+                            Opacity="0"
+                            AutomationProperties.IsInAccessibleTree="False"
+                            Text="&#x2022; ">
+                            <Label.Effects>
+                                <controls:FontSizeLabelEffect />
+                            </Label.Effects>
+                        </Label>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Label
+                            Grid.Column="0"
+                            Margin="0,2,5,0"
+                            Style="{StaticResource ContentTitleStyle}"
+                            AutomationProperties.IsInAccessibleTree="False"
+                            Text="&#x25E6; ">
+                                <Label.Effects>
+                                    <controls:FontSizeLabelEffect />
+                                </Label.Effects>
+                            </Label>
+                            <Label
+                                Grid.Column="1"
+                                Style="{StaticResource ContentStyle}"
+                                Text="{Binding Strings[PASSPORT_CONTENT_ITEM_1_BULLET_1]}">
+                                <Label.Effects>
+                                    <controls:FontSizeLabelEffect />
+                                </Label.Effects>
+                            </Label>
+                        </Grid>
+                    </StackLayout>
+
+                    <StackLayout Orientation="Horizontal" >
+                        <Label
+                            Style="{StaticResource ContentTitleStyle}"
+                            Opacity="0"
+                            AutomationProperties.IsInAccessibleTree="False"
+                            Text="&#x2022; ">
+                            <Label.Effects>
+                                <controls:FontSizeLabelEffect />
+                            </Label.Effects>
+                        </Label>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Label
+                            Grid.Column="0"
+                            Margin="0,2,5,0"
+                            Style="{StaticResource ContentTitleStyle}"
+                            AutomationProperties.IsInAccessibleTree="False"
+                            Text="&#x25E6; ">
+                                <Label.Effects>
+                                    <controls:FontSizeLabelEffect />
+                                </Label.Effects>
+                            </Label>
+                            <Label
+                            Grid.Column="1"
+                            Style="{StaticResource ContentStyle}"
+                            Text="{Binding Strings[PASSPORT_CONTENT_ITEM_1_BULLET_2]}">
+                                <Label.Effects>
+                                    <controls:FontSizeLabelEffect />
+                                </Label.Effects>
+                            </Label>
+                        </Grid>
+                    </StackLayout>
+
+                    <StackLayout Orientation="Horizontal" Spacing="5" Margin="0, 0, 0, 0">
+                        <Label
+                            Style="{StaticResource ContentTitleStyle}"
+                            AutomationProperties.IsInAccessibleTree="False"
+                            Text="&#x2022; ">
+                            <Label.Effects>
+                                <controls:FontSizeLabelEffect />
+                            </Label.Effects>
+                        </Label>
+                        <Label
+                            Margin="0,2,0,0"
+                            Style="{StaticResource ContentBoldStyle}"
+                            Text="{Binding Strings[PASSPORT_CONTENT_ITEM_2_HEADER]}">
+                            <Label.Effects>
+                                <controls:FontSizeLabelEffect />
+                            </Label.Effects>
+                        </Label>
+                    </StackLayout>
+
+                    <StackLayout Orientation="Horizontal">
+                        <Label
+                            Style="{StaticResource ContentTitleStyle}"
+                            Opacity="0"
+                            AutomationProperties.IsInAccessibleTree="False"
+                            Text="&#x2022; ">
+                            <Label.Effects>
+                                <controls:FontSizeLabelEffect />
+                            </Label.Effects>
+                        </Label>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Label
+                            Grid.Column="0"
+                            Margin="0,2,5,0"
+                            Style="{StaticResource ContentTitleStyle}"
+                            AutomationProperties.IsInAccessibleTree="False"
+                            Text="&#x25E6; ">
+                                <Label.Effects>
+                                    <controls:FontSizeLabelEffect />
+                                </Label.Effects>
+                            </Label>
+                            <Label
+                            Grid.Column="1"
+                            Style="{StaticResource ContentStyle}"
+                            Text="{Binding Strings[PASSPORT_CONTENT_ITEM_2_BULLET_1]}">
+                                <Label.Effects>
+                                    <controls:FontSizeLabelEffect />
+                                </Label.Effects>
+                            </Label>
+                        </Grid>
+                    </StackLayout>
+
+                    <StackLayout Padding="0,0,0,0" Orientation="Horizontal">
+                        <Label
+                            Style="{StaticResource ContentTitleStyle}"
+                            Opacity="0"
+                            AutomationProperties.IsInAccessibleTree="False"
+                            Text="&#x2022; ">
+                            <Label.Effects>
+                                <controls:FontSizeLabelEffect />
+                            </Label.Effects>
+                        </Label>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Label
+                            Grid.Column="0"
+                            Margin="0,2,5,0"
+                            Style="{StaticResource ContentTitleStyle}"
+                            AutomationProperties.IsInAccessibleTree="False"
+                            Text="&#x25E6; ">
+                                <Label.Effects>
+                                    <controls:FontSizeLabelEffect />
+                                </Label.Effects>
+                            </Label>
+                            <Label
+                            Grid.Column="1"
+                            Style="{StaticResource ContentStyle}"
+                             Text="{Binding Strings[PASSPORT_CONTENT_ITEM_2_BULLET_2]}">
+                                <Label.Effects>
+                                    <controls:FontSizeLabelEffect />
+                                </Label.Effects>
+                            </Label>
+                        </Grid>
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal" Spacing="5">
+                        <Label
+                            Style="{StaticResource ContentTitleStyle}"
+                            AutomationProperties.IsInAccessibleTree="False"
+                            Text="&#x2022; ">
+                            <Label.Effects>
+                                <controls:FontSizeLabelEffect />
+                            </Label.Effects>
+                        </Label>
+                        <StackLayout Orientation="Vertical" Spacing="0">
+                            <Label
+                                Margin="0,2,0,0"
+                                Style="{StaticResource ContentBoldStyle}"
+                                Text="{Binding Strings[PASSPORT_CONTENT_ITEM_3_BOLD]}" >
+                                <Label.Effects>
+                                    <controls:FontSizeLabelEffect />
+                                </Label.Effects>
+                            </Label>
+                            <Label
+                                Style="{StaticResource ContentStyle}"
+                                Text="{Binding Strings[PASSPORT_CONTENT_ITEM_3_END]}">
+                                <Label.Effects>
+                                    <controls:FontSizeLabelEffect />
+                                </Label.Effects>
+                            </Label>
+                        </StackLayout>
+                    </StackLayout>
+                    <StackLayout Orientation="Vertical" Margin="0,20,0,0">
+                        <Label
+                            Style="{StaticResource SubtitleStyle}"
+                           Text="{Binding Strings[PASSPORT_CONTENT_SYMPTOMS_TITLE]}" >
+                            <Label.Effects>
+                                <controls:FontSizeLabelEffect />
+                            </Label.Effects>
+                        </Label>
+                        <Label Margin="0,0,0,20"
+                           Style="{StaticResource ContentStyle}"
+                           Text="{Binding Strings[PASSPORT_CONTENT_SYMPTOMS_TEXT]}">
+                            <Label.Effects>
+                                <controls:FontSizeLabelEffect />
+                            </Label.Effects>
+                        </Label>
+                    </StackLayout>
+
+                    <Label
+                        Style="{StaticResource SubtitleStyle}"
+                        Text="{Binding Strings[PASSPORT_CONTENT_HEADER_2]}" >
+                        <Label.Effects>
+                            <controls:FontSizeLabelEffect />
+                        </Label.Effects>
+                    </Label>
+                    <StackLayout Padding="0"
+                                 Orientation="Vertical"
+                                 Spacing="5">
+                        <Label Style="{StaticResource ContentBoldStyle}"
+                               Text="{Binding Strings[PASSPORT_CONTENT_SUBHEADING_1_TITLE]}">
+                            <Label.Effects>
+                                <controls:FontSizeLabelEffect />
+                            </Label.Effects>
+
+                        </Label>
+                        <Label Style="{StaticResource ContentStyle}"
+                               Text="{Binding Strings[PASSPORT_CONTENT_SUBHEADING_1_CONTENT]}">
+                            <Label.Effects>
+                                <controls:FontSizeLabelEffect />
+                            </Label.Effects>
+                        </Label>
+                        <Label Margin="0, 20, 0, 0"
+                               Style="{StaticResource ContentBoldStyle}"
+                               Text="{Binding Strings[PASSPORT_CONTENT_SUBHEADING_2_TITLE]}">
+                            <Label.Effects>
+                                <controls:FontSizeLabelEffect />
+                            </Label.Effects>
+                        </Label>
+                        <Label
+                            Style="{StaticResource ContentStyle}"
+                            Text="{Binding Strings[PASSPORT_CONTENT_SUBHEADING_2_CONTENT_1]}">
+                            <Label.Effects>
+                                <controls:FontSizeLabelEffect />
+                            </Label.Effects>
+                        </Label>
+                        <Label
+                            Margin="0,5,0,30"
+                            Style="{StaticResource ContentStyle}"
+                            Text="{Binding Strings[PASSPORT_CONTENT_SUBHEADING_2_CONTENT_2]}">
+                            <Label.Effects>
+                                <controls:FontSizeLabelEffect />
+                            </Label.Effects>
+                        </Label>
+
+                    </StackLayout>
+                </StackLayout>
+
+            </ScrollView>
+        </Grid>
+
+    </ContentPage.Content>
+</ContentPage>

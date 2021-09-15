@@ -1,0 +1,202 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    x:Class="SSICPAS.Views.Onboarding.MockLoginNemIdPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    BackgroundColor="#F4F7FC"
+    NavigationPage.HasNavigationBar="False">
+
+    <ScrollView>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="10*" />
+                <RowDefinition Height="10*" />
+                <RowDefinition Height="70*" />
+            </Grid.RowDefinitions>
+            <Label
+                Grid.Row="1"
+                Margin="0,20,10,0"
+                CharacterSpacing="0.6"
+                FontFamily="GalanoGrotesqueBold"
+                FontSize="Title"
+                HorizontalTextAlignment="Center"
+                Text="{Binding LoginNemIdHeaderText}"
+                TextColor="Black"
+                VerticalTextAlignment="End" />
+            <Label
+                Grid.Row="2"
+                Padding="20,00,20,0"
+                CharacterSpacing="0.4"
+                FontFamily="GalanoGrotesqueMedium"
+                FontSize="Body"
+                HorizontalTextAlignment="Center"
+                Text="{Binding LoginNemIdSubHeaderText}"
+                TextColor="Black"
+                VerticalTextAlignment="Start" />
+            <Grid
+                Grid.Row="3"
+                Padding="20,12,20,20"
+                HorizontalOptions="Center"
+                VerticalOptions="StartAndExpand">
+                <BoxView BackgroundColor="#BCCCCB" />
+                <Grid
+                    Margin="3"
+                    BackgroundColor="#F6F9F8"
+                    RowSpacing="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="60" />
+                        <RowDefinition Height="40" />
+                        <RowDefinition Height="50" />
+                        <RowDefinition Height="45" />
+                        <RowDefinition Height="40" />
+                        <RowDefinition Height="45" />
+                        <RowDefinition Height="65" />
+                        <RowDefinition Height="20" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="250" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <BoxView
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="2"
+                        Color="#FFFFFF" />
+                    <Image
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        Margin="12,0,0,0"
+                        AnchorX="0"
+                        BackgroundColor="Transparent"
+                        HorizontalOptions="Start"
+                        ScaleX="0.6"
+                        ScaleY="0.6"
+                        Source="NemIDLogo.png"
+                        VerticalOptions="Center" />
+                    <Image
+                        Grid.Row="0"
+                        Grid.Column="1"
+                        Margin="0,0,10,0"
+                        AnchorX="1"
+                        BackgroundColor="Transparent"
+                        HorizontalOptions="End"
+                        ScaleX="0.6"
+                        ScaleY="0.6"
+                        Source="NemIDButtons.png"
+                        VerticalOptions="Center" />
+                    <BoxView
+                        Grid.Row="1"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="2"
+                        Color="#E1E6E4" />
+                    <Label
+                        Grid.Row="1"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="2"
+                        Margin="10,0,0,0"
+                        FontFamily="RalewayBold"
+                        HorizontalOptions="Start"
+                        Text="{Binding LoginNemIdCovidPassText}"
+                        TextColor="Black"
+                        VerticalOptions="Center" />
+                    <Label
+                        Grid.Row="2"
+                        Grid.Column="0"
+                        Margin="10,5,0,0"
+                        FontFamily="Raleway-SemiBold"
+                        HorizontalOptions="Start"
+                        Text="{Binding LoginNemIdUserIdText}"
+                        TextColor="#7F7F7F"
+                        VerticalOptions="Center" />
+                    <BoxView
+                        Grid.Row="3"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="2"
+                        Margin="10,0,10,0"
+                        CornerRadius="2"
+                        Color="#BCCCCB" />
+                    <BoxView
+                        Grid.Row="3"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="2"
+                        Margin="11,1,11,1"
+                        CornerRadius="1"
+                        Color="#FFFFFF" />
+                    <Entry
+                        AutomationId="NemIdUserIdTextview"
+                        Grid.Row="3"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="2"
+                        Margin="10,0,10,0"
+                        BackgroundColor="Transparent"
+                        HorizontalOptions="FillAndExpand"
+                        Text="{Binding UserName}"
+                        TextColor="Black"
+                        VerticalOptions="Center" />
+                    <Label
+                        Grid.Row="4"
+                        Grid.Column="0"
+                        Margin="10,0,0,0"
+                        FontFamily="Raleway-SemiBold"
+                        HorizontalOptions="Start"
+                        Text="{Binding LoginNemIdPasswordText}"
+                        TextColor="#7F7F7F"
+                        VerticalOptions="Center" />
+                    <Label
+                        Grid.Row="4"
+                        Grid.Column="1"
+                        Margin="0,0,10,0"
+                        FontFamily="Raleway-SemiBold"
+                        HorizontalOptions="End"
+                        Text="{Binding LoginNemIdForgotPasswordText}"
+                        TextColor="#4C8788"
+                        VerticalOptions="Center" />
+                    <BoxView
+                        Grid.Row="5"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="2"
+                        Margin="10,0,10,0"
+                        CornerRadius="2"
+                        Color="#BCCCCB" />
+                    <BoxView
+                        Grid.Row="5"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="2"
+                        Margin="11,1,11,1"
+                        CornerRadius="1"
+                        Color="#FFFFFF" />
+                    <Entry
+                        AutomationId="NemIdPasswordTextview"
+                        Grid.Row="5"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="2"
+                        Margin="10,0,10,0"
+                        HorizontalOptions="FillAndExpand"
+                        IsPassword="True"
+                        Text="{Binding Password}"
+                        TextColor="Black"
+                        VerticalOptions="Center" />
+                    <BoxView
+                        Grid.Row="6"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="2"
+                        Margin="10,20,10,0"
+                        CornerRadius="2"
+                        Color="#BCCCCB" />
+                    <Button
+                        AutomationId="NemIdNextButton"
+                        Grid.Row="6"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="2"
+                        Margin="11,21,11,1"
+                        BackgroundColor="#F6F6F6"
+                        Command="{Binding Next}"
+                        Text="{Binding LoginNemIdNextText}"
+                        TextColor="#4C8788"
+                        VerticalOptions="CenterAndExpand" />
+                </Grid>
+            </Grid>
+        </Grid>
+    </ScrollView>
+</ContentPage>

@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SSICPAS.Views.Certificates.NoPassportEuInfoView"
+             xmlns:controls="clr-namespace:SSICPAS.Controls"
+             BackgroundColor="Transparent"
+             IsClippedToBounds="True">
+    <ContentView.Content>
+        <StackLayout Orientation="Vertical">
+            <BoxView
+                Margin="0,10,0,10"
+                HeightRequest="1"
+                HorizontalOptions="FillAndExpand"
+                Color="{StaticResource SeperatorLineColor}" />
+            <StackLayout Padding="0,10,0,0" Orientation="Horizontal">
+                <Image
+                    HorizontalOptions="Start"
+                    Source="covid_19_vaccine_icon.png"
+                    VerticalOptions="Center" />
+                <Label
+                    VerticalOptions="Center"
+                    Padding="10,0,0,0"
+                    Style="{StaticResource SubtitleStyle}"
+                    Text="{Binding Strings[AWAITING_PASSPORT_EU_ITEM_1_SUBITEM_1]}"
+                    AutomationProperties.IsInAccessibleTree="True"
+                    AutomationProperties.Name="{Binding Strings[AWAITING_PASSPORT_DK_ITEM_1_SUBITEM_1_ACCESSIBILITY]}">
+                    <Label.Effects>
+                        <controls:FontSizeLabelEffect />
+                    </Label.Effects>
+                </Label>
+
+            </StackLayout>
+
+            <StackLayout Padding="0,0,20,0" Orientation="Horizontal">
+                <Label
+                    Style="{StaticResource ContentTitleStyle}"
+                    Opacity="0"
+                    AutomationProperties.IsInAccessibleTree="False"
+                    Text="&#x2022; ">
+                    <Label.Effects>
+                        <controls:FontSizeLabelEffect />
+                    </Label.Effects>
+                </Label>
+                <Label
+                    Style="{StaticResource ContentTitleStyle}"
+                    AutomationProperties.IsInAccessibleTree="False"
+                    Text="&#x2022; ">
+                    <Label.Effects>
+                        <controls:FontSizeLabelEffect />
+                    </Label.Effects>
+                </Label>
+                <Label
+                    Margin="5,5,0,0"
+                    Style="{StaticResource SecondaryContentStyle}"
+                    AutomationProperties.IsInAccessibleTree="True">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Style="{StaticResource SecondaryContentBoldStyle}" Text="{Binding Strings[AWAITING_PASSPORT_EU_ITEM_1_SUBITEM_2_BOLD]}" />
+                            <Span Text="{Binding Strings[AWAITING_PASSPORT_EU_ITEM_1_SUBITEM_2_END]}" />
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+            </StackLayout>
+
+            <StackLayout Padding="0,0,20,0" Orientation="Horizontal">
+                <Label
+                    Style="{StaticResource ContentTitleStyle}"
+                    Opacity="0"
+                    AutomationProperties.IsInAccessibleTree="False"
+                    Text="&#x2022; ">
+                    <Label.Effects>
+                        <controls:FontSizeLabelEffect />
+                    </Label.Effects>
+                </Label>
+                <Label
+                    Style="{StaticResource ContentTitleStyle}"
+                    AutomationProperties.IsInAccessibleTree="False"
+                    Text="&#x2022; ">
+                    <Label.Effects>
+                        <controls:FontSizeLabelEffect />
+                    </Label.Effects>
+                </Label>
+                <Label
+                    Margin="5,5,0,0"
+                    Style="{StaticResource SecondaryContentStyle}"
+                    AutomationProperties.IsInAccessibleTree="True">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Style="{StaticResource SecondaryContentBoldStyle}" Text="{Binding Strings[AWAITING_PASSPORT_EU_ITEM_1_SUBITEM_3_BOLD]}" />
+                            <Span Text="{Binding Strings[AWAITING_PASSPORT_EU_ITEM_1_SUBITEM_3_END]}" />
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+            </StackLayout>
+
+            <BoxView
+                    Margin="0,10,0,10"
+                    HeightRequest="1"
+                    HorizontalOptions="FillAndExpand"
+                    Color="{StaticResource SeperatorLineColor}" />
+
+            <StackLayout Padding="0,10,0,0" Orientation="Horizontal">
+                <Image
+                    HorizontalOptions="Start"
+                    Source="covid_19_negative_test_icon.png"
+                    VerticalOptions="Center" />
+                <Label
+                    VerticalOptions="Center"
+                    Padding="10,0,0,0"
+                    Style="{StaticResource SubtitleStyle}"
+                    Text="{Binding Strings[AWAITING_PASSPORT_EU_ITEM_2_SUBITEM_1]}"
+                    AutomationProperties.IsInAccessibleTree="True"
+                    AutomationProperties.Name="{Binding Strings[AWAITING_PASSPORT_DK_ITEM_2_SUBITEM_1_ACCESSIBILITY]}">
+                    <Label.Effects>
+                        <controls:FontSizeLabelEffect />
+                    </Label.Effects>
+                </Label>
+
+            </StackLayout>
+
+            <StackLayout Padding="0,0,20,0" Orientation="Horizontal">
+                <Label
+                    Style="{StaticResource ContentTitleStyle}"
+                    Opacity="0"
+                    AutomationProperties.IsInAccessibleTree="False"
+                    Text="&#x2022; ">
+                    <Label.Effects>
+                        <controls:FontSizeLabelEffect />
+                    </Label.Effects>
+                </Label>
+                <Label
+                    Style="{StaticResource ContentTitleStyle}"
+                    AutomationProperties.IsInAccessibleTree="False"
+                    Text="&#x2022; ">
+                    <Label.Effects>
+                        <controls:FontSizeLabelEffect />
+                    </Label.Effects>
+                </Label>
+                <Label
+                    Margin="5,5,0,0"
+                    Style="{StaticResource SecondaryContentStyle}"
+                    AutomationProperties.IsInAccessibleTree="True">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="{Binding Strings[AWAITING_PASSPORT_EU_ITEM_2_SUBITEM_2_START]}" />
+                            <Span Style="{StaticResource SecondaryContentBoldStyle}" Text="{Binding Strings[AWAITING_PASSPORT_EU_ITEM_2_SUBITEM_2_BOLD]}" />
+
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+            </StackLayout>
+
+            <StackLayout Padding="0,0,20,0" Orientation="Horizontal">
+                <Label
+                    Style="{StaticResource ContentTitleStyle}"
+                    Opacity="0"
+                    AutomationProperties.IsInAccessibleTree="False"
+                    Text="&#x2022; ">
+                    <Label.Effects>
+                        <controls:FontSizeLabelEffect />
+                    </Label.Effects>
+                </Label>
+                <Label
+                    Style="{StaticResource ContentTitleStyle}"
+                    AutomationProperties.IsInAccessibleTree="False"
+                    Text="&#x2022; ">
+                    <Label.Effects>
+                        <controls:FontSizeLabelEffect />
+                    </Label.Effects>
+                </Label>
+                <Label
+                    Margin="5,5,0,0"
+                    Style="{StaticResource SecondaryContentStyle}"
+                    AutomationProperties.IsInAccessibleTree="True">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="{Binding Strings[AWAITING_PASSPORT_EU_ITEM_2_SUBITEM_3_START]}" />
+                            <Span Style="{StaticResource SecondaryContentBoldStyle}" Text="{Binding Strings[AWAITING_PASSPORT_EU_ITEM_2_SUBITEM_3_BOLD]}" />
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+            </StackLayout>
+
+            <BoxView
+                Margin="0,10,0,10"
+                HeightRequest="1"
+                HorizontalOptions="FillAndExpand"
+                Color="{StaticResource SeperatorLineColor}" />
+
+            <StackLayout Padding="0,10,10,0" Orientation="Horizontal">
+                <Image
+                    HorizontalOptions="Start"
+                    Source="covid_19_recovery_icon.png"
+                    VerticalOptions="Center" />
+                <Label
+                    VerticalOptions="Center"
+                    Padding="10,0,0,0"
+                    Style="{StaticResource SubtitleStyle}"
+                    Text="{Binding Strings[AWAITING_PASSPORT_EU_ITEM_3_SUBITEM_1]}"
+                    AutomationProperties.IsInAccessibleTree="True">
+                    <Label.Effects>
+                        <controls:FontSizeLabelEffect />
+                    </Label.Effects>
+                </Label>
+            </StackLayout>
+
+            <StackLayout Padding="0,0,20,0" Orientation="Horizontal">
+                <Label
+                    Style="{StaticResource ContentTitleStyle}"
+                    Opacity="0"
+                    AutomationProperties.IsInAccessibleTree="False"
+                    Text="&#x2022; ">
+                    <Label.Effects>
+                        <controls:FontSizeLabelEffect />
+                    </Label.Effects>
+                </Label>
+                <Label
+                    Style="{StaticResource ContentTitleStyle}"
+                    AutomationProperties.IsInAccessibleTree="False"
+                    Text="&#x2022; ">
+                    <Label.Effects>
+                        <controls:FontSizeLabelEffect />
+                    </Label.Effects>
+                </Label>
+                <Label
+                    Margin="5,5,0,0"
+                    Style="{StaticResource SecondaryContentStyle}"
+                    AutomationProperties.IsInAccessibleTree="True">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Style="{StaticResource SecondaryContentBoldStyle}" Text="{Binding Strings[AWAITING_PASSPORT_EU_ITEM_3_SUBITEM_2_BOLD]}" />
+                            <Span Text="{Binding Strings[AWAITING_PASSPORT_EU_ITEM_3_SUBITEM_2_END]}" />
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+            </StackLayout>
+            <BoxView
+                Margin="-20,30,-20,0"
+                BackgroundColor="{StaticResource MainPageBackgroundColor}"
+                HeightRequest="1" />
+            <Label Padding="0,10,0,10"
+                   Style="{StaticResource SecondaryContentStyle}"
+                   TextColor="{StaticResource SSIBaseTextColor}"
+                   AutomationProperties.IsInAccessibleTree="True">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Style="{StaticResource SecondaryContentBoldStyle}" Text="{Binding Strings[AWAITING_PASSPORT_EU_FOOTNOTE_BOLD]}" />
+                        <Span
+                            FontAttributes="None"
+                            FontSize="Small"
+                            Text=" " />
+                        <Span Text="{Binding Strings[AWAITING_PASSPORT_EU_FOOTNOTE]}" />
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+        </StackLayout>
+    </ContentView.Content>
+</ContentView>

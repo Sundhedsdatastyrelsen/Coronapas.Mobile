@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<ContentPage
+    x:Class="SSICPAS.Views.Menu.AboutPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:elements="clr-namespace:SSICPAS.Views.Elements"
+    xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+    xmlns:viewModels="clr-namespace:SSICPAS.ViewModels.Menu" xmlns:effects="clr-namespace:SSICPAS.Controls"
+    ios:Page.UseSafeArea="False"
+    x:DataType="viewModels:AboutPageViewModel"
+    BackgroundColor="{StaticResource NavigationHeaderBackgroundColor}"
+    NavigationPage.HasNavigationBar="False">
+    <ContentPage.Content>
+        <Grid BackgroundColor="{StaticResource NavigationHeaderBackgroundColor}"
+              RowSpacing="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Grid.Padding>
+                <OnPlatform x:TypeArguments="Thickness">
+                    <On Platform="iOS" Value="0,50,0,0" />
+                    <On Platform="Android" Value="0,0,0,0" />
+                </OnPlatform>
+            </Grid.Padding>
+            <elements:NavigationHeader
+                CenterLabelText="{Binding Strings[ABOUT_PAGE_TITLE]}"
+                CenterLabelAccessibilityText=""
+                LeftButtonCommand="{Binding BackCommand}"
+                LeftButtonHeightRequest="50"
+                LeftButtonImageSource="{StaticResource ArrowBack}"/>
+            <BoxView
+                Grid.Row="1"
+                HeightRequest="1"
+                BackgroundColor="{StaticResource CheckBoxBorderColor}"
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="End" />
+            <ScrollView
+                Grid.Row="2"
+                BackgroundColor="{StaticResource DefaultBackgroundColor}"
+                VerticalOptions="FillAndExpand">
+                <StackLayout>
+                    <StackLayout Padding="20,23,20,20" Spacing="15">
+                        <Label
+                            Style="{StaticResource RegularLabelStyle}"
+                            Text="{Binding Strings[ABOUT_SECTION_1_TITLE]}">
+                            <Label.Effects>
+                                <effects:FontSizeLabelEffect />
+                            </Label.Effects>
+                        </Label>
+                        <Label
+                            Style="{StaticResource ContentTitleStyle}"
+                            Text="{Binding Strings[ABOUT_SECTION_1_CONTENT]}">
+                            <Label.Effects>
+                                <effects:FontSizeLabelEffect />
+                            </Label.Effects>
+                        </Label>
+                        <Label
+                            Style="{StaticResource ContentStyle}"
+                            Text="{Binding Strings[ABOUT_SECTION_1_SUBCONTENT]}">
+                            <Label.Effects>
+                                <effects:FontSizeLabelEffect />
+                            </Label.Effects>
+                        </Label>
+                    </StackLayout>
+                    <BoxView
+                        BackgroundColor="{StaticResource CheckBoxBorderColor}"
+                        HeightRequest="1"
+                        HorizontalOptions="FillAndExpand"
+                        VerticalOptions="End" />
+                    <StackLayout Padding="20,20,20,20" Spacing="15">
+                        <Label
+                            Style="{StaticResource RegularLabelStyle}"
+                            Text="{Binding Strings[ABOUT_SECTION_2_TITLE]}">
+                            <Label.Effects>
+                                <effects:FontSizeLabelEffect />
+                            </Label.Effects>
+                        </Label>
+                        <Label
+                            Style="{StaticResource ContentTitleStyle}"
+                            Text="{Binding Strings[ABOUT_SECTION_2_CONTENT]}">
+                            <Label.Effects>
+                                <effects:FontSizeLabelEffect />
+                            </Label.Effects>
+                        </Label>
+                        <Label
+                            Style="{StaticResource ContentStyle}"
+                            Text="{Binding Strings[ABOUT_SECTION_2_SUBCONTENT]}">
+                            <Label.Effects>
+                                <effects:FontSizeLabelEffect />
+                            </Label.Effects>
+                        </Label>
+                    </StackLayout>
+                </StackLayout>
+            </ScrollView>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

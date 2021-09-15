@@ -1,0 +1,1942 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{3703B8A3-43FA-4B9F-831D-331686527F34}</ProjectGuid>
+    <ProjectTypeGuids>{EFBA0AD7-5A72-4C68-AF49-83D382785DCF};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <TemplateGuid>{6968b3a4-1835-46a3-ac5c-1ae33b475983}</TemplateGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>SSICPAS.Droid</RootNamespace>
+    <AssemblyName>dk.sum.ssicpas</AssemblyName>
+    <Deterministic>True</Deterministic>
+    <AndroidApplication>True</AndroidApplication>
+    <AndroidResgenFile>Resources\Resource.designer.cs</AndroidResgenFile>
+    <AndroidResgenClass>Resource</AndroidResgenClass>
+    <AndroidManifest>Properties\AndroidManifestDebug.xml</AndroidManifest>
+    <MonoAndroidResourcePrefix>Resources</MonoAndroidResourcePrefix>
+    <MonoAndroidAssetsPrefix>Assets</MonoAndroidAssetsPrefix>
+    <TargetFrameworkVersion>v10.0</TargetFrameworkVersion>
+    <AndroidEnableSGenConcurrent>true</AndroidEnableSGenConcurrent>
+    <AndroidUseAapt2>true</AndroidUseAapt2>
+    <AndroidHttpClientHandlerType>Xamarin.Android.Net.AndroidClientHandler</AndroidHttpClientHandlerType>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>
+    </DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;UITEST</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AndroidLinkMode>None</AndroidLinkMode>
+    <EmbedAssembliesIntoApk>true</EmbedAssembliesIntoApk>
+    <AndroidSupportedAbis>armeabi-v7a;arm64-v8a;x86;x86_64</AndroidSupportedAbis>
+    <DebugType>
+    </DebugType>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Development|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\Development\</OutputPath>
+    <DefineConstants>DEVELOPMENT;DEBUG;UITEST</DefineConstants>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
+    <LangVersion>8.0</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+    <EmbedAssembliesIntoApk>true</EmbedAssembliesIntoApk>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Unittests|AnyCPU' ">
+    <DebugType></DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Unittests</OutputPath>
+    <DefineConstants>DEBUG;UNITTEST;UITEST</DefineConstants>
+    <WarningLevel>4</WarningLevel>
+    <JavaMaximumHeapSize>
+    </JavaMaximumHeapSize>
+    <AndroidEnableSGenConcurrent>false</AndroidEnableSGenConcurrent>
+    <AndroidUseAapt2>false</AndroidUseAapt2>
+    <AndroidManifest>
+    </AndroidManifest>
+    <LangVersion>Default</LangVersion>
+    <EmbedAssembliesIntoApk>true</EmbedAssembliesIntoApk>
+    <AndroidSupportedAbis>arm64-v8a;armeabi-v7a;x86</AndroidSupportedAbis>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Test|AnyCPU' ">
+    <OutputPath>bin\Test\</OutputPath>
+    <DefineConstants>TEST;UITEST</DefineConstants>
+    <DebugType></DebugType>
+    <Optimize>true</Optimize>
+    <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
+    <LangVersion>8.0</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+    <AotAssemblies>true</AotAssemblies>
+    <AndroidLinkTool>r8</AndroidLinkTool>
+    <AndroidUseSharedRuntime>false</AndroidUseSharedRuntime>
+    <EmbedAssembliesIntoApk>true</EmbedAssembliesIntoApk>
+    <AndroidSupportedAbis>armeabi-v7a;x86;arm64-v8a;x86_64</AndroidSupportedAbis>
+    <EnableLLVM>true</EnableLLVM>
+    <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'AppStore|AnyCPU' ">
+    <OutputPath>bin\AppStore\</OutputPath>
+    <DefineConstants>APPSTORE</DefineConstants>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
+    <LangVersion>8.0</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+    <AotAssemblies>true</AotAssemblies>
+    <AndroidLinkTool>r8</AndroidLinkTool>
+    <AndroidUseSharedRuntime>false</AndroidUseSharedRuntime>
+    <EmbedAssembliesIntoApk>true</EmbedAssembliesIntoApk>
+    <AndroidSupportedAbis>x86;arm64-v8a;x86_64;armeabi-v7a</AndroidSupportedAbis>
+    <AndroidPackageFormat>aab</AndroidPackageFormat>
+    <EnableLLVM>true</EnableLLVM>
+    <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'AppStoreBeta|AnyCPU' ">
+    <OutputPath>bin\AppStoreBeta\</OutputPath>
+    <DefineConstants>APPSTOREBETA</DefineConstants>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
+    <LangVersion>8.0</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+    <AotAssemblies>true</AotAssemblies>
+    <AndroidLinkTool>r8</AndroidLinkTool>
+    <AndroidUseSharedRuntime>false</AndroidUseSharedRuntime>
+    <EmbedAssembliesIntoApk>true</EmbedAssembliesIntoApk>
+    <AndroidSupportedAbis>x86;arm64-v8a;x86_64;armeabi-v7a</AndroidSupportedAbis>
+    <AndroidPackageFormat>aab</AndroidPackageFormat>
+    <EnableLLVM>true</EnableLLVM>
+    <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="BarcodeAPI_V1_1_40">
+      <HintPath>lib\BarcodeAPI_V1_1_40.dll</HintPath>
+    </Reference>
+    <Reference Include="Mono.Android" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Com.Airbnb.Android.Lottie">
+      <Version>3.0.3</Version>
+    </PackageReference>
+    <PackageReference Include="Com.Airbnb.Xamarin.Forms.Lottie">
+      <Version>3.0.1</Version>
+    </PackageReference>
+    <PackageReference Include="SkiaSharp.Views.Forms">
+      <Version>2.80.2</Version>
+    </PackageReference>
+    <PackageReference Include="Honeywell.BarcodeReader">
+      <Version>1.32.7.10</Version>
+    </PackageReference>
+    <PackageReference Include="jose-jwt">
+      <Version>2.6.1</Version>
+    </PackageReference>
+    <PackageReference Include="Xamarin.Auth">
+      <Version>1.7.0</Version>
+    </PackageReference>
+    <PackageReference Include="Xamarin.Forms" Version="5.0.0.2012" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+    <PackageReference Include="Xamarin.Essentials" Version="1.6.1" />
+    <PackageReference Include="Plugin.CurrentActivity">
+      <Version>2.1.0.4</Version>
+    </PackageReference>
+    <PackageReference Include="ZXing.Net.Mobile">
+      <Version>3.1.0-beta2</Version>
+    </PackageReference>
+    <PackageReference Include="ZXing.Net.Mobile.Forms">
+      <Version>3.1.0-beta2</Version>
+    </PackageReference>
+    <PackageReference Include="Rg.Plugins.Popup">
+      <Version>2.0.0.11</Version>
+    </PackageReference>
+    <PackageReference Include="AiForms.Dialogs">
+      <Version>1.0.10</Version>
+    </PackageReference>
+    <PackageReference Include="PeterO.Cbor">
+      <Version>4.3.0</Version>
+    </PackageReference>
+    <PackageReference Include="PeterO.URIUtility">
+      <Version>1.0.0</Version>
+    </PackageReference>
+    <PackageReference Include="PeterO.Numbers">
+      <Version>1.7.4</Version>
+    </PackageReference>
+    <PackageReference Include="Symbol.XamarinEMDK">
+      <Version>6.0.0.58</Version>
+    </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CustomRenderers\CustomLabelRenderer.cs" />
+    <Compile Include="CustomRenderers\LabelWithNoFontPaddingRenderer.cs" />
+    <Compile Include="CustomRenderers\FontSizeLabelEffect.cs" />
+    <Compile Include="CustomRenderers\SingleLineButtonRenderer.cs" />
+    <Compile Include="OAuth\AuthUrlSchemeInterceptorActivity.cs" />
+    <Compile Include="CustomRenderers\CustomButtonRenderer.cs" />
+    <Compile Include="MainActivity.cs" />
+    <Compile Include="Resources\Resource.designer.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\AndroidDeeplinkingService.cs" />
+    <Compile Include="Services\AndroidSettingsService.cs" />	
+    <Compile Include="Services\AndroidScannerFactory.cs" />
+    <Compile Include="Services\DroidVoidOverManager.cs" />
+    <Compile Include="Services\ImagerService\NewlandReceiver.cs" />
+    <Compile Include="Services\ImagerService\NewlandScanner.cs" />
+    <Compile Include="Services\ImagerService\HoneywellScanner.cs" />
+    <Compile Include="Services\SupportedOrientationToAndroidOrientationExtension.cs" />
+    <Compile Include="SplashActivity.cs" />
+    <Compile Include="Services\BrightnessService.cs" />
+    <Compile Include="Services\StatusBarService.cs" />
+    <Compile Include="Services\ConfigurationProvider.cs" />
+    <Compile Include="Services\ImagerService\ZebraTechnologyScanner.cs" />
+    <Compile Include="Services\ImagerService\DataWedgeReceiver.cs" />
+    <Compile Include="CustomRenderers\FrameShadowRenderer.cs" />
+    <Compile Include="Services\AndroidCustomOAuthNativeUIFlagResolver.cs" />
+    <Compile Include="Services\ImagerService\CHDReceiver.cs" />
+    <Compile Include="Services\ImagerService\CHDScanner.cs" />
+    <Compile Include="Services\ImagerService\CipherLabReceiver.cs" />
+    <Compile Include="Services\ImagerService\CipherLabScanner.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\fonts\IBMPlexSans-Regular.ttf" />
+    <AndroidAsset Include="Assets\loading.json" />
+    <AndroidAsset Include="Assets\loading_no_padding.json" />
+    <AndroidAsset Include="..\SSICPAS\Configuration\appsettings.local.json" Condition="'$(Configuration)' == 'Debug' or '$(Configuration)' == 'Unittests'">
+      <Link>Assets\appsettings.local.json</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\SSICPAS\Configuration\appsettings.Development.json" Condition="'$(Configuration)' == 'Development' or '$(Configuration)' == 'Test'">
+      <Link>Assets\appsettings.Development.json</Link>
+    </AndroidAsset>
+    <None Include="Properties\AndroidManifest.xml" />
+    <AndroidAsset Include="..\SSICPAS\Configuration\appsettings.Test.json" Condition="'$(Configuration)' == 'Test' or '$(Configuration)' == 'AppStoreBeta' or '$(Configuration)' == 'Development'">
+      <Link>Assets\appsettings.Test.json</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\SSICPAS\Configuration\appsettings.AppStore.json" Condition="'$(Configuration)' == 'AppStore'">
+      <Link>Assets\appsettings.AppStore.json</Link>
+    </AndroidAsset>
+    <None Include="packages.lock.json" />
+    <AndroidAsset Include="..\SSICPAS\Configuration\appsettings.AppStoreBeta.json" Condition="'$(Configuration)' == 'Test' or '$(Configuration)' == 'AppStoreBeta' or '$(Configuration)' == 'Development'">
+      <Link>Assets\appsettings.AppStoreBeta.json</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\intro_scanning.json" />
+    <AndroidAsset Include="Assets\intro_facemask.json" />
+    <AndroidAsset Include="Assets\intro_travel.json" />
+    <AndroidAsset Include="Assets\intro_security.json" />
+    <AndroidAsset Include="Assets\intro_passport.json" />
+    <AndroidAsset Include="Assets\success.json" />
+    <AndroidAsset Include="Assets\scanPas.json" />
+    <AndroidAsset Include="Assets\valid_dk_check.json" />
+    <AndroidAsset Include="Assets\valid_eu_plane.json" />
+    <None Include="Properties\AndroidManifestDebug.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-xxxhdpi\info_no_border.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\info_no_border.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\info_no_border.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\info_no_border.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\info_no_border.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\forward_arrow.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\HamburgerMenu.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\inverse_crown_icon.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\question_mark.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\setting.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\lightbulb.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\app_logo.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\question_mark.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\setting.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\share_icon.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\sundhedsminiateriet_landing_page_logo.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\text_page.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\forward_arrow.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\HamburgerMenu.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\info.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\question_mark.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\setting.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\lightbulb.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\app_logo.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\question_mark.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\setting.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\share_icon.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\sundhedsminiateriet_landing_page_logo.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\text_page.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\forward_arrow.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\HamburgerMenu.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\question_mark.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\setting.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\lightbulb.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\app_logo.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\question_mark.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\setting.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\share_icon.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\sundhedsminiateriet_landing_page_logo.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\text_page.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\forward_arrow.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\HamburgerMenu.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\question_mark.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\setting.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\lightbulb.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\app_logo.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\question_mark.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\setting.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\share_icon.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\sundhedsminiateriet_landing_page_logo.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\text_page.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\forward_arrow.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\question_mark.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\setting.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\lightbulb.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\question_mark.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\setting.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\share_icon.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\sundhedsminiateriet_landing_page_logo.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\text_page.png" />
+    <AndroidResource Include="Resources\drawable\NemIDButtons.png" />
+    <AndroidResource Include="Resources\drawable\NemIDLogo.png" />
+    <AndroidResource Include="Resources\layout\Tabbar.xml" />
+    <AndroidResource Include="Resources\layout\Toolbar.xml" />
+    <AndroidResource Include="Resources\values\styles.xml" />
+    <AndroidResource Include="Resources\values\colors.xml" />
+    <AndroidResource Include="Resources\mipmap-anydpi-v26\icon.xml" />
+    <AndroidResource Include="Resources\mipmap-anydpi-v26\icon_round.xml" />
+    <AndroidResource Include="Resources\drawable-xhdpi\qr_code_scanner.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\qr_code_scanner.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\qr_code_scanner.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\qr_code_scanner.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\valid_icon.png">
+      <SubType>
+      </SubType>
+      <Generator>
+      </Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-mdpi\clock_icon.png">
+      <SubType>
+      </SubType>
+      <Generator>
+      </Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-hdpi\clock_icon.png">
+      <SubType>
+      </SubType>
+      <Generator>
+      </Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-xhdpi\clock_icon.png">
+      <SubType>
+      </SubType>
+      <Generator>
+      </Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-xxhdpi\clock_icon.png">
+      <SubType>
+      </SubType>
+      <Generator>
+      </Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-xxxhdpi\clock_icon.png">
+      <SubType>
+      </SubType>
+      <Generator>
+      </Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-mdpi\exclamation_mark.png">
+      <SubType>
+      </SubType>
+      <Generator>
+      </Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-hdpi\exclamation_mark.png">
+      <SubType>
+      </SubType>
+      <Generator>
+      </Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-xhdpi\exclamation_mark.png">
+      <SubType>
+      </SubType>
+      <Generator>
+      </Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-xxhdpi\exclamation_mark.png">
+      <SubType>
+      </SubType>
+      <Generator>
+      </Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-xxxhdpi\exclamation_mark.png">
+      <SubType>
+      </SubType>
+      <Generator>
+      </Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_launcher.png">
+      <SubType>
+      </SubType>
+      <Generator>
+      </Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-hdpi\help_icon_blue.png">
+      <SubType>
+      </SubType>
+      <Generator>
+      </Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-mdpi\help_icon_blue.png">
+      <SubType>
+      </SubType>
+      <Generator>
+      </Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-xhdpi\help_icon_blue.png">
+      <SubType>
+      </SubType>
+      <Generator>
+      </Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-xxhdpi\help_icon_blue.png">
+      <SubType>
+      </SubType>
+      <Generator>
+      </Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-xxxhdpi\help_icon_blue.png">
+      <SubType>
+      </SubType>
+      <Generator>
+      </Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-hdpi\sundhedsminiateriet_landing_page_logo.png">
+      <SubType>
+      </SubType>
+      <Generator>
+      </Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-mdpi\sundhedsminiateriet_landing_page_logo.png">
+      <SubType>
+      </SubType>
+      <Generator>
+      </Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-xhdpi\sundhedsminiateriet_landing_page_logo.png">
+      <SubType>
+      </SubType>
+      <Generator>
+      </Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-xxhdpi\sundhedsminiateriet_landing_page_logo.png">
+      <SubType>
+      </SubType>
+      <Generator>
+      </Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-xxxhdpi\sundhedsminiateriet_landing_page_logo.png">
+      <SubType>
+      </SubType>
+      <Generator>
+      </Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-mdpi\inverse_crown_icon.png">
+      <SubType>
+      </SubType>
+      <Generator>
+      </Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-xhdpi\inverse_crown_icon.png">
+      <SubType>
+      </SubType>
+      <Generator>
+      </Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-xxhdpi\inverse_crown_icon.png">
+      <SubType>
+      </SubType>
+      <Generator>
+      </Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-xxxhdpi\inverse_crown_icon.png">
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-hdpi\valid_passport_icon.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-mdpi\valid_passport_icon.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-xhdpi\valid_passport_icon.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-xxhdpi\valid_passport_icon.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-xxxhdpi\valid_passport_icon.png">
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-hdpi\delete_keyboard.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-mdpi\delete_keyboard.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-xhdpi\delete_keyboard.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-xxhdpi\delete_keyboard.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-xxxhdpi\delete_keyboard.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-hdpi\fingerprint_layout.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-mdpi\fingerprint_layout.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-xhdpi\fingerprint_layout.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-xxhdpi\fingerprint_layout.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-xxxhdpi\fingerprint_layout.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-mdpi\landing_page_stock_image.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-mdpi\landing_page_background.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-mdpi\landing_page_vector.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-hdpi\landing_page_stock_image.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-hdpi\landing_page_background.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-hdpi\landing_page_vector.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-xhdpi\lanidng_page_background.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-xhdpi\landing_page_stock_image.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-xhdpi\landing_page_vector.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-xxhdpi\lanidng_page_background.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-xxhdpi\landing_page_stock_image.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-xxhdpi\landing_page_vector.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-xxxhdpi\landing_page_stock_image.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-xxxhdpi\landing_page_vector.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-xxxhdpi\lanidng_page_background.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-mdpi\covid_19_vaccine_icon.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-hdpi\error_layout.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-hdpi\covid_19_vaccine_icon.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-mdpi\error_layout.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-xhdpi\covid_19_vaccine_icon.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-xhdpi\error_layout.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-xxhdpi\covid_19_vaccine_icon.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-xxhdpi\error_layout.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-xxxhdpi\covid_19_vaccine_icon.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-xxxhdpi\error_layout.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-mdpi\covid_19_negative_test_icon.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-mdpi\information_icon.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-hdpi\covid_19_negative_test_icon.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-hdpi\information_icon.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-xhdpi\covid_19_negative_test_icon.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-xhdpi\information_icon.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-xxhdpi\covid_19_negative_test_icon.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-xxhdpi\information_icon.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-xxxhdpi\covid_19_negative_test_icon.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-xxxhdpi\information_icon.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-mdpi\covid_19_recovery_icon.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-hdpi\main_page_dotted_background.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-hdpi\covid_19_recovery_icon.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-mdpi\main_page_dotted_background.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-xhdpi\covid_19_recovery_icon.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-xhdpi\main_page_dotted_background.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-xxhdpi\covid_19_recovery_icon.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-xxhdpi\main_page_dotted_background.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-xxxhdpi\covid_19_recovery_icon.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-xxxhdpi\main_page_dotted_background.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-mdpi\collapsed_icon.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-hdpi\selected_dot_blue.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-hdpi\collapsed_icon.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-mdpi\selected_dot_blue.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-xhdpi\collapsed_icon.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-xhdpi\selected_dot_blue.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-xxhdpi\collapsed_icon.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-xxhdpi\selected_dot_blue.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-xxxhdpi\collapsed_icon.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-xxxhdpi\selected_dot_blue.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-mdpi\expanded_icon.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-hdpi\international_passport_icon.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-hdpi\expanded_icon.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-mdpi\international_passport_icon.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-xhdpi\expanded_icon.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-xhdpi\international_passport_icon.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-xxhdpi\expanded_icon.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-xxhdpi\international_passport_icon.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-xxxhdpi\expanded_icon.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-xxxhdpi\international_passport_icon.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-hdpi\error_layout.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-xxxhdpi\exclamation_icon_blue.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-mdpi\error_layout.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-xxhdpi\exclamation_icon_blue.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-xhdpi\error_layout.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-xhdpi\exclamation_icon_blue.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-xxhdpi\error_layout.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-mdpi\exclamation_icon_blue.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-xxxhdpi\error_layout.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-hdpi\exclamation_icon_blue.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-hdpi\main_page_dotted_background.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-xxxhdpi\hide_info_icon.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-mdpi\main_page_dotted_background.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-xxxhdpi\inverse_plane_icon.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-xhdpi\main_page_dotted_background.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-xxxhdpi\passport_picker_icon.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-xxhdpi\main_page_dotted_background.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-xxhdpi\hide_info_icon.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-xxxhdpi\main_page_dotted_background.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-xxhdpi\inverse_plane_icon.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-hdpi\selected_dot_blue.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-xxhdpi\passport_picker_icon.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-mdpi\selected_dot_blue.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-xhdpi\hide_info_icon.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-xhdpi\selected_dot_blue.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-xhdpi\inverse_plane_icon.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-xxhdpi\selected_dot_blue.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-xxxhdpi\selected_dot_blue.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-mdpi\hide_info_icon.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-mdpi\inverse_plane_icon.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-hdpi\international_passport_icon.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-mdpi\international_passport_icon.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-xhdpi\international_passport_icon.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-hdpi\hide_info_icon.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-xxhdpi\international_passport_icon.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-hdpi\inverse_plane_icon.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-xxxhdpi\international_passport_icon.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-xxxhdpi\exclamation_icon_blue.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-hdpi\error_lock.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-xxhdpi\exclamation_icon_blue.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-mdpi\error_lock.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-xhdpi\exclamation_icon_blue.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-xhdpi\error_lock.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-mdpi\exclamation_icon_blue.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-xxhdpi\error_lock.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-hdpi\exclamation_icon_blue.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-xxxhdpi\error_lock.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-xxxhdpi\hide_info_icon.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\mipmap-hdpi\launcher_background.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\mipmap-mdpi\launcher_background.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\mipmap-xhdpi\launcher_background.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\mipmap-xxhdpi\launcher_background.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\mipmap-xxxhdpi\launcher_background.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-mdpi\bottombar_passport.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-xxxhdpi\inverse_plane_icon.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-hdpi\bottombar_passport.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-xxxhdpi\passport_picker_icon.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-xhdpi\bottombar_passport.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-xxhdpi\hide_info_icon.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-xxhdpi\bottombar_passport.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-xxhdpi\inverse_plane_icon.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-xxxhdpi\bottombar_passport.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-xxhdpi\passport_picker_icon.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-mdpi\bottombar_scan.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-xhdpi\hide_info_icon.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-hdpi\bottombar_scan.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-xhdpi\inverse_plane_icon.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-xhdpi\bottombar_scan.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-xxhdpi\bottombar_scan.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-mdpi\hide_info_icon.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-xxxhdpi\bottombar_scan.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-mdpi\inverse_plane_icon.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-mdpi\bottombar_info.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-hdpi\bottombar_info.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-hdpi\hide_info_icon.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-xhdpi\bottombar_info.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-hdpi\inverse_plane_icon.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-xxhdpi\bottombar_info.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-xxxhdpi\bottombar_info.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable\splash_screen.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable\splash_screen_logo.xml">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable\splash_screen_layout.xml">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-hdpi\error_maintenance.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-hdpi\error_queue.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-mdpi\error_maintenance.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-mdpi\error_queue.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-xhdpi\error_maintenance.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-xhdpi\error_queue.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-xxhdpi\error_maintenance.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-xxhdpi\error_queue.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-xxxhdpi\error_maintenance.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-xxxhdpi\error_queue.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-xxxhdpi\HamburgerMenu.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-mdpi\question_mark_white.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-hdpi\question_mark_white.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-xhdpi\question_mark_white.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-xxhdpi\question_mark_white.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-xxxhdpi\question_mark_white.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-mdpi\toast_tick.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-hdpi\toast_tick.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-xhdpi\toast_tick.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-xxhdpi\toast_tick.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-xxxhdpi\toast_tick.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-mdpi\information_icon_large.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-mdpi\lock_icon.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-hdpi\information_icon_large.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-hdpi\lock_icon.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-xhdpi\information_icon_large.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-xhdpi\lock_icon.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-xxhdpi\information_icon_large.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-xxhdpi\lock_icon.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-xxxhdpi\information_icon_large.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-xxxhdpi\lock_icon.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-mdpi\expired_icon.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-hdpi\expired_icon.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-hdpi\valid_icon.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-xhdpi\expired_icon.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-xhdpi\valid_icon.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-xxhdpi\valid_icon.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-xxhdpi\expired_icon.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-xxxhdpi\expired_icon.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-xxxhdpi\valid_icon.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-mdpi\back_icon.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-hdpi\back_icon.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-xhdpi\back_icon.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-xxhdpi\back_icon.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-xxxhdpi\back_icon.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-hdpi\ScanRectangle.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-mdpi\ScanRectangle.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-xhdpi\ScanRectangle.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-xxhdpi\ScanRectangle.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-xxxhdpi\ScanRectangle.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-hdpi\hourGlass.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-mdpi\hourGlass.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-xhdpi\hourGlass.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-xxhdpi\hourGlass.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-xxxhdpi\hourGlass.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-hdpi\x_mark_circle.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-mdpi\x_mark_circle.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-xhdpi\x_mark_circle.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-xxhdpi\x_mark_circle.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-xxxhdpi\x_mark_circle.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-hdpi\HelpSupportQuestion.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-mdpi\HelpSupportQuestion.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-xhdpi\HelpSupportQuestion.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-xxhdpi\HelpSupportQuestion.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-xxxhdpi\HelpSupportQuestion.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-v23\splash_screen_layout.xml">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-mdpi\valid_passport_icon_green.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-mdpi\x_mark.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-hdpi\valid_passport_icon_green.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-hdpi\x_mark.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-xhdpi\x_mark.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-xhdpi\valid_passport_icon_green.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-xxhdpi\valid_passport_icon_green.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-xxhdpi\x_mark.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-xxxhdpi\valid_passport_icon_green.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-xxxhdpi\x_mark.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-mdpi\arrow_back.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-hdpi\arrow_back.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-xhdpi\arrow_back.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-xxhdpi\arrow_back.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-xxxhdpi\arrow_back.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-hdpi\info.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-xhdpi\info.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-xxhdpi\info.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-xxxhdpi\info.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-hdpi\DeleteButtonKeyboard.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-mdpi\DeleteButtonKeyboard.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-xhdpi\DeleteButtonKeyboard.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-xxhdpi\DeleteButtonKeyboard.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-xxxhdpi\DeleteButtonKeyboard.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+      <AndroidResource Include="Resources\drawable-mdpi\scanner_gradient_background.png">
+        <SubType></SubType>
+        <Generator></Generator>
+      </AndroidResource>
+      <AndroidResource Include="Resources\drawable-hdpi\scanner_gradient_background.png">
+        <SubType></SubType>
+        <Generator></Generator>
+      </AndroidResource>
+      <AndroidResource Include="Resources\drawable-xhdpi\scanner_gradient_background.png">
+        <SubType></SubType>
+        <Generator></Generator>
+      </AndroidResource>
+      <AndroidResource Include="Resources\drawable-xxhdpi\scanner_gradient_background.png">
+        <SubType></SubType>
+        <Generator></Generator>
+      </AndroidResource>
+      <AndroidResource Include="Resources\drawable-xxxhdpi\scanner_gradient_background.png">
+        <SubType></SubType>
+        <Generator></Generator>
+      </AndroidResource>
+      <AndroidResource Include="Resources\drawable-mdpi\coronapas_logo.png">
+        <SubType></SubType>
+        <Generator></Generator>
+      </AndroidResource>
+      <AndroidResource Include="Resources\drawable-hdpi\coronapas_logo.png">
+        <SubType></SubType>
+        <Generator></Generator>
+      </AndroidResource>
+      <AndroidResource Include="Resources\drawable-xhdpi\coronapas_logo.png">
+        <SubType></SubType>
+        <Generator></Generator>
+      </AndroidResource>
+      <AndroidResource Include="Resources\drawable-xxhdpi\coronapas_logo.png">
+        <SubType></SubType>
+        <Generator></Generator>
+      </AndroidResource>
+      <AndroidResource Include="Resources\drawable-xxxhdpi\coronapas_logo.png">
+        <SubType></SubType>
+        <Generator></Generator>
+      </AndroidResource>
+      <AndroidResource Include="Resources\drawable-hdpi\eu_info_icon.png">
+        <SubType></SubType>
+        <Generator></Generator>
+      </AndroidResource>
+      <AndroidResource Include="Resources\drawable-mdpi\eu_info_icon.png">
+        <SubType></SubType>
+        <Generator></Generator>
+      </AndroidResource>
+      <AndroidResource Include="Resources\drawable-xhdpi\eu_info_icon.png">
+        <SubType></SubType>
+        <Generator></Generator>
+      </AndroidResource>
+      <AndroidResource Include="Resources\drawable-xxhdpi\eu_info_icon.png">
+        <SubType></SubType>
+        <Generator></Generator>
+      </AndroidResource>
+      <AndroidResource Include="Resources\drawable-xxxhdpi\eu_info_icon.png">
+        <SubType></SubType>
+        <Generator></Generator>
+      </AndroidResource>
+      <AndroidResource Include="Resources\drawable-mdpi\show_info_icon.png">
+        <SubType></SubType>
+        <Generator></Generator>
+      </AndroidResource>
+      <AndroidResource Include="Resources\drawable-hdpi\show_info_icon.png">
+        <SubType></SubType>
+        <Generator></Generator>
+      </AndroidResource>
+      <AndroidResource Include="Resources\drawable-xhdpi\show_info_icon.png">
+        <SubType></SubType>
+        <Generator></Generator>
+      </AndroidResource>
+      <AndroidResource Include="Resources\drawable-xxhdpi\show_info_icon.png">
+        <SubType></SubType>
+        <Generator></Generator>
+      </AndroidResource>
+      <AndroidResource Include="Resources\drawable-xxxhdpi\show_info_icon.png">
+        <SubType></SubType>
+        <Generator></Generator>
+      </AndroidResource>
+      <AndroidResource Include="Resources\drawable-hdpi\ExclamationMark.png">
+        <SubType></SubType>
+        <Generator></Generator>
+      </AndroidResource>
+      <AndroidResource Include="Resources\drawable-mdpi\ExclamationMark.png">
+        <SubType></SubType>
+        <Generator></Generator>
+      </AndroidResource>
+      <AndroidResource Include="Resources\drawable-xhdpi\ExclamationMark.png">
+        <SubType></SubType>
+        <Generator></Generator>
+      </AndroidResource>
+      <AndroidResource Include="Resources\drawable-xxhdpi\ExclamationMark.png">
+        <SubType></SubType>
+        <Generator></Generator>
+      </AndroidResource>
+      <AndroidResource Include="Resources\drawable-xxxhdpi\ExclamationMark.png">
+        <SubType></SubType>
+        <Generator></Generator>
+      </AndroidResource>
+      <AndroidResource Include="Resources\mipmap-mdpi\icon.png">
+        <SubType></SubType>
+        <Generator></Generator>
+      </AndroidResource>
+      <AndroidResource Include="Resources\mipmap-hdpi\icon.png">
+        <SubType></SubType>
+        <Generator></Generator>
+      </AndroidResource>
+      <AndroidResource Include="Resources\mipmap-xhdpi\icon.png">
+        <SubType></SubType>
+        <Generator></Generator>
+      </AndroidResource>
+      <AndroidResource Include="Resources\mipmap-xxhdpi\icon.png">
+        <SubType></SubType>
+        <Generator></Generator>
+      </AndroidResource>
+      <AndroidResource Include="Resources\mipmap-xxxhdpi\icon.png">
+        <SubType></SubType>
+        <Generator></Generator>
+      </AndroidResource>
+      <AndroidResource Include="Resources\mipmap-hdpi\launcher_foreground.png">
+        <SubType></SubType>
+        <Generator></Generator>
+      </AndroidResource>
+      <AndroidResource Include="Resources\mipmap-mdpi\launcher_foreground.png">
+        <SubType></SubType>
+        <Generator></Generator>
+      </AndroidResource>
+      <AndroidResource Include="Resources\mipmap-xhdpi\launcher_foreground.png">
+        <SubType></SubType>
+        <Generator></Generator>
+      </AndroidResource>
+      <AndroidResource Include="Resources\mipmap-xxhdpi\launcher_foreground.png">
+        <SubType></SubType>
+        <Generator></Generator>
+      </AndroidResource>
+      <AndroidResource Include="Resources\mipmap-xxxhdpi\launcher_foreground.png">
+        <SubType></SubType>
+        <Generator></Generator>
+      </AndroidResource>
+      <AndroidResource Include="Resources\drawable-mdpi\landing_page_logo.png">
+        <SubType></SubType>
+        <Generator></Generator>
+      </AndroidResource>
+      <AndroidResource Include="Resources\drawable-hdpi\landing_page_logo.png">
+        <SubType></SubType>
+        <Generator></Generator>
+      </AndroidResource>
+      <AndroidResource Include="Resources\drawable-xhdpi\landing_page_logo.png">
+        <SubType></SubType>
+        <Generator></Generator>
+      </AndroidResource>
+      <AndroidResource Include="Resources\drawable-xxhdpi\landing_page_logo.png">
+        <SubType></SubType>
+        <Generator></Generator>
+      </AndroidResource>
+      <AndroidResource Include="Resources\drawable-xxxhdpi\landing_page_logo.png">
+        <SubType></SubType>
+        <Generator></Generator>
+      </AndroidResource>
+      <AndroidResource Include="Resources\drawable-hdpi\SplashLogo.png">
+        <SubType></SubType>
+        <Generator></Generator>
+      </AndroidResource>
+      <AndroidResource Include="Resources\drawable-mdpi\SplashLogo.png">
+        <SubType></SubType>
+        <Generator></Generator>
+      </AndroidResource>
+      <AndroidResource Include="Resources\drawable-xhdpi\SplashLogo.png">
+        <SubType></SubType>
+        <Generator></Generator>
+      </AndroidResource>
+      <AndroidResource Include="Resources\drawable-xxhdpi\SplashLogo.png">
+        <SubType></SubType>
+        <Generator></Generator>
+      </AndroidResource>
+      <AndroidResource Include="Resources\drawable-xxxhdpi\SplashLogo.png">
+        <SubType></SubType>
+        <Generator></Generator>
+      </AndroidResource>
+	  <AndroidResource Include="Resources\drawable-hdpi\flashlight_off.png">
+        <SubType></SubType>
+        <Generator></Generator>
+      </AndroidResource>
+	  <AndroidResource Include="Resources\drawable-hdpi\flashlight_on.png">
+        <SubType></SubType>
+        <Generator></Generator>
+      </AndroidResource>
+      <AndroidResource Include="Resources\drawable-mdpi\flashlight_off.png">
+        <SubType></SubType>
+        <Generator></Generator>
+      </AndroidResource>
+      <AndroidResource Include="Resources\drawable-mdpi\flashlight_on.png">
+        <SubType></SubType>
+        <Generator></Generator>
+      </AndroidResource>
+      <AndroidResource Include="Resources\drawable-xhdpi\flashlight_off.png">
+        <SubType></SubType>
+        <Generator></Generator>
+      </AndroidResource>
+      <AndroidResource Include="Resources\drawable-xhdpi\flashlight_on.png">
+        <SubType></SubType>
+        <Generator></Generator>
+      </AndroidResource>
+      <AndroidResource Include="Resources\drawable-xxhdpi\flashlight_off.png">
+        <SubType></SubType>
+        <Generator></Generator>
+      </AndroidResource>
+      <AndroidResource Include="Resources\drawable-xxhdpi\flashlight_on.png">
+        <SubType></SubType>
+        <Generator></Generator>
+      </AndroidResource>
+      <AndroidResource Include="Resources\drawable-xxxhdpi\flashlight_off.png">
+        <SubType></SubType>
+        <Generator></Generator>
+      </AndroidResource>
+      <AndroidResource Include="Resources\drawable-xxxhdpi\flashlight_on.png">
+        <SubType></SubType>
+        <Generator></Generator>
+      </AndroidResource>
+      <AndroidResource Include="Resources\drawable-mdpi\switch_to_dk_view_icon.png">
+        <SubType></SubType>
+        <Generator></Generator>
+      </AndroidResource>
+      <AndroidResource Include="Resources\drawable-mdpi\switch_to_eu_view_icon.png">
+        <SubType></SubType>
+        <Generator></Generator>
+      </AndroidResource>
+      <AndroidResource Include="Resources\drawable-hdpi\switch_to_eu_view_icon.png">
+        <SubType></SubType>
+        <Generator></Generator>
+      </AndroidResource>
+      <AndroidResource Include="Resources\drawable-hdpi\switch_to_dk_view_icon.png">
+        <SubType></SubType>
+        <Generator></Generator>
+      </AndroidResource>
+      <AndroidResource Include="Resources\drawable-xhdpi\switch_to_dk_view_icon.png">
+        <SubType></SubType>
+        <Generator></Generator>
+      </AndroidResource>
+      <AndroidResource Include="Resources\drawable-xhdpi\switch_to_eu_view_icon.png">
+        <SubType></SubType>
+        <Generator></Generator>
+      </AndroidResource>
+      <AndroidResource Include="Resources\drawable-hdpi\clock_side_circles.png">
+        <SubType></SubType>
+        <Generator></Generator>
+      </AndroidResource>
+      <AndroidResource Include="Resources\drawable-mdpi\clock_side_circles.png">
+        <SubType></SubType>
+        <Generator></Generator>
+      </AndroidResource>
+      <AndroidResource Include="Resources\drawable-xhdpi\clock_side_circles.png">
+        <SubType></SubType>
+        <Generator></Generator>
+      </AndroidResource>
+      <AndroidResource Include="Resources\drawable-xxhdpi\clock_side_circles.png">
+        <SubType></SubType>
+        <Generator></Generator>
+      </AndroidResource>
+      <AndroidResource Include="Resources\drawable-xxxhdpi\clock_side_circles.png">
+        <SubType></SubType>
+        <Generator></Generator>
+      </AndroidResource>
+      <AndroidResource Include="Resources\drawable-hdpi\question_mark_blue.png">
+        <SubType></SubType>
+        <Generator></Generator>
+      </AndroidResource>
+      <AndroidResource Include="Resources\drawable-mdpi\question_mark_blue.png">
+        <SubType></SubType>
+        <Generator></Generator>
+      </AndroidResource>
+      <AndroidResource Include="Resources\drawable-xhdpi\question_mark_blue.png">
+        <SubType></SubType>
+        <Generator></Generator>
+      </AndroidResource>
+      <AndroidResource Include="Resources\drawable-xxhdpi\question_mark_blue.png">
+        <SubType></SubType>
+        <Generator></Generator>
+      </AndroidResource>
+      <AndroidResource Include="Resources\drawable-xxxhdpi\question_mark_blue.png">
+        <SubType></SubType>
+        <Generator></Generator>
+      </AndroidResource>
+      <AndroidResource Include="Resources\drawable-mdpi\passport_dk_icon_selected.png">
+        <SubType></SubType>
+        <Generator></Generator>
+      </AndroidResource>
+      <AndroidResource Include="Resources\drawable-hdpi\passport_dk_icon_selected.png">
+        <SubType></SubType>
+        <Generator></Generator>
+      </AndroidResource>
+      <AndroidResource Include="Resources\drawable-xhdpi\passport_dk_icon_selected.png">
+        <SubType></SubType>
+        <Generator></Generator>
+      </AndroidResource>
+      <AndroidResource Include="Resources\drawable-xxhdpi\passport_dk_icon_selected.png">
+        <SubType></SubType>
+        <Generator></Generator>
+      </AndroidResource>
+      <AndroidResource Include="Resources\drawable-xxxhdpi\passport_dk_icon_selected.png">
+        <SubType></SubType>
+        <Generator></Generator>
+      </AndroidResource>
+      <AndroidResource Include="Resources\drawable-mdpi\passport_eu_icon.png">
+        <SubType></SubType>
+        <Generator></Generator>
+      </AndroidResource>
+      <AndroidResource Include="Resources\drawable-hdpi\passport_eu_icon.png">
+        <SubType></SubType>
+        <Generator></Generator>
+      </AndroidResource>
+      <AndroidResource Include="Resources\drawable-xhdpi\passport_eu_icon.png">
+        <SubType></SubType>
+        <Generator></Generator>
+      </AndroidResource>
+      <AndroidResource Include="Resources\drawable-xxhdpi\passport_eu_icon.png">
+        <SubType></SubType>
+        <Generator></Generator>
+      </AndroidResource>
+      <AndroidResource Include="Resources\drawable-xxxhdpi\passport_eu_icon.png">
+        <SubType></SubType>
+        <Generator></Generator>
+      </AndroidResource>
+      <AndroidResource Include="Resources\drawable-mdpi\passport_dk_icon.png">
+        <SubType></SubType>
+        <Generator></Generator>
+      </AndroidResource>
+      <AndroidResource Include="Resources\drawable-hdpi\passport_dk_icon.png">
+        <SubType></SubType>
+        <Generator></Generator>
+      </AndroidResource>
+      <AndroidResource Include="Resources\drawable-xhdpi\passport_dk_icon.png">
+        <SubType></SubType>
+        <Generator></Generator>
+      </AndroidResource>
+      <AndroidResource Include="Resources\drawable-xxhdpi\passport_dk_icon.png">
+        <SubType></SubType>
+        <Generator></Generator>
+      </AndroidResource>
+      <AndroidResource Include="Resources\drawable-xxxhdpi\passport_dk_icon.png">
+        <SubType></SubType>
+        <Generator></Generator>
+      </AndroidResource>
+      <AndroidResource Include="Resources\drawable-mdpi\passport_eu_icon_selected.png">
+        <SubType></SubType>
+        <Generator></Generator>
+      </AndroidResource>
+      <AndroidResource Include="Resources\drawable-hdpi\passport_eu_icon_selected.png">
+        <SubType></SubType>
+        <Generator></Generator>
+      </AndroidResource>
+      <AndroidResource Include="Resources\drawable-xhdpi\passport_eu_icon_selected.png">
+        <SubType></SubType>
+        <Generator></Generator>
+      </AndroidResource>
+      <AndroidResource Include="Resources\drawable-xxhdpi\passport_eu_icon_selected.png">
+        <SubType></SubType>
+        <Generator></Generator>
+      </AndroidResource>
+      <AndroidResource Include="Resources\drawable-xxxhdpi\passport_eu_icon_selected.png">
+        <SubType></SubType>
+        <Generator></Generator>
+      </AndroidResource>
+      <AndroidResource Include="Resources\drawable-mdpi\passport_selected.png">
+        <SubType></SubType>
+        <Generator></Generator>
+      </AndroidResource>
+      <AndroidResource Include="Resources\drawable-hdpi\passport_selected.png">
+        <SubType></SubType>
+        <Generator></Generator>
+      </AndroidResource>
+      <AndroidResource Include="Resources\drawable-xhdpi\passport_selected.png">
+        <SubType></SubType>
+        <Generator></Generator>
+      </AndroidResource>
+      <AndroidResource Include="Resources\drawable-xxhdpi\passport_selected.png">
+        <SubType></SubType>
+        <Generator></Generator>
+      </AndroidResource>
+      <AndroidResource Include="Resources\drawable-xxxhdpi\passport_selected.png">
+        <SubType></SubType>
+        <Generator></Generator>
+      </AndroidResource>
+      <AndroidResource Include="Resources\drawable-mdpi\passport_not_selected.png">
+        <SubType></SubType>
+        <Generator></Generator>
+      </AndroidResource>
+      <AndroidResource Include="Resources\drawable-hdpi\passport_not_selected.png">
+        <SubType></SubType>
+        <Generator></Generator>
+      </AndroidResource>
+      <AndroidResource Include="Resources\drawable-xhdpi\passport_not_selected.png">
+        <SubType></SubType>
+        <Generator></Generator>
+      </AndroidResource>
+      <AndroidResource Include="Resources\drawable-xxhdpi\passport_not_selected.png">
+        <SubType></SubType>
+        <Generator></Generator>
+      </AndroidResource>
+      <AndroidResource Include="Resources\drawable-xxxhdpi\passport_not_selected.png">
+        <SubType></SubType>
+        <Generator></Generator>
+      </AndroidResource>
+      <AndroidResource Include="Resources\drawable-mdpi\notification_icon.png">
+        <SubType></SubType>
+        <Generator></Generator>
+      </AndroidResource>
+      <AndroidResource Include="Resources\drawable-hdpi\notification_icon.png">
+        <SubType></SubType>
+        <Generator></Generator>
+      </AndroidResource>
+      <AndroidResource Include="Resources\drawable-xhdpi\notification_icon.png">
+        <SubType></SubType>
+        <Generator></Generator>
+      </AndroidResource>
+      <AndroidResource Include="Resources\drawable-xxhdpi\notification_icon.png">
+        <SubType></SubType>
+        <Generator></Generator>
+      </AndroidResource>
+      <AndroidResource Include="Resources\drawable-xxxhdpi\notification_icon.png">
+        <SubType></SubType>
+        <Generator></Generator>
+      </AndroidResource>
+      <AndroidResource Include="Resources\drawable-mdpi\internet_connectivity_issue_icon.png">
+        <SubType></SubType>
+        <Generator></Generator>
+      </AndroidResource>
+      <AndroidResource Include="Resources\drawable-hdpi\internet_connectivity_issue_icon.png">
+        <SubType></SubType>
+        <Generator></Generator>
+      </AndroidResource>
+      <AndroidResource Include="Resources\drawable-xhdpi\internet_connectivity_issue_icon.png">
+        <SubType></SubType>
+        <Generator></Generator>
+      </AndroidResource>
+      <AndroidResource Include="Resources\drawable-xxhdpi\internet_connectivity_issue_icon.png">
+        <SubType></SubType>
+        <Generator></Generator>
+      </AndroidResource>
+      <AndroidResource Include="Resources\drawable-xxxhdpi\internet_connectivity_issue_icon.png">
+        <SubType></SubType>
+        <Generator></Generator>
+      </AndroidResource>
+    </ItemGroup>
+    <ItemGroup>
+      <ProjectReference Include="..\SSICPAS\SSICPAS.csproj">
+        <Project>{CCA7587C-2315-43AE-990C-BF5682BC8E20}</Project>
+        <Name>SSICPAS</Name>
+      </ProjectReference>
+      <ProjectReference Include="..\SSICPAS.Core\SSICPAS.Core.csproj">
+        <Project>{74A636E1-F871-48FE-8E56-AC8BD701E16D}</Project>
+        <Name>SSICPAS.Core</Name>
+      </ProjectReference>
+      <ProjectReference Include="..\JarBinding\JarBinding.csproj">
+        <Project>{935EB5C3-3FF3-4030-B89E-823387BEFA3D}</Project>
+        <Name>JarBinding</Name>
+      </ProjectReference>
+    </ItemGroup>
+    <ItemGroup>
+      <Folder Include="Resources\drawable-v23\" />
+    </ItemGroup>
+    <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
+    <ProjectExtensions>
+      <VisualStudio>
+        <UserProperties TriggeredFromHotReload="False" />
+      </VisualStudio>
+    </ProjectExtensions>
+  </Project>

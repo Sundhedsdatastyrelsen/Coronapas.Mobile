@@ -1,0 +1,216 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:localview="clr-namespace:SSICPAS.Views.Elements"
+             xmlns:viewModels="clr-namespace:SSICPAS.ViewModels.Certificates"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core" 
+             xmlns:effects="clr-namespace:SSICPAS.Controls"
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+             x:Class="SSICPAS.Views.Elements.PassportItemListView"
+             x:DataType="viewModels:PassportItemListViewModel">
+  <ContentView.Content>
+        <Grid
+          VerticalOptions="FillAndExpand"
+          HorizontalOptions="Center">
+            <Image
+                Grid.Row="0"
+                Grid.Column="0"
+                Aspect="AspectFill"
+                Source="{StaticResource MainPageDottedBackground}" />
+            <ListView
+                Grid.Row="0"
+                Grid.Column="0"
+                x:Name="ListView"
+                IsGroupingEnabled="True"
+                ItemsSource="{Binding PassportItemsGrouped}"
+                GroupDisplayBinding="{Binding TitleLabelText}"
+                SeparatorVisibility="None"
+                HasUnevenRows="True"
+                SelectionMode="None"
+                BackgroundColor="Transparent"
+                ios:ListView.GroupHeaderStyle="Grouped"
+                VerticalOptions="FillAndExpand"
+                HeightRequest="3000"
+                AutomationProperties.Name="">
+                <ListView.Header>
+                    <StackLayout
+                        Spacing="0"
+                        BackgroundColor="Transparent">
+                        <BoxView BackgroundColor="{StaticResource MainPageBackgroundColor}" HeightRequest="0.5" />
+                        <Frame
+                            Padding="0"
+                            CornerRadius="0"
+                            HasShadow="False">
+                            <Grid BackgroundColor="White">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <Grid
+                                    Grid.Row="0"
+                                    Grid.RowSpan="2"
+                                    Grid.Column="0"
+                                    ColumnSpacing="0"
+                                    RowSpacing="0"
+                                    Margin="20,0,0,0"
+                                    VerticalOptions="Center">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                    </Grid.RowDefinitions>
+                                    <Label
+                                        x:Name="NameLabel"
+                                        Grid.Row="0"
+                                        Grid.Column="1"
+                                        AutomationProperties.IsInAccessibleTree="True"
+                                        HorizontalOptions="Start"
+                                        Style="{StaticResource SubtitleStyle}"
+                                        Text="{Binding FullName}"
+                                        VerticalOptions="EndAndExpand">
+                                        <Label.Effects>
+                                            <effects:FontSizeLabelEffect />
+                                        </Label.Effects>
+                                    </Label>
+                                    <Label
+                                        x:Name="BirthdateLabel"
+                                        Grid.Row="1"
+                                        Grid.Column="1"
+                                        AutomationProperties.IsInAccessibleTree="True"
+                                        Style="{StaticResource ContentStyle}"
+                                        HorizontalOptions="Start"
+                                        Text="{Binding Birthdate}"
+                                        VerticalOptions="StartAndExpand">
+                                        <Label.Effects>
+                                            <effects:FontSizeLabelEffect />
+                                        </Label.Effects>
+                                    </Label>
+                                </Grid>
+                                <Grid
+                                    HeightRequest="86"
+                                    Grid.Row="0"
+                                    Grid.RowSpan="2"
+                                    Grid.Column="2"
+                                    HorizontalOptions="End"
+                                    VerticalOptions="Center">
+                                    <localview:GyroReactiveView
+                                        Padding="10, 0"
+                                        AnimationRate="2"
+                                        Colors="{Binding TopGradient}"
+                                        Density="10"
+                                        HorizontalOptions="End"
+                                        ImageSource="{StaticResource InversePlaneIcon}"
+                                        VerticalOptions="CenterAndExpand"
+                                        HeightRequest="58" />
+                                </Grid>
+                            </Grid>
+                        </Frame>
+                        <Grid BackgroundColor="{StaticResource DefaultBackgroundColor}"
+                                  VerticalOptions="FillAndExpand">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <localview:GyroReactiveView
+                                x:Name="TopImage"
+                                Grid.Row="0"
+                                Grid.Column="0"
+                                Colors="{Binding TopGradientList}"
+                                Density="9"
+                                HeightRequest="52"
+                                HorizontalOptions="Fill"
+                                VerticalOptions="Fill"
+                                WidthRequest="70"
+                                AutomationProperties.IsInAccessibleTree="True"
+                                AutomationProperties.Name="{Binding Strings [INTERNATIONAL_TRAVEL_INFORMATION_LABEL_ACCESSIBILITY]}">
+                                <localview:GyroReactiveView.AnimationRate>
+                                    <OnPlatform x:TypeArguments="x:Single">
+                                        <On Platform="iOS" Value="0.5" />
+                                        <On Platform="Android" Value="0.25" />
+                                    </OnPlatform>
+                                </localview:GyroReactiveView.AnimationRate>
+                            </localview:GyroReactiveView>
+                            <Grid
+                                Grid.Row="0"
+                                VerticalOptions="Center">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+                                <Image
+                                    Grid.Column="0"
+                                    Margin="20,0,10,0"
+                                    Source="international_passport_icon.png"
+                                    VerticalOptions="Center"
+                                    HorizontalOptions="Start" />
+                                <Label
+                                    x:Name="CenterLabel"
+                                    Grid.Column="1"
+                                    Style="{StaticResource InfoPanePassportHeader}"
+                                    Text="{Binding Strings[PASSPORT_PAGE_VALID_BORDER_CONTROL_PASSPORT_TEXT]}"
+                                    VerticalOptions="Center"
+                                    HorizontalOptions="StartAndExpand"
+                                    AutomationProperties.IsInAccessibleTree="True"
+                                    LineBreakMode="WordWrap">
+                                    <Label.Effects>
+                                        <effects:FontSizeLabelEffect />
+                                    </Label.Effects>
+                                </Label>
+                                <Image
+                                    Grid.Column="2"
+                                    Margin="0,0,20,0"
+                                    HeightRequest="20"
+                                    WidthRequest="20"
+                                    Source="{StaticResource EUInformationIcon}"
+                                    VerticalOptions="Center"
+                                    HorizontalOptions="End" />
+                                <Button
+                                    x:Name="InfoButton"
+                                    Grid.Column="2"
+                                    Margin="0,0,15,0"
+                                    HorizontalOptions="End"
+                                    BackgroundColor="Transparent"
+                                    AutomationProperties.IsInAccessibleTree="True"
+                                    Command="{Binding OnQREuInfoButtonClicked}"
+                                    AutomationProperties.Name="{Binding Strings[PASSPORT_PAGE_DK_PASSPORT_DETAIL_BUTTON_TEXT]}"/>
+                            </Grid>
+                        </Grid>
+                    </StackLayout>
+                </ListView.Header>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <localview:PassportItemCellView
+                            x:DataType="viewModels:PassportItemCellViewModel"
+                            HeaderLabelText="{Binding HeaderLabelText}"
+                            SubHeaderLabelText="{Binding SubHeaderLabelText}"
+                            DurationLabelFirstSpanText="{Binding DurationLabelFirstSpanText}"
+                            DurationLabelSecondSpanText="{Binding DurationLabelSecondSpanText}"
+                            DoseLabelText="{Binding DoseLabelText}"
+                            IconImageSource="{Binding IconImageSource}"/>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+                <ListView.GroupHeaderTemplate>
+                    <DataTemplate>
+                        <localview:PassportItemGroupHeader
+                            ios:Cell.DefaultBackgroundColor="Transparent"
+                            x:DataType="viewModels:PassportItemsGroupViewModel"
+                            TitleLabelText="{Binding TitleLabelText}"/>
+                    </DataTemplate>
+                </ListView.GroupHeaderTemplate>
+                <ListView.Footer>
+                    <BoxView BackgroundColor="Transparent" HeightRequest="75" />
+                </ListView.Footer>
+            </ListView>
+        </Grid>
+  </ContentView.Content>
+</ContentView>

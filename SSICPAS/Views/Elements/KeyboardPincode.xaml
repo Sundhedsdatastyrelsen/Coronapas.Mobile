@@ -1,0 +1,207 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentView
+    x:Class="SSICPAS.Views.Elements.KeyboardPincode"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    InputTransparent="False">
+    <Grid
+        BackgroundColor="White"
+        ColumnSpacing="0"
+        RowSpacing="5">
+        <Grid.Padding>
+            <OnPlatform x:TypeArguments="Thickness">
+                <On Platform="Android" Value="0,20,0,30" />
+                <On Platform="iOS" Value="0,20,0,10" />
+            </OnPlatform>
+        </Grid.Padding>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="25*" />
+            <RowDefinition Height="25*" />
+            <RowDefinition Height="25*" />
+            <RowDefinition Height="25*" />
+        </Grid.RowDefinitions>
+        <Grid
+            Grid.Row="0"
+            HeightRequest="60"
+            HorizontalOptions="Fill">
+            <Button
+                Grid.Column="0"
+                BackgroundColor="#FFFFFF"
+                Command="{Binding OnPinButtonCommand}"
+                CommandParameter="1"
+                FontSize="24"
+                HorizontalOptions="Fill"
+                Style="{StaticResource PinNumberStyle}"
+                Text="1"
+                AutomationProperties.IsInAccessibleTree="True"
+                AutomationProperties.HelpText="{Binding Strings[PINCODE_KEY_1_TEXT_ACCESSIBILITY]}"
+                AutomationProperties.Name=""
+                TextColor="{StaticResource PinCodeButtonKeyboardColor}" />
+            <Button
+                Grid.Column="1"
+                BackgroundColor="#FFFFFF"
+                Command="{Binding OnPinButtonCommand}"
+                CommandParameter="2"
+                FontSize="24"
+                HorizontalOptions="Fill"
+                Style="{StaticResource PinNumberStyle}"
+                Text="2"
+                AutomationProperties.IsInAccessibleTree="True"
+                AutomationProperties.HelpText="{Binding Strings[PINCODE_KEY_2_TEXT_ACCESSIBILITY]}"
+                AutomationProperties.Name=""
+                TextColor="{StaticResource PinCodeButtonKeyboardColor}" />
+            <Button
+                Grid.Column="2"
+                BackgroundColor="#FFFFFF"
+                Command="{Binding OnPinButtonCommand}"
+                CommandParameter="3"
+                FontSize="24"
+                HorizontalOptions="Fill"
+                Style="{StaticResource PinNumberStyle}"
+                Text="3"
+                AutomationProperties.IsInAccessibleTree="True"
+                AutomationProperties.HelpText="{Binding Strings[PINCODE_KEY_3_TEXT_ACCESSIBILITY]}"
+                AutomationProperties.Name=""
+                TextColor="{StaticResource PinCodeButtonKeyboardColor}" />
+        </Grid>
+        <Grid Grid.Row="1" HorizontalOptions="Fill">
+            <Button
+                Grid.Column="0"
+                BackgroundColor="#FFFFFF"
+                Command="{Binding OnPinButtonCommand}"
+                CommandParameter="4"
+                FontSize="24"
+                HorizontalOptions="Fill"
+                Style="{StaticResource PinNumberStyle}"
+                Text="4"
+                AutomationProperties.IsInAccessibleTree="True"
+                AutomationProperties.HelpText="{Binding Strings[PINCODE_KEY_4_TEXT_ACCESSIBILITY]}"
+                AutomationProperties.Name=""
+                TextColor="{StaticResource PinCodeButtonKeyboardColor}" />
+            <Button
+                Grid.Column="1"
+                BackgroundColor="#FFFFFF"
+                Command="{Binding OnPinButtonCommand}"
+                CommandParameter="5"
+                FontSize="24"
+                HorizontalOptions="Fill"
+                Style="{StaticResource PinNumberStyle}"
+                Text="5"
+                AutomationProperties.IsInAccessibleTree="True"
+                AutomationProperties.HelpText="{Binding Strings[PINCODE_KEY_5_TEXT_ACCESSIBILITY]}"
+                AutomationProperties.Name=""
+                TextColor="{StaticResource PinCodeButtonKeyboardColor}" />
+            <Button
+                Grid.Column="2"
+                BackgroundColor="#FFFFFF"
+                Command="{Binding OnPinButtonCommand}"
+                CommandParameter="6"
+                FontAttributes="None"
+                FontSize="24"
+                HorizontalOptions="Fill"
+                Style="{StaticResource PinNumberStyle}"
+                Text="6"
+                AutomationProperties.IsInAccessibleTree="True"
+                AutomationProperties.HelpText="{Binding Strings[PINCODE_KEY_6_TEXT_ACCESSIBILITY]}"
+                AutomationProperties.Name=""
+                TextColor="{StaticResource PinCodeButtonKeyboardColor}" />
+        </Grid>
+        <Grid
+            Grid.Row="2"
+            HorizontalOptions="Fill"
+            MinimumHeightRequest="500">
+            <Button
+                Grid.Column="0"
+                BackgroundColor="#FFFFFF"
+                Command="{Binding OnPinButtonCommand}"
+                CommandParameter="7"
+                FontSize="24"
+                HorizontalOptions="Fill"
+                Style="{StaticResource PinNumberStyle}"
+                Text="7"
+                AutomationProperties.IsInAccessibleTree="True"
+                AutomationProperties.HelpText="{Binding Strings[PINCODE_KEY_7_TEXT_ACCESSIBILITY]}"
+                AutomationProperties.Name=""
+                TextColor="{StaticResource PinCodeButtonKeyboardColor}" />
+            <Button
+                Grid.Column="1"
+                BackgroundColor="#FFFFFF"
+                Command="{Binding OnPinButtonCommand}"
+                CommandParameter="8"
+                FontSize="24"
+                HorizontalOptions="Fill"
+                Style="{StaticResource PinNumberStyle}"
+                Text="8"
+                AutomationProperties.IsInAccessibleTree="True"
+                AutomationProperties.HelpText="{Binding Strings[PINCODE_KEY_8_TEXT_ACCESSIBILITY]}"
+                AutomationProperties.Name=""
+                TextColor="{StaticResource PinCodeButtonKeyboardColor}" />
+            <Button
+                Grid.Column="2"
+                BackgroundColor="#FFFFFF"
+                Command="{Binding OnPinButtonCommand}"
+                CommandParameter="9"
+                FontSize="24"
+                HorizontalOptions="Fill"
+                Style="{StaticResource PinNumberStyle}"
+                Text="9"
+                AutomationProperties.IsInAccessibleTree="True"
+                AutomationProperties.HelpText="{Binding Strings[PINCODE_KEY_9_TEXT_ACCESSIBILITY]}"
+                AutomationProperties.Name=""
+                TextColor="{StaticResource PinCodeButtonKeyboardColor}" />
+        </Grid>
+        <Grid Grid.Row="3" HorizontalOptions="Fill">
+            <Grid Grid.Column="2">
+                <Image
+                    AutomationProperties.IsInAccessibleTree="False"
+                    HorizontalOptions="Fill"
+                    Scale="0.6"
+                    Source="{StaticResource DeleteKeyboardLayout}"
+                    TranslationX="-3" />
+                <Button
+                    AutomationProperties.IsInAccessibleTree="True"
+                    AutomationProperties.HelpText="{Binding Strings[PINCODE_KEY_BACKSPACE_TEXT_ACCESSIBILITY]}"
+                    AutomationProperties.Name=""
+                    BackgroundColor="Transparent"
+                    Command="{Binding DeletePinCommand}"
+                    HorizontalOptions="Fill"
+                    Style="{StaticResource PinNumberStyle}"
+                    ImageSource="{StaticResource DeleteButtonKeyboard}"
+                    TextColor="{StaticResource PinCodeButtonKeyboardColor}" />
+            </Grid>
+            <Button
+                Grid.Column="1"
+                BackgroundColor="#FFFFFF"
+                Padding="0,0,0,10"
+                Command="{Binding OnPinButtonCommand}"
+                CommandParameter="0"
+                FontSize="24"
+                HorizontalOptions="Fill"
+                Style="{StaticResource PinNumberStyle}"
+                Text="0"
+                AutomationProperties.IsInAccessibleTree="True"
+                AutomationProperties.HelpText="{Binding Strings[PINCODE_KEY_0_TEXT_ACCESSIBILITY]}"
+                AutomationProperties.Name=""
+                TextColor="#1A2F29" />
+            <Button
+                Grid.Column="0"
+                Margin="20,0,20,5"
+                AutomationProperties.IsInAccessibleTree="True"
+                AutomationProperties.Name="{Binding Strings[PINCODE_KEY_BIOMETRIC_TEXT_ACCESSIBILITY]}"
+                BackgroundColor="Transparent"
+                Command="{Binding FingerPrintCommand}"
+                HorizontalOptions="Fill"
+                ImageSource="{StaticResource FingerPrintLayout}"
+                IsEnabled="{Binding IsBiometricEnabled}"
+                IsVisible="{Binding VisibleFingerPrint}" />
+        </Grid>
+        <Frame
+            Grid.Row="3"
+            BackgroundColor="White"
+            BorderColor="Transparent"
+            HasShadow="False"
+            HorizontalOptions="Fill"
+            TranslationY="60"
+            VerticalOptions="Fill" />
+    </Grid>
+</ContentView>

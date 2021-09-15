@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentView
+    x:Class="SSICPAS.Views.Elements.CustomPickerLayout"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:effects="clr-namespace:SSICPAS.Controls"
+    AutomationProperties.IsInAccessibleTree="False"
+    BackgroundColor="White"
+    >
+    <ContentView.Content>
+        <Grid Margin="18,0,16,8"
+              ColumnSpacing="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="9*" />
+                <ColumnDefinition Width="1*" />
+            </Grid.ColumnDefinitions>
+            <Label
+                x:Name="Label"
+                Grid.Column="0"
+                AutomationProperties.IsInAccessibleTree="False"
+                HorizontalOptions="FillAndExpand"
+                TextColor="{StaticResource SSIBaseTextColor}"
+                VerticalOptions="Center"
+                effects:FontSizeLabelEffectParams.MaxFontSize="40"
+                effects:FontSizeLabelEffectParams.MinFontSize="16">
+                <Label.Effects>
+                    <effects:FontSizeLabelEffect />
+                </Label.Effects>
+            </Label>
+            <Image
+                x:Name="SelectedIcon"
+                Grid.Column="1"
+                AutomationProperties.IsInAccessibleTree="False"
+                HeightRequest="24"
+                HorizontalOptions="Center"
+                VerticalOptions="Center"
+                WidthRequest="24" />
+            <Button
+                x:Name="AccessibilityButton"
+                Grid.ColumnSpan="2"
+                AutomationProperties.IsInAccessibleTree="True"
+                BackgroundColor="Transparent" />
+        </Grid>
+    </ContentView.Content>
+</ContentView>

@@ -1,0 +1,123 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+
+<ContentPage
+    x:Class="SSICPAS.Views.Certificates.InfoBorderControlPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:effects="clr-namespace:SSICPAS.Controls"
+    xmlns:elements="clr-namespace:SSICPAS.Views.Elements"
+    xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+    ios:Page.UseSafeArea="True"
+    NavigationPage.HasNavigationBar="False">
+    <ContentPage.Content>
+        <Grid BackgroundColor="{StaticResource DefaultBackgroundColor}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <elements:NavigationHeader
+                Grid.Row="0"
+                BackgroundColor="{StaticResource NavigationHeaderBackgroundColor}"
+                CenterLabelAccessibilityText="{Binding Strings[INFO_BORDER_CONTROL_TITLE]}"
+                CenterLabelText="{Binding Strings[INFO_BORDER_CONTROL_TITLE]}"
+                LeftButtonAccessibilityText="{Binding Strings [ACCESSIBILITY_BACK_BUTTON_HELP_TEXT]}"
+                LeftButtonCommand="{Binding BackCommand}"
+                LeftButtonImageSource="{StaticResource ArrowBack}">
+                <elements:NavigationHeader.LeftButtonHeightRequest>
+                    <OnPlatform x:TypeArguments="x:Int32">
+                        <On Platform="iOS" Value="50" />
+                        <On Platform="Android" Value="50" />
+                    </OnPlatform>
+                </elements:NavigationHeader.LeftButtonHeightRequest>
+            </elements:NavigationHeader>
+
+            <ScrollView Grid.Row="1">
+                <StackLayout Orientation="Vertical"
+                             Margin="25, 20"
+                             Spacing="20">
+                    <Label Style="{StaticResource SubtitleStyle}"
+                           Text="{Binding Strings[INFO_BORDER_CONTROL_HEADER_1]}"/>
+
+                    <StackLayout Orientation="Horizontal">
+                        <Label
+                            Padding="0,0,0,0"
+                            Style="{StaticResource ContentTitleStyle}"
+                            AutomationProperties.IsInAccessibleTree="False"
+                            Text="&#x2022; ">
+                            <Label.Effects>
+                                <effects:FontSizeLabelEffect />
+                            </Label.Effects>
+                        </Label>
+                        <Label
+                            Style="{StaticResource ContentStyle}"
+                            Text="{Binding Strings[INFO_BORDER_CONTROL_BULLET_TEXT_1]}">
+                            <Label.Effects>
+                                <effects:FontSizeLabelEffect />
+                            </Label.Effects>
+                        </Label>
+                        </StackLayout>
+
+                        <StackLayout Orientation="Horizontal">
+                         <Label
+                            Style="{StaticResource ContentTitleStyle}"
+                            AutomationProperties.IsInAccessibleTree="False"
+                            Text="&#x2022; ">
+                            <Label.Effects>
+                                <effects:FontSizeLabelEffect />
+                            </Label.Effects>
+                        </Label>
+                        <Label
+                            Style="{StaticResource ContentStyle}"
+                            Text="{Binding Strings[INFO_BORDER_CONTROL_BULLET_TEXT_2]}">
+                            <Label.Effects>
+                                <effects:FontSizeLabelEffect />
+                            </Label.Effects>
+                        </Label>
+                        </StackLayout>
+
+                <StackLayout Orientation="Horizontal">
+                         <Label
+                            Style="{StaticResource ContentTitleStyle}"
+                            AutomationProperties.IsInAccessibleTree="False"
+                            Text="&#x2022; ">
+                            <Label.Effects>
+                                <effects:FontSizeLabelEffect />
+                            </Label.Effects>
+                        </Label>
+                        <Label
+                            Style="{StaticResource ContentStyle}"
+                            Text="{Binding Strings[INFO_BORDER_CONTROL_BULLET_TEXT_3]}">
+                            <Label.Effects>
+                                <effects:FontSizeLabelEffect />
+                            </Label.Effects>
+                        </Label>
+                    </StackLayout>
+
+                    <StackLayout Orientation="Vertical">
+                        <Label Style="{StaticResource SubtitleStyle}"
+                           Text="{Binding Strings[INFO_BORDER_CONTROL_HEADER_2]}" />
+                        <Label 
+                            Style="{StaticResource ContentStyle}"
+                            Text="{Binding Strings[INFO_BORDER_CONTROL_HEADER_2_CONTENT]}">
+                            <Label.Effects>
+                                <effects:FontSizeLabelEffect />
+                            </Label.Effects>
+                        </Label>
+                    </StackLayout>
+
+                    <StackLayout Orientation="Vertical">
+                        <Label Style="{StaticResource SubtitleStyle}"
+                           Text="{Binding Strings[INFO_BORDER_CONTROL_HEADER_3]}" />
+                        <Label Style="{StaticResource ContentStyle}"
+                           Text="{Binding Strings [INFO_BORDER_CONTROL_HEADER_3_CONTENT]}">
+                            <Label.Effects>
+                                <effects:FontSizeLabelEffect />
+                            </Label.Effects>
+                        </Label>
+                    </StackLayout>
+                </StackLayout>
+            </ScrollView>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

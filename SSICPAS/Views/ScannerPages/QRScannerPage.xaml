@@ -1,0 +1,254 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<ContentPage
+    x:Class="SSICPAS.Views.ScannerPages.QRScannerPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:effects="clr-namespace:SSICPAS.Controls"
+    xmlns:elements="clr-namespace:SSICPAS.Views.Elements;assembly=SSICPAS"
+    xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+    xmlns:qrScannerViewModels="clr-namespace:SSICPAS.ViewModels.QrScannerViewModels;assembly=SSICPAS"
+    x:Name="ScannerPage"
+    ios:Application.EnableAccessibilityScalingForNamedFontSizes="true"
+    ios:Page.UseSafeArea="False"
+    x:DataType="qrScannerViewModels:QRScannerViewModel"
+    BackgroundColor="{StaticResource NavigationHeaderBackgroundColor}"
+    NavigationPage.HasNavigationBar="False">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <Grid
+            x:Name="ScannerContainer"
+            Grid.Row="0"
+            Grid.RowSpan="3"
+            AutomationProperties.HelpText="QR scanner"
+            AutomationProperties.IsInAccessibleTree="True" />
+
+        <elements:NavigationHeader
+            Grid.Row="0"
+            Margin="0,0,0,30"
+            CenterLabelAccessibilityText="{Binding Strings[SCAN_CORONAPAS]}"
+            CenterLabelText="{Binding Strings[SCAN_CORONAPAS]}"
+            IsVisible="{Binding InTabbar, Converter={StaticResource BoolToInverseBoolConverter}}"
+            LeftButtonAccessibilityText="{Binding Strings[BACK]}"
+            LeftButtonCommand="{Binding BackCommand}"
+            LeftButtonImageSource="{StaticResource ArrowBack}"
+            RightButtonAccessibilityText="{Binding Strings[MENU_BUTTON_TEXT]}"
+            RightButtonCommand="{Binding OpenMenuCommand}"
+            RightButtonImageSource="{StaticResource HamburgerMenu}">
+            <elements:NavigationHeader.LeftButtonHeightRequest>
+                <OnPlatform x:TypeArguments="x:Int32">
+                    <On Platform="iOS" Value="50" />
+                    <On Platform="Android" Value="50" />
+                </OnPlatform>
+            </elements:NavigationHeader.LeftButtonHeightRequest>
+            <elements:NavigationHeader.RightButtonHeightRequest>
+                <OnPlatform x:TypeArguments="x:Int32">
+                    <On Platform="iOS" Value="50" />
+                    <On Platform="Android" Value="25" />
+                </OnPlatform>
+            </elements:NavigationHeader.RightButtonHeightRequest>
+            <elements:NavigationHeader.Padding>
+                <OnPlatform x:TypeArguments="Thickness">
+                    <On Platform="iOS" Value="0,50,0,0" />
+                    <On Platform="Android" Value="0,15,0,0" />
+                </OnPlatform>
+            </elements:NavigationHeader.Padding>
+        </elements:NavigationHeader>
+
+        <Frame
+            Grid.Row="0"
+            Padding="10,0"
+            BackgroundColor="{StaticResource SSIWhite}"
+            CornerRadius="19"
+            HasShadow="False"
+            HeightRequest="38"
+            HorizontalOptions="CenterAndExpand"
+            IsVisible="{Binding InTabbar}"
+            VerticalOptions="Center">
+            <Frame.Margin>
+                <OnPlatform x:TypeArguments="Thickness">
+                    <On Platform="iOS" Value="0,45,0,20" />
+                    <On Platform="Android" Value="0,20,0,20" />
+                </OnPlatform>
+            </Frame.Margin>
+            <Label
+                HorizontalTextAlignment="Center"
+                HorizontalOptions="CenterAndExpand"
+                MaxLines="1"
+                Text="{Binding Strings[SCAN_CORONAPAS]}"
+                Style="{StaticResource QRScannerHeaderLabel}"
+                VerticalOptions="Center">
+                <Label.Effects>
+                    <effects:FontSizeLabelEffect />
+                </Label.Effects>
+            </Label>
+        </Frame>
+        <ScrollView
+            Grid.Row="1"
+            Grid.RowSpan="2"
+            VerticalOptions="Start">
+            <Grid
+                Margin="50,0"
+                HorizontalOptions="Center"
+                IsVisible="{Binding HasCameraPermissions, Converter={StaticResource BoolToInverseBoolConverter}}">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Image
+                    Grid.Row="0"
+                    Margin="20"
+                    HorizontalOptions="Center"
+                    Source="{StaticResource ErrorLock}" />
+                <Label
+                    Grid.Row="1"
+                    HorizontalOptions="Center"
+                    HorizontalTextAlignment="Center"
+                    Style="{StaticResource TitleStyle}"
+                    Text="{Binding Strings[SCANNER_CAMERA_PERMISSION_TITLE]}" />
+                <Label
+                    Grid.Row="2"
+                    HorizontalOptions="Center"
+                    HorizontalTextAlignment="Center"
+                    Style="{StaticResource ContentStyle}"
+                    Text="{Binding Strings[SCANNER_CAMERA_PERMISSION_DESC]}" />
+                <Button
+                    Grid.Row="3"
+                    Margin="0,30"
+                    Command="{Binding OpenSettingsCommand}"
+                    HorizontalOptions="CenterAndExpand"
+                    Style="{StaticResource TertiaryButtonStyle}"
+                    WidthRequest="400" />
+                <Label
+                    Grid.Row="3"
+                    Margin="0,30"
+                    effects:FontSizeLabelEffectParams.MaxFontSize="36"
+                    effects:FontSizeLabelEffectParams.MinFontSize="18"
+                    HorizontalTextAlignment="Center"
+                    InputTransparent="True"
+                    Style="{StaticResource CustomDialogCancelLabelStyle}"
+                    Text="{Binding Strings[SCANNER_CAMERA_PERMISSION_OPEN_SETTINGS]}"
+                    VerticalTextAlignment="Center">
+                    <Label.Effects>
+                        <effects:FontSizeLabelEffect />
+                    </Label.Effects>
+                </Label>
+            </Grid>
+        </ScrollView>
+        <Grid
+            x:Name="scannerFrame"
+            Grid.Row="1"
+            Padding="40,20,40,0"
+            HeightRequest="{Binding Source={x:Reference scannerFrame}, Path=Width}"
+            InputTransparent="True"
+            IsVisible="{Binding HasCameraPermissions}"
+            VerticalOptions="CenterAndExpand">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+
+            <Path
+                Grid.Row="0"
+                Grid.Column="0"
+                Aspect="Fill"
+                Data="M 60,0 30,0 Q 0,0 0,30 L 0,60"
+                HorizontalOptions="Start"
+                Stroke="White"
+                StrokeThickness="3" />
+
+            <Path
+                Grid.Row="0"
+                Grid.Column="1"
+                Aspect="Fill"
+                Data="M 0,0 30,0 Q 60,0 60,30 L 60,60"
+                HorizontalOptions="End"
+                Stroke="White"
+                StrokeThickness="3" />
+
+            <Path
+                Grid.Row="2"
+                Grid.Column="0"
+                Margin="0,170,0,0"
+                Aspect="Fill"
+                Data="M 0,0 0,30 Q 0,60 30,60 L 60,60"
+                HorizontalOptions="Start"
+                Stroke="White"
+                StrokeThickness="3" />
+
+            <Path
+                Grid.Row="2"
+                Grid.Column="1"
+                Margin="0,170,0,0"
+                Aspect="Fill"
+                Data="M 60,0 60,30 Q 60,60 30,60 L 0,60"
+                HorizontalOptions="End"
+                Stroke="White"
+                StrokeThickness="3" />
+        </Grid>
+
+        <Image
+            Grid.Row="2"
+            InputTransparent="True"
+            Scale="1.2"
+            Source="{StaticResource ScannerBackground}"
+            VerticalOptions="EndAndExpand">
+            <Image.Margin>
+                <OnPlatform x:TypeArguments="Thickness">
+                    <On Platform="iOS" Value="0,0,0,0" />
+                    <On Platform="Android" Value="0,0,0,-25" />
+                </OnPlatform>
+            </Image.Margin>
+        </Image>
+
+        <Label Grid.Row="2"
+               Text="{Binding Strings[SCAN_CORONAPAS_DESCRIPTION]}"
+               Style="{StaticResource SubtitleMedStyle}"
+               TextColor="{StaticResource SSIWhiteTextColor}"
+               VerticalOptions="Center"
+               HorizontalOptions="Center"
+               Margin="20,40,20,40"
+               LineBreakMode="WordWrap"
+               HorizontalTextAlignment="Center" 
+               IsVisible="{Binding HasCameraPermissions}"
+               effects:FontSizeLabelEffectParams.MaxFontSize="20.00"
+               effects:FontSizeLabelEffectParams.MinFontSize="12.00">
+            <Label.Effects>
+                <effects:FontSizeLabelEffect />
+            </Label.Effects>
+        </Label>
+
+        <Button
+            Command="{Binding ToggleFlashlight}"
+            Margin="{OnPlatform Android='0,0,15,20', iOS='0,0,15,20'}"      
+            Grid.Row="2"
+            IsEnabled="{Binding IsFlashlightSupported}"
+            BackgroundColor="Transparent"
+            CornerRadius="24"
+            BorderRadius="24"
+            BorderColor="White"
+            BorderWidth="1"
+            HeightRequest="48"
+            WidthRequest="48"
+            HorizontalOptions="EndAndExpand"
+            VerticalOptions="EndAndExpand"
+            ImageSource="{Binding CurrentFlashlightStateIconPath}"
+            IsVisible="{Binding HasFlashlightPermissions}"
+            AutomationProperties.IsInAccessibleTree="True"
+            AutomationProperties.Name="{Binding Strings[SCANNER_FLASHLIGHT]}">
+        </Button>
+    </Grid>
+</ContentPage>

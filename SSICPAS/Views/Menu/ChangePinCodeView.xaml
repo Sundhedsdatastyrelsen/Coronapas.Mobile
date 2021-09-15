@@ -1,0 +1,127 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    x:Class="SSICPAS.Views.Menu.ChangePinCodeView"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:effects="clr-namespace:SSICPAS.Controls"
+    xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+    xmlns:localview="clr-namespace:SSICPAS.Views.Elements"
+    xmlns:viewmodel="clr-namespace:SSICPAS.ViewModels.Menu"
+    xmlns:elements="clr-namespace:SSICPAS.Views.Elements"
+    ios:Page.UseSafeArea="true"
+    x:DataType="viewmodel:ChangePinCodeViewModel"
+    BackgroundColor="White"
+    NavigationPage.HasNavigationBar="False">
+    <ContentPage.Content>
+        <Grid Padding="0,0,0,0" BackgroundColor="{StaticResource DefaultBackgroundColor}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="60*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <ScrollView>
+                <Grid Grid.Row="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0" BackgroundColor="White">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="8*" />
+                            <ColumnDefinition Width="1*" />
+                        </Grid.ColumnDefinitions>
+                        <ImageButton
+                            Grid.Column="0"
+                            Margin="13,0,0,0"
+                            AutomationProperties.Name="{Binding BackText}"
+                            BackgroundColor="Transparent"
+                            Command="{Binding BackCommand}"
+                            HorizontalOptions="Start"
+                            Source="{StaticResource ArrowBack}"
+                            VerticalOptions="Center" />
+                        <elements:NavigationHeader
+                            Grid.Column="1"
+                            Margin="0,20,0,20"
+                            CenterLabelText="{Binding HeaderText}"
+                            CenterLabelAccessibilityText=""/>
+                    </Grid>
+                    <StackLayout Grid.Row="1" Margin="24,0,24,0">
+                        <Label
+                            CharacterSpacing="0.6"
+                            Style="{StaticResource TitleStyle}"
+                            Text="{Binding MainText}"
+                            VerticalOptions="CenterAndExpand">
+                            <Label.Effects>
+                                <effects:FontSizeLabelEffect />
+                            </Label.Effects>
+                        </Label>
+                        <localview:CustomPincodeBullets x:Name="PinCodeBulletView" />
+                        <StackLayout Orientation="Vertical" VerticalOptions="CenterAndExpand">
+                            <Label
+                                x:Name="ErrorLabel"
+                                effects:FontSizeLabelEffectParams.MaxFontSize="24"
+                                effects:FontSizeLabelEffectParams.MinFontSize="12"
+                                CharacterSpacing="0.4"
+                                HorizontalTextAlignment="Center"
+                                IsVisible="{Binding IsVisibleError}"
+                                Style="{StaticResource SecondaryContentStyle}"
+                                Text="{Binding VerifyErrorText}"
+                                TextColor="{StaticResource SSIErrorColor}">
+                                <Label.Effects>
+                                    <effects:FontSizeLabelEffect />
+                                </Label.Effects>
+                            </Label>
+                            <Label
+                                Margin="0,10,0,0"
+                                CharacterSpacing="0.4"
+                                IsVisible="{Binding VisibleSubText1}"
+                                Style="{StaticResource ContentStyle}"
+                                Text="{Binding SubText1}">
+                                <Label.Effects>
+                                    <effects:FontSizeLabelEffect />
+                                </Label.Effects>
+                            </Label>
+                            <Label
+                                CharacterSpacing="0.4"
+                                IsVisible="{Binding VisibleSubText2}"
+                                Style="{StaticResource ContentStyle}"
+                                Text="{Binding SubText2}">
+                                <Label.Effects>
+                                    <effects:FontSizeLabelEffect />
+                                </Label.Effects>
+                            </Label>
+                            <Label
+                                CharacterSpacing="0.4"
+                                IsVisible="{Binding VisibleSubText3}"
+                                Style="{StaticResource ContentStyle}"
+                                Text="{Binding SubText3}">
+                                <Label.Effects>
+                                    <effects:FontSizeLabelEffect />
+                                </Label.Effects>
+                            </Label>
+                            <Label
+                                CharacterSpacing="0.4"
+                                HorizontalTextAlignment="Center"
+                                IsVisible="{Binding VisibleSubText4}"
+                                Style="{StaticResource ContentStyle}"
+                                Text="{Binding SubText4}"
+                                TextColor="{StaticResource SSIButtonBlue}"
+                                AutomationProperties.IsInAccessibleTree="True"
+                                AutomationProperties.Name="{Binding Strings[ACCESSIBILITY_PINCODE_LOGIN_FORGET]}">
+                                <Label.Effects>
+                                    <effects:FontSizeLabelEffect />
+                                </Label.Effects>
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding ResetPassword}" />
+                                </Label.GestureRecognizers>
+                            </Label>
+                        </StackLayout>
+                    </StackLayout>
+                </Grid>
+            </ScrollView>
+            <Grid Grid.Row="1">
+                <localview:KeyboardPincode />
+            </Grid>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

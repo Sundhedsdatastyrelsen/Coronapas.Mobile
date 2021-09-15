@@ -1,0 +1,203 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage
+    x:Class="SSICPAS.Views.Menu.HelpPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:elements="clr-namespace:SSICPAS.Views.Elements"
+    xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+    xmlns:viewModels="clr-namespace:SSICPAS.ViewModels.Menu" xmlns:effects="clr-namespace:SSICPAS.Controls"
+    ios:Page.UseSafeArea="False"
+    x:DataType="viewModels:MenuHelpPageViewModel"
+    BackgroundColor="{StaticResource NavigationHeaderBackgroundColor}"
+    NavigationPage.HasNavigationBar="False">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="MenuHelpButtonStyle" TargetType="Button">
+                <Setter Property="HeightRequest" Value="59" />
+                <Setter Property="CornerRadius" Value="4" />
+                <Setter Property="FontSize" Value="Body" />
+                <Setter Property="BorderColor" Value="{StaticResource SSIDialogButton}" />
+                <Setter Property="BorderWidth" Value="0.5" />
+                <Setter Property="FontFamily" Value="IBMPlexSansRegular" />
+                <Setter Property="TextColor" Value="{StaticResource SSIDialogButton}" />
+                <Setter Property="VisualStateManager.VisualStateGroups">
+                    <VisualStateGroupList>
+                        <VisualStateGroup x:Name="CommonStates">
+                            <VisualState x:Name="Normal">
+                                <VisualState.Setters>
+                                    <Setter Property="BackgroundColor" Value="Transparent" />
+                                </VisualState.Setters>
+                            </VisualState>
+                            <VisualState x:Name="Pressed">
+                                <VisualState.Setters>
+                                    <Setter Property="BackgroundColor" Value="#CCB7C1DB" />
+                                </VisualState.Setters>
+                            </VisualState>
+                        </VisualStateGroup>
+                    </VisualStateGroupList>
+                </Setter>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <Grid BackgroundColor="{StaticResource NavigationHeaderBackgroundColor}"
+              RowSpacing="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Grid.Padding>
+                <OnPlatform x:TypeArguments="Thickness">
+                    <On Platform="iOS" Value="0,50,0,0" />
+                    <On Platform="Android" Value="0,0,0,0" />
+                </OnPlatform>
+            </Grid.Padding>
+            <elements:NavigationHeader
+                CenterLabelText="{Binding Strings[HELP_TITLE]}"
+                CenterLabelAccessibilityText=""
+                LeftButtonCommand="{Binding BackCommand}"
+                LeftButtonHeightRequest="50"
+                LeftButtonImageSource="{StaticResource ArrowBack}" />
+            <BoxView
+                Grid.Row="1"
+                HeightRequest="1"
+                BackgroundColor="{StaticResource CheckBoxBorderColor}"
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="End" />
+            <ScrollView Grid.Row="2" BackgroundColor="{StaticResource DefaultBackgroundColor}">
+                <ScrollView.Content>
+                    <Grid Padding="20,23,20,40">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Label Style="{StaticResource ContentStyle}" Text="{Binding Strings[HELP_CORONAPAS_TEXT]}" />
+                        <Label
+                            Grid.Row="1"
+                            Margin="0,32,0,0"
+                            Style="{StaticResource ContentTitleStyle}"
+                            Text="{Binding Strings[HELP_SUBTITLE]}">
+                            <Label.Effects>
+                                <effects:FontSizeLabelEffect />
+                            </Label.Effects>
+                        </Label>
+                        <Label Grid.Row="2" Style="{StaticResource ContentStyle}"
+                               Text="{Binding Strings[HELP_FAQ_TEXT]}">
+                            <Label.Effects>
+                                <effects:FontSizeLabelEffect />
+                            </Label.Effects>
+                        </Label>
+                        <Grid Grid.Row="3" Margin="0,30,0,40">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Grid Grid.Row="0" HorizontalOptions="CenterAndExpand">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="20" />
+                                </Grid.ColumnDefinitions>
+                                <Label
+                                    Style="{StaticResource ContentStyle}"
+                                    Text="{Binding Strings[HELP_URL_BUTTON]}"
+                                    TextColor="{StaticResource SSIDialogButton}"
+                                    VerticalTextAlignment="Center"
+                                    AutomationProperties.IsInAccessibleTree="True">
+                                    <Label.Effects>
+                                        <effects:FontSizeLabelEffect />
+                                    </Label.Effects>
+                                </Label>
+                                <Image
+                                    Grid.Column="1"
+                                    Margin="0,20,0,20"
+                                    Source="{StaticResource ShareIcon}"
+                                    AutomationProperties.IsInAccessibleTree="False"/>
+                            </Grid>
+                            <Button
+                                Grid.ColumnSpan="1"
+                                Command="{Binding OpenLinkCommand}"
+                                Style="{StaticResource SecondaryButtonStyle}"
+                                AutomationProperties.HelpText="{Binding Strings[HELP_URL_BUTTON]}"
+                                AutomationProperties.IsInAccessibleTree="False"/>
+                        </Grid>
+                        <Label
+                            Grid.Row="4"
+                            Style="{StaticResource ContentTitleStyle}"
+                            Text="{Binding Strings[HELP_PROBLEM_SUBTITLE]}">
+                            <Label.Effects>
+                                <effects:FontSizeLabelEffect />
+                            </Label.Effects>
+                        </Label>
+                        <Label
+                            Grid.Row="5"
+                            Margin="0,0,0,25"
+                            Style="{StaticResource ContentStyle}"
+                            Text="{Binding Strings[HELP_SUPPORT_TEXT]}">
+                            <Label.Effects>
+                                <effects:FontSizeLabelEffect />
+                            </Label.Effects>
+                        </Label>
+                        <Label
+                            Grid.Row="6"
+                            Style="{StaticResource ContentStyle}"
+                            Text="{Binding Strings[HELP_SUPPORT_MAIL_TEXT]}">
+                            <Label.Effects>
+                                <effects:FontSizeLabelEffect />
+                            </Label.Effects>
+                        </Label>
+                        <Label
+                            Grid.Row="7"
+                            Margin="0,0,0,25"
+                            AutomationProperties.IsInAccessibleTree="True"
+                            AutomationProperties.Name="{Binding Strings[HELP_MAIL_ACCESSIBILITY]}"
+                            Style="{StaticResource ContentTitleStyle}"
+                            Text="{Binding Strings[HELP_MAIL]}"
+                            TextColor="{StaticResource SSILinkColor}">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="HelpEmail_OnTapped" />
+                            </Label.GestureRecognizers>
+                            <Label.Effects>
+                                <effects:FontSizeLabelEffect />
+                            </Label.Effects>
+                        </Label>
+                        <Label
+                            Grid.Row="8"
+                            Style="{StaticResource ContentStyle}"
+                            Text="{Binding Strings[HELP_SUPPORT_PHONE_TEXT]}">
+                            <Label.Effects>
+                                <effects:FontSizeLabelEffect />
+                            </Label.Effects>
+                        </Label>
+                        <Label
+                            Grid.Row="9"
+                            AutomationProperties.IsInAccessibleTree="True"
+                            AutomationProperties.Name="{Binding Strings[HELP_PHONE_ACCESSIBILITY]}"
+                            Style="{StaticResource ContentTitleStyle}"
+                            Text="{Binding Strings[HELP_PHONE]}"
+                            TextColor="{StaticResource SSILinkColor}">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="HelpPhone_OnTapped" />
+                            </Label.GestureRecognizers>
+                            <Label.Effects>
+                                <effects:FontSizeLabelEffect />
+                            </Label.Effects>
+                        </Label>
+                    </Grid>
+
+                </ScrollView.Content>
+
+            </ScrollView>
+
+
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

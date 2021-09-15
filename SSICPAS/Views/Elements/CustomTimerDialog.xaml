@@ -1,0 +1,126 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+
+<extra:DialogView
+    x:Class="SSICPAS.Views.Elements.CustomTimerDialog"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:effects="clr-namespace:SSICPAS.Controls"
+    xmlns:extra="clr-namespace:AiForms.Dialogs.Abstractions;assembly=AiForms.Dialogs.Abstractions"
+    xmlns:viewmodel="clr-namespace:SSICPAS.ViewModels;assembly=SSICPAS"
+    x:DataType="viewmodel:Custom.CustomTimerDialogViewModel"
+    BackgroundColor="White"
+    CornerRadius="10"
+    DialogNotifier="{Binding Notifier}"
+    HorizontalLayoutAlignment="Center"
+    OffsetX="0"
+    OffsetY="0"
+    OverlayColor="{StaticResource SSIDark60}"
+    UseCurrentPageLocation="false"
+    VerticalLayoutAlignment="Center">
+    <Frame HeightRequest="450" WidthRequest="340">
+        <ScrollView>
+            <Grid
+                Margin="25,30,25,30"
+                HorizontalOptions="Center"
+                VerticalOptions="Center"
+                WidthRequest="300">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="60" />
+                </Grid.RowDefinitions>
+                <StackLayout Grid.Row="0" Margin="0,0,0,15">
+                    <Grid>
+                        <Ellipse 
+                            Grid.Row="0"
+                            Grid.Column="0"
+                            VerticalOptions="Center"
+                            HorizontalOptions="Center"
+                            Fill="#F4F9F9"
+                            Stroke="#FFFFFF"
+                            StrokeThickness="0"
+                            WidthRequest="64"
+                            HeightRequest="64"/>
+                        <Image
+                            Grid.Row="0"
+                            Grid.Column="0"
+                            VerticalOptions="Center"
+                            HorizontalOptions="Center"
+                            Source="{Binding ImageName}"
+                            HeightRequest="22"
+                            WidthRequest="22"
+                            IsVisible="{Binding ImageVisible}" />
+                    </Grid>
+                    <Label
+                        x:Name="HeaderLabel"
+                        effects:FontSizeLabelEffectParams.MaxFontSize="36"
+                        effects:FontSizeLabelEffectParams.MinFontSize="14"
+                        Style="{StaticResource TitleStyle}"
+                        Text="{Binding Title}"
+                        HorizontalTextAlignment="Center"
+                        Margin="0,24,0,39">
+                        <Label.Effects>
+                            <effects:FontSizeLabelEffect />
+                        </Label.Effects>
+                    </Label>
+                    <Label
+                        x:Name="BodyLabel"
+                        effects:FontSizeLabelEffectParams.MaxFontSize="32"
+                        effects:FontSizeLabelEffectParams.MinFontSize="12"
+                        Style="{StaticResource SecondaryContentStyle}"
+                        FontSize="Body"
+                        Text="{Binding Body}"
+                        HorizontalTextAlignment="Center"
+                        Margin="0,0,0,40">
+                        <Label.Effects>
+                            <effects:FontSizeLabelEffect />
+                        </Label.Effects>
+                    </Label>
+                </StackLayout>
+                <Grid Grid.Row="1" HorizontalOptions="FillAndExpand">
+                    <Grid>
+                        <Button
+                            x:Name="OkButton"
+                            Grid.Row="0"
+                            Clicked="Dismiss"
+                            HorizontalOptions="FillAndExpand"
+                            AutomationProperties.IsInAccessibleTree="True"
+                            AutomationProperties.HelpText="{Binding Source={Reference Name=OkButtonLabel}, Path=Text}"
+                            IsEnabled="{Binding OkButtonEnabled}"
+                            Style="{StaticResource ScreenshotProtectionDialogButtonStyle}">
+                        </Button>
+                        <Label x:Name="OkButtonLabel"
+                               Grid.Row="0"
+                               Margin="5,0,5,0"
+                               AutomationProperties.IsInAccessibleTree="False"
+                               effects:FontSizeLabelEffectParams.MaxFontSize="32"
+                               effects:FontSizeLabelEffectParams.MinFontSize="12"
+                               HorizontalOptions="Center"
+                               HorizontalTextAlignment="Center"
+                               InputTransparent="True"
+                               IsEnabled="False"
+                               Text="{Binding OkButtonText}"
+                               VerticalOptions="Center"
+                               FontAttributes="Bold"
+                               VerticalTextAlignment="Center">
+                            <Label.Triggers>
+                                <DataTrigger TargetType="Label"
+                                             Binding="{Binding OkButtonEnabled}"
+                                             Value="True">
+                                    <Setter Property="Style" Value="{StaticResource ButtonLabelStyle}" />
+                                </DataTrigger>
+                                <DataTrigger TargetType="Label"
+                                             Binding="{Binding OkButtonEnabled}"
+                                             Value="False">
+                                    <Setter Property="Style" Value="{StaticResource DisabledButtonLabelStyle}" />
+                                </DataTrigger>
+                            </Label.Triggers>
+                            <Label.Effects>
+                                <effects:FontSizeLabelEffect />
+                            </Label.Effects>
+                        </Label>
+                    </Grid>
+                </Grid>
+            </Grid>
+            </ScrollView>
+        </Frame>
+</extra:DialogView>

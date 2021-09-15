@@ -1,0 +1,2 @@
+"NSCameraUsageDescription" = "Kameraet bruges til at scanne QR-koder og stregkoder";
+"NSFaceIDUsageDescription" = "Face ID kan bruges til at logge ind i stedet for pinkode.";

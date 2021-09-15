@@ -1,0 +1,1247 @@
+[
+  {
+    "Code": "AF",
+    "Name": "Afghanistan",
+    "DanishName": "Afghanistan"
+  },
+  {
+    "Code": "AX",
+    "Name": "\u00c5land Islands",
+    "DanishName": "\u00c5land"
+  },
+  {
+    "Code": "AL",
+    "Name": "Albania",
+    "DanishName": "Albanien"
+  },
+  {
+    "Code": "DZ",
+    "Name": "Algeria",
+    "DanishName": "Algeriet"
+  },
+  {
+    "Code": "AS",
+    "Name": "American Samoa",
+    "DanishName": "Amerikansk Samoa"
+  },
+  {
+    "Code": "AD",
+    "Name": "Andorra",
+    "DanishName": "Andorra"
+  },
+  {
+    "Code": "AO",
+    "Name": "Angola",
+    "DanishName": "Angola"
+  },
+  {
+    "Code": "AI",
+    "Name": "Anguilla",
+    "DanishName": "Anguilla"
+  },
+  {
+    "Code": "AQ",
+    "Name": "Antarctica",
+    "DanishName": "Antarktis"
+  },
+  {
+    "Code": "AG",
+    "Name": "Antigua and Barbuda",
+    "DanishName": "Antigua og Barbuda"
+  },
+  {
+    "Code": "AR",
+    "Name": "Argentina",
+    "DanishName": "Argentina"
+  },
+  {
+    "Code": "AM",
+    "Name": "Armenia",
+    "DanishName": "Armenien"
+  },
+  {
+    "Code": "AW",
+    "Name": "Aruba",
+    "DanishName": "Aruba"
+  },
+  {
+    "Code": "AU",
+    "Name": "Australia",
+    "DanishName": "Australien"
+  },
+  {
+    "Code": "AT",
+    "Name": "Austria",
+    "DanishName": "\u00d8strig"
+  },
+  {
+    "Code": "AZ",
+    "Name": "Azerbaijan",
+    "DanishName": "Aserbajdsjan"
+  },
+  {
+    "Code": "BS",
+    "Name": "Bahamas",
+    "DanishName": "Bahamas"
+  },
+  {
+    "Code": "BH",
+    "Name": "Bahrain",
+    "DanishName": "Bahrain"
+  },
+  {
+    "Code": "BD",
+    "Name": "Bangladesh",
+    "DanishName": "Bangladesh"
+  },
+  {
+    "Code": "BB",
+    "Name": "Barbados",
+    "DanishName": "Barbados"
+  },
+  {
+    "Code": "BY",
+    "Name": "Belarus",
+    "DanishName": "Hviderusland"
+  },
+  {
+    "Code": "BE",
+    "Name": "Belgium",
+    "DanishName": "Belgien"
+  },
+  {
+    "Code": "BZ",
+    "Name": "Belize",
+    "DanishName": "Belize"
+  },
+  {
+    "Code": "BJ",
+    "Name": "Benin",
+    "DanishName": "Benin"
+  },
+  {
+    "Code": "BM",
+    "Name": "Bermuda",
+    "DanishName": "Bermuda"
+  },
+  {
+    "Code": "BT",
+    "Name": "Bhutan",
+    "DanishName": "Bhutan"
+  },
+  {
+    "Code": "BO",
+    "Name": "Bolivia, Plurinational State of",
+    "DanishName": "Bolivia"
+  },
+  {
+    "Code": "BQ",
+    "Name": "Bonaire, Sint Eustatius and Saba",
+    "DanishName": "Bonaire, St. Eustatius og Saba"
+  },
+  {
+    "Code": "BA",
+    "Name": "Bosnia and Herzegovina",
+    "DanishName": "Bosnien-Herzegovina"
+  },
+  {
+    "Code": "BW",
+    "Name": "Botswana",
+    "DanishName": "Botswana"
+  },
+  {
+    "Code": "BV",
+    "Name": "Bouvet Island",
+    "DanishName": "Bouvet\u00f8en"
+  },
+  {
+    "Code": "BR",
+    "Name": "Brazil",
+    "DanishName": "Brasilien"
+  },
+  {
+    "Code": "IO",
+    "Name": "British Indian Ocean Territory",
+    "DanishName": "Det britiske territorium i Det Indiske Ocean"
+  },
+  {
+    "Code": "BN",
+    "Name": "Brunei Darussalam",
+    "DanishName": "Brunei Darussalam"
+  },
+  {
+    "Code": "BG",
+    "Name": "Bulgaria",
+    "DanishName": "Bulgarien"
+  },
+  {
+    "Code": "BF",
+    "Name": "Burkina Faso",
+    "DanishName": "Burkina Faso"
+  },
+  {
+    "Code": "BI",
+    "Name": "Burundi",
+    "DanishName": "Burundi"
+  },
+  {
+    "Code": "KH",
+    "Name": "Cambodia",
+    "DanishName": "Cambodia"
+  },
+  {
+    "Code": "CM",
+    "Name": "Cameroon",
+    "DanishName": "Cameroun"
+  },
+  {
+    "Code": "CA",
+    "Name": "Canada",
+    "DanishName": "Canada"
+  },
+  {
+    "Code": "CV",
+    "Name": "Cape Verde",
+    "DanishName": "Kap Verde"
+  },
+  {
+    "Code": "KY",
+    "Name": "Cayman Islands",
+    "DanishName": "Cayman\u00f8erne"
+  },
+  {
+    "Code": "CF",
+    "Name": "Central African Republic",
+    "DanishName": "Den centralafrikanske republik"
+  },
+  {
+    "Code": "TD",
+    "Name": "Chad",
+    "DanishName": "Tchad"
+  },
+  {
+    "Code": "CL",
+    "Name": "Chile",
+    "DanishName": "Chile"
+  },
+  {
+    "Code": "CN",
+    "Name": "China",
+    "DanishName": "Kina"
+  },
+  {
+    "Code": "CX",
+    "Name": "Christmas Island",
+    "DanishName": "Jule\u00f8erne"
+  },
+  {
+    "Code": "CC",
+    "Name": "Cocos (Keeling) Islands",
+    "DanishName": "Cocos\u00f8erne"
+  },
+  {
+    "Code": "CO",
+    "Name": "Colombia",
+    "DanishName": "Colombia"
+  },
+  {
+    "Code": "KM",
+    "Name": "Comoros",
+    "DanishName": "Comorerne"
+  },
+  {
+    "Code": "CG",
+    "Name": "Congo",
+    "DanishName": "Congo"
+  },
+  {
+    "Code": "CD",
+    "Name": "Congo, the Democratic Republic of the",
+    "DanishName": "Den demokratiske republik Congo"
+  },
+  {
+    "Code": "CK",
+    "Name": "Cook Islands",
+    "DanishName": "Cook\u00f8erne"
+  },
+  {
+    "Code": "CR",
+    "Name": "Costa Rica",
+    "DanishName": "Costa Rica"
+  },
+  {
+    "Code": "CI",
+    "Name": "C\u00f4te d'Ivoire",
+    "DanishName": "Elfenbenskysten"
+  },
+  {
+    "Code": "HR",
+    "Name": "Croatia",
+    "DanishName": "Kroatien"
+  },
+  {
+    "Code": "CU",
+    "Name": "Cuba",
+    "DanishName": "Cuba"
+  },
+  {
+    "Code": "CW",
+    "Name": "Cura\u00e7ao",
+    "DanishName": "Cura\u00e7ao"
+  },
+  {
+    "Code": "CY",
+    "Name": "Cyprus",
+    "DanishName": "Cypern"
+  },
+  {
+    "Code": "CZ",
+    "Name": "Czech Republic",
+    "DanishName": "Tjekkiet"
+  },
+  {
+    "Code": "DK",
+    "Name": "Denmark",
+    "DanishName": "Danmark"
+  },
+  {
+    "Code": "DJ",
+    "Name": "Djibouti",
+    "DanishName": "Djibouti"
+  },
+  {
+    "Code": "DM",
+    "Name": "Dominica",
+    "DanishName": "Dominica"
+  },
+  {
+    "Code": "DO",
+    "Name": "Dominican Republic",
+    "DanishName": "Den Dominikanske Republik"
+  },
+  {
+    "Code": "EC",
+    "Name": "Ecuador",
+    "DanishName": "Ecuador"
+  },
+  {
+    "Code": "EG",
+    "Name": "Egypt",
+    "DanishName": "Egypten"
+  },
+  {
+    "Code": "SV",
+    "Name": "El Salvador",
+    "DanishName": "El Salvador"
+  },
+  {
+    "Code": "GQ",
+    "Name": "Equatorial Guinea",
+    "DanishName": "\u00c6kvatorialguinea"
+  },
+  {
+    "Code": "ER",
+    "Name": "Eritrea",
+    "DanishName": "Eritrea"
+  },
+  {
+    "Code": "EE",
+    "Name": "Estonia",
+    "DanishName": "Estland"
+  },
+  {
+    "Code": "ET",
+    "Name": "Ethiopia",
+    "DanishName": "Etiopien"
+  },
+  {
+    "Code": "FK",
+    "Name": "Falkland Islands (Malvinas)",
+    "DanishName": "Falklands\u00f8erne"
+  },
+  {
+    "Code": "FO",
+    "Name": "Faroe Islands",
+    "DanishName": "F\u00e6r\u00f8erne"
+  },
+  {
+    "Code": "FJ",
+    "Name": "Fiji",
+    "DanishName": "Fiji"
+  },
+  {
+    "Code": "FI",
+    "Name": "Finland",
+    "DanishName": "Finland"
+  },
+  {
+    "Code": "FR",
+    "Name": "France",
+    "DanishName": "Frankrig"
+  },
+  {
+    "Code": "GF",
+    "Name": "French Guiana",
+    "DanishName": "Fransk Guyana"
+  },
+  {
+    "Code": "PF",
+    "Name": "French Polynesia",
+    "DanishName": "Fransk Polynesien"
+  },
+  {
+    "Code": "TF",
+    "Name": "French Southern Territories",
+    "DanishName": "De franske besiddelser i det sydlige Indiske Ocean"
+  },
+  {
+    "Code": "GA",
+    "Name": "Gabon",
+    "DanishName": "Gabon"
+  },
+  {
+    "Code": "GM",
+    "Name": "Gambia",
+    "DanishName": "Gambia"
+  },
+  {
+    "Code": "GE",
+    "Name": "Georgia",
+    "DanishName": "Georgien"
+  },
+  {
+    "Code": "DE",
+    "Name": "Germany",
+    "DanishName": "Tyskland"
+  },
+  {
+    "Code": "GH",
+    "Name": "Ghana",
+    "DanishName": "Ghana"
+  },
+  {
+    "Code": "GI",
+    "Name": "Gibraltar",
+    "DanishName": "Gibraltar"
+  },
+  {
+    "Code": "GR",
+    "Name": "Greece",
+    "DanishName": "Gr\u00e6kenland"
+  },
+  {
+    "Code": "GL",
+    "Name": "Greenland",
+    "DanishName": "Gr\u00f8nland"
+  },
+  {
+    "Code": "GD",
+    "Name": "Grenada",
+    "DanishName": "Grenada"
+  },
+  {
+    "Code": "GP",
+    "Name": "Guadeloupe",
+    "DanishName": "Guadeloupe"
+  },
+  {
+    "Code": "GU",
+    "Name": "Guam",
+    "DanishName": "Guam"
+  },
+  {
+    "Code": "GT",
+    "Name": "Guatemala",
+    "DanishName": "Guatemala"
+  },
+  {
+    "Code": "GG",
+    "Name": "Guernsey",
+    "DanishName": "Guernsey"
+  },
+  {
+    "Code": "GN",
+    "Name": "Guinea",
+    "DanishName": "Guinea"
+  },
+  {
+    "Code": "GW",
+    "Name": "Guinea-Bissau",
+    "DanishName": "Guinea-Bissau"
+  },
+  {
+    "Code": "GY",
+    "Name": "Guyana",
+    "DanishName": "Guyana"
+  },
+  {
+    "Code": "HT",
+    "Name": "Haiti",
+    "DanishName": "Haiti"
+  },
+  {
+    "Code": "HM",
+    "Name": "Heard Island and McDonald Islands",
+    "DanishName": "Heard Island og McDonald Islands"
+  },
+  {
+    "Code": "VA",
+    "Name": "Holy See (Vatican City State)",
+    "DanishName": "Vatikanstaten"
+  },
+  {
+    "Code": "HN",
+    "Name": "Honduras",
+    "DanishName": "Honduras"
+  },
+  {
+    "Code": "HK",
+    "Name": "Hong Kong",
+    "DanishName": "Hongkong"
+  },
+  {
+    "Code": "HU",
+    "Name": "Hungary",
+    "DanishName": "Ungarn"
+  },
+  {
+    "Code": "IS",
+    "Name": "Iceland",
+    "DanishName": "Island"
+  },
+  {
+    "Code": "IN",
+    "Name": "India",
+    "DanishName": "Indien"
+  },
+  {
+    "Code": "ID",
+    "Name": "Indonesia",
+    "DanishName": "Indonesien"
+  },
+  {
+    "Code": "IR",
+    "Name": "Iran, Islamic Republic of",
+    "DanishName": "Iran"
+  },
+  {
+    "Code": "IQ",
+    "Name": "Iraq",
+    "DanishName": "Irak"
+  },
+  {
+    "Code": "IE",
+    "Name": "Ireland",
+    "DanishName": "Irland"
+  },
+  {
+    "Code": "IM",
+    "Name": "Isle of Man",
+    "DanishName": "Isle of Man"
+  },
+  {
+    "Code": "IL",
+    "Name": "Israel",
+    "DanishName": "Israel"
+  },
+  {
+    "Code": "IT",
+    "Name": "Italy",
+    "DanishName": "Italien"
+  },
+  {
+    "Code": "JM",
+    "Name": "Jamaica",
+    "DanishName": "Jamaica"
+  },
+  {
+    "Code": "JP",
+    "Name": "Japan",
+    "DanishName": "Japan"
+  },
+  {
+    "Code": "JE",
+    "Name": "Jersey",
+    "DanishName": "Jersey"
+  },
+  {
+    "Code": "JO",
+    "Name": "Jordan",
+    "DanishName": "Jordan"
+  },
+  {
+    "Code": "KZ",
+    "Name": "Kazakhstan",
+    "DanishName": "Kasakhstan"
+  },
+  {
+    "Code": "KE",
+    "Name": "Kenya",
+    "DanishName": "Kenya"
+  },
+  {
+    "Code": "KI",
+    "Name": "Kiribati",
+    "DanishName": "Kiribati"
+  },
+  {
+    "Code": "KP",
+    "Name": "Korea, Democratic People's Republic of",
+    "DanishName": "Nordkorea"
+  },
+  {
+    "Code": "KR",
+    "Name": "Korea, Republic of",
+    "DanishName": "Sydkorea"
+  },
+  {
+    "Code": "KW",
+    "Name": "Kuwait",
+    "DanishName": "Kuwait"
+  },
+  {
+    "Code": "KG",
+    "Name": "Kyrgyzstan",
+    "DanishName": "Kirgisistan"
+  },
+  {
+    "Code": "LA",
+    "Name": "Lao People's Democratic Republic",
+    "DanishName": "Laos"
+  },
+  {
+    "Code": "LV",
+    "Name": "Latvia",
+    "DanishName": "Letland"
+  },
+  {
+    "Code": "LB",
+    "Name": "Lebanon",
+    "DanishName": "Libanon"
+  },
+  {
+    "Code": "LS",
+    "Name": "Lesotho",
+    "DanishName": "Lesotho"
+  },
+  {
+    "Code": "LR",
+    "Name": "Liberia",
+    "DanishName": "Liberia"
+  },
+  {
+    "Code": "LY",
+    "Name": "Libya",
+    "DanishName": "Libyen"
+  },
+  {
+    "Code": "LI",
+    "Name": "Liechtenstein",
+    "DanishName": "Liechtenstein"
+  },
+  {
+    "Code": "LT",
+    "Name": "Lithuania",
+    "DanishName": "Litauen"
+  },
+  {
+    "Code": "LU",
+    "Name": "Luxembourg",
+    "DanishName": "Luxembourg"
+  },
+  {
+    "Code": "MO",
+    "Name": "Macao",
+    "DanishName": "Macao"
+  },
+  {
+    "Code": "MK",
+    "Name": "Macedonia, the Former Yugoslav Republic of",
+    "DanishName": "Nordmakedonien"
+  },
+  {
+    "Code": "MG",
+    "Name": "Madagascar",
+    "DanishName": "Madagaskar"
+  },
+  {
+    "Code": "MW",
+    "Name": "Malawi",
+    "DanishName": "Malawi"
+  },
+  {
+    "Code": "MY",
+    "Name": "Malaysia",
+    "DanishName": "Malaysia"
+  },
+  {
+    "Code": "MV",
+    "Name": "Maldives",
+    "DanishName": "Maldiverne"
+  },
+  {
+    "Code": "ML",
+    "Name": "Mali",
+    "DanishName": "Mali"
+  },
+  {
+    "Code": "MT",
+    "Name": "Malta",
+    "DanishName": "Malta"
+  },
+  {
+    "Code": "MH",
+    "Name": "Marshall Islands",
+    "DanishName": "Marshall\u00f8erne"
+  },
+  {
+    "Code": "MQ",
+    "Name": "Martinique",
+    "DanishName": "Martinique"
+  },
+  {
+    "Code": "MR",
+    "Name": "Mauritania",
+    "DanishName": "Mauretanien"
+  },
+  {
+    "Code": "MU",
+    "Name": "Mauritius",
+    "DanishName": "Mauritius"
+  },
+  {
+    "Code": "YT",
+    "Name": "Mayotte",
+    "DanishName": "Mayotte"
+  },
+  {
+    "Code": "MX",
+    "Name": "Mexico",
+    "DanishName": "Mexico"
+  },
+  {
+    "Code": "FM",
+    "Name": "Micronesia, Federated States of",
+    "DanishName": "Mikronesien"
+  },
+  {
+    "Code": "MD",
+    "Name": "Moldova, Republic of",
+    "DanishName": "Moldova"
+  },
+  {
+    "Code": "MC",
+    "Name": "Monaco",
+    "DanishName": "Monaco"
+  },
+  {
+    "Code": "MN",
+    "Name": "Mongolia",
+    "DanishName": "Mongoliet"
+  },
+  {
+    "Code": "ME",
+    "Name": "Montenegro",
+    "DanishName": "Montenegro"
+  },
+  {
+    "Code": "MS",
+    "Name": "Montserrat",
+    "DanishName": "Montserrat"
+  },
+  {
+    "Code": "MA",
+    "Name": "Morocco",
+    "DanishName": "Marokko"
+  },
+  {
+    "Code": "MZ",
+    "Name": "Mozambique",
+    "DanishName": "Mozambique"
+  },
+  {
+    "Code": "MM",
+    "Name": "Myanmar",
+    "DanishName": "Myanmar"
+  },
+  {
+    "Code": "NA",
+    "Name": "Namibia",
+    "DanishName": "Namibia"
+  },
+  {
+    "Code": "NR",
+    "Name": "Nauru",
+    "DanishName": "Nauru"
+  },
+  {
+    "Code": "NP",
+    "Name": "Nepal",
+    "DanishName": "Nepal"
+  },
+  {
+    "Code": "NL",
+    "Name": "Netherlands",
+    "DanishName": "Holland"
+  },
+  {
+    "Code": "NC",
+    "Name": "New Caledonia",
+    "DanishName": "Ny Kaledonien"
+  },
+  {
+    "Code": "NZ",
+    "Name": "New Zealand",
+    "DanishName": "New Zealand"
+  },
+  {
+    "Code": "NI",
+    "Name": "Nicaragua",
+    "DanishName": "Nicaragua"
+  },
+  {
+    "Code": "NE",
+    "Name": "Niger",
+    "DanishName": "Niger"
+  },
+  {
+    "Code": "NG",
+    "Name": "Nigeria",
+    "DanishName": "Nigeria"
+  },
+  {
+    "Code": "NU",
+    "Name": "Niue",
+    "DanishName": "Niue"
+  },
+  {
+    "Code": "NF",
+    "Name": "Norfolk Island",
+    "DanishName": "Norfolk Island"
+  },
+  {
+    "Code": "MP",
+    "Name": "Northern Mariana Islands",
+    "DanishName": "Nordmarianerne"
+  },
+  {
+    "Code": "NO",
+    "Name": "Norway",
+    "DanishName": "Norge"
+  },
+  {
+    "Code": "OM",
+    "Name": "Oman",
+    "DanishName": "Oman"
+  },
+  {
+    "Code": "PK",
+    "Name": "Pakistan",
+    "DanishName": "Pakistan"
+  },
+  {
+    "Code": "PW",
+    "Name": "Palau",
+    "DanishName": "Palau"
+  },
+  {
+    "Code": "PS",
+    "Name": "Palestine, State of",
+    "DanishName": "Pal\u00e6stina"
+  },
+  {
+    "Code": "PA",
+    "Name": "Panama",
+    "DanishName": "Panama"
+  },
+  {
+    "Code": "PG",
+    "Name": "Papua New Guinea",
+    "DanishName": "Papua Ny Guinea"
+  },
+  {
+    "Code": "PY",
+    "Name": "Paraguay",
+    "DanishName": "Paraguay"
+  },
+  {
+    "Code": "PE",
+    "Name": "Peru",
+    "DanishName": "Peru"
+  },
+  {
+    "Code": "PH",
+    "Name": "Philippines",
+    "DanishName": "Filippinerne"
+  },
+  {
+    "Code": "PN",
+    "Name": "Pitcairn",
+    "DanishName": "Pitcairn"
+  },
+  {
+    "Code": "PL",
+    "Name": "Poland",
+    "DanishName": "Polen"
+  },
+  {
+    "Code": "PT",
+    "Name": "Portugal",
+    "DanishName": "Portugal"
+  },
+  {
+    "Code": "PR",
+    "Name": "Puerto Rico",
+    "DanishName": "Puerto Rico"
+  },
+  {
+    "Code": "QA",
+    "Name": "Qatar",
+    "DanishName": "Qatar"
+  },
+  {
+    "Code": "RE",
+    "Name": "R\u00e9union",
+    "DanishName": "R\u00e9union"
+  },
+  {
+    "Code": "RO",
+    "Name": "Romania",
+    "DanishName": "Rum\u00e6nien"
+  },
+  {
+    "Code": "RU",
+    "Name": "Russian Federation",
+    "DanishName": "Rusland"
+  },
+  {
+    "Code": "RW",
+    "Name": "Rwanda",
+    "DanishName": "Rwanda"
+  },
+  {
+    "Code": "BL",
+    "Name": "Saint Barth\u00e9lemy",
+    "DanishName": "Saint Barth\u00e9lemy"
+  },
+  {
+    "Code": "SH",
+    "Name": "Saint Helena, Ascension and Tristan da Cunha",
+    "DanishName": "Sankt Helena"
+  },
+  {
+    "Code": "KN",
+    "Name": "Saint Kitts and Nevis",
+    "DanishName": "Saint Kitts og Nevis"
+  },
+  {
+    "Code": "LC",
+    "Name": "Saint Lucia",
+    "DanishName": "Saint Lucia"
+  },
+  {
+    "Code": "MF",
+    "Name": "Saint Martin (French part)",
+    "DanishName": "Saint-Martin"
+  },
+  {
+    "Code": "PM",
+    "Name": "Saint Pierre and Miquelon",
+    "DanishName": "Saint-Pierre og Miquelon"
+  },
+  {
+    "Code": "VC",
+    "Name": "Saint Vincent and the Grenadines",
+    "DanishName": "Saint Vincent og Grenadinerne"
+  },
+  {
+    "Code": "WS",
+    "Name": "Samoa",
+    "DanishName": "Samoa"
+  },
+  {
+    "Code": "SM",
+    "Name": "San Marino",
+    "DanishName": "San Marino"
+  },
+  {
+    "Code": "ST",
+    "Name": "Sao Tome and Principe",
+    "DanishName": "S\u00e3o Tom\u00e9 og Pr\u00edncipe"
+  },
+  {
+    "Code": "SA",
+    "Name": "Saudi Arabia",
+    "DanishName": "Saudiarabien"
+  },
+  {
+    "Code": "SN",
+    "Name": "Senegal",
+    "DanishName": "Senegal"
+  },
+  {
+    "Code": "RS",
+    "Name": "Serbia",
+    "DanishName": "Serbien"
+  },
+  {
+    "Code": "SC",
+    "Name": "Seychelles",
+    "DanishName": "Seychellerne"
+  },
+  {
+    "Code": "SL",
+    "Name": "Sierra Leone",
+    "DanishName": "Sierra Leone"
+  },
+  {
+    "Code": "SG",
+    "Name": "Singapore",
+    "DanishName": "Singapore"
+  },
+  {
+    "Code": "SX",
+    "Name": "Sint Maarten (Dutch part)",
+    "DanishName": "Sint-Maarten"
+  },
+  {
+    "Code": "SK",
+    "Name": "Slovakia",
+    "DanishName": "Slovakiet"
+  },
+  {
+    "Code": "SI",
+    "Name": "Slovenia",
+    "DanishName": "Slovenien"
+  },
+  {
+    "Code": "SB",
+    "Name": "Solomon Islands",
+    "DanishName": "Salomon\u00f8erne"
+  },
+  {
+    "Code": "SO",
+    "Name": "Somalia",
+    "DanishName": "Somalia"
+  },
+  {
+    "Code": "ZA",
+    "Name": "South Africa",
+    "DanishName": "Sydafrika"
+  },
+  {
+    "Code": "GS",
+    "Name": "South Georgia and the South Sandwich Islands",
+    "DanishName": "Det sydlige Georgia og de sydlige Sandwich-\u00f8er"
+  },
+  {
+    "Code": "SS",
+    "Name": "South Sudan",
+    "DanishName": "Sydsudan"
+  },
+  {
+    "Code": "ES",
+    "Name": "Spain",
+    "DanishName": "Spanien"
+  },
+  {
+    "Code": "LK",
+    "Name": "Sri Lanka",
+    "DanishName": "Sri Lanka"
+  },
+  {
+    "Code": "SD",
+    "Name": "Sudan",
+    "DanishName": "Sudan"
+  },
+  {
+    "Code": "SR",
+    "Name": "Suriname",
+    "DanishName": "Surinam"
+  },
+  {
+    "Code": "SJ",
+    "Name": "Svalbard and Jan Mayen",
+    "DanishName": "Svalbard og Jan Mayen"
+  },
+  {
+    "Code": "SZ",
+    "Name": "Swaziland",
+    "DanishName": "Swaziland"
+  },
+  {
+    "Code": "SE",
+    "Name": "Sweden",
+    "DanishName": "Sverige"
+  },
+  {
+    "Code": "CH",
+    "Name": "Switzerland",
+    "DanishName": "Schweiz"
+  },
+  {
+    "Code": "SY",
+    "Name": "Syrian Arab Republic",
+    "DanishName": "Syrien"
+  },
+  {
+    "Code": "TW",
+    "Name": "Taiwan, Province of China",
+    "DanishName": "Taiwan"
+  },
+  {
+    "Code": "TJ",
+    "Name": "Tajikistan",
+    "DanishName": "Tadsjikistan"
+  },
+  {
+    "Code": "TZ",
+    "Name": "Tanzania, United Republic of",
+    "DanishName": "Tanzania"
+  },
+  {
+    "Code": "TH",
+    "Name": "Thailand",
+    "DanishName": "Thailand"
+  },
+  {
+    "Code": "TL",
+    "Name": "Timor-Leste",
+    "DanishName": "\u00d8sttimor"
+  },
+  {
+    "Code": "TG",
+    "Name": "Togo",
+    "DanishName": "Togo"
+  },
+  {
+    "Code": "TK",
+    "Name": "Tokelau",
+    "DanishName": "Tokelau"
+  },
+  {
+    "Code": "TO",
+    "Name": "Tonga",
+    "DanishName": "Tonga"
+  },
+  {
+    "Code": "TT",
+    "Name": "Trinidad and Tobago",
+    "DanishName": "Trinidad og Tobago"
+  },
+  {
+    "Code": "TN",
+    "Name": "Tunisia",
+    "DanishName": "Tunesien"
+  },
+  {
+    "Code": "TR",
+    "Name": "Turkey",
+    "DanishName": "Tyrkiet"
+  },
+  {
+    "Code": "TM",
+    "Name": "Turkmenistan",
+    "DanishName": "Turkmenistan"
+  },
+  {
+    "Code": "TC",
+    "Name": "Turks and Caicos Islands",
+    "DanishName": "Turks- og Caicos\u00f8erne"
+  },
+  {
+    "Code": "TV",
+    "Name": "Tuvalu",
+    "DanishName": "Tuvalu"
+  },
+  {
+    "Code": "UG",
+    "Name": "Uganda",
+    "DanishName": "Uganda"
+  },
+  {
+    "Code": "UA",
+    "Name": "Ukraine",
+    "DanishName": "Ukraine"
+  },
+  {
+    "Code": "AE",
+    "Name": "United Arab Emirates",
+    "DanishName": "Forenede Arabiske Emirater"
+  },
+  {
+    "Code": "GB",
+    "Name": "United Kingdom",
+    "DanishName": "Storbritannien"
+  },
+  {
+    "Code": "US",
+    "Name": "United States",
+    "DanishName": "Amerikas Forenede Stater"
+  },
+  {
+    "Code": "UM",
+    "Name": "United States Minor Outlying Islands",
+    "DanishName": "USA's ydre sm\u00e5\u00f8er"
+  },
+  {
+    "Code": "UY",
+    "Name": "Uruguay",
+    "DanishName": "Uruguay"
+  },
+  {
+    "Code": "UZ",
+    "Name": "Uzbekistan",
+    "DanishName": "Usbekistan"
+  },
+  {
+    "Code": "VU",
+    "Name": "Vanuatu",
+    "DanishName": "Vanuatu"
+  },
+  {
+    "Code": "VE",
+    "Name": "Venezuela, Bolivarian Republic of",
+    "DanishName": "Venezuela"
+  },
+  {
+    "Code": "VN",
+    "Name": "Viet Nam",
+    "DanishName": "Vietnam"
+  },
+  {
+    "Code": "VG",
+    "Name": "Virgin Islands, British",
+    "DanishName": "De britiske jomfru\u00f8er"
+  },
+  {
+    "Code": "VI",
+    "Name": "Virgin Islands, U.S.",
+    "DanishName": "De Amerikanske Jomfru\u00f8er"
+  },
+  {
+    "Code": "WF",
+    "Name": "Wallis and Futuna",
+    "DanishName": "Wallis og Futuna"
+  },
+  {
+    "Code": "EH",
+    "Name": "Western Sahara",
+    "DanishName": "Vestsahara"
+  },
+  {
+    "Code": "YE",
+    "Name": "Yemen",
+    "DanishName": "Yemen"
+  },
+  {
+    "Code": "ZM",
+    "Name": "Zambia",
+    "DanishName": "Zambia"
+  },
+  {
+    "Code": "ZW",
+    "Name": "Zimbabwe",
+    "DanishName": "Zimbabwe"
+  }
+]

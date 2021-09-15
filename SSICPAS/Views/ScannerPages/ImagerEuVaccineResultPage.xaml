@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SSICPAS.Views.ScannerPages.ImagerEuVaccineResultPage"
+             BackgroundColor="{StaticResource NavigationHeaderBackgroundColor}"
+             xmlns:viewModels="clr-namespace:SSICPAS.ViewModels.QrScannerViewModels"
+             xmlns:view="clr-namespace:SSICPAS.Views.Certificates;assembly=SSICPAS"
+             x:DataType="viewModels:ImagerEuVaccineResultViewModel"
+             NavigationPage.HasNavigationBar="False">
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Grid x:Name="HeaderView" RowSpacing="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <StackLayout Padding="0" Spacing="0">
+                    <Label
+                        x:Name="IdentityViewSmall"
+                        IsVisible="False"
+                        Margin="0,10,0,0"
+                        VerticalOptions="Center"
+                        HorizontalOptions="Center"
+                        Text="{Binding FullName}"
+                        Style="{StaticResource SubtitleStyle}" />
+                    <Label
+                        x:Name="HeaderTitle"
+                        Margin="0,20,0,20"
+                        HorizontalOptions="Center"
+                        FontFamily="IBMPlexSansSemiBold"
+                        FontSize="14"
+                        TextColor="{StaticResource SSIBaseTextColor}"
+                        Text="{Binding Strings[LANDING_PAGE_TITLE]}" />
+                </StackLayout>
+            </Grid>
+            <ScrollView Grid.Row="1"
+                        Scrolled="ScrollView_OnScrolled">
+                <StackLayout Padding="0"
+                             Spacing="0">
+                    <Grid x:Name="BannerView" BackgroundColor="{StaticResource SSIBaseTextColor}">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="50" />
+                        </Grid.RowDefinitions>
+                        <Label
+                            Grid.Row="0"
+                            Margin="-100,0,-100,0"
+                            FontSize="15"
+                            HorizontalOptions="Start"
+                            LineBreakMode="NoWrap"
+                            LineHeight="1"
+                            Style="{StaticResource InfoPanePassportHeader}"
+                            Text="{Binding RepeatedText}"
+                            TextColor="{StaticResource SSIWhiteTextColor}"
+                            VerticalOptions="Center"
+                            VerticalTextAlignment="Center" />
+                    </Grid>
+                    <Grid x:Name="IdentityView"
+                          BackgroundColor="{StaticResource DefaultBackgroundColor}">
+                        <StackLayout
+                            Padding="0,15,0,15"
+                            HorizontalOptions="Center"
+                            Orientation="Vertical">
+                               <Label
+                                    HorizontalOptions="Center"
+                                    Style="{StaticResource TitleStyle}"
+                                    Text="{Binding FullName}"
+                                    VerticalOptions="Center" />
+                               <Label
+                                    HorizontalOptions="Center"
+                                    Style="{StaticResource ContentStyle}"
+                                    Text="{Binding DateOfBirth}"
+                                    VerticalOptions="Center" />
+                        </StackLayout>
+                    </Grid>
+                    <view:InfoVaccineTextView
+                        x:Name="InfoVaccineView"
+                        IsVisible="{Binding IsVaccine}"
+                        PassportViewModel="{Binding PassportViewModel}"
+                        ShowCertificateBool="True"
+                        ShowHeaderBool="True"
+                        ShowTextInEnglishBool="True"
+                        OnlyOneEUPassportBool="True"/>
+                    <view:InfoTestTextView
+                        x:Name="InfoTestView"
+                        IsVisible="{Binding IsTest}"
+                        PassportViewModel="{Binding PassportViewModel}"
+                        ShowCertificateBool="True"
+                        ShowHeaderBool="True"
+                        ShowTextInEnglishBool="True"
+                        OnlyOneEUPassportBool="True"/>
+                    <view:InfoRecoveryTextView
+                        x:Name="InfoRecoveryView"
+                        IsVisible="{Binding IsRecovery}"
+                        PassportViewModel="{Binding PassportViewModel}"
+                        ShowCertificateBool="True"
+                        ShowHeaderBool="True"
+                        ShowTextInEnglishBool="True"
+                        OnlyOneEUPassportBool="True"/>
+                </StackLayout>
+            </ScrollView>
+            <StackLayout Grid.Row="2"
+                         Orientation="Vertical"
+                         VerticalOptions="End"
+                         Padding="0"
+                         Spacing="5"
+                         Margin="10,10,10,10">
+                   <Label
+                          HorizontalOptions="Center"
+                          Style="{StaticResource TertierBoldStyle}"
+                          Text="{Binding Strings[SCAN_RESULT_DESCRIPTION]}" />
+                   <Label
+                          HorizontalOptions="Center"
+                          Opacity="0.7"
+                          Style="{StaticResource TertierStyle}"
+                          Text="{Binding SecondsRemainingText}"
+                          TextColor="{StaticResource SSILightTextColor}"
+                          VerticalOptions="Center" />
+            </StackLayout>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

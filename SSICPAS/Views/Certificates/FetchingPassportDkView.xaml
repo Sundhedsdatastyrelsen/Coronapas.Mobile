@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SSICPAS.Views.Certificates.FetchingPassportDkView"
+             xmlns:controls="clr-namespace:SSICPAS.Controls"
+             xmlns:effects="clr-namespace:SSICPAS.Controls"
+             xmlns:certificates="clr-namespace:SSICPAS.Views.Certificates;assembly=SSICPAS"
+             xmlns:forms="clr-namespace:Lottie.Forms;assembly=Lottie.Forms"
+             BackgroundColor="Transparent"
+             IsClippedToBounds="True">
+    <ContentView.Content>
+        <Frame  CornerRadius="10"
+                Padding="20"
+                HorizontalOptions="Center"
+                VerticalOptions="StartAndExpand"
+                HasShadow="False">
+            <StackLayout Orientation="Vertical">
+                <Label
+                    Padding="0,10,0,10"
+                    HorizontalOptions="Center"
+                    HorizontalTextAlignment="Center"
+                    Style="{StaticResource TitleStyle}"
+                    Text="{Binding Strings[AWAITING_PASSPORT_HEADER]}"
+                    VerticalOptions="Center"
+                    AutomationProperties.IsInAccessibleTree="True">
+                    <Label.Effects>
+                        <controls:FontSizeLabelEffect />
+                    </Label.Effects>
+                </Label>
+                <Label
+                    Padding="0,0,0,0"
+                    FontSize="Small"
+                    Style="{StaticResource TitleStyle}"
+                    HorizontalTextAlignment="Center"
+                    VerticalTextAlignment="Start"
+                    Text="{Binding Strings[AWAITING_PASSPORT_SUBHEADER]}"
+                    AutomationProperties.IsInAccessibleTree="True">
+                    <Label.Effects>
+                        <controls:FontSizeLabelEffect />
+                    </Label.Effects>
+                </Label>
+
+                <forms:AnimationView x:Name="Spinner"
+                      VerticalOptions="Center"
+                      Animation="loading_no_padding.json"
+                      HeightRequest="40" 
+                      IsPlaying="True"
+                      Loop="True"
+                      AutoPlay="True"/>
+
+                <certificates:NoPassportDkInfoView x:Name="NoPassportDkInfoView"/>
+
+                <BoxView 
+                HeightRequest="1"
+                BackgroundColor="{StaticResource MainPageBackgroundColor}"
+                Margin="-20,20,-20,0"/>
+
+                <StackLayout
+                Padding="0,20,0,0"
+                Orientation="Horizontal"
+                HorizontalOptions="Center">
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding HelpButtonCommand}" />
+                    </StackLayout.GestureRecognizers>
+                    <Image 
+                    HorizontalOptions="Start"
+                    BackgroundColor="Transparent"
+                    HeightRequest="24"
+                    Source="{StaticResource QuestionMarkBlue}"
+                    WidthRequest="24">
+                    <Image.Margin>
+                        <OnPlatform x:TypeArguments="Thickness">
+                            <On Platform="Android" Value="0,5,0,0"/>
+                        </OnPlatform>
+                    </Image.Margin>
+                    </Image>
+                <Label
+                    effects:FontSizeLabelEffectParams.MaxFontSize="24"
+                    HorizontalOptions="Center"
+                    Style="{StaticResource LinkButtonStyle}"
+                    Text="{Binding Strings[MENU_HELP_PAGE]}"
+                    VerticalOptions="Center"
+                    AutomationProperties.IsInAccessibleTree="True"
+                    AutomationProperties.Name="{Binding Strings [MENU_HELP_PAGE_INFORMATION]}">
+                    <Label.Effects>
+                        <controls:FontSizeLabelEffect />
+                    </Label.Effects>
+                </Label>
+                </StackLayout>
+            </StackLayout>
+        </Frame>
+    </ContentView.Content>
+</ContentView>

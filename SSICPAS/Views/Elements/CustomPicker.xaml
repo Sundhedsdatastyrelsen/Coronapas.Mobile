@@ -1,0 +1,99 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+
+<pages:PopupPage
+    x:Class="SSICPAS.Views.Elements.CustomPicker"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:animations="clr-namespace:Rg.Plugins.Popup.Animations;assembly=Rg.Plugins.Popup"
+    xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+    x:Name="this"
+    CloseWhenBackgroundIsClicked="False"
+    BackgroundColor="{StaticResource SSIDark60}"
+    NavigationPage.HasNavigationBar="False">
+    <pages:PopupPage.Animation>
+        <animations:ScaleAnimation
+            DurationIn="400"
+            DurationOut="300"
+            EasingIn="SinOut"
+            EasingOut="SinIn"
+            HasBackgroundAnimation="True"
+            PositionIn="Bottom"
+            PositionOut="Bottom" />
+    </pages:PopupPage.Animation>
+
+    <Frame
+        Padding="0,0,0,70"
+        BackgroundColor="White"
+        CornerRadius="16"
+        HasShadow="False"
+        IsClippedToBounds="True"
+        TranslationY="70"
+        VerticalOptions="End">
+        <ScrollView>
+            <StackLayout
+                BackgroundColor="{StaticResource MainPageBackgroundColor}"
+                Orientation="Vertical"
+                Spacing="0"
+                VerticalOptions="End">
+                <Grid
+                    Padding="24"
+                    HorizontalOptions="FillAndExpand"
+                    BackgroundColor="{StaticResource SSIWhite}">
+                    <Label
+                        x:Name="PickerTitle"
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center"
+                        VerticalTextAlignment="Center"
+                        Style="{StaticResource CustomPickerLabelStyle}"/>
+                    <ImageButton
+                        x:Name="CloseButton"
+                        HorizontalOptions="End"
+                        VerticalOptions="Center"
+                        AutomationProperties.IsInAccessibleTree="True"
+                        AutomationProperties.Name="{Binding Strings[PASSPORT_TYPE_CLOSE_BUTTON_ACCESSIBILITY]}"
+                        Source="{StaticResource XMark}"
+                        Clicked="ClosePicker"
+                        Padding="5,5,5,5"
+                        BackgroundColor="Transparent"/>
+                </Grid>
+                <BoxView BackgroundColor="{StaticResource MainPageBackgroundColor}"
+                         HeightRequest="1"
+                         VerticalOptions="Center"
+                         HorizontalOptions="FillAndExpand" />
+                <Grid
+                    x:Name="IconGridLayout"
+                    BackgroundColor="{StaticResource MainPageBackgroundColor}"
+                    ColumnSpacing="0"
+                    RowSpacing="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*" />
+                        <ColumnDefinition Width="1*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                </Grid>
+                <BoxView BackgroundColor="{StaticResource MainPageBackgroundColor}"
+                         x:Name="IconAndNameSeparator"
+                         IsVisible="{Binding ShouldShowSeparatorAndList}"
+                         HeightRequest="1"
+                         VerticalOptions="Center"
+                         HorizontalOptions="FillAndExpand" />
+                <StackLayout
+                    x:Name="PickerStackLayout"
+                    Padding="0,24,0,0"
+                    IsVisible="{Binding ShouldShowSeparatorAndList}"
+                    BackgroundColor="White"
+                    HorizontalOptions="Fill"
+                    Spacing="0"
+                    VerticalOptions="Center" />
+                <Frame
+                    Padding="0,0,0,0"
+                    BackgroundColor="White"
+                    CornerRadius="0"
+                    HasShadow="False"
+                    HeightRequest="60" />
+            </StackLayout>
+        </ScrollView>
+    </Frame>
+</pages:PopupPage>

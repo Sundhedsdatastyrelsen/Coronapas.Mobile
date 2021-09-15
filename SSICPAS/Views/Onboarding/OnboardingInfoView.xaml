@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+
+<ScrollView
+    x:Class="SSICPAS.Views.Onboarding.OnboardingInfoView"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:SSICPAS.Controls"
+    xmlns:forms="clr-namespace:Lottie.Forms;assembly=Lottie.Forms"
+    xmlns:viewModels="clr-namespace:SSICPAS.ViewModels.Onboarding"
+    x:DataType="viewModels:OnboardingInfoViewModel"
+    BackgroundColor="{StaticResource DefaultBackgroundColor}"
+    VerticalScrollBarVisibility="Never">
+    <Grid
+        Padding="24,30,24,30"
+        RowSpacing="0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Label
+            Grid.Row="0"
+            HorizontalTextAlignment="Center"
+            Style="{StaticResource TitleStyle}"
+            Text="{Binding Title}">
+            <Label.Effects>
+                <local:FontSizeLabelEffect />
+            </Label.Effects>
+        </Label>
+        <Label
+            Grid.Row="1"
+            x:Name="label"
+            Margin="0,40,0,0"
+            HorizontalTextAlignment="Center"
+            Style="{StaticResource ContentStyle}"
+            Text="{Binding Content}">
+            <Label.Effects>
+                <local:FontSizeLabelEffect />
+            </Label.Effects>
+        </Label>
+
+        <forms:AnimationView
+            Grid.Row="2"
+            x:Name="animation"
+            Margin="40,0"
+            Animation="intro_scanning.json"
+            AutomationProperties.IsInAccessibleTree="False"
+            IsPlaying="True"
+            Loop="True">
+            <forms:AnimationView.HeightRequest>
+                <Binding Path="Width"
+                         Source="{x:Reference animation}"
+                         Converter="{StaticResource DimensionToPercentageConverter}">
+                    <Binding.ConverterParameter>
+                        <x:Double>0.4</x:Double>
+                    </Binding.ConverterParameter>
+                </Binding>
+            </forms:AnimationView.HeightRequest>
+        </forms:AnimationView>
+    </Grid>
+</ScrollView>

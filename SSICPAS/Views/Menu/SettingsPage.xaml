@@ -1,0 +1,353 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<ContentPage
+    x:Class="SSICPAS.Views.Menu.SettingsPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:effects="clr-namespace:SSICPAS.Controls"
+    xmlns:elements="clr-namespace:SSICPAS.Views.Elements"
+    xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+    xmlns:viewModels="clr-namespace:SSICPAS.ViewModels.Menu"
+    ios:Page.UseSafeArea="False"
+    x:DataType="viewModels:SettingsPageViewModel"
+    BackgroundColor="{StaticResource NavigationHeaderBackgroundColor}"
+    NavigationPage.HasNavigationBar="False">
+    <ContentPage.Content>
+        <Grid BackgroundColor="{StaticResource NavigationHeaderBackgroundColor}" RowSpacing="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Grid.Padding>
+                <OnPlatform x:TypeArguments="Thickness">
+                    <On Platform="iOS" Value="0,50,0,0" />
+                    <On Platform="Android" Value="0,0,0,0" />
+                </OnPlatform>
+            </Grid.Padding>
+            <elements:NavigationHeader
+                CenterLabelText="{Binding Strings[SETTINGS_TITLE]}"
+                CenterLabelAccessibilityText=""
+                LeftButtonCommand="{Binding BackCommand}"
+                LeftButtonHeightRequest="50"
+                LeftButtonImageSource="{StaticResource ArrowBack}" />
+            <BoxView
+                Grid.Row="1"
+                BackgroundColor="{StaticResource CheckBoxBorderColor}"
+                HeightRequest="1"
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="End" />
+            <ScrollView Grid.Row="2" BackgroundColor="{StaticResource DefaultBackgroundColor}">
+                <ScrollView.Content>
+                    <Grid RowSpacing="0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+
+                        <Label
+                            Grid.Row="0"
+                            Margin="20,35,20,10"
+                            Style="{StaticResource RegularLabelStyle}"
+                            Text="{Binding Strings[SETTINGS_SECTION_1_TITLE]}">
+                            <Label.Effects>
+                                <effects:FontSizeLabelEffect />
+                            </Label.Effects>
+                        </Label>
+
+                        <BoxView
+                            Grid.Row="0"
+                            BackgroundColor="{StaticResource CheckBoxBorderColor}"
+                            HeightRequest="1"
+                            HorizontalOptions="FillAndExpand"
+                            VerticalOptions="End" />
+                        <Grid Grid.Row="1" BackgroundColor="{StaticResource NavigationHeaderBackgroundColor}" >
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <StackLayout Margin="20,15" Orientation="Horizontal" VerticalOptions="Center">
+                                <Label
+                                    Style="{StaticResource ContentStyle}"
+                                    HorizontalOptions="StartAndExpand"
+                                    Text="{Binding Strings[SETTINGS_CHOOSE_LANGUAGE]}"
+                                    VerticalOptions="Center">
+                                    <Label.Effects>
+                                        <effects:FontSizeLabelEffect />
+                                    </Label.Effects>
+                                </Label>
+                                <elements:SSICustomSwitch
+                                    HorizontalOptions="EndAndExpand"
+                                    SelectionStartActive="{Binding DanishSelected}"
+                                    VerticalOptions="Center"
+                                    AutomationProperties.IsInAccessibleTree="False"
+                                    AutomationProperties.Name="{Binding Strings[SETTINGS_CHANGE_LANGUAGE_ACCESIBILITY]}"/>
+                            </StackLayout>
+                        </Grid>
+
+                        <BoxView
+                            Grid.Row="1"
+                            BackgroundColor="{StaticResource CheckBoxBorderColor}"
+                            HeightRequest="1"
+                            HorizontalOptions="FillAndExpand"
+                            VerticalOptions="End" />
+                        <StackLayout
+                            Grid.Row="2"
+                            Orientation="Vertical"
+                            Spacing="0">
+                            <Label
+                                Margin="20,35,20,10"
+                                Style="{StaticResource RegularLabelStyle}"
+                                Text="{Binding SectionTitleScanner}">
+                                <Label.Effects>
+                                    <effects:FontSizeLabelEffect />
+                                </Label.Effects>
+                            </Label>
+                            <BoxView
+                                Grid.Row="1"
+                                BackgroundColor="{StaticResource CheckBoxBorderColor}"
+                                HeightRequest="1"
+                                HorizontalOptions="FillAndExpand"
+                                VerticalOptions="End" />
+                            <Grid BackgroundColor="{StaticResource NavigationHeaderBackgroundColor}" ColumnSpacing="16">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+                                <Label
+                                    Grid.Column="0"
+                                    Margin="20,15,0,15"
+                                    AutomationProperties.IsInAccessibleTree="True"
+                                    HorizontalOptions="StartAndExpand"
+                                    Style="{StaticResource ContentStyle}"
+                                    Text="{Binding SettingsSound}"
+                                    VerticalTextAlignment="Center">
+                                    <Label.Effects>
+                                        <effects:FontSizeLabelEffect />
+                                    </Label.Effects>
+                                </Label>
+                                <elements:CustomConsentSwitch
+                                    Grid.Column="1"
+                                    Margin="0,18,0,18"
+                                    HeightRequest="32"
+                                    HorizontalOptions="End"
+                                    SelectionChanged="SoundConsentSwitch_OnSelectionChanged"
+                                    AutomationProperties.IsInAccessibleTree="True"
+                                    AutomationProperties.HelpText="{Binding SwitchSoundOnAndOffText}"
+                                    State="{Binding SoundSettingEnabled}"
+                                    VerticalOptions="Center" />
+                            </Grid>
+                            <BoxView
+                                Grid.Row="2"
+                                BackgroundColor="{StaticResource CheckBoxBorderColor}"
+                                HeightRequest="1"
+                                HorizontalOptions="FillAndExpand"
+                                VerticalOptions="End" />
+                            <Grid BackgroundColor="{StaticResource NavigationHeaderBackgroundColor}" ColumnSpacing="16">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+                                <Label
+                                    Grid.Column="0"
+                                    Margin="20,15,0,15"
+                                    AutomationProperties.IsInAccessibleTree="True"
+                                    HorizontalOptions="StartAndExpand"
+                                    Style="{StaticResource ContentStyle}"
+                                    Text="{Binding SettingsVibration}"
+                                    VerticalTextAlignment="Center">
+                                    <Label.Effects>
+                                        <effects:FontSizeLabelEffect />
+                                    </Label.Effects>
+                                </Label>
+                                <elements:CustomConsentSwitch
+                                    Grid.Column="1"
+                                    Margin="0,18,0,18"
+                                    HeightRequest="32"
+                                    HorizontalOptions="End"
+                                    SelectionChanged="VibrationConsentSwitch_OnSelectionChanged"
+                                    AutomationProperties.IsInAccessibleTree="True"
+                                    AutomationProperties.HelpText="{Binding SwitchVibrationOnAndOffText}"
+                                    State="{Binding VibrationSettingEnabled}"
+                                    VerticalOptions="Center" />
+                            </Grid>
+                            <BoxView
+                                Grid.Row="2"
+                                BackgroundColor="{StaticResource CheckBoxBorderColor}"
+                                HeightRequest="1"
+                                HorizontalOptions="FillAndExpand"
+                                VerticalOptions="End" />
+                        </StackLayout>
+                        <StackLayout
+                            Grid.Row="3"
+                            IsVisible="{Binding FromLandingPage, Converter={StaticResource BoolToInverseBoolConverter}}"
+                            Orientation="Vertical"
+                            Spacing="0">
+                            <Label
+                                Margin="20,35,20,10"
+                                Style="{StaticResource RegularLabelStyle}"
+                                Text="{Binding SectionTitleSecurity}">
+                                <Label.Effects>
+                                    <effects:FontSizeLabelEffect />
+                                </Label.Effects>
+                            </Label>
+                            <BoxView
+                                Grid.Row="3"
+                                BackgroundColor="{StaticResource CheckBoxBorderColor}"
+                                HeightRequest="1"
+                                HorizontalOptions="FillAndExpand"
+                                VerticalOptions="End" />
+                            <Grid BackgroundColor="{StaticResource NavigationHeaderBackgroundColor}" ColumnSpacing="16">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="40" />
+                                </Grid.ColumnDefinitions>
+                                <Label
+                                    Grid.Column="0"
+                                    Margin="20,25,0,25"
+                                    AutomationProperties.IsInAccessibleTree="False"
+                                    HorizontalOptions="StartAndExpand"
+                                    Style="{StaticResource ContentStyle}"
+                                    Text="{Binding Strings[SETTINGS_CHANGE_PIN_CODE]}"
+                                    VerticalTextAlignment="Center">
+                                    <Label.Effects>
+                                        <effects:FontSizeLabelEffect />
+                                    </Label.Effects>
+                                </Label>
+
+                                <Image
+                                    Grid.Column="2"
+                                    AutomationProperties.IsInAccessibleTree="False"
+                                    Margin="0,20"
+                                    HeightRequest="14"
+                                    Source="{StaticResource ArrowNext}"
+                                    VerticalOptions="Center"
+                                    WidthRequest="24" />
+                                <Button
+                                    Grid.Column="0"
+                                    Grid.ColumnSpan="3"
+                                    AutomationProperties.IsInAccessibleTree="True"
+                                    AutomationProperties.Name="{Binding Strings[SETTINGS_CHANGE_PIN_CODE_ACCESSIBILITY]}"
+                                    Command="{Binding ChangePinCode}"
+                                    Style="{StaticResource MenuButtonStyle}" />
+                            </Grid>
+                            <BoxView
+                                Grid.Row="1"
+                                BackgroundColor="{StaticResource CheckBoxBorderColor}"
+                                HeightRequest="1"
+                                HorizontalOptions="FillAndExpand"
+                                VerticalOptions="End" />
+                            <Grid
+                                BackgroundColor="{StaticResource NavigationHeaderBackgroundColor}"
+                                ColumnSpacing="16"
+                                IsVisible="{Binding IsVisibleBiometricsSetting}">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+                                <Label
+                                    Grid.Column="0"
+                                    Margin="20,15,0,15"
+                                    AutomationProperties.IsInAccessibleTree="True"
+                                    HorizontalOptions="StartAndExpand"
+                                    Style="{StaticResource ContentStyle}"
+                                    Text="{Binding Strings[SETTINGS_BIOMETRIC]}"
+                                    VerticalTextAlignment="Center">
+                                    <Label.Effects>
+                                        <effects:FontSizeLabelEffect />
+                                    </Label.Effects>
+                                </Label>
+
+                                <elements:CustomConsentSwitch
+                                    Grid.Column="1"
+                                    Margin="0,18,20,18"
+                                    HeightRequest="32"
+                                    HorizontalOptions="End"
+                                    SelectionChanged="BiometricSwitch_OnSelectionChanged"
+                                    AutomationProperties.IsInAccessibleTree="True"
+                                    AutomationProperties.HelpText="{Binding BiometricSwitchOnAndOffText}"
+                                    State="{Binding BiometricsEnabled}"
+                                    VerticalOptions="Center" />
+                            </Grid>
+                            <BoxView
+                                Grid.Row="1"
+                                BackgroundColor="{StaticResource CheckBoxBorderColor}"
+                                HeightRequest="1"
+                                HorizontalOptions="FillAndExpand"
+                                VerticalOptions="End" />
+                        </StackLayout>
+                        <Label
+                            Grid.Row="5"
+                            Margin="20,35,20,10"
+                            IsVisible="{Binding FromLandingPage, Converter={StaticResource BoolToInverseBoolConverter}}"
+                            Style="{StaticResource RegularLabelStyle}"
+                            Text="{Binding Strings[SETTINGS_SECTION_3_TITLE]}"
+                            AutomationProperties.Name="{Binding Strings[SETTINGS_SECTION_3_TITLE_ACCESSIBILITY]}">
+                            <Label.Effects>
+                                <effects:FontSizeLabelEffect />
+                            </Label.Effects>
+                        </Label>
+                        <BoxView
+                            Grid.Row="5"
+                            BackgroundColor="{StaticResource CheckBoxBorderColor}"
+                            HeightRequest="1"
+                            HorizontalOptions="FillAndExpand"
+                            IsVisible="{Binding FromLandingPage, Converter={StaticResource BoolToInverseBoolConverter}}"
+                            VerticalOptions="End" />
+                        <Grid
+                            Grid.Row="6"
+                            BackgroundColor="{StaticResource NavigationHeaderBackgroundColor}"
+                            IsVisible="{Binding FromLandingPage, Converter={StaticResource BoolToInverseBoolConverter}}">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Label
+                                Grid.Column="0"
+                                Margin="20,22,20,22"
+                                AutomationProperties.IsInAccessibleTree="False"
+                                Style="{StaticResource ContentStyle}"
+                                Text="{Binding Strings[SETTINGS_REMOVE_PASSPORT]}"
+                                TextColor="#D41700">
+                                <Label.Effects>
+                                    <effects:FontSizeLabelEffect />
+                                </Label.Effects>
+                            </Label>
+                            <Button
+                                Grid.Column="0"
+                                AutomationProperties.IsInAccessibleTree="True"
+                                AutomationProperties.Name="{Binding Strings[ACCESSIBILITY_SETTINGS_REMOVE_PASSPORT]}"
+                                Command="{Binding LogOut}"
+                                Style="{StaticResource MenuButtonStyle}" />
+                        </Grid>
+                        <BoxView
+                            Grid.Row="6"
+                            BackgroundColor="{StaticResource CheckBoxBorderColor}"
+                            HeightRequest="1"
+                            HorizontalOptions="FillAndExpand"
+                            IsVisible="{Binding FromLandingPage, Converter={StaticResource BoolToInverseBoolConverter}}"
+                            VerticalOptions="End" />
+                        <Label
+                            Grid.Row="7"
+                            Margin="20,20,20,20"
+                            IsVisible="{Binding FromLandingPage, Converter={StaticResource BoolToInverseBoolConverter}}"
+                            Style="{StaticResource SecondaryContentStyle}"
+                            Text="{Binding Strings[SETTINGS_REMOVE_PASSPORT_SUBTITLE]}"
+                            TextColor="{StaticResource SSILightTextColor}">
+                            <Label.Effects>
+                                <effects:FontSizeLabelEffect />
+                            </Label.Effects>
+                        </Label>
+                    </Grid>
+                </ScrollView.Content>
+            </ScrollView>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

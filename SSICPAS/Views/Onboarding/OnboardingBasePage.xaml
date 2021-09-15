@@ -1,0 +1,120 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage
+    x:Class="SSICPAS.Views.Onboarding.OnboardingBasePage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+    xmlns:onboarding="clr-namespace:SSICPAS.Views.Onboarding;assembly=SSICPAS"
+    xmlns:viewModels="clr-namespace:SSICPAS.ViewModels.Onboarding" xmlns:controls="clr-namespace:SSICPAS.Controls"
+    xmlns:effects="clr-namespace:SSICPAS.Controls;assembly=SSICPAS"
+    ios:Page.UseSafeArea="true"
+    x:DataType="viewModels:OnboardingBaseViewModel"
+    BackgroundColor="{StaticResource DefaultBackgroundColor}"
+    NavigationPage.HasNavigationBar="False">
+    <ContentPage.Resources>
+        <DataTemplate x:Key="InfoView">
+            <onboarding:OnboardingInfoView />
+        </DataTemplate>
+        <DataTemplate x:Key="InfoView2">
+            <onboarding:OnboardingInfoView2 />
+        </DataTemplate>
+        <DataTemplate x:Key="InfoView3">
+            <onboarding:OnboardingInfoView3 />
+        </DataTemplate>
+        <DataTemplate x:Key="InfoView4">
+            <onboarding:OnboardingInfoView4 />
+        </DataTemplate>
+        <DataTemplate x:Key="InfoView5">
+            <onboarding:OnboardingInfoView5 />
+        </DataTemplate>
+
+        <onboarding:OnboardingPageDataTemplateSelector
+            x:Key="PageSelector"
+            OnboardingInfoTemplate="{StaticResource InfoView}"
+            OnboardingInfo2Template="{StaticResource InfoView2}"
+            OnboardingInfo3Template="{StaticResource InfoView3}"
+            OnboardingInfo4Template="{StaticResource InfoView4}"
+            OnboardingInfo5Template="{StaticResource InfoView5}" />
+    </ContentPage.Resources>
+
+    <Grid x:Name="RootGrid" RowSpacing="0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="7*" />
+            <RowDefinition Height="1.5*" />
+            <RowDefinition Height="0.5*" />
+        </Grid.RowDefinitions>
+        <ImageButton
+            Grid.Row="0"
+            Margin="0,10,17,0"
+            Padding="0"
+            AutomationId="ExpiredCertificateView_GoToCertificateHelpPage"
+            AutomationProperties.IsInAccessibleTree="True"
+            AutomationProperties.Name="{Binding HelpButton}"
+            BackgroundColor="Transparent"
+            Command="{Binding HelpButtonCommand}"
+            HorizontalOptions="End"
+            Source="{StaticResource HelpIconBlue}"
+            VerticalOptions="Start" />
+        <CarouselView
+            x:Name="BaseCarouselView"
+            Grid.Row="1"
+            HorizontalScrollBarVisibility="Never"
+            IndicatorView="OnboardInfoIndicatorView"
+            IsSwipeEnabled="True"
+            ItemTemplate="{StaticResource PageSelector}"
+            Loop="False"
+            Position="{Binding CarouselPosition}" />
+
+        <Grid
+            x:Name="CarouselButtonNavigationView"
+            Grid.Row="2"
+            VerticalOptions="Center"
+            ColumnSpacing="11"
+            Margin="17,15,17,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="5*" />
+                <ColumnDefinition Width="5*" />
+            </Grid.ColumnDefinitions>
+
+            <controls:SingleLineButton
+                AutomationId="OnboardingBackButton"
+                Grid.Column="0"
+                AutomationProperties.IsInAccessibleTree="True"
+                AutomationProperties.Name="{Binding BackButton}"
+                Style="{StaticResource CombinedButtonSecondaryStyle}"
+                Command="{Binding BackCommand}"
+                Text="{Binding BackButton}"
+                effects:FontSizeLabelEffectParams.MaxFontSize="24"
+                effects:FontSizeLabelEffectParams.MinFontSize="12">
+                <Button.Effects>
+                    <effects:FontSizeLabelEffect />
+                </Button.Effects>
+            </controls:SingleLineButton>
+            <controls:SingleLineButton
+                AutomationId="OnboardingNextButton"
+                Grid.Column="1"
+                AutomationProperties.IsInAccessibleTree="True"
+                AutomationProperties.Name="{Binding NextButton}"
+                Command="{Binding NextCommand}"
+                Style="{StaticResource CombinedButtonPrimaryStyle}"
+                Text="{Binding NextButton}" 
+                effects:FontSizeLabelEffectParams.MaxFontSize="24"
+                effects:FontSizeLabelEffectParams.MinFontSize="12">
+                <Button.Effects>
+                    <effects:FontSizeLabelEffect />
+                </Button.Effects>
+            </controls:SingleLineButton>
+        </Grid>
+
+        <IndicatorView
+            x:Name="OnboardInfoIndicatorView"
+            Grid.Row="3"
+            VerticalOptions="Center"
+            AutomationProperties.IsInAccessibleTree="True"
+            IndicatorColor="{StaticResource SSIIndicatorUnselected}"
+            SelectedIndicatorColor="{StaticResource SSIIndicatorSelected}" />
+    </Grid>
+
+</ContentPage>

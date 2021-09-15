@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SSICPAS.Views.InfoPages.NoPersonalPage"
+             xmlns:effects="clr-namespace:SSICPAS.Controls"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core" 
+             ios:Page.UseSafeArea="True"
+             NavigationPage.HasNavigationBar="False">
+
+    <StackLayout
+        Orientation="Vertical"
+        VerticalOptions="Center"
+        Spacing="16">
+        <Frame
+            BackgroundColor="{StaticResource SSIWhite}"
+            HeightRequest="64"
+            WidthRequest="64"
+            CornerRadius="32"
+            HasShadow="False"
+            Padding="0"
+            Margin="0,10,0,0"
+            HorizontalOptions="Center"
+            VerticalOptions="End">
+            <Image
+                VerticalOptions="Center"
+                HorizontalOptions="Center"
+                Source="{StaticResource InformationIconLarge}" />
+        </Frame>
+        <Label
+            VerticalOptions="Start"
+            HorizontalOptions="Center"
+            HorizontalTextAlignment="Center"
+            Margin="0,16,0,0"
+            AutomationProperties.IsInAccessibleTree="True"
+            Text="{Binding Strings[MY_PAGE_COMING_TITLE]}"
+            Style="{StaticResource TitleStyle}">
+            <Label.Effects>
+                <effects:FontSizeLabelEffect />
+            </Label.Effects>
+        </Label>
+        <Label
+            VerticalOptions="Start"
+            HorizontalOptions="Center"
+            HorizontalTextAlignment="Center"
+            AutomationProperties.IsInAccessibleTree="True"
+            Text="{Binding Strings[MY_PAGE_COMING_SECTION_1]}"
+            Style="{StaticResource ContentStyle}">
+            <Label.Effects>
+                <effects:FontSizeLabelEffect />
+            </Label.Effects>
+        </Label>
+        <Label
+            VerticalOptions="Start"
+            HorizontalOptions="Center"
+            HorizontalTextAlignment="Center"
+            Margin="0,16,0,0"
+            AutomationProperties.IsInAccessibleTree="True"
+            Text="{Binding Strings[MY_PAGE_COMING_SECTION_2]}"
+            Style="{StaticResource ContentStyle}">
+            <Label.Effects>
+                <effects:FontSizeLabelEffect />
+            </Label.Effects>
+        </Label>
+    </StackLayout>
+</ContentView>

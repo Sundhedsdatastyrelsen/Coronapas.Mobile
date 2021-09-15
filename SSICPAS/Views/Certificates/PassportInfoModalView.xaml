@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<views:ContentSheetPageNoBackButtonOnIOS
+    x:Class="SSICPAS.Views.Certificates.PassportInfoModalView"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:effects="clr-namespace:SSICPAS.Controls"
+    xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+    xmlns:view="clr-namespace:SSICPAS.Views.Certificates"
+    xmlns:viewmodel="clr-namespace:SSICPAS.ViewModels.Certificates;assembly=SSICPAS"
+    xmlns:views="clr-namespace:SSICPAS.Views"
+    ios:Page.UseSafeArea="True"
+    x:DataType="viewmodel:PassportInfoModalViewModel"
+    NavigationPage.HasNavigationBar="False">
+    <ContentPage.Content>
+        <Grid RowSpacing="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Grid
+                x:Name="AndroidHeader"
+                Grid.Row="0"
+                BackgroundColor="{StaticResource NavigationHeaderBackgroundColor}">
+                <Grid.IsVisible>
+                    <OnPlatform
+                        x:TypeArguments="x:Boolean"
+                        Android="True"
+                        iOS="False" />
+                </Grid.IsVisible>
+                <ImageButton
+                    Grid.Row="0"
+                    Padding="20,20,20,20"
+                    AutomationProperties.IsInAccessibleTree="True"
+                    AutomationProperties.Name="{Binding Strings[ACCESSIBILITY_BACK_BUTTON_HELP_TEXT]}"
+                    BackgroundColor="Transparent"
+                    Command="{Binding BackCommand}"
+                    HorizontalOptions="Start"
+                    Source="{StaticResource BackIcon}"
+                    VerticalOptions="Center" />
+                <Label
+                    effects:FontSizeLabelEffectParams.MaxFontSize="24"
+                    Grid.Row="0"
+                    Margin="0,20,0,20"
+                    HorizontalOptions="CenterAndExpand"
+                    Style="{StaticResource SubtitleStyle}"
+                    Text="{Binding Strings[LANDING_PAGE_TITLE]}"
+                    VerticalOptions="Center">
+                    <Label.Effects>
+                        <effects:FontSizeLabelEffect/>
+                    </Label.Effects>
+                </Label>
+            </Grid>
+            
+       
+            <Grid RowSpacing="0"
+                  Grid.Row="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0" BackgroundColor="{StaticResource NavigationHeaderBackgroundColor}">
+                    <Grid.IsVisible>
+                        <OnPlatform
+                            x:TypeArguments="x:Boolean"
+                            Android="False"
+                            iOS="true" />
+                    </Grid.IsVisible>
+                    <ImageButton
+                        Grid.Row="0"
+                        Margin="0,10,15,0"
+                        AutomationProperties.IsInAccessibleTree="True"
+                        AutomationProperties.Name="{Binding Strings[MY_PAGE_CLOSE_TEXT]}"
+                        Command="{Binding BackCommand}"
+                        HorizontalOptions="End"
+                        Source="{StaticResource CloseIcon}"
+                        VerticalOptions="Center" />
+                </Grid>
+                <view:PassportInfoView
+                        
+                    x:Name="BaseInfoView"
+                    Grid.Row="1"
+                    EuPassportType="{Binding EuPassportType}"
+                    PassportItemsViewModel="{Binding PassportItemsViewModel}"
+                    SelectedPassport="{Binding SelectedPassportViewModel}" />
+            </Grid>
+          
+        </Grid>
+    </ContentPage.Content>
+</views:ContentSheetPageNoBackButtonOnIOS>

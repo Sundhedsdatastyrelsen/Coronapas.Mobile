@@ -1,0 +1,287 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<views:ContentSheetPageNoBackButtonOnIOS
+    x:Class="SSICPAS.Views.InfoPages.PersonalPageGenericInfoModal"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:effects="clr-namespace:SSICPAS.Controls"
+    xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+    xmlns:view="clr-namespace:SSICPAS.Views.Certificates"
+    xmlns:viewmodel="clr-namespace:SSICPAS.ViewModels.InfoPages"
+    xmlns:views="clr-namespace:SSICPAS.Views"
+    ios:Page.UseSafeArea="True"
+    x:DataType="viewmodel:PersonalPageGenericInfoModalViewModel"
+    NavigationPage.HasNavigationBar="False">
+    <ContentPage.Content>
+        <StackLayout BackgroundColor="{StaticResource SSIWhite}">
+            <Grid
+                x:Name="iOSHeader"
+                Padding="24,8,24,0"
+                RowSpacing="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Grid.IsVisible>
+                    <OnPlatform
+                        x:TypeArguments="x:Boolean"
+                        Android="False"
+                        iOS="true" />
+                </Grid.IsVisible>
+                <BoxView
+                    Grid.Row="0"
+                    BackgroundColor="{StaticResource SSIBaseTextColor}"
+                    CornerRadius="2"
+                    HeightRequest="5"
+                    HorizontalOptions="CenterAndExpand"
+                    Opacity="0.1"
+                    VerticalOptions="Start"
+                    WidthRequest="50" />
+                
+                <Grid
+                    x:Name="InfoHeader"
+                    Grid.Row="1"
+                    ColumnSpacing="0"
+                    RowSpacing="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Image
+                        Grid.Row="0"
+                        Grid.RowSpan="2"
+                        Grid.Column="0"
+                        HorizontalOptions="Start"
+                        Source="{Binding Image}" />
+                    <Label
+                        Grid.Row="0"
+                        Grid.Column="1"
+                        Margin="20,0,0,0"
+                        HorizontalOptions="Start"
+                        Style="{StaticResource SubtitleStyle}"
+                        Text="{Binding InfoHeader}">
+                        <Label.Effects>
+                            <effects:FontSizeLabelEffect />
+                        </Label.Effects>
+                    </Label>
+                    <Label
+                        Grid.Row="1"
+                        Grid.Column="1"
+                        Margin="20,0,0,0"
+                        HorizontalOptions="Start"
+                        Style="{StaticResource SecondaryContentItalicStyle}"
+                        Text="{Binding InfoTypeHeader}"
+                        VerticalOptions="Center">
+                        <Label.Effects>
+                            <effects:FontSizeLabelEffect />
+                        </Label.Effects>
+                    </Label>
+                </Grid>
+                <Label
+                    x:Name="InfoHeaderSmall"
+                    Grid.Row="0"
+                    Margin="0,0,10,0"
+                    HorizontalOptions="Center"
+                    InputTransparent="True"
+                    IsVisible="False"
+                    Style="{StaticResource InfoHeaderSmallStyle}"
+                    Text="{Binding InfoHeader}"
+                    VerticalOptions="Center">
+                    <Label.Effects>
+                        <effects:FontSizeLabelEffect />
+                    </Label.Effects>
+                </Label>
+                <ImageButton
+                    Grid.Row="0"
+                    Margin="0,0,0,0"
+                    Padding="45,0,0,0"
+                    AutomationProperties.IsInAccessibleTree="True"
+                    AutomationProperties.Name="{Binding Strings[MY_PAGE_CLOSE_TEXT]}"
+                    Command="{Binding BackCommand}"
+                    HorizontalOptions="End"
+                    Source="{StaticResource CloseIcon}"
+                    VerticalOptions="Center" />
+            </Grid>
+
+            <Grid x:Name="AndroidHeader" Margin="0,20,0,0">
+                <Grid.IsVisible>
+                    <OnPlatform
+                        x:TypeArguments="x:Boolean"
+                        Android="True"
+                        iOS="False" />
+                </Grid.IsVisible>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+
+                <ImageButton
+                    Grid.Row="0"
+                    Padding="20,15,20,10"
+                    AutomationProperties.IsInAccessibleTree="True"
+                    AutomationProperties.Name="{Binding Strings[ACCESSIBILITY_BACK_BUTTON_HELP_TEXT]}"
+                    BackgroundColor="Transparent"
+                    Command="{Binding BackCommand}"
+                    HorizontalOptions="Start"
+                    Source="{StaticResource BackIcon}"
+                    VerticalOptions="Center" />
+                <Label
+                    effects:FontSizeLabelEffectParams.MaxFontSize="24"
+                    Grid.Row="0"
+                    HorizontalOptions="CenterAndExpand"
+                    Style="{StaticResource SubtitleStyle}"
+                    Text="{Binding InfoHeaderAndroid}"
+                    VerticalOptions="Center">
+                    <Label.Effects>
+                        <effects:FontSizeLabelEffect />
+                    </Label.Effects>
+                </Label>
+                <BoxView
+                    Grid.Row="2"
+                    BackgroundColor="{StaticResource HeaderLineColor}"
+                    HeightRequest="1"
+                    HorizontalOptions="FillAndExpand"
+                    VerticalOptions="Center" />
+
+            </Grid>
+
+            <ScrollView
+                Padding="24,20,24,0"
+                Scrolled="ScrollView_Scrolled"
+                VerticalScrollBarVisibility="Never">
+                <StackLayout>
+                    <Grid
+                        Margin="0,0,0,20"
+                        ColumnSpacing="0"
+                        RowSpacing="0">
+                        <Grid.IsVisible>
+                            <OnPlatform
+                                x:TypeArguments="x:Boolean"
+                                Android="True"
+                                iOS="False" />
+                        </Grid.IsVisible>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Image
+                            Grid.Row="0"
+                            Grid.RowSpan="2"
+                            Grid.Column="0"
+                            HorizontalOptions="Start"
+                            Source="{Binding Image}" />
+                        <Label
+                            Grid.Row="0"
+                            Grid.Column="1"
+                            Margin="20,0,0,0"
+                            HorizontalOptions="Start"
+                            Style="{StaticResource SubtitleStyle}"
+                            Text="{Binding InfoHeader}">
+                            <Label.Effects>
+                                <effects:FontSizeLabelEffect />
+                            </Label.Effects>
+                        </Label>
+                        <Label
+                            Grid.Row="1"
+                            Grid.Column="1"
+                            Margin="20,0,0,0"
+                            HorizontalOptions="Start"
+                            Style="{StaticResource SecondaryContentItalicStyle}"
+                            Text="{Binding InfoTypeHeader}"
+                            VerticalOptions="Center">
+                            <Label.Effects>
+                                <effects:FontSizeLabelEffect />
+                            </Label.Effects>
+                        </Label>
+                    </Grid>
+                    <Frame
+                        Margin="0,0,0,20"
+                        Padding="0,40,0,40"
+                        BackgroundColor="{StaticResource DefaultBackgroundColor}"
+                        CornerRadius="8"
+                        HasShadow="False">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <StackLayout
+                                Grid.Row="1"
+                                Padding="24,0,24,0"
+                                HorizontalOptions="Start">
+                                <Label Style="{StaticResource SecondaryContentStyle}" Text="{Binding Strings[MY_PAGE_VALID_RULES_VACCINE]}" IsVisible="{Binding IsVaccineSelected}">
+                                    <Label.Effects>
+                                        <effects:FontSizeLabelEffect />
+                                    </Label.Effects>
+                                </Label>
+                                <Label Style="{StaticResource SecondaryContentStyle}" Text="{Binding Strings[MY_PAGE_VALID_RULES_TEST]}" IsVisible="{Binding IsTestSelected}">
+                                    <Label.Effects>
+                                        <effects:FontSizeLabelEffect />
+                                    </Label.Effects>
+                                </Label>
+                                <Label Style="{StaticResource SecondaryContentStyle}" Text="{Binding Strings[MY_PAGE_VALID_RULES_IMMUNITY]}" IsVisible="{Binding IsRecoverySelected}">
+                                    <Label.Effects>
+                                        <effects:FontSizeLabelEffect />
+                                    </Label.Effects>
+                                </Label>
+                                <Label
+                                    Margin="0,20,0,0"
+                                    IsVisible="{Binding IsRecoverySelected}"
+                                    Style="{StaticResource SecondaryTitleStyle}"
+                                    Text="{Binding Strings[MY_PAGE_VALID_RULES_SUBTITLE_2]}">
+                                    <Label.Effects>
+                                        <effects:FontSizeLabelEffect />
+                                    </Label.Effects>
+                                </Label>
+                                <Label
+                                    IsVisible="{Binding IsRecoverySelected}"
+                                    Style="{StaticResource SecondaryContentStyle}"
+                                    Text="{Binding Strings[MY_PAGE_VALID_RULES_SECTION_2]}">
+                                    <Label.Effects>
+                                        <effects:FontSizeLabelEffect />
+                                    </Label.Effects>
+                                </Label>
+                            </StackLayout>
+
+                        </Grid>
+                    </Frame>
+                    <view:InfoVaccineTextView
+                        x:Name="InfoVaccineView"
+                        IsVisible="{Binding IsVaccineSelected}"
+                        PassportViewModel="{Binding PassportViewModel}"
+                        ShowCertificateBool="False"
+                        ShowHeaderBool="False"
+                        ShowTextInEnglishBool="False"
+                        OnlyOneEUPassportBool="False"/>
+                    <view:InfoTestTextView
+                        x:Name="InfoTestView"
+                        IsVisible="{Binding IsTestSelected}"
+                        PassportViewModel="{Binding PassportViewModel}"
+                        ShowCertificateBool="False"
+                        ShowHeaderBool="False"
+                        ShowTextInEnglishBool="False"
+                        OnlyOneEUPassportBool="False"/>
+                    <view:InfoRecoveryTextView
+                        x:Name="InfoRecoveryView"
+                        IsVisible="{Binding IsRecoverySelected}"
+                        PassportViewModel="{Binding PassportViewModel}"
+                        ShowCertificateBool="False"
+                        ShowHeaderBool="False"
+                        ShowTextInEnglishBool="False"
+                        OnlyOneEUPassportBool="False"/>
+                </StackLayout>
+            </ScrollView>
+        </StackLayout>
+    </ContentPage.Content>
+</views:ContentSheetPageNoBackButtonOnIOS>

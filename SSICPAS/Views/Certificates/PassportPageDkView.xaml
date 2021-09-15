@@ -1,0 +1,353 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<ContentPage
+    x:Class="SSICPAS.Views.Certificates.PassportPageDkView"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controls="clr-namespace:SSICPAS.Controls"
+    xmlns:elements="clr-namespace:SSICPAS.Views.Elements"
+    xmlns:enum="clr-namespace:SSICPAS.Enums;assembly=SSICPAS"
+    xmlns:forms="clr-namespace:Lottie.Forms;assembly=Lottie.Forms"
+    xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+    xmlns:local="clr-namespace:SSICPAS.Controls"
+    xmlns:localview="clr-namespace:SSICPAS.Views.Elements;assembly=SSICPAS"
+    xmlns:view="clr-namespace:SSICPAS.Views.Certificates"
+    xmlns:viewmodel="clr-namespace:SSICPAS.ViewModels.Certificates;assembly=SSICPAS"
+    xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+    ios:Page.UseSafeArea="True"
+    x:DataType="viewmodel:PassportPageViewModel"
+    NavigationPage.HasNavigationBar="False">
+    <ContentPage.Resources>
+        <Style x:Key="ContentStyle" TargetType="Label">
+            <Setter Property="FontFamily" Value="IBMPlexSansRegular" />
+            <Setter Property="FontSize" Value="Medium" />
+            <Setter Property="TextColor" Value="{StaticResource SSIBaseTextColor}" />
+            <Setter Property="LineBreakMode" Value="WordWrap" />
+        </Style>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <Grid
+            RowSpacing="0"
+            ColumnSpacing="0"
+            BackgroundColor="{StaticResource SSIWhite}">
+            <Image
+                Grid.Row="0"
+                Grid.Column="0"
+                Aspect="AspectFill"
+                Source="{StaticResource MainPageDottedBackground}" />
+            <Grid Grid.Row="0" RowSpacing="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <localview:PassportPageNavigationHeader
+                    CenterImageSource="{StaticResource CoronapasLogo}"
+                    LeftButtonAccessibilityText="{Binding Strings[MENU_BUTTON_TEXT]}"
+                    LeftButtonCommand="{Binding OpenMenuPage}"
+                    LeftButtonImageSource="{StaticResource HamburgerMenu}"
+                    RightButtonAccessibilityText="{Binding Strings[PASSPORT_TYPE_PICKER_TEXT]}"
+                    RightButtonCommand="{Binding OpenPassportTypePicker}"
+                    RightButtonImageSource="{StaticResource ToEuPassportPickerIcon}">
+                    <elements:PassportPageNavigationHeader.LeftButtonHeightRequest>
+                        <OnPlatform x:TypeArguments="x:Int32">
+                            <On Platform="iOS" Value="50" />
+                            <On Platform="Android" Value="25" />
+                        </OnPlatform>
+                    </elements:PassportPageNavigationHeader.LeftButtonHeightRequest>
+                    <elements:PassportPageNavigationHeader.RightButtonHeightRequest>
+                        <OnPlatform x:TypeArguments="x:Int32">
+                            <On Platform="iOS" Value="50" />
+                            <On Platform="Android" Value="25" />
+                        </OnPlatform>
+                    </elements:PassportPageNavigationHeader.RightButtonHeightRequest>
+                </localview:PassportPageNavigationHeader>
+                <Grid
+                    x:Name="AnimationView"
+                    Grid.Row="1">
+                    <Grid IsVisible="{Binding IsLoadingPassport, Converter={StaticResource BoolToInverseBoolConverter}}">
+                        <RefreshView IsRefreshing="{Binding IsRefreshing}" Command="{Binding RefreshCommand}">
+                            <Grid IsVisible="{Binding IsPassportAvailable, Converter={StaticResource BoolToInverseBoolConverter}}">
+                                <Grid.Triggers>
+                                    <DataTrigger TargetType="Grid" Binding="{Binding ShowManuelFetchSpinner}" Value="True">
+                                        <Setter Property="Margin" Value="0,86,0,0" />
+                                    </DataTrigger>
+                                </Grid.Triggers>
+                                <ScrollView>
+                                    <Grid>
+                                        <Grid IsVisible="{Binding ShowPassportCanNotBeRetrieved}">
+                                            <view:PassportCanNotBeRetrievedView
+                                                x:Name="PassportCanNotBeRetrievedView"
+                                                Padding="30,30,30,30"
+                                                HorizontalOptions="Fill"
+                                                VerticalOptions="FillAndExpand">
+                                                <view:PassportCanNotBeRetrievedView.Triggers>
+                                                    <DataTrigger TargetType="view:PassportCanNotBeRetrievedView" Binding="{Binding ShowManuelFetchSpinner}" Value="True">
+                                                        <Setter Property="Padding" Value="30,0,30,30" />
+                                                    </DataTrigger>
+                                                </view:PassportCanNotBeRetrievedView.Triggers>
+                                            </view:PassportCanNotBeRetrievedView>
+                                        </Grid>
+                                        <Grid IsVisible="{Binding ShowAwaitingPassport}">
+                                            <view:AwaitingPassportView
+                                                x:Name="AwaitingPassportView"
+                                                Padding="30,30,30,30"
+                                                HorizontalOptions="Fill"
+                                                VerticalOptions="FillAndExpand">
+                                                <view:AwaitingPassportView.Triggers>
+                                                    <DataTrigger TargetType="view:AwaitingPassportView" Binding="{Binding ShowManuelFetchSpinner}" Value="True">
+                                                        <Setter Property="Padding" Value="30,0,30,30" />
+                                                    </DataTrigger>
+                                                </view:AwaitingPassportView.Triggers>
+                                            </view:AwaitingPassportView>
+                                        </Grid>
+                                        <Grid IsVisible="{Binding ShowAwaitingPassportHasPassportBefore}">
+                                            <view:ExpiredPassportView
+                                                x:Name="ExpiredPassportView"
+                                                Padding="30,50,30,30"
+                                                HorizontalOptions="Fill"
+                                                VerticalOptions="FillAndExpand">
+                                                <view:ExpiredPassportView.Triggers>
+                                                    <DataTrigger TargetType="view:ExpiredPassportView" Binding="{Binding ShowManuelFetchSpinner}" Value="True">
+                                                        <Setter Property="Padding" Value="30,0,30,30" />
+                                                    </DataTrigger>
+                                                </view:ExpiredPassportView.Triggers>
+                                            </view:ExpiredPassportView>
+                                        </Grid>
+                                   </Grid>
+                                </ScrollView>
+                            </Grid>
+                        </RefreshView>
+                        <Grid IsVisible="{Binding IsFetchingPassport}">
+                            <ScrollView>
+                                <Grid>
+                                    <view:FetchingPassportDkView
+                                        x:Name="PassportFetchingView"
+                                        Padding="30,50,30,0"
+                                        HorizontalOptions="Fill"
+                                        VerticalOptions="FillAndExpand">
+                                    </view:FetchingPassportDkView>
+                                </Grid>
+                            </ScrollView>
+                        </Grid>
+                        <ScrollView Grid.Row="0" IsVisible="{Binding IsPassportAvailable}">
+                            <StackLayout Spacing="0">
+                                <BoxView BackgroundColor="{StaticResource MainPageBackgroundColor}" HeightRequest="0.25" />
+                                <Frame
+                                    Padding="0"
+                                    CornerRadius="0"
+                                    HasShadow="False">
+                                    <Grid
+                                        BackgroundColor="White"
+                                        RowSpacing="0"
+                                        ColumnSpacing="0">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="Auto" />
+                                            <ColumnDefinition Width="Auto" />
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto" />
+                                            <RowDefinition Height="Auto" />
+                                        </Grid.RowDefinitions>
+                                        <Frame
+                                            Grid.Row="0"
+                                            Grid.RowSpan="2"
+                                            Grid.Column="0"
+                                            Grid.ColumnSpan="2"
+                                            Padding="0,0,0,0"
+                                            Margin="20,0,20,0"
+                                            IsVisible="{Binding IsLimitedDKCode}"
+                                            VerticalOptions="CenterAndExpand"
+                                            BorderColor="{StaticResource MainPageBackgroundColor}"
+                                            CornerRadius="22"
+                                            HasShadow="False">
+                                            <Grid xct:TouchEffect.NativeAnimation="True" >
+                                                <Grid.GestureRecognizers>
+                                                    <TapGestureRecognizer Command="{Binding ToggleInformationCommand}" CommandParameter="{x:Static enum:PassportType.DK_FULL}" />
+                                                </Grid.GestureRecognizers>
+                                                <StackLayout Orientation="Horizontal" Spacing="0">
+                                                    <BoxView BackgroundColor="Transparent" HeightRequest="44" WidthRequest="0" />
+                                                    <Image                                                   
+                                                        x:Name="ShowInfoImage"
+                                                        Source="{StaticResource ShowInfoIcon}"            
+                                                        Margin="16,0,8,0"
+                                                        MinimumHeightRequest="22"                              
+                                                        AutomationId="ShowInfoImage"
+                                                        AutomationProperties.Name="{Binding Strings[PASSPORT_PAGE_HIDE_INFO_BUTTON_TEXT_SHOW_INFO]}" >
+                                                    </Image>
+                                                    <Label
+                                                        Grid.Row="0"                                                                                                               
+                                                        Margin="0,0,16,0"
+                                                        Style="{StaticResource ShowInfoStyle}"
+                                                        Text="{Binding Strings[PASSPORT_PAGE_HIDE_INFO_BUTTON_TEXT_SHOW_INFO]}"
+                                                        IsEnabled="False"
+                                                        InputTransparent="True"
+                                                        VerticalOptions="CenterAndExpand"
+                                                        HorizontalOptions="CenterAndExpand"
+                                                        AutomationProperties.IsInAccessibleTree="False">
+                                                        <Label.Effects>
+                                                            <controls:FontSizeLabelEffect />
+                                                        </Label.Effects>
+                                                    </Label>
+                                                </StackLayout>
+                                            </Grid>
+                                        </Frame>
+                                        <Grid
+                                            VerticalOptions="Center"
+                                            Grid.Row="0"
+                                            Grid.RowSpan="2"
+                                            Grid.Column="0"
+                                            Margin="20,0,0,0"
+                                            ColumnSpacing="8"
+                                            RowSpacing="0"
+                                            IsVisible="{Binding IsLimitedDKCode, Converter={StaticResource BoolToInverseBoolConverter}}">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="Auto" />
+                                                <ColumnDefinition Width="*" />
+                                            </Grid.ColumnDefinitions>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="Auto" />
+                                                <RowDefinition Height="Auto" />
+                                            </Grid.RowDefinitions>
+                                            <Button
+                                                x:Name="HideInfoButton"
+                                                Grid.Row="0"
+                                                Grid.RowSpan="2"
+                                                Grid.Column="0"
+                                                AutomationId="HideInfoButton"
+                                                AutomationProperties.Name="{Binding Strings[PASSPORT_PAGE_HIDE_INFO_BUTTON_TEXT_HIDE_INFO]}"
+                                                BackgroundColor="White"
+                                                BorderColor="{StaticResource MainPageBackgroundColor}"
+                                                BorderWidth="1"
+                                                Command="{Binding ToggleInformationCommand}"
+                                                CommandParameter="{x:Static enum:PassportType.DK_LIMITED}"
+                                                CornerRadius="22"
+                                                HeightRequest="44"
+                                                HorizontalOptions="Start"
+                                                ImageSource="{StaticResource HideInfoIcon}"
+                                                VerticalOptions="Center"
+                                                WidthRequest="44"/>
+                                            <Label
+                                                Grid.Row="0"
+                                                Grid.Column="1"
+                                                Margin="0,5,0,0"
+                                                AutomationProperties.IsInAccessibleTree="True"
+                                                Style="{StaticResource NameDKPassport}"
+                                                Text="{Binding FullName}"
+                                                VerticalOptions="EndAndExpand">
+                                                <Label.Effects>
+                                                    <local:FontSizeLabelEffect />
+                                                </Label.Effects>
+                                            </Label>
+                                            <Label
+                                                Grid.Row="1"
+                                                Grid.Column="1"
+                                                AutomationProperties.IsInAccessibleTree="True"
+                                                HorizontalOptions="Start"
+                                                Style="{StaticResource BirthdateDKPassport}"
+                                                Text="{Binding Birthdate}"
+                                                VerticalOptions="StartAndExpand">
+                                                <Label.Effects>
+                                                    <local:FontSizeLabelEffect />
+                                                </Label.Effects>
+                                            </Label>
+                                        </Grid>
+                                        <Grid
+                                            HeightRequest="86"
+                                            Grid.Row="0"
+                                            Grid.RowSpan="2"
+                                            Grid.Column="2"
+                                            HorizontalOptions="End"
+                                            VerticalOptions="Center">
+                                            <localview:GyroReactiveView
+                                                AnimationRate="2"
+                                                Padding="10, 0"
+                                                Colors="{Binding TopGradient}"
+                                                Density="10"
+                                                HorizontalOptions="End"
+                                                ImageSource="{StaticResource InverseCrownIcon}"
+                                                VerticalOptions="Center"
+                                                HeightRequest="58"/>
+                                        </Grid>
+                                    </Grid>
+                                </Frame>
+                                <BoxView BackgroundColor="{StaticResource MainPageBackgroundColor}" HeightRequest="0.5" />
+                                <Grid
+                                    VerticalOptions="Fill"
+                                    RowSpacing="0"
+                                    ColumnSpacing="0">
+                                    <view:QRView
+                                        x:Name="QRTabViewDK"
+                                        Padding="20,10,20,5"
+                                        BadgeIconAnimationSource="{StaticResource ValidDKPassport}"
+                                        IsBadgeIconAnimationPlaying="{Binding IsBadgeAnimationPlaying}"
+                                        BadgeIconAnimationProgress="{Binding BadgeAnimationProgress}"
+                                        BadgeInfoButtonCommand="{Binding OnQrInfoButtonClicked}"
+                                        BadgeInfoIconSource="{StaticResource DKInformationIcon}"
+                                        BadgeInfoShown="{Binding IsInfoIconVisible}"
+                                        BadgeText="{Binding ValidPassportText}"
+                                        BadgeTextColor="{StaticResource SSIBaseTextColor}"
+                                        BarcodeValue="{Binding QrCodeString}"
+                                        Colors="{Binding BottomGradientList}"
+                                        HorizontalOptions="Fill"
+                                        QrCodeInfoAccessibilityText="{Binding Strings[PASSPORT_PAGE_DK_PASSPORT_DETAIL_BUTTON_TEXT]}"
+                                        VerticalOptions="FillAndExpand" />
+                                </Grid>
+                                <Grid Padding="0" ColumnSpacing="0">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="90" />
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="90" />
+                                    </Grid.ColumnDefinitions>
+                                    <localview:GyroFillReactiveView
+                                        Grid.Column="0"
+                                        AnimationRate="1"
+                                        Padding="60,0,0,0"
+                                        Colors="{Binding ClockGradient}"
+                                        Density="40"
+                                        HorizontalOptions="End"
+                                        ImageSource="{StaticResource ClockSideCircles}"
+                                        VerticalOptions="Center"
+                                        HeightRequest="18"
+                                        WidthRequest="48"/>
+                                    <localview:GyroReactiveTextPageView
+                                        Grid.Column="1"
+                                        AnimationRate="1"
+                                        Text="{Binding CurrentLocalTime, StringFormat='{0:HH:mm:ss}'}"
+                                        Colors="{Binding ClockGradient}"
+                                        Density="40"
+                                        HorizontalOptions="FillAndExpand"
+                                        VerticalOptions="Start"
+                                        HeightRequest="42"
+                                        WidthRequest="300"/>
+                                    <localview:GyroFillReactiveView
+                                        Grid.Column="2"
+                                        AnimationRate="1"
+                                        Padding="0,0,60,0"
+                                        Colors="{Binding ClockGradient}"
+                                        Density="40"
+                                        HorizontalOptions="Start"
+                                        ImageSource="{StaticResource ClockSideCircles}"
+                                        VerticalOptions="Center"
+                                        HeightRequest="18"
+                                        WidthRequest="48"/>
+                                </Grid>
+                            </StackLayout>
+                        </ScrollView>
+                    </Grid>
+                    <forms:AnimationView
+                        BackgroundColor="Transparent"
+                        IsVisible="{Binding IsLoadingPassport}"
+                        Grid.Row="0"
+                        Animation="loading.json"
+                        IsPlaying="True"
+                        HorizontalOptions="Center"
+                        HeightRequest="500"
+                        WidthRequest="500"
+                        Loop="True"
+                        VerticalOptions="Center"/>
+                </Grid>
+            </Grid>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

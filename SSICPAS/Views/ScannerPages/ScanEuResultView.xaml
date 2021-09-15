@@ -1,0 +1,174 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:elements="clr-namespace:SSICPAS.Views.Elements;assembly=SSICPAS"
+             xmlns:controls="clr-namespace:SSICPAS.Controls;assembly=SSICPAS"
+             x:Class="SSICPAS.Views.ScannerPages.ScanEuResultView"
+             BackgroundColor="{StaticResource NavigationHeaderBackgroundColor}"
+             NavigationPage.HasNavigationBar="False"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             xmlns:view="clr-namespace:SSICPAS.Views.Certificates;assembly=SSICPAS"
+             xmlns:qrScannerViewModels="clr-namespace:SSICPAS.ViewModels.QrScannerViewModels;assembly=SSICPAS"
+             x:DataType="qrScannerViewModels:ScanEuResultViewModel"
+             ios:Page.UseSafeArea="True">
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <StackLayout Grid.Row="0"
+                         VerticalOptions="Start"
+                         Padding="0"
+                         Spacing="0">
+                <elements:NavigationHeader
+                    CenterLabelAccessibilityText="{Binding Strings[SCANNER_EU_TITLE_TEXT]}"
+                    CenterLabelText="{Binding Strings[SCANNER_EU_TITLE_TEXT]}"
+                    AutomationProperties.IsInAccessibleTree="False"
+                    RightButtonCommand="{Binding BackCommand}"
+                    RightButtonAccessibilityText="{Binding Strings[BIOMETRIC_DISMISS]}"
+                    RightButtonImageSource="{StaticResource XMark}"
+                    VerticalOptions="Center" />
+
+                <StackLayout
+                    BackgroundColor="{StaticResource SSIBaseTextColor}"
+                    Padding="0"
+                    Spacing="0">
+                    <Label
+                        Margin="-54, 0"
+                        Padding="0, 2"
+                        VerticalTextAlignment="Center"
+                        MaxLines="1"
+                        LineBreakMode="NoWrap"
+                        FontFamily="IBMPlexSansRegular"
+                        FontSize="12"
+                        TextColor="{StaticResource SSIWhiteTextColor}"
+                        Text="{Binding RepeatedText}"
+                        AutomationProperties.IsInAccessibleTree="False"/>
+                </StackLayout>
+            </StackLayout>
+
+
+            <ScrollView Grid.Row="1">
+                <StackLayout Padding="0"
+                             Spacing="0">
+                    <Grid BackgroundColor="{StaticResource DefaultBackgroundColor}">
+                        <StackLayout Orientation="Vertical"
+                                     Spacing="0"
+                                     Padding="0"
+                                     Margin="0, 30">
+                            <Label Text="{Binding FullName}"
+                                   Style="{StaticResource ContentTitleStyle}"
+                                   HorizontalTextAlignment="Center"
+                                   HorizontalOptions="Center"
+                                   controls:FontSizeLabelEffectParams.MaxFontSize="28.00"
+                                   controls:FontSizeLabelEffectParams.MinFontSize="20.00">
+                                <Label.Effects>
+                                    <controls:FontSizeLabelEffect/>
+                                </Label.Effects>
+                            </Label>
+                            <Label Text="{Binding DateOfBirth}"
+                                   Style="{StaticResource TertierStyle}"
+                                   HorizontalTextAlignment="Center"
+                                   HorizontalOptions="Center"
+                                   controls:FontSizeLabelEffectParams.MaxFontSize="24.00"
+                                   controls:FontSizeLabelEffectParams.MinFontSize="16.00">
+                                <Label.Effects>
+                                    <controls:FontSizeLabelEffect/>
+                                </Label.Effects>
+                            </Label>
+                        </StackLayout>
+                    </Grid>
+
+                    <view:InfoVaccineTextView
+                        x:Name="InfoVaccineView"
+                        IsVisible="{Binding IsVaccine}"
+                        PassportViewModel="{Binding PassportViewModel}"
+                        ShowCertificateBool="True"
+                        ShowHeaderBool="True"
+                        ShowTextInEnglishBool="True"
+                        OnlyOneEUPassportBool="True"/>
+                    <view:InfoTestTextView
+                        x:Name="InfoTestView"
+                        IsVisible="{Binding IsTest}"
+                        PassportViewModel="{Binding PassportViewModel}"
+                        ShowCertificateBool="True"
+                        ShowHeaderBool="True"
+                        ShowTextInEnglishBool="True"
+                        OnlyOneEUPassportBool="True"/>
+                    <view:InfoRecoveryTextView
+                        x:Name="InfoRecoveryView"
+                        IsVisible="{Binding IsRecovery}"
+                        PassportViewModel="{Binding PassportViewModel}"
+                        ShowCertificateBool="True"
+                        ShowHeaderBool="True"
+                        ShowTextInEnglishBool="True"
+                        OnlyOneEUPassportBool="True"/>
+                </StackLayout>
+            </ScrollView>
+
+
+            <StackLayout Grid.Row="2"
+                         Orientation="Vertical"
+                         VerticalOptions="End"
+                         Padding="0"
+                         Spacing="0"
+                         Margin="20">
+                <Grid>
+                    <Button Command="{Binding ScanAgainCommand}"
+                            Style="{StaticResource CombinedButtonPrimaryStyle}"
+                            VerticalOptions="Center"
+                            HorizontalOptions="FillAndExpand"
+                            AutomationProperties.IsInAccessibleTree="False"/>
+                    <StackLayout Orientation="Horizontal"
+                                 HorizontalOptions="Center"
+                                 Spacing="10"
+                                 InputTransparent="True">
+                        <Image Source="{StaticResource ScanRectangle}"
+                               BackgroundColor="Transparent"
+                               HeightRequest="30"
+                               WidthRequest="30"
+                               InputTransparent="True"/>
+                        <Label Text="{Binding Strings[SCANNER_ERROR_BUTTON_TEXT]}"
+                               HorizontalOptions="Center"
+                               HorizontalTextAlignment="Center"
+                               VerticalOptions="Center"
+                               VerticalTextAlignment="Center"
+                               InputTransparent="True"
+                               IsEnabled="False"
+                               AutomationProperties.IsInAccessibleTree="True"
+                               AutomationProperties.Name="{Binding Strings[SCANNER_SCAN_NEW_BUTTON_ACCESSIBILITY]}"
+                               Style="{StaticResource ButtonLabelStyle}"
+                               controls:FontSizeLabelEffectParams.MaxFontSize="24.00"
+                               controls:FontSizeLabelEffectParams.MinFontSize="14.00">
+                            <Label.Effects>
+                                <controls:FontSizeLabelEffect />
+                            </Label.Effects>
+                        </Label>
+                    </StackLayout>
+                </Grid>
+
+                <!--  Seconds left before the page closes  -->
+                <Label
+                    Margin="0,20"
+                    HorizontalOptions="Center"
+                    FontFamily="IBMPlexSansRegular"
+                    FontSize="Caption"
+                    LineBreakMode="TailTruncation"
+                    Text="{Binding SecondsRemainingText}"
+                    TextColor="{StaticResource SSILightTextColor}"
+                    controls:FontSizeLabelEffectParams.MaxFontSize="16.00"
+                    controls:FontSizeLabelEffectParams.MinFontSize="10.00">
+                    <Label.Effects>
+                        <controls:FontSizeLabelEffect />
+                    </Label.Effects>
+                </Label>
+            </StackLayout>
+        </Grid>
+
+
+    </ContentPage.Content>
+</ContentPage>

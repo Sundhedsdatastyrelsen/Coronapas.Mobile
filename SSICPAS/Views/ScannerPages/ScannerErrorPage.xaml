@@ -1,0 +1,277 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+
+<ContentPage
+    x:Class="SSICPAS.Views.ScannerPages.ScannerErrorPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+    xmlns:elements="clr-namespace:SSICPAS.Views.Elements"
+    xmlns:effects="clr-namespace:SSICPAS.Controls"
+    NavigationPage.HasNavigationBar="False"
+    BackgroundColor="{StaticResource NavigationHeaderBackgroundColor}"
+    ios:Application.EnableAccessibilityScalingForNamedFontSizes="true"
+    ios:Page.UseSafeArea="True">
+    <ContentPage.Content>
+        <ScrollView>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+                <StackLayout Grid.Row="0"
+                         Orientation="Vertical"
+                         Padding="0"
+                         Spacing="0">
+                    <elements:NavigationHeader
+                    CenterLabelAccessibilityText="{Binding PageTitle}"
+                    CenterLabelText="{Binding PageTitle}"
+                    RightButtonAccessibilityText="{Binding Strings[BIOMETRIC_DISMISS]}"
+                    RightButtonCommand="{Binding ScanAgainCommand}"
+                    RightButtonImageSource="{StaticResource XMark}" />
+
+
+                    <!--  Repeating text for Expired and Invalid page  -->
+                    <StackLayout
+                    BackgroundColor="#FDD134"
+                    IsVisible="{Binding ShowInvalidPage, Converter={StaticResource BoolToInverseBoolConverter}}"
+                    Padding="0"
+                    Spacing="0">
+                        <Label
+                        Margin="-50, 0"
+                        Padding="0, 2"
+                        VerticalTextAlignment="Center"
+                        MaxLines="1"
+                        LineBreakMode="NoWrap"
+                        Style="{StaticResource TertierSemiBoldStyle}"
+                        TextColor="{StaticResource SSIWhiteTextColor}"
+                        Text="{Binding RepeatedText}"
+                        effects:FontSizeLabelEffectParams.MaxFontSize="14.00"
+                        effects:FontSizeLabelEffectParams.MinFontSize="12.00"
+                        AutomationProperties.IsInAccessibleTree="False">
+                            <Label.Effects>
+                                <effects:FontSizeLabelEffect/>
+                            </Label.Effects>
+                        </Label>
+                    </StackLayout>
+
+                    <StackLayout
+                    BackgroundColor="#FF2466"
+                    IsVisible="{Binding ShowInvalidPage}"
+                    Padding="0"
+                    Spacing="0">
+                        <Label
+                        Margin="-50, 0"
+                        Padding="0, 2"
+                        VerticalTextAlignment="Center"
+                        MaxLines="1"
+                        LineBreakMode="NoWrap"
+                        Style="{StaticResource TertierSemiBoldStyle}"
+                        TextColor="{StaticResource SSIWhiteTextColor}"
+                        Text="{Binding RepeatedText}" 
+                        effects:FontSizeLabelEffectParams.MaxFontSize="14.00"
+                        effects:FontSizeLabelEffectParams.MinFontSize="12.00"
+                        AutomationProperties.IsInAccessibleTree="False">
+                            <Label.Effects>
+                                <effects:FontSizeLabelEffect/>
+                            </Label.Effects>
+                        </Label>
+                    </StackLayout>
+                </StackLayout>
+
+
+                <StackLayout Grid.Row="1"
+                         Orientation="Vertical"
+                         VerticalOptions="CenterAndExpand"
+                         Padding="0"
+                         Spacing="0">
+                    <!--  Title for Expired and Invalid page  -->
+                    <StackLayout
+                    IsVisible="{Binding ShowInvalidPage, Converter={StaticResource BoolToInverseBoolConverter}}"
+                    Orientation="Vertical">
+                        <Image Source="{StaticResource HourGlass}" />
+                        <Label
+                        Margin="0,5"
+                        HorizontalOptions="Center"
+                        WidthRequest="200"
+                        HeightRequest="40"
+                        HorizontalTextAlignment="Center"
+                        Style="{StaticResource BigTitleStyle}"
+                        Text="{Binding Strings[SCANNER_ERROR_EXPIRED_TITLE]}"
+                        AutomationProperties.IsInAccessibleTree="True"
+                        effects:FontSizeLabelEffectParams.MaxFontSize="24.00"
+                        effects:FontSizeLabelEffectParams.MinFontSize="16.00">
+                            <Label.Effects>
+                                <effects:FontSizeLabelEffect/>
+                            </Label.Effects>
+                        </Label>
+                        <Label
+                        Margin="30,0"
+                        HorizontalTextAlignment="Center"
+                        Style="{StaticResource ContentStyle}"
+                        Text="{Binding Strings [SCANNER_ERROR_EXPIRED_CONTENT]}"
+                        AutomationProperties.IsInAccessibleTree="True"
+                        effects:FontSizeLabelEffectParams.MaxFontSize="18.00"
+                        effects:FontSizeLabelEffectParams.MinFontSize="12.00">
+                            <Label.Effects>
+                                <effects:FontSizeLabelEffect/>
+                            </Label.Effects>
+                        </Label>
+                        <Label
+                        Margin="30,10"
+                        HorizontalTextAlignment="Center"
+                        Style="{StaticResource ContentStyle}"
+                        Text="{Binding Strings [SCANNER_ERROR_EXPIRED_CONTENT_2]}"
+                        AutomationProperties.IsInAccessibleTree="True"
+                        effects:FontSizeLabelEffectParams.MaxFontSize="18.00"
+                        effects:FontSizeLabelEffectParams.MinFontSize="12.00">
+                            <Label.Effects>
+                                <effects:FontSizeLabelEffect/>
+                            </Label.Effects>
+                        </Label>
+                    </StackLayout>
+
+                    <StackLayout
+                    IsVisible="{Binding ShowInvalidPage}"
+                    Orientation="Vertical">
+                        <Image Source="{StaticResource xMarkCircle}" />
+                        <Label
+                        Margin="0,5"
+                        HorizontalOptions="Center"
+                        WidthRequest="200"
+                        HeightRequest="40"
+                        HorizontalTextAlignment="Center"
+                        VerticalTextAlignment="Center"
+                        Style="{StaticResource BigTitleStyle}"
+                        Text="{Binding Strings[SCANNER_ERROR_INVALID_TITLE]}"
+                        AutomationProperties.IsInAccessibleTree="True"
+                        effects:FontSizeLabelEffectParams.MaxFontSize="24.00"
+                        effects:FontSizeLabelEffectParams.MinFontSize="16.00">
+                            <Label.Effects>
+                                <effects:FontSizeLabelEffect/>
+                            </Label.Effects>
+                        </Label>
+                        <Label
+                        Margin="30, 0"
+                        HorizontalTextAlignment="Center"
+                        Style="{StaticResource ContentStyle}"
+                        Text="{Binding Strings [SCANNER_ERROR_INVALID_CONTENT]}"
+                        AutomationProperties.IsInAccessibleTree="True"
+                        effects:FontSizeLabelEffectParams.MaxFontSize="18.00"
+                        effects:FontSizeLabelEffectParams.MinFontSize="12.00">
+                            <Label.Effects>
+                                <effects:FontSizeLabelEffect/>
+                            </Label.Effects>
+                        </Label>
+                    </StackLayout>
+
+
+                    <!--  Show hide "Name and Date of birth"  -->
+                    <StackLayout
+                    HorizontalOptions="Center"
+                    VerticalOptions="Start"
+                    IsVisible="{Binding Name, Converter={StaticResource NullToVisibilityConverter}}"
+                    Orientation="Vertical">
+                        <BoxView
+                        Margin="30,20"
+                        HeightRequest="2"
+                        Color="#EAF1F1" />
+                        <Label
+                        HorizontalOptions="Center"
+                        Style="{StaticResource ContentTitleStyle}"
+                        Text="{Binding Name}"
+                        HorizontalTextAlignment="Center"
+                        effects:FontSizeLabelEffectParams.MaxFontSize="20.00"
+                        effects:FontSizeLabelEffectParams.MinFontSize="8.00">
+                            <Label.Effects>
+                                <effects:FontSizeLabelEffect/>
+                            </Label.Effects>
+                        </Label>
+                        <Label
+                        HorizontalOptions="Center"
+                        Style="{StaticResource TertierStyle}"
+                        Text="{Binding DateOfBirth}" 
+                        effects:FontSizeLabelEffectParams.MaxFontSize="16.00"
+                        effects:FontSizeLabelEffectParams.MinFontSize="8.00">
+                            <Label.Effects>
+                                <effects:FontSizeLabelEffect/>
+                            </Label.Effects>
+                        </Label>
+                    </StackLayout>
+                </StackLayout>
+
+
+                <StackLayout Grid.Row="2"
+                         Orientation="Vertical"
+                         VerticalOptions="End"
+                         Padding="0"
+                         Spacing="0"
+                         Margin="20">
+
+                    <Frame BackgroundColor="{StaticResource SSIDialogButton}"
+                       Padding="0"
+                       HeightRequest="60"
+                       CornerRadius="4" HasShadow="False">
+                        <Grid ColumnSpacing="10">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+
+                            <Image
+                            Grid.Column="1"
+                            HeightRequest="24"
+                            VerticalOptions="Center"
+                            HorizontalOptions="CenterAndExpand"
+                            Source="{StaticResource ScanRectangle}"
+                            WidthRequest="24" />
+
+                            <Label
+                            Grid.Column="2"
+                            effects:FontSizeLabelEffectParams.MaxFontSize="32"
+                            effects:FontSizeLabelEffectParams.MinFontSize="12"
+                            AutomationProperties.IsInAccessibleTree="True"
+                            AutomationProperties.Name="{Binding Strings[SCANNER_SCAN_NEW_BUTTON_ACCESSIBILITY]}"
+                            HorizontalOptions="CenterAndExpand"
+                            LineBreakMode="CharacterWrap"
+                            MaxLines="1"
+                            Text="{Binding Strings[SCANNER_ERROR_BUTTON_TEXT]}"
+                            Style="{StaticResource ButtonLabelStyle}"
+                            TextColor="White"
+                            VerticalOptions="Center"
+                            VerticalTextAlignment="Center">
+                                <Label.Effects>
+                                    <effects:FontSizeLabelEffect />
+                                </Label.Effects>
+                            </Label>
+
+                            <Button
+                            Style="{StaticResource TransparentButtonStyle}"
+                            Command="{Binding ScanAgainCommand}"
+                            Grid.ColumnSpan="4"
+                            AutomationProperties.IsInAccessibleTree="False"/>
+                        </Grid>
+                    </Frame>
+
+                    <!--  Seconds left before the page closes  -->
+                    <Label
+                    Margin="0,20"
+                    HorizontalOptions="Center"
+                    Style="{StaticResource SecondaryContentStyle}"
+                    Text="{Binding SecondsRemainingText}"
+                    TextColor="{StaticResource SSILightTextColor}" 
+                    effects:FontSizeLabelEffectParams.MaxFontSize="22.00"
+                    effects:FontSizeLabelEffectParams.MinFontSize="14.00"
+                    AutomationProperties.IsInAccessibleTree="True">
+                        <Label.Effects>
+                            <effects:FontSizeLabelEffect/>
+                        </Label.Effects>
+                    </Label>
+                </StackLayout>
+            </Grid>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

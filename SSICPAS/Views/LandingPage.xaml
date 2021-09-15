@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage
+    x:Class="SSICPAS.Views.LandingPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controls="clr-namespace:SSICPAS.Controls"
+    xmlns:effects="clr-namespace:SSICPAS.Controls"
+    xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+    xmlns:viewModel="clr-namespace:SSICPAS.ViewModels"
+    ios:Page.UseSafeArea="False"
+    x:DataType="viewModel:LandingViewModel"
+    AutomationId="LandingPage"
+    AutomationProperties.IsInAccessibleTree="False"
+    NavigationPage.HasNavigationBar="False">
+    <ContentPage.Content>
+        <Grid Padding="0,0,0,30">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <Image
+                Grid.Row="0"
+                Grid.RowSpan="1"
+                Aspect="AspectFill"
+                Source="{StaticResource LandingPageStockImage}"
+                VerticalOptions="Fill" />
+
+            <Image
+                Grid.Row="0"
+                Scale="1.5"
+                Opacity="0.99"
+                Grid.RowSpan="3"
+                Source="{StaticResource LandingPageBackground}" />
+
+            <ImageButton
+                Grid.Row="0"
+                Margin="0,35,15,0"
+                Padding="0"
+                AutomationId="ExpiredCertificateView_GoToCertificateHelpPage"
+                AutomationProperties.IsInAccessibleTree="True"
+                AutomationProperties.Name="{Binding HelpButton}"
+                BackgroundColor="Transparent"
+                Command="{Binding HelpButtonCommand}"
+                HorizontalOptions="End"
+                Source="{StaticResource LandingHelpIcon}"
+                VerticalOptions="Start" />
+
+            <Image
+                Grid.Row="0"
+                Scale="1.1"
+                Opacity="0.1"
+                Grid.RowSpan="3"
+                Aspect="AspectFill"
+                Source="{StaticResource LandingPageVector}"
+                TranslationY="50"
+                VerticalOptions="End" />
+
+            <Grid
+                Grid.Row="0"
+                HorizontalOptions="Center"
+                VerticalOptions="Center">
+                <Image
+                    Grid.Row="0"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center"
+                    Source="{StaticResource LandingPageLogo}" />
+            </Grid>
+
+            <StackLayout
+                Grid.Row="1"
+                Margin="16,0,16,0"
+                Orientation="Vertical"
+                Spacing="8">
+
+                <controls:SingleLineButton
+                    AutomationId="CreateCoronapasButton"
+                    AutomationProperties.IsInAccessibleTree="True"
+                    AutomationProperties.Name="{Binding RetrieveCertificateText}"
+                    Command="{Binding RetrieveCertificateCommand}"
+                    Style="{StaticResource LandingPrimaryButtonStyle}"
+                    Text="{Binding RetrieveCertificateText}"
+                    effects:FontSizeLabelEffectParams.MaxFontSize="30"
+                    effects:FontSizeLabelEffectParams.MinFontSize="12">
+                    <Button.Effects>
+                        <effects:FontSizeLabelEffect />
+                    </Button.Effects>
+                </controls:SingleLineButton>
+
+                <controls:SingleLineButton
+                    AutomationId="OpenScannerButton"
+                    AutomationProperties.IsInAccessibleTree="True"
+                    AutomationProperties.Name="{Binding OpenScannerText}"
+                    Command="{Binding OpenScannerCommand}"
+                    Style="{StaticResource LandingSecondaryButtonStyle}"
+                    Text="{Binding OpenScannerText}" 
+                    effects:FontSizeLabelEffectParams.MaxFontSize="30"
+                    effects:FontSizeLabelEffectParams.MinFontSize="12">
+                    <Button.Effects>
+                        <effects:FontSizeLabelEffect />
+                    </Button.Effects>
+                </controls:SingleLineButton>
+
+            </StackLayout>
+            <Grid Grid.Row="2" Margin="16,70,16,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="6*" />
+                    <ColumnDefinition Width="4*" />
+                </Grid.ColumnDefinitions>
+                <Image
+                    Grid.Column="0"
+                    Margin="5,0,0,5"
+                    HorizontalOptions="Start"
+                    Source="{StaticResource SundhedsminiaterietLandingPageLogo}"
+                    VerticalOptions="End" />
+
+                <controls:SingleLineButton
+                    Grid.Column="1"
+                    AutomationId="OpenScannerButton"
+                    AutomationProperties.IsInAccessibleTree="True"
+                    AutomationProperties.Name="{Binding LanguageChangeButtonText}"
+                    Command="{Binding ChangeLanguageCommand}"
+                    Style="{StaticResource LandingTertiaryButtonStyle}"
+                    Text="{Binding LanguageChangeButtonText}" 
+                    effects:FontSizeLabelEffectParams.MaxFontSize="28"
+                    effects:FontSizeLabelEffectParams.MinFontSize="12">
+                    <Button.Effects>
+                        <effects:FontSizeLabelEffect />
+                    </Button.Effects>
+                </controls:SingleLineButton>
+            </Grid>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

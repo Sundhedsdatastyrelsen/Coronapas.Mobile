@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ContentView
+    x:Class="SSICPAS.Views.Certificates.PassportInfoView"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controls="clr-namespace:SSICPAS.Controls;assembly=SSICPAS"
+    xmlns:effects="clr-namespace:SSICPAS.Controls;assembly=SSICPAS"
+    xmlns:forms="clr-namespace:Lottie.Forms;assembly=Lottie.Forms"
+    xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+    xmlns:localview="clr-namespace:SSICPAS.Views.Elements;assembly=SSICPAS"
+    xmlns:view="clr-namespace:SSICPAS.Views.Certificates"
+    xmlns:viewmodel="clr-namespace:SSICPAS.ViewModels.Certificates;assembly=SSICPAS"
+    ios:Page.UseSafeArea="True"
+    x:DataType="viewmodel:PassportInfoViewModel"
+    NavigationPage.HasNavigationBar="False">
+    <ContentView.Content>
+        <Grid>
+            <Image
+                Grid.Row="0"
+                Grid.Column="0"
+                Aspect="AspectFill"
+                Source="{StaticResource MainPageDottedBackground}" />
+            <ScrollView>
+                <StackLayout
+                    BackgroundColor="Transparent"
+                    Orientation="Vertical"
+                    Spacing="0">
+                    <BoxView BackgroundColor="{StaticResource MainPageBackgroundColor}" HeightRequest="0.5" />
+                    <Frame
+                        Padding="0"
+                        CornerRadius="0"
+                        HasShadow="False">
+                        <Grid BackgroundColor="White">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <Grid
+                                Grid.Row="0"
+                                Grid.RowSpan="2"
+                                Grid.Column="0"
+                                ColumnSpacing="0"
+                                RowSpacing="0"
+                                Margin="20,0,0,0"
+                                VerticalOptions="Center">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <Label
+                                    Grid.Row="0"
+                                    Grid.Column="1"
+                                    AutomationProperties.IsInAccessibleTree="True"
+                                    HorizontalOptions="Start"
+                                    Style="{StaticResource SubtitleMedStyle}"
+                                    Text="{Binding FullName}"
+                                    VerticalOptions="EndAndExpand">
+                                    <Label.Effects>
+                                        <effects:FontSizeLabelEffect />
+                                    </Label.Effects>
+                                </Label>
+                                <Label
+                                    Grid.Row="1"
+                                    Grid.Column="1"
+                                    AutomationProperties.IsInAccessibleTree="True"
+                                    Style="{StaticResource ContentStyle}"
+                                    HorizontalOptions="Start"
+                                    Text="{Binding Birthdate}"
+                                    VerticalOptions="StartAndExpand">
+                                    <Label.Effects>
+                                        <effects:FontSizeLabelEffect />
+                                    </Label.Effects>
+                                </Label>
+                            </Grid>
+                            <Grid
+                                HeightRequest="86"
+                                Grid.Row="0"
+                                Grid.RowSpan="2"
+                                Grid.Column="2"
+                                HorizontalOptions="End"
+                                VerticalOptions="Center">
+                                <localview:GyroReactiveView
+                                    Padding="10, 0"
+                                    AnimationRate="2"
+                                    Colors="{Binding TopGradientList}"
+                                    Density="10"
+                                    HorizontalOptions="End"
+                                    ImageSource="{StaticResource InversePlaneIcon}"
+                                    VerticalOptions="CenterAndExpand"
+                                    HeightRequest="58" />
+                            </Grid>
+                        </Grid>
+                    </Frame>
+                    <BoxView BackgroundColor="{StaticResource MainPageBackgroundColor}" HeightRequest="0.5" />
+                    <Grid
+                        BackgroundColor="Transparent"
+                        ColumnSpacing="0"
+                        RowSpacing="0"
+                        VerticalOptions="FillAndExpand">
+                        <view:QRView
+                            x:Name="QRViewInternationalVaccineWithInfoIcon"
+                            Padding="20,10,20,10"
+                            BackgroundColor="Transparent"
+                            BadgeIconAnimationSource="{StaticResource ValidEUPassport}"
+                            IsBadgeIconAnimationPlaying="{Binding IsBadgeAnimationPlaying}"
+                            BadgeIconAnimationProgress="{Binding BadgeAnimationProgress}"
+                            BadgeInfoButtonCommand="{Binding OnEuInfoButtonClicked}"
+                            BadgeInfoIconSource="{StaticResource EUInformationIcon}"
+                            BadgeInfoShown="{Binding IsInfoIconVisible}"
+                            BadgeText="{Binding ValidPassportText}"
+                            BadgeTextColor="{Binding TextColor}"
+                            BarcodeValue="{Binding QrCodeString}"
+                            Colors="{Binding BottomGradientList}"
+                            HorizontalOptions="Fill"
+                            VerticalOptions="FillAndExpand" />
+                        <Grid
+                            x:Name="AnimationView"
+                            Grid.Row="0"
+                            BackgroundColor="{StaticResource SSIHalfTransparentWhite}"
+                            IsVisible="{Binding IsLoadingPassport}">
+                            <forms:AnimationView
+                                Grid.Row="0"
+                                Margin="0,0,0,0"
+                                Animation="loading.json"
+                                AutoPlay="True"
+                                HeightRequest="100"
+                                HorizontalOptions="Center"
+                                Loop="True"
+                                VerticalOptions="Center"
+                                WidthRequest="100" />
+                        </Grid>
+                    </Grid>
+                    <view:InfoVaccineTextView
+                        x:Name="InfoVaccineView"
+                        IsVisible="{Binding IsVaccineSelected}"
+                        PassportViewModel="{Binding PassportViewModel}"
+                        ShowCertificateBool="True"
+                        ShowHeaderBool="True"
+                        ShowTextInEnglishBool="True" />
+                    <view:InfoTestTextView
+                        x:Name="InfoTestView"
+                        IsVisible="{Binding IsTestSelected}"
+                        PassportViewModel="{Binding PassportViewModel}"
+                        ShowCertificateBool="True"
+                        ShowHeaderBool="True"
+                        ShowTextInEnglishBool="True" />
+                    <view:InfoRecoveryTextView
+                        x:Name="InfoRecoveryView"
+                        IsVisible="{Binding IsRecoverySelected}"
+                        PassportViewModel="{Binding PassportViewModel}"
+                        ShowCertificateBool="True"
+                        ShowHeaderBool="True"
+                        ShowTextInEnglishBool="True" />
+
+                    <!--English-->
+                <StackLayout BackgroundColor="White" Orientation="Vertical">
+                    <Label
+                        Margin="21,0,21,20"
+                        HorizontalOptions="Start"
+                        Style="{StaticResource InfoPaneItemValueBold}"
+                        Text="{Binding Strings[INFO_BORDER_CONTROL_HEADER_1_EN]}"
+                        AutomationProperties.IsInAccessibleTree="{Binding ShouldUseDanishForAccessibility, Converter={StaticResource BoolToInverseBoolConverter}}">
+                        <Label.Effects>
+                            <controls:FontSizeLabelEffect />
+                        </Label.Effects>
+                    </Label>
+                    <Label
+                        Margin="21,0,21,20"
+                        HorizontalOptions="Start"
+                        Style="{StaticResource InfoPaneItemValue}"
+                        Text="{Binding Strings[INFO_BORDER_CONTROL_DETAIL_TEXT_1_EN]}"
+                        AutomationProperties.IsInAccessibleTree="{Binding ShouldUseDanishForAccessibility, Converter={StaticResource BoolToInverseBoolConverter}}">
+                        <Label.Effects>
+                            <controls:FontSizeLabelEffect />
+                        </Label.Effects>
+                    </Label>
+                    <Label
+                        Margin="21,0,21,25"
+                        HorizontalOptions="Start"
+                        Style="{StaticResource InfoPaneItemValue}"
+                        Text="{Binding Strings[INFO_BORDER_CONTROL_DETAIL_TEXT_2_EN]}"
+                        AutomationProperties.IsInAccessibleTree="{Binding ShouldUseDanishForAccessibility, Converter={StaticResource BoolToInverseBoolConverter}}">
+                        <Label.Effects>
+                            <controls:FontSizeLabelEffect />
+                        </Label.Effects>
+                    </Label>
+                </StackLayout>
+
+                    <!--Danish-->
+                <StackLayout BackgroundColor="White" Orientation="Vertical">
+                    <Label
+                        Margin="21,0,21,20"
+                        HorizontalOptions="Start"
+                        Style="{StaticResource InfoPaneItemValueBold}"
+                        Text="{Binding Strings[INFO_BORDER_CONTROL_HEADER_1_DK]}"
+                        AutomationProperties.IsInAccessibleTree="{Binding ShouldUseDanishForAccessibility}">
+                        <Label.Effects>
+                            <controls:FontSizeLabelEffect />
+                        </Label.Effects>
+                    </Label>
+                    <Label
+                        Margin="21,0,21,20"
+                        HorizontalOptions="Start"
+                        Style="{StaticResource InfoPaneItemValue}"
+                        Text="{Binding Strings[INFO_BORDER_CONTROL_DETAIL_TEXT_1_DK]}"
+                        AutomationProperties.IsInAccessibleTree="{Binding ShouldUseDanishForAccessibility}">
+                        <Label.Effects>
+                            <controls:FontSizeLabelEffect />
+                        </Label.Effects>
+                    </Label>
+                    <Label
+                        Margin="21,0,21,25"
+                        HorizontalOptions="Start"
+                        Style="{StaticResource InfoPaneItemValue}"
+                        Text="{Binding Strings[INFO_BORDER_CONTROL_DETAIL_TEXT_2_DK]}"
+                        AutomationProperties.IsInAccessibleTree="{Binding ShouldUseDanishForAccessibility}">
+                        <Label.Effects>
+                            <controls:FontSizeLabelEffect />
+                        </Label.Effects>
+                    </Label>
+                </StackLayout>
+              </StackLayout>
+            </ScrollView>
+        </Grid>
+    </ContentView.Content>
+</ContentView>

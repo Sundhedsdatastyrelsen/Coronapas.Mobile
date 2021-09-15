@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:forms="clr-namespace:Lottie.Forms;assembly=Lottie.Forms"
+             x:Class="SSICPAS.Views.SuccessPage"
+             NavigationPage.HasNavigationBar="False"
+             BackgroundColor="{StaticResource DefaultBackgroundColor}"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             ios:Page.UseSafeArea="true">
+    <ContentPage.Content>
+        <StackLayout
+            VerticalOptions="Center">
+
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="2*"/>
+                    <RowDefinition Height="2*"/>
+
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+
+                <forms:AnimationView x:Name="animationView"
+                        Margin="0,0,0,-40"
+                        Grid.Row="0"
+                        Animation="success.json"
+                        Loop="False"
+                        AutoPlay="True"
+                        WidthRequest="160"
+                        HeightRequest="160"
+                        VerticalOptions="Center"/>
+
+                <Label  Text="{Binding SuccessMessage}"
+                        Margin="0,20,0,0"
+                        Grid.Row="1"       
+                        TextColor="{StaticResource SSIBaseTextColor}"
+                        FontAttributes="None"
+                        FontSize="Body"
+                        VerticalOptions="Start"
+                        Style="{StaticResource SuccesMessageStyle}"
+                        HorizontalOptions="CenterAndExpand"
+                        HorizontalTextAlignment="Center"/>
+                        
+
+            </Grid>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

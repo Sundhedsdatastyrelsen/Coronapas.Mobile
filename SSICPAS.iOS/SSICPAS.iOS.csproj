@@ -1,0 +1,822 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">iPhoneSimulator</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{405FDB97-9A61-426F-B1B9-86D876065C57}</ProjectGuid>
+    <ProjectTypeGuids>{FEACFBD2-3405-455C-9665-78FE426C6842};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <TemplateGuid>{89a4fe7c-635d-49c9-8d8c-5cd363c0d68d}</TemplateGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>SSICPAS.iOS</RootNamespace>
+    <IPhoneResourcePrefix>Resources</IPhoneResourcePrefix>
+    <AssemblyName>SSICPAS.iOS</AssemblyName>
+    <MtouchEnableSGenConc>true</MtouchEnableSGenConc>
+    <MtouchHttpClientHandler>NSUrlSessionHandler</MtouchHttpClientHandler>
+    <ProvisioningType>manual</ProvisioningType>
+    <LangVersion>8.0</LangVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhoneSimulator' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\iPhoneSimulator\Debug</OutputPath>
+    <DefineConstants>__IOS__;__MOBILE__;__UNIFIED__;DEBUG;UITEST;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <MtouchArch>x86_64</MtouchArch>
+    <MtouchLink>None</MtouchLink>
+    <MtouchDebug>true</MtouchDebug>
+    <CodesignKey>iPhone Developer</CodesignKey>
+    <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhone' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\iPhone\Debug</OutputPath>
+    <DefineConstants>__IOS__;__MOBILE__;__UNIFIED__;DEBUG;UITEST</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <MtouchArch>ARM64</MtouchArch>
+    <CodesignKey>iPhone Developer</CodesignKey>
+    <MtouchDebug>true</MtouchDebug>
+    <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
+    <MtouchLink>None</MtouchLink>
+    <MtouchInterpreter>-all</MtouchInterpreter>
+    <IOSDebugOverWiFi>false</IOSDebugOverWiFi>
+    <DeviceSpecificBuild>true</DeviceSpecificBuild>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(RunConfiguration)' == 'Default' ">
+    <AppExtensionDebugBundleId />
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Development|iPhoneSimulator'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\iPhoneSimulator\Development\</OutputPath>
+    <DefineConstants>__IOS__;__MOBILE__;__UNIFIED__;DEVELOPMENT;DEBUG,UITEST;</DefineConstants>
+    <DebugType>full</DebugType>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <MtouchLink>None</MtouchLink>
+    <CodesignKey>iPhone Developer</CodesignKey>
+    <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
+    <MtouchArch>x86_64</MtouchArch>
+    <MtouchDebug>true</MtouchDebug>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Development|iPhone'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\iPhone\Development\</OutputPath>
+    <DefineConstants>__IOS__;__MOBILE__;__UNIFIED__;DEVELOPMENT;DEBUG;UITEST</DefineConstants>
+    <DebugType>full</DebugType>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <CodesignKey>iPhone Developer</CodesignKey>
+    <MtouchLink>None</MtouchLink>
+    <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
+    <MtouchDebug>true</MtouchDebug>
+    <MtouchArch>ARM64</MtouchArch>
+    <MtouchInterpreter>-all</MtouchInterpreter>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Unittests|AnyCPU' ">
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Unittests</OutputPath>
+    <DefineConstants>__IOS__;__MOBILE__;__UNIFIED__;DEBUG;UNITTEST;UITEST</DefineConstants>
+    <WarningLevel>4</WarningLevel>
+    <CodesignKey>iPhone Developer</CodesignKey>
+    <MtouchNoSymbolStrip>true</MtouchNoSymbolStrip>
+    <MtouchVerbosity>
+    </MtouchVerbosity>
+    <MtouchEnableSGenConc>false</MtouchEnableSGenConc>
+    <MtouchLink>SdkOnly</MtouchLink>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Test|AnyCPU' ">
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Test</OutputPath>
+    <DefineConstants>__IOS__;__MOBILE__;__UNIFIED__;UITEST</DefineConstants>
+    <WarningLevel>4</WarningLevel>
+    <CodesignKey>iPhone Developer</CodesignKey>
+    <MtouchNoSymbolStrip>true</MtouchNoSymbolStrip>
+    <MtouchVerbosity>
+    </MtouchVerbosity>
+    <MtouchEnableSGenConc>false</MtouchEnableSGenConc>
+    <MtouchLink>SdkOnly</MtouchLink>
+    <MtouchArch>ARMv7</MtouchArch>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Test|iPhone' ">
+    <Optimize>true</Optimize>
+    <OutputPath>bin\iPhone\Test</OutputPath>
+    <DefineConstants>__IOS__;__MOBILE__;__UNIFIED__;TEST;UITEST;</DefineConstants>
+    <WarningLevel>4</WarningLevel>
+    <CodesignKey>iPhone Distribution</CodesignKey>
+    <MtouchVerbosity>
+    </MtouchVerbosity>
+    <MtouchFloat32>true</MtouchFloat32>
+    <MtouchEnableSGenConc>true</MtouchEnableSGenConc>
+    <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
+    <MtouchLink>SdkOnly</MtouchLink>
+    <MtouchArch>ARM64</MtouchArch>
+    <CodesignProvision>Automatic:AdHoc</CodesignProvision>
+    <MtouchUseLlvm>true</MtouchUseLlvm>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'AppStore|iPhone' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\iPhone\AppStore</OutputPath>
+    <DefineConstants>__IOS__;__MOBILE__;__UNIFIED__;APPSTORE</DefineConstants>
+    <WarningLevel>4</WarningLevel>
+    <CodesignKey>iPhone Distribution</CodesignKey>
+    <MtouchVerbosity>
+    </MtouchVerbosity>
+    <MtouchFloat32>true</MtouchFloat32>
+    <MtouchEnableSGenConc>true</MtouchEnableSGenConc>
+    <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
+    <MtouchLink>SdkOnly</MtouchLink>
+    <MtouchArch>ARM64</MtouchArch>
+    <CodesignProvision>Automatic:AppStore</CodesignProvision>
+    <MtouchUseLlvm>true</MtouchUseLlvm>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'AppStoreBeta|iPhone' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\iPhone\AppStoreBeta</OutputPath>
+    <DefineConstants>__IOS__;__MOBILE__;__UNIFIED__;APPSTOREBETA</DefineConstants>
+    <WarningLevel>4</WarningLevel>
+    <CodesignKey>iPhone Distribution</CodesignKey>
+    <MtouchVerbosity>
+    </MtouchVerbosity>
+    <MtouchFloat32>true</MtouchFloat32>
+    <MtouchEnableSGenConc>true</MtouchEnableSGenConc>
+    <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
+    <MtouchLink>SdkOnly</MtouchLink>
+    <MtouchArch>ARM64</MtouchArch>
+    <CodesignProvision>Automatic:AppStore</CodesignProvision>
+    <MtouchUseLlvm>true</MtouchUseLlvm>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <MtouchLink>SdkOnly</MtouchLink>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="Custom Renderers\FontSizeLabelEffect.cs" />
+    <Compile Include="Main.cs" />
+    <Compile Include="AppDelegate.cs" />
+    <BundleResource Include="..\SSICPAS\Configuration\appsettings.Development.json" Condition="'$(Configuration)' == 'Development' or '$(Configuration)' == 'Test'">
+      <Link>Resources\appsettings.Development.json</Link>
+    </BundleResource>
+    <BundleResource Include="..\SSICPAS\Configuration\appsettings.local.json" Condition="'$(Configuration)' == 'Debug' or '$(Configuration)' == 'Unittests'">
+      <Link>Resources\appsettings.local.json</Link>
+    </BundleResource>
+    <Compile Include="Services\IosDeeplinkingService.cs" />
+    <Compile Include="Services\IosVoiceOverManager.cs" />
+    <Compile Include="Services\SupportedOrientationToIOSInterfaceOrientationMask.cs" />
+    <None Include="Entitlements.plist" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <BundleResource Include="Resources\NemIDButtons.png" />
+    <BundleResource Include="Resources\NemIDLogo.png" />
+    <BundleResource Include="Resources\loading.json" />
+    <BundleResource Include="Resources\loading_no_padding.json" />
+    <BundleResource Include="Resources\valid_dk_check.json" />
+    <BundleResource Include="Resources\valid_eu_plane.json" />
+    <Compile Include="Services\IosScannerFactory.cs" />
+    <Compile Include="Services\PlatformBrowserService.cs" />
+    <Compile Include="Services\BrightnessService.cs" />
+    <Compile Include="Services\ConfigurationProvider.cs" />
+    <Compile Include="Services\StatusBarService.cs" />
+    <Compile Include="Custom Renderers\CustomPickerRenderer.cs" />
+    <BundleResource Include="Resources\pincode_loading.json" />
+    <BundleResource Include="..\SSICPAS\Configuration\appsettings.Test.json" Condition="'$(Configuration)' == 'Test' or '$(Configuration)' == 'AppStoreBeta' or '$(Configuration)' == 'Development'">
+      <Link>Resources\appsettings.Test.json</Link>
+    </BundleResource>
+    <BundleResource Include="..\SSICPAS\Configuration\appsettings.AppStore.json" Condition="'$(Configuration)' == 'AppStore'">
+      <Link>Resources\appsettings.AppStore.json</Link>
+    </BundleResource>
+    <BundleResource Include="packages.lock.json" />
+    <Compile Include="Custom Renderers\SingleLineButtonRenderer.cs" />
+    <BundleResource Include="..\SSICPAS\Configuration\appsettings.AppStoreBeta.json" Condition="'$(Configuration)' == 'Test' or '$(Configuration)' == 'AppStoreBeta' or '$(Configuration)' == 'Development'">
+      <Link>Resources\appsettings.AppStoreBeta.json</Link>
+    </BundleResource>
+    <BundleResource Include="Resources\intro_passport.json" />
+    <BundleResource Include="Resources\intro_travel.json" />
+    <BundleResource Include="Resources\intro_security.json" />
+    <BundleResource Include="Resources\intro_facemask.json" />
+    <BundleResource Include="Resources\success.json" />
+    <BundleResource Include="Resources\intro_scanning.json" />
+    <BundleResource Include="Resources\scanPas.json" />
+    <Compile Include="Custom Renderers\FrameShadowRenderer.cs" />
+    <BundleResource Include="Resources\da.lproj\InfoPlist.strings" />
+    <Compile Include="Services\IosCustomOAuthNativeUIFlagResolver.cs" />
+    <Compile Include="Custom Renderers\CustomButtonRenderer.cs" />
+    <Compile Include="Custom Renderers\CustomListViewRenderer.cs" />
+    <Compile Include="Custom Renderers\CustomTabbedPageRenderer.cs" />
+    <BundleResource Include="Resources\Fonts\IBMPlexSans-Regular.ttf" />
+    <None Include="Resources\Fonts\Info.plist" />
+    <None Include="Info.plist" />
+    <Compile Include="Services\IosSettingsService.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ImageAsset Include="AppAssets.xcassets\switch_to_eu_view_icon.imageset\Switch_to_EU_icon(1).png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="AppAssets.xcassets\switch_to_eu_view_icon.imageset\Switch_to_EU_icon(2).png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="AppAssets.xcassets\switch_to_eu_view_icon.imageset\Switch_to_EU_icon(3).png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="AppAssets.xcassets\valid_passport_icon_green.imageset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="AppAssets.xcassets\valid_passport_icon_green.imageset\valid_passport_icon_green.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="AppAssets.xcassets\valid_passport_icon_green.imageset\valid_passport_icon_green@2x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="AppAssets.xcassets\valid_passport_icon_green.imageset\valid_passport_icon_green@3x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <InterfaceDefinition Include="Resources\LaunchScreen.storyboard" />
+    <ImageAsset Include="AppAssets.xcassets\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="AppAssets.xcassets\SplashUp.imageset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="AppAssets.xcassets\SplashUp.imageset\Splash.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="AppAssets.xcassets\SplashUp.imageset\Splash%402x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="AppAssets.xcassets\SplashUp.imageset\Splash%403x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="AppAssets.xcassets\SplashUp.imageset\Circles.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="AppAssets.xcassets\SplashUp.imageset\Circles%402x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="AppAssets.xcassets\SplashUp.imageset\Circles%403x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="AppAssets.xcassets\SplashDown.imageset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="AppAssets.xcassets\SplashDown.imageset\Circles_upside.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="AppAssets.xcassets\SplashDown.imageset\Circles_upside%402x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="AppAssets.xcassets\SplashDown.imageset\Circles_upside%403x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="AppAssets.xcassets\AppNameBlue.imageset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="AppAssets.xcassets\AppNameBlue.imageset\AppNameBlue-1.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="AppAssets.xcassets\AppNameBlue.imageset\AppNameBlue%402x-1.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="AppAssets.xcassets\AppNameBlue.imageset\AppNameBlue%403x-1.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="AppAssets.xcassets\AppIcon.appiconset\Contents.json" />
+    <ImageAsset Include="AppAssets.xcassets\bottombar_passport.imageset\bottombar_passport.png" />
+    <ImageAsset Include="AppAssets.xcassets\bottombar_passport.imageset\bottombar_passport%402.png" />
+    <ImageAsset Include="AppAssets.xcassets\bottombar_passport.imageset\bottombar_passport%403.png" />
+    <ImageAsset Include="AppAssets.xcassets\bottombar_passport.imageset\Contents.json" />
+    <ImageAsset Include="AppAssets.xcassets\bottombar_scan.imageset\bottombar_scan.png" />
+    <ImageAsset Include="AppAssets.xcassets\bottombar_scan.imageset\bottombar_scan%402.png" />
+    <ImageAsset Include="AppAssets.xcassets\bottombar_scan.imageset\bottombar_scan%403.png" />
+    <ImageAsset Include="AppAssets.xcassets\bottombar_scan.imageset\bottombar_scan-1.png" />
+    <ImageAsset Include="AppAssets.xcassets\bottombar_scan.imageset\Contents.json" />
+    <ImageAsset Include="AppAssets.xcassets\bottombar_info.imageset\bottombar_info.png" />
+    <ImageAsset Include="AppAssets.xcassets\bottombar_info.imageset\bottombar_info%402.png" />
+    <ImageAsset Include="AppAssets.xcassets\bottombar_info.imageset\bottombar_info%403-1.png" />
+    <ImageAsset Include="AppAssets.xcassets\bottombar_info.imageset\Contents.json" />
+    <ImageAsset Include="AppAssets.xcassets\SplashBackground.imageset\Contents.json" />
+    <ImageAsset Include="AppAssets.xcassets\SplashBackground.imageset\splash_screen.png" />
+    <ImageAsset Include="AppAssets.xcassets\SplashBackground.imageset\splash_screen%402x.png" />
+    <ImageAsset Include="AppAssets.xcassets\SplashBackground.imageset\splash_screen%403x.png" />
+    <ImageAsset Include="AppAssets.xcassets\HamburgerMenu.imageset\Contents.json" />
+    <ImageAsset Include="AppAssets.xcassets\HamburgerMenu.imageset\hamburger_menu.png" />
+    <ImageAsset Include="AppAssets.xcassets\HamburgerMenu.imageset\hamburger_menu%402x.png" />
+    <ImageAsset Include="AppAssets.xcassets\HamburgerMenu.imageset\hamburger_menu%403x.png" />
+    <ImageAsset Include="AppAssets.xcassets\arrow_back.imageset\Contents.json" />
+    <ImageAsset Include="AppAssets.xcassets\clock_icon.imageset\Contents.json" />
+    <ImageAsset Include="AppAssets.xcassets\clock_icon.imageset\clock_icon.png" />
+    <ImageAsset Include="AppAssets.xcassets\clock_icon.imageset\clock_icon%402x.png" />
+    <ImageAsset Include="AppAssets.xcassets\clock_icon.imageset\clock_icon%403x.png" />
+    <ImageAsset Include="AppAssets.xcassets\delete_keyboard.imageset\Contents.json" />
+    <ImageAsset Include="AppAssets.xcassets\delete_keyboard.imageset\delete_keyboard.png" />
+    <ImageAsset Include="AppAssets.xcassets\delete_keyboard.imageset\delete_keyboard%402x.png" />
+    <ImageAsset Include="AppAssets.xcassets\delete_keyboard.imageset\delete_keyboard%403x.png" />
+    <ImageAsset Include="AppAssets.xcassets\error_layout.imageset\Contents.json" />
+    <ImageAsset Include="AppAssets.xcassets\error_layout.imageset\error_layout.png" />
+    <ImageAsset Include="AppAssets.xcassets\error_layout.imageset\error_layout%402x.png" />
+    <ImageAsset Include="AppAssets.xcassets\error_layout.imageset\error_layout%402x-1.png" />
+    <ImageAsset Include="AppAssets.xcassets\error_layout.imageset\error_layout%403x.png" />
+    <ImageAsset Include="AppAssets.xcassets\error_maintenance.imageset\Contents.json" />
+    <ImageAsset Include="AppAssets.xcassets\error_maintenance.imageset\error_maintenance.png" />
+    <ImageAsset Include="AppAssets.xcassets\error_maintenance.imageset\error_maintenance%402x.png" />
+    <ImageAsset Include="AppAssets.xcassets\error_maintenance.imageset\error_maintenance%403x.png" />
+    <ImageAsset Include="AppAssets.xcassets\error_queue.imageset\Contents.json" />
+    <ImageAsset Include="AppAssets.xcassets\error_queue.imageset\error_queue.png" />
+    <ImageAsset Include="AppAssets.xcassets\error_queue.imageset\error_queue%402x.png" />
+    <ImageAsset Include="AppAssets.xcassets\error_queue.imageset\error_queue%403x.png" />
+    <ImageAsset Include="AppAssets.xcassets\exclamation_icon_blue.imageset\Contents.json" />
+    <ImageAsset Include="AppAssets.xcassets\exclamation_icon_blue.imageset\exclamation_icon_blue.png" />
+    <ImageAsset Include="AppAssets.xcassets\exclamation_icon_blue.imageset\exclamation_icon_blue%402x.png" />
+    <ImageAsset Include="AppAssets.xcassets\exclamation_icon_blue.imageset\exclamation_icon_blue%403x.png" />
+    <ImageAsset Include="AppAssets.xcassets\exclamation_mark.imageset\Contents.json" />
+    <ImageAsset Include="AppAssets.xcassets\exclamation_mark.imageset\exclamation_mark.png" />
+    <ImageAsset Include="AppAssets.xcassets\exclamation_mark.imageset\exclamation_mark%402x.png" />
+    <ImageAsset Include="AppAssets.xcassets\exclamation_mark.imageset\exclamation_mark%403x.png" />
+    <ImageAsset Include="AppAssets.xcassets\fingerprint_layout.imageset\Contents.json" />
+    <ImageAsset Include="AppAssets.xcassets\fingerprint_layout.imageset\fingerprint_layout.png" />
+    <ImageAsset Include="AppAssets.xcassets\fingerprint_layout.imageset\fingerprint_layout%402x.png" />
+    <ImageAsset Include="AppAssets.xcassets\fingerprint_layout.imageset\fingerprint_layout%403x.png" />
+    <ImageAsset Include="AppAssets.xcassets\forward_arrow.imageset\Contents.json" />
+    <ImageAsset Include="AppAssets.xcassets\forward_arrow.imageset\forward_arrow.png" />
+    <ImageAsset Include="AppAssets.xcassets\forward_arrow.imageset\forward_arrow%402x.png" />
+    <ImageAsset Include="AppAssets.xcassets\forward_arrow.imageset\forward_arrow%403x.png" />
+    <ImageAsset Include="AppAssets.xcassets\hamburger_menu.imageset\Contents.json" />
+    <ImageAsset Include="AppAssets.xcassets\hamburger_menu.imageset\hamburger_menu.png" />
+    <ImageAsset Include="AppAssets.xcassets\hamburger_menu.imageset\hamburger_menu%402x.png" />
+    <ImageAsset Include="AppAssets.xcassets\hamburger_menu.imageset\hamburger_menu%403x.png" />
+    <ImageAsset Include="AppAssets.xcassets\help_icon_blue.imageset\Contents.json" />
+    <ImageAsset Include="AppAssets.xcassets\help_icon_blue.imageset\help_icon_blue.png" />
+    <ImageAsset Include="AppAssets.xcassets\help_icon_blue.imageset\help_icon_blue%402x.png" />
+    <ImageAsset Include="AppAssets.xcassets\help_icon_blue.imageset\help_icon_blue%403x.png" />
+    <ImageAsset Include="AppAssets.xcassets\hide_info_icon.imageset\Contents.json" />
+    <ImageAsset Include="AppAssets.xcassets\hide_info_icon.imageset\hide_info_icon.png" />
+    <ImageAsset Include="AppAssets.xcassets\hide_info_icon.imageset\hide_info_icon%402x.png" />
+    <ImageAsset Include="AppAssets.xcassets\hide_info_icon.imageset\hide_info_icon%403x.png" />
+    <ImageAsset Include="AppAssets.xcassets\info.imageset\Contents.json" />
+    <ImageAsset Include="AppAssets.xcassets\information_icon.imageset\Contents.json" />
+    <ImageAsset Include="AppAssets.xcassets\international_passport_icon.imageset\Contents.json" />
+    <ImageAsset Include="AppAssets.xcassets\international_passport_icon.imageset\international_passport_icon.png" />
+    <ImageAsset Include="AppAssets.xcassets\international_passport_icon.imageset\international_passport_icon%402x.png" />
+    <ImageAsset Include="AppAssets.xcassets\international_passport_icon.imageset\international_passport_icon%403x.png" />
+    <ImageAsset Include="AppAssets.xcassets\inverse_crown_icon.imageset\Contents.json" />
+    <ImageAsset Include="AppAssets.xcassets\inverse_crown_icon.imageset\inverse_crown_icon.png" />
+    <ImageAsset Include="AppAssets.xcassets\inverse_crown_icon.imageset\inverse_crown_icon%402x.png" />
+    <ImageAsset Include="AppAssets.xcassets\inverse_crown_icon.imageset\inverse_crown_icon%403x.png" />
+    <ImageAsset Include="AppAssets.xcassets\inverse_plane_icon.imageset\Contents.json" />
+    <ImageAsset Include="AppAssets.xcassets\inverse_plane_icon.imageset\inverse_plane_icon.png" />
+    <ImageAsset Include="AppAssets.xcassets\inverse_plane_icon.imageset\inverse_plane_icon%402x.png" />
+    <ImageAsset Include="AppAssets.xcassets\inverse_plane_icon.imageset\inverse_plane_icon%403x.png" />
+    <ImageAsset Include="AppAssets.xcassets\landing_page_art.imageset\Contents.json" />
+    <ImageAsset Include="AppAssets.xcassets\landing_page_art.imageset\landing_page_art.png" />
+    <ImageAsset Include="AppAssets.xcassets\landing_page_art.imageset\landing_page_art%402x.png" />
+    <ImageAsset Include="AppAssets.xcassets\landing_page_art.imageset\landing_page_art%403x.png" />
+    <ImageAsset Include="AppAssets.xcassets\landing_page_texture.imageset\Contents.json" />
+    <ImageAsset Include="AppAssets.xcassets\landing_page_texture.imageset\landing_page_texture.png" />
+    <ImageAsset Include="AppAssets.xcassets\landing_page_texture.imageset\landing_page_texture%402x.png" />
+    <ImageAsset Include="AppAssets.xcassets\landing_page_texture.imageset\landing_page_texture%403x.png" />
+    <ImageAsset Include="AppAssets.xcassets\lightbulb.imageset\Contents.json" />
+    <ImageAsset Include="AppAssets.xcassets\lightbulb.imageset\lightbulb.png" />
+    <ImageAsset Include="AppAssets.xcassets\lightbulb.imageset\lightbulb%402x.png" />
+    <ImageAsset Include="AppAssets.xcassets\lightbulb.imageset\lightbulb%403x.png" />
+    <ImageAsset Include="AppAssets.xcassets\Logo.imageset\Contents.json" />
+    <ImageAsset Include="AppAssets.xcassets\Logo.imageset\Logo.png" />
+    <ImageAsset Include="AppAssets.xcassets\Logo.imageset\Logo%402x.png" />
+    <ImageAsset Include="AppAssets.xcassets\Logo.imageset\Logo%403x.png" />
+    <ImageAsset Include="AppAssets.xcassets\main_page_dotted_background.imageset\Contents.json" />
+    <ImageAsset Include="AppAssets.xcassets\main_page_dotted_background.imageset\main_page_dotted_background.png" />
+    <ImageAsset Include="AppAssets.xcassets\main_page_dotted_background.imageset\main_page_dotted_background%402x.png" />
+    <ImageAsset Include="AppAssets.xcassets\main_page_dotted_background.imageset\main_page_dotted_background%403x.png" />
+    <ImageAsset Include="AppAssets.xcassets\qr_code_scanner.imageset\Contents.json" />
+    <ImageAsset Include="AppAssets.xcassets\qr_code_scanner.imageset\qr_code_scanner.png" />
+    <ImageAsset Include="AppAssets.xcassets\qr_code_scanner.imageset\qr_code_scanner%402x.png" />
+    <ImageAsset Include="AppAssets.xcassets\qr_code_scanner.imageset\qr_code_scanner%403x.png" />
+    <ImageAsset Include="AppAssets.xcassets\question_mark.imageset\Contents.json" />
+    <ImageAsset Include="AppAssets.xcassets\question_mark.imageset\question_mark.png" />
+    <ImageAsset Include="AppAssets.xcassets\question_mark.imageset\question_mark%402x.png" />
+    <ImageAsset Include="AppAssets.xcassets\question_mark.imageset\question_mark%403x.png" />
+    <ImageAsset Include="AppAssets.xcassets\selected_dot_blue.imageset\Contents.json" />
+    <ImageAsset Include="AppAssets.xcassets\selected_dot_blue.imageset\selected_dot_blue.png" />
+    <ImageAsset Include="AppAssets.xcassets\selected_dot_blue.imageset\selected_dot_blue%402x.png" />
+    <ImageAsset Include="AppAssets.xcassets\selected_dot_blue.imageset\selected_dot_blue%403x.png" />
+    <ImageAsset Include="AppAssets.xcassets\setting.imageset\Contents.json" />
+    <ImageAsset Include="AppAssets.xcassets\setting.imageset\setting.png" />
+    <ImageAsset Include="AppAssets.xcassets\setting.imageset\setting%402x.png" />
+    <ImageAsset Include="AppAssets.xcassets\setting.imageset\setting%403x.png" />
+    <ImageAsset Include="AppAssets.xcassets\sundhedsminiateriet_landing_page_logo.imageset\Contents.json" />
+    <ImageAsset Include="AppAssets.xcassets\sundhedsminiateriet_landing_page_logo.imageset\sundhedsminiateriet_landing_page_logo.png" />
+    <ImageAsset Include="AppAssets.xcassets\sundhedsminiateriet_landing_page_logo.imageset\sundhedsminiateriet_landing_page_logo%402x.png" />
+    <ImageAsset Include="AppAssets.xcassets\sundhedsminiateriet_landing_page_logo.imageset\sundhedsminiateriet_landing_page_logo%403x.png" />
+    <ImageAsset Include="AppAssets.xcassets\text_page.imageset\Contents.json" />
+    <ImageAsset Include="AppAssets.xcassets\text_page.imageset\text_page.png" />
+    <ImageAsset Include="AppAssets.xcassets\text_page.imageset\text_page%402x.png" />
+    <ImageAsset Include="AppAssets.xcassets\text_page.imageset\text_page%403x.png" />
+    <ImageAsset Include="AppAssets.xcassets\valid_icon.imageset\Contents.json" />
+    <ImageAsset Include="AppAssets.xcassets\valid_passport_icon.imageset\Contents.json" />
+    <ImageAsset Include="AppAssets.xcassets\valid_passport_icon.imageset\valid_passport_icon.png" />
+    <ImageAsset Include="AppAssets.xcassets\valid_passport_icon.imageset\valid_passport_icon%402x.png" />
+    <ImageAsset Include="AppAssets.xcassets\valid_passport_icon.imageset\valid_passport_icon%403x.png" />
+    <ImageAsset Include="AppAssets.xcassets\expander_down_arrow.imageset\Contents.json" />
+    <ImageAsset Include="AppAssets.xcassets\expander_down_arrow.imageset\expander_down_arrow.png" />
+    <ImageAsset Include="AppAssets.xcassets\expander_right_arrow.imageset\Contents.json" />
+    <ImageAsset Include="AppAssets.xcassets\expander_right_arrow.imageset\expander_right_arrow.png" />
+    <ImageAsset Include="AppAssets.xcassets\covid_19_recovery_icon.imageset\Contents.json" />
+    <ImageAsset Include="AppAssets.xcassets\covid_19_recovery_icon.imageset\covid_19_recovery_icon.png" />
+    <ImageAsset Include="AppAssets.xcassets\covid_19_recovery_icon.imageset\covid_19_recovery_icon%402.png" />
+    <ImageAsset Include="AppAssets.xcassets\covid_19_recovery_icon.imageset\covid_19_recovery_icon%403.png" />
+    <ImageAsset Include="AppAssets.xcassets\question_mark_white.imageset\Contents.json" />
+    <ImageAsset Include="AppAssets.xcassets\question_mark_white.imageset\question_mark_white.png" />
+    <ImageAsset Include="AppAssets.xcassets\question_mark_white.imageset\question_mark_white%402x.png" />
+    <ImageAsset Include="AppAssets.xcassets\question_mark_white.imageset\question_mark_white%403x.png" />
+    <ImageAsset Include="AppAssets.xcassets\toast_tick.imageset\Contents.json" />
+    <ImageAsset Include="AppAssets.xcassets\toast_tick.imageset\toast_tick.png" />
+    <ImageAsset Include="AppAssets.xcassets\toast_tick.imageset\toast_tick%402x.png" />
+    <ImageAsset Include="AppAssets.xcassets\toast_tick.imageset\toast_tick%402x-1.png" />
+    <ImageAsset Include="AppAssets.xcassets\toast_tick.imageset\toast_tick%403x.png" />
+    <ImageAsset Include="AppAssets.xcassets\toast_tick.imageset\toast_tick%403x-1.png" />
+    <ImageAsset Include="AppAssets.xcassets\toast_tick.imageset\toast_tick-1.png" />
+    <ImageAsset Include="AppAssets.xcassets\covid_19_negative_test_icon.imageset\Contents.json" />
+    <ImageAsset Include="AppAssets.xcassets\covid_19_negative_test_icon.imageset\covid_19_negative_test_icon.png" />
+    <ImageAsset Include="AppAssets.xcassets\covid_19_negative_test_icon.imageset\covid_19_negative_test_icon%402.png" />
+    <ImageAsset Include="AppAssets.xcassets\covid_19_negative_test_icon.imageset\covid_19_negative_test_icon%403.png" />
+    <ImageAsset Include="AppAssets.xcassets\share_icon.imageset\Contents.json" />
+    <ImageAsset Include="AppAssets.xcassets\share_icon.imageset\share_icon.png" />
+    <ImageAsset Include="AppAssets.xcassets\share_icon.imageset\share_icon%403x.png" />
+    <ImageAsset Include="AppAssets.xcassets\covid_19_vaccine_icon.imageset\Contents.json" />
+    <ImageAsset Include="AppAssets.xcassets\covid_19_vaccine_icon.imageset\covid_19_vaccine_icon.png" />
+    <ImageAsset Include="AppAssets.xcassets\covid_19_vaccine_icon.imageset\covid_19_vaccine_icon%402.png" />
+    <ImageAsset Include="AppAssets.xcassets\covid_19_vaccine_icon.imageset\covid_19_vaccine_icon%403.png" />
+    <ImageAsset Include="AppAssets.xcassets\collapsed_icon.imageset\Contents.json" />
+    <ImageAsset Include="AppAssets.xcassets\collapsed_icon.imageset\collapsed_icon.png" />
+    <ImageAsset Include="AppAssets.xcassets\collapsed_icon.imageset\collapsed_icon%402.png" />
+    <ImageAsset Include="AppAssets.xcassets\collapsed_icon.imageset\collapsed_icon%403.png" />
+    <ImageAsset Include="AppAssets.xcassets\expanded_icon.imageset\Contents.json" />
+    <ImageAsset Include="AppAssets.xcassets\expanded_icon.imageset\expanded_icon.png" />
+    <ImageAsset Include="AppAssets.xcassets\expanded_icon.imageset\expanded_icon%402.png" />
+    <ImageAsset Include="AppAssets.xcassets\expanded_icon.imageset\expanded_icon%403.png" />
+    <ImageAsset Include="AppAssets.xcassets\show_info_icon.imageset\Contents.json" />
+    <ImageAsset Include="AppAssets.xcassets\landing_page_background.imageset\Contents.json" />
+    <ImageAsset Include="AppAssets.xcassets\landing_page_background.imageset\landing_page_background.png" />
+    <ImageAsset Include="AppAssets.xcassets\landing_page_background.imageset\landing_page_background%402x.png" />
+    <ImageAsset Include="AppAssets.xcassets\landing_page_background.imageset\landing_page_background%403x.png" />
+    <ImageAsset Include="AppAssets.xcassets\landing_page_logo.imageset\Contents.json" />
+    <ImageAsset Include="AppAssets.xcassets\landing_page_logo.imageset\landing_page_logo%403x.png" />
+    <ImageAsset Include="AppAssets.xcassets\landing_page_stock_image.imageset\Contents.json" />
+    <ImageAsset Include="AppAssets.xcassets\landing_page_stock_image.imageset\landing_page_stock_image.png" />
+    <ImageAsset Include="AppAssets.xcassets\landing_page_stock_image.imageset\landing_page_stock_image%402x.png" />
+    <ImageAsset Include="AppAssets.xcassets\landing_page_stock_image.imageset\landing_page_stock_image%403x.png" />
+    <ImageAsset Include="AppAssets.xcassets\landing_page_vector.imageset\Contents.json" />
+    <ImageAsset Include="AppAssets.xcassets\landing_page_vector.imageset\landing_page_vector.png" />
+    <ImageAsset Include="AppAssets.xcassets\landing_page_vector.imageset\landing_page_vector%402x.png" />
+    <ImageAsset Include="AppAssets.xcassets\landing_page_vector.imageset\landing_page_vector%403x.png" />
+    <ImageAsset Include="AppAssets.xcassets\app_logo.imageset\Contents.json" />
+    <ImageAsset Include="AppAssets.xcassets\information_icon.imageset\info-1.png" />
+    <ImageAsset Include="AppAssets.xcassets\information_icon.imageset\info.png" />
+    <ImageAsset Include="AppAssets.xcassets\information_icon.imageset\info-2.png" />
+    <ImageAsset Include="AppAssets.xcassets\error_lock.imageset\Contents.json" />
+    <ImageAsset Include="AppAssets.xcassets\error_lock.imageset\error_lock_icon.png" />
+    <ImageAsset Include="AppAssets.xcassets\error_lock.imageset\error_lock_icon%402x.png" />
+    <ImageAsset Include="AppAssets.xcassets\error_lock.imageset\error_lock_icon%403x.png" />
+    <ImageAsset Include="AppAssets.xcassets\information_icon_large.imageset\Contents.json" />
+    <ImageAsset Include="AppAssets.xcassets\information_icon_large.imageset\information_icon_large.png" />
+    <ImageAsset Include="AppAssets.xcassets\information_icon_large.imageset\information_icon_large%402x.png" />
+    <ImageAsset Include="AppAssets.xcassets\information_icon_large.imageset\information_icon_large%403x.png" />
+    <ImageAsset Include="AppAssets.xcassets\lock_icon.imageset\Contents.json" />
+    <ImageAsset Include="AppAssets.xcassets\lock_icon.imageset\lock_icon.png" />
+    <ImageAsset Include="AppAssets.xcassets\lock_icon.imageset\lock_icon%402x.png" />
+    <ImageAsset Include="AppAssets.xcassets\lock_icon.imageset\lock_icon%403x.png" />
+    <ImageAsset Include="AppAssets.xcassets\valid_icon.imageset\valid_icon-1.png" />
+    <ImageAsset Include="AppAssets.xcassets\valid_icon.imageset\valid_icon%402x-1.png" />
+    <ImageAsset Include="AppAssets.xcassets\valid_icon.imageset\valid_icon%403x-1.png" />
+    <ImageAsset Include="AppAssets.xcassets\expired_icon.imageset\Contents.json" />
+    <ImageAsset Include="AppAssets.xcassets\expired_icon.imageset\expired_icon.png" />
+    <ImageAsset Include="AppAssets.xcassets\expired_icon.imageset\expired_icon%402x.png" />
+    <ImageAsset Include="AppAssets.xcassets\expired_icon.imageset\expired_icon%403x.png" />
+    <ImageAsset Include="AppAssets.xcassets\close_icon.imageset\Contents.json" />
+    <ImageAsset Include="AppAssets.xcassets\close_icon.imageset\close_icon.png" />
+    <ImageAsset Include="AppAssets.xcassets\close_icon.imageset\close_icon%402x.png" />
+    <ImageAsset Include="AppAssets.xcassets\close_icon.imageset\close_icon%403x.png" />
+    <ImageAsset Include="AppAssets.xcassets\hourGlass.imageset\Contents.json" />
+    <ImageAsset Include="AppAssets.xcassets\hourGlass.imageset\hourGlass.png" />
+    <ImageAsset Include="AppAssets.xcassets\hourGlass.imageset\hourGlass%402x.png" />
+    <ImageAsset Include="AppAssets.xcassets\hourGlass.imageset\hourGlass%403x.png" />
+    <ImageAsset Include="AppAssets.xcassets\x_mark.imageset\Contents.json" />
+    <ImageAsset Include="AppAssets.xcassets\x_mark.imageset\x_mark.png" />
+    <ImageAsset Include="AppAssets.xcassets\x_mark.imageset\x_mark-1.png" />
+    <ImageAsset Include="AppAssets.xcassets\x_mark.imageset\x_mark-2.png" />
+    <ImageAsset Include="AppAssets.xcassets\ScanRectangle.imageset\Contents.json" />
+    <ImageAsset Include="AppAssets.xcassets\ScanRectangle.imageset\ScanRectangle.png" />
+    <ImageAsset Include="AppAssets.xcassets\ScanRectangle.imageset\ScanRectangle-1.png" />
+    <ImageAsset Include="AppAssets.xcassets\ScanRectangle.imageset\ScanRectangle-2.png" />
+    <ImageAsset Include="AppAssets.xcassets\x_mark_circle.imageset\Contents.json" />
+    <ImageAsset Include="AppAssets.xcassets\x_mark_circle.imageset\x_mark_circle.png" />
+    <ImageAsset Include="AppAssets.xcassets\x_mark_circle.imageset\x_mark_circle%402x.png" />
+    <ImageAsset Include="AppAssets.xcassets\x_mark_circle.imageset\x_mark_circle%403x.png" />
+    <ImageAsset Include="AppAssets.xcassets\HelpSupportQuestion.imageset\Contents.json" />
+    <ImageAsset Include="AppAssets.xcassets\arrow_back.imageset\arrow_back.png" />
+    <ImageAsset Include="AppAssets.xcassets\arrow_back.imageset\arrow_back%402x-1.png" />
+    <ImageAsset Include="AppAssets.xcassets\arrow_back.imageset\arrow_back%403x-1.png" />
+    <ImageAsset Include="AppAssets.xcassets\info.imageset\info%402x.png" />
+    <ImageAsset Include="AppAssets.xcassets\info.imageset\info%403x.png" />
+    <ImageAsset Include="AppAssets.xcassets\info.imageset\info.png" />
+    <ImageAsset Include="AppAssets.xcassets\DeleteButtonKeyboard.imageset\Contents.json" />
+    <ImageAsset Include="AppAssets.xcassets\DeleteButtonKeyboard.imageset\DeleteButtonKeyboard-1.png" />
+    <ImageAsset Include="AppAssets.xcassets\DeleteButtonKeyboard.imageset\DeleteButtonKeyboard%402x-1.png" />
+    <ImageAsset Include="AppAssets.xcassets\DeleteButtonKeyboard.imageset\DeleteButtonKeyboard%403x-1.png" />
+    <ImageAsset Include="AppAssets.xcassets\scanner_gradient_background.imageset\Contents.json" />
+    <ImageAsset Include="AppAssets.xcassets\scanner_gradient_background.imageset\scanner_gradient_background.png" />
+    <ImageAsset Include="AppAssets.xcassets\scanner_gradient_background.imageset\scanner_gradient_background%402x.png" />
+    <ImageAsset Include="AppAssets.xcassets\scanner_gradient_background.imageset\scanner_gradient_background%403x.png" />
+    <ImageAsset Include="AppAssets.xcassets\share_icon.imageset\share_icon-1.png" />
+    <ImageAsset Include="AppAssets.xcassets\coronapas_logo.imageset\Contents.json" />
+    <ImageAsset Include="AppAssets.xcassets\coronapas_logo.imageset\coronapas_logo.png" />
+    <ImageAsset Include="AppAssets.xcassets\coronapas_logo.imageset\coronapas_logo%402x.png" />
+    <ImageAsset Include="AppAssets.xcassets\coronapas_logo.imageset\coronapas_logo%403x.png" />
+    <ImageAsset Include="AppAssets.xcassets\eu_info_icon.imageset\􀅴.png" />
+    <ImageAsset Include="AppAssets.xcassets\eu_info_icon.imageset\􀅴%402x.png" />
+    <ImageAsset Include="AppAssets.xcassets\eu_info_icon.imageset\􀅴%403x.png" />
+    <ImageAsset Include="AppAssets.xcassets\eu_info_icon.imageset\Contents.json" />
+    <ImageAsset Include="AppAssets.xcassets\show_info_icon.imageset\show_info_icon-3.png" />
+    <ImageAsset Include="AppAssets.xcassets\show_info_icon.imageset\show_info_icon.%402x.png" />
+    <ImageAsset Include="AppAssets.xcassets\show_info_icon.imageset\show_info_icon.%403x.png" />
+    <ImageAsset Include="AppAssets.xcassets\ExclamationMark.imageset\Contents.json" />
+    <ImageAsset Include="AppAssets.xcassets\ExclamationMark.imageset\ExclamationMark-1.png" />
+    <ImageAsset Include="AppAssets.xcassets\ExclamationMark.imageset\ExclamationMark@2x-1.png" />
+    <ImageAsset Include="AppAssets.xcassets\ExclamationMark.imageset\ExclamationMark@3x-1.png" />
+    <ImageAsset Include="AppAssets.xcassets\ExclamationMark.imageset\ExclamationMark.png" />
+    <ImageAsset Include="AppAssets.xcassets\ExclamationMark.imageset\ExclamationMark%402x.png" />
+    <ImageAsset Include="AppAssets.xcassets\ExclamationMark.imageset\ExclamationMark%403x.png" />
+    <ImageAsset Include="AppAssets.xcassets\AppIcon.appiconset\iPad_Spotlight_40_1x.png" />
+    <ImageAsset Include="AppAssets.xcassets\AppIcon.appiconset\iPad_Spotlight_40_2x.png" />
+    <ImageAsset Include="AppAssets.xcassets\AppIcon.appiconset\iPad_Settings_29_1x.png" />
+    <ImageAsset Include="AppAssets.xcassets\AppIcon.appiconset\iPad_Settings_29_2x.png" />
+    <ImageAsset Include="AppAssets.xcassets\AppIcon.appiconset\iPad_Notifications_20_1x.png" />
+    <ImageAsset Include="AppAssets.xcassets\AppIcon.appiconset\iPad_Notifications_20_2x.png" />
+    <ImageAsset Include="AppAssets.xcassets\AppIcon.appiconset\iPhone_Settings_29_2x.png" />
+    <ImageAsset Include="AppAssets.xcassets\AppIcon.appiconset\iPhone_Settings_29_3x.png" />
+    <ImageAsset Include="AppAssets.xcassets\AppIcon.appiconset\iPhone_Spotlight_40_3x.png" />
+    <ImageAsset Include="AppAssets.xcassets\AppIcon.appiconset\iPhone_Spotlight_40_2x.png" />
+    <ImageAsset Include="AppAssets.xcassets\AppIcon.appiconset\iPhone_Notifications_20_2x.png" />
+    <ImageAsset Include="AppAssets.xcassets\AppIcon.appiconset\iPhone_Notifications_20_3x.png" />
+    <ImageAsset Include="AppAssets.xcassets\AppIcon.appiconset\iPhone_App_60_2x.png" />
+    <ImageAsset Include="AppAssets.xcassets\AppIcon.appiconset\iPhone_App_60_3x.png" />
+    <ImageAsset Include="AppAssets.xcassets\AppIcon.appiconset\iPad_App_76_1x.png" />
+    <ImageAsset Include="AppAssets.xcassets\AppIcon.appiconset\iPad_App_76_2x.png" />
+    <ImageAsset Include="AppAssets.xcassets\AppIcon.appiconset\iPad_Pro_App_83.5_2x.png" />
+    <ImageAsset Include="AppAssets.xcassets\AppIcon.appiconset\App_store_1024_1x.png" />
+    <ImageAsset Include="AppAssets.xcassets\landing_page_logo.imageset\Group 3604.png" />
+    <ImageAsset Include="AppAssets.xcassets\landing_page_logo.imageset\Group 3604%402x.png" />
+    <ImageAsset Include="AppAssets.xcassets\landing_page_logo.imageset\Group 3604%403x.png" />
+    <ImageAsset Include="AppAssets.xcassets\app_logo.imageset\Logo.png" />
+    <ImageAsset Include="AppAssets.xcassets\app_logo.imageset\Logo%402x.png" />
+    <ImageAsset Include="AppAssets.xcassets\app_logo.imageset\Logo%403x.png" />
+    <ImageAsset Include="AppAssets.xcassets\Image-3.imageset\Contents.json" />
+    <ImageAsset Include="AppAssets.xcassets\LaunchPageLogo.imageset\Contents.json" />
+    <ImageAsset Include="AppAssets.xcassets\LaunchPageLogo.imageset\Group 3768.png" />
+    <ImageAsset Include="AppAssets.xcassets\LaunchPageLogo.imageset\Group 3768%402x.png" />
+    <ImageAsset Include="AppAssets.xcassets\LaunchPageLogo.imageset\Group 3768%403x.png" />
+    <ImageAsset Include="AppAssets.xcassets\SplashLogo.imageset\Contents.json" />
+    <ImageAsset Include="AppAssets.xcassets\SplashLogo.imageset\SplashLogo.png" />
+    <ImageAsset Include="AppAssets.xcassets\SplashLogo.imageset\SplashLogo%402x.png" />
+    <ImageAsset Include="AppAssets.xcassets\SplashLogo.imageset\SplashLogo%403x.png" />
+    <ImageAsset Include="AppAssets.xcassets\HelpSupportQuestion.imageset\HelpSupportQuestion-1.png" />
+    <ImageAsset Include="AppAssets.xcassets\HelpSupportQuestion.imageset\HelpSupportQuestion%402x-1.png" />
+    <ImageAsset Include="AppAssets.xcassets\HelpSupportQuestion.imageset\HelpSupportQuestion%403x-1.png" />
+	  <ImageAsset Include="AppAssets.xcassets\flashlight_off.imageset\Contents.json" />
+    <ImageAsset Include="AppAssets.xcassets\flashlight_off.imageset\flashlight_off.png" />
+    <ImageAsset Include="AppAssets.xcassets\flashlight_off.imageset\flashlight_off%402x.png" />
+    <ImageAsset Include="AppAssets.xcassets\flashlight_off.imageset\flashlight_off%403x.png" />
+    <ImageAsset Include="AppAssets.xcassets\flashlight_on.imageset\Contents.json" />
+    <ImageAsset Include="AppAssets.xcassets\flashlight_on.imageset\flashlight_on.png" />
+    <ImageAsset Include="AppAssets.xcassets\flashlight_on.imageset\flashlight_on%402x.png" />
+    <ImageAsset Include="AppAssets.xcassets\flashlight_on.imageset\flashlight_on%403x.png" />
+    <ImageAsset Include="AppAssets.xcassets\switch_to_eu_view_icon.imageset\Contents.json" />
+    <ImageAsset Include="AppAssets.xcassets\switch_to_dk_view_icon.imageset\Contents.json" />
+    <ImageAsset Include="AppAssets.xcassets\switch_to_dk_view_icon.imageset\switch_to_dk_view_icon.png" />
+    <ImageAsset Include="AppAssets.xcassets\switch_to_dk_view_icon.imageset\switch_to_dk_view_icon%402x.png" />
+    <ImageAsset Include="AppAssets.xcassets\switch_to_dk_view_icon.imageset\switch_to_dk_view_icon%403x.png" />
+    <ImageAsset Include="AppAssets.xcassets\clock_side_circles.imageset\Contents.json" />
+    <ImageAsset Include="AppAssets.xcassets\clock_side_circles.imageset\clock_side_circles.png" />
+    <ImageAsset Include="AppAssets.xcassets\clock_side_circles.imageset\clock_side_circles%40x2.png" />
+    <ImageAsset Include="AppAssets.xcassets\info_no_border.imageset\Contents.json" />
+    <ImageAsset Include="AppAssets.xcassets\info_no_border.imageset\info.png" />
+    <ImageAsset Include="AppAssets.xcassets\info_no_border.imageset\info%402x.png" />
+    <ImageAsset Include="AppAssets.xcassets\info_no_border.imageset\info%403x.png" />
+    <ImageAsset Include="AppAssets.xcassets\question_mark_blue.imageset\Contents.json" />
+    <ImageAsset Include="AppAssets.xcassets\question_mark_blue.imageset\question_mark_blue.png" />
+    <ImageAsset Include="AppAssets.xcassets\question_mark_blue.imageset\question_mark_blue%402x.png" />
+    <ImageAsset Include="AppAssets.xcassets\question_mark_blue.imageset\question_mark_blue%403x.png" />
+    <ImageAsset Include="AppAssets.xcassets\passport_dk_icon_selected.imageset\Contents.json" />
+    <ImageAsset Include="AppAssets.xcassets\passport_eu_icon_selected.imageset\Contents.json" />
+    <ImageAsset Include="AppAssets.xcassets\passport_dk_icon.imageset\Contents.json" />
+    <ImageAsset Include="AppAssets.xcassets\passport_eu_icon.imageset\Contents.json" />
+    <ImageAsset Include="AppAssets.xcassets\passport_eu_icon.imageset\Group 3722 %282%29.png" />
+    <ImageAsset Include="AppAssets.xcassets\passport_eu_icon.imageset\Group 3722 %283%29.png" />
+    <ImageAsset Include="AppAssets.xcassets\passport_eu_icon.imageset\Group 3722.png" />
+    <ImageAsset Include="AppAssets.xcassets\passport_dk_icon_selected.imageset\Group 3722.png" />
+    <ImageAsset Include="AppAssets.xcassets\passport_dk_icon_selected.imageset\Group 3722 %282%29.png" />
+    <ImageAsset Include="AppAssets.xcassets\passport_dk_icon_selected.imageset\Group 3722 %283%29.png" />
+    <ImageAsset Include="AppAssets.xcassets\passport_eu_icon.imageset\Group 3723.png" />
+    <ImageAsset Include="AppAssets.xcassets\passport_eu_icon.imageset\Group 3723 %282%29.png" />
+    <ImageAsset Include="AppAssets.xcassets\passport_eu_icon.imageset\Group 3723 %283%29.png" />
+    <ImageAsset Include="AppAssets.xcassets\passport_dk_icon.imageset\Group 3724.png" />
+    <ImageAsset Include="AppAssets.xcassets\passport_dk_icon.imageset\Group 3724 %282%29.png" />
+    <ImageAsset Include="AppAssets.xcassets\passport_dk_icon.imageset\Group 3724 %283%29.png" />
+    <ImageAsset Include="AppAssets.xcassets\passport_eu_icon_selected.imageset\Group 3724 %285%29.png" />
+    <ImageAsset Include="AppAssets.xcassets\passport_eu_icon_selected.imageset\Group 3724 %287%29.png" />
+    <ImageAsset Include="AppAssets.xcassets\passport_eu_icon_selected.imageset\Group 3724 %288%29.png" />
+    <ImageAsset Include="AppAssets.xcassets\passport_selected.imageset\Contents.json" />
+    <ImageAsset Include="AppAssets.xcassets\passport_not_selected.imageset\Contents.json" />
+    <ImageAsset Include="AppAssets.xcassets\passport_selected.imageset\Frame 3393 1.png" />
+    <ImageAsset Include="AppAssets.xcassets\passport_selected.imageset\Frame 3393 2.png" />
+    <ImageAsset Include="AppAssets.xcassets\passport_selected.imageset\Frame 3393 3.png" />
+    <ImageAsset Include="AppAssets.xcassets\passport_not_selected.imageset\Oval Copy 1.png" />
+    <ImageAsset Include="AppAssets.xcassets\passport_not_selected.imageset\Oval Copy 2.png" />
+    <ImageAsset Include="AppAssets.xcassets\passport_not_selected.imageset\Oval Copy 3.png" />
+    <ImageAsset Include="AppAssets.xcassets\notification_icon.imageset\Contents.json" />
+    <ImageAsset Include="AppAssets.xcassets\notification_icon.imageset\Group 3734.png" />
+    <ImageAsset Include="AppAssets.xcassets\notification_icon.imageset\Group 3734 %282%29.png" />
+    <ImageAsset Include="AppAssets.xcassets\notification_icon.imageset\Group 3734 %283%29.png" />
+    <ImageAsset Include="AppAssets.xcassets\internet_connectivity_issue_icon.imageset\Contents.json" />
+    <ImageAsset Include="AppAssets.xcassets\internet_connectivity_issue_icon.imageset\internet_connectivity_issue_icon%40x1.png" />
+    <ImageAsset Include="AppAssets.xcassets\internet_connectivity_issue_icon.imageset\internet_connectivity_issue_icon%40x2.png" />
+    <ImageAsset Include="AppAssets.xcassets\internet_connectivity_issue_icon.imageset\internet_connectivity_issue_icon%40x3.png" />
+    <ImageAsset Include="AppAssets.xcassets\clock_side_circles.imageset\clock_side_circle%40x3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core" />
+    <Reference Include="Xamarin.iOS" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="SkiaSharp.Views.Forms">
+      <Version>2.80.2</Version>
+    </PackageReference>
+    <PackageReference Include="Com.Airbnb.Xamarin.Forms.Lottie">
+      <Version>3.0.1</Version>
+    </PackageReference>
+    <PackageReference Include="jose-jwt">
+      <Version>2.6.1</Version>
+    </PackageReference>
+    <PackageReference Include="SkiaSharp.Views.Forms">
+      <Version>2.80.2</Version>
+    </PackageReference>
+    <PackageReference Include="Xamarin.Auth">
+      <Version>1.7.0</Version>
+    </PackageReference>
+    <PackageReference Include="Xamarin.Forms" Version="5.0.0.2012" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+    <PackageReference Include="Xamarin.Essentials" Version="1.6.1" />
+    <PackageReference Include="ZXing.Net.Mobile">
+      <Version>3.1.0-beta2</Version>
+    </PackageReference>
+    <PackageReference Include="ZXing.Net.Mobile.Forms">
+      <Version>3.1.0-beta2</Version>
+    </PackageReference>
+    <PackageReference Include="Portable.BouncyCastle">
+      <Version>1.8.8</Version>
+    </PackageReference>
+    <PackageReference Include="Xamanimation">
+      <Version>1.3.0</Version>
+    </PackageReference>
+    <PackageReference Include="Rg.Plugins.Popup">
+      <Version>2.0.0.11</Version>
+    </PackageReference>
+    <PackageReference Include="PeterO.Cbor">
+      <Version>4.3.0</Version>
+    </PackageReference>
+    <PackageReference Include="PeterO.URIUtility">
+      <Version>1.0.0</Version>
+    </PackageReference>
+    <PackageReference Include="PeterO.Numbers">
+      <Version>1.7.4</Version>
+    </PackageReference>
+    <PackageReference Include="AiForms.Dialogs">
+      <Version>1.0.10</Version>
+    </PackageReference>
+    <PackageReference Include="Xamarin.TestCloud.Agent">
+      <Version>0.22.2</Version>
+    </PackageReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
+  <ItemGroup>
+    <Folder Include="AppAssets.xcassets\bottombar_passport.imageset\" />
+    <Folder Include="AppAssets.xcassets\bottombar_scan.imageset\" />
+    <Folder Include="AppAssets.xcassets\bottombar_info.imageset\" />
+    <Folder Include="AppAssets.xcassets\SplashBackground.imageset\" />
+    <Folder Include="AppAssets.xcassets\HamburgerMenu.imageset\" />
+    <Folder Include="AppAssets.xcassets\toast_tick.imageset\" />
+    <Folder Include="AppAssets.xcassets\share_icon.imageset\" />
+    <Folder Include="AppAssets.xcassets\show_info_icon.imageset\" />
+    <Folder Include="AppAssets.xcassets\information_icon_large.imageset\" />
+    <Folder Include="AppAssets.xcassets\lock_icon.imageset\" />
+    <Folder Include="AppAssets.xcassets\expired_icon.imageset\" />
+    <Folder Include="AppAssets.xcassets\close_icon.imageset\" />
+    <Folder Include="AppAssets.xcassets\ScanRectangle.imageset\" />
+    <Folder Include="AppAssets.xcassets\Xsø.imageset\" />
+    <Folder Include="AppAssets.xcassets\hourGlass.imageset\" />
+    <Folder Include="AppAssets.xcassets\x_mark.imageset\" />
+    <Folder Include="AppAssets.xcassets\ScanRectangle.imageset\" />
+    <Folder Include="AppAssets.xcassets\x_mark_circle.imageset\" />
+    <Folder Include="AppAssets.xcassets\HelpSupportQuestion.imageset\" />
+    <Folder Include="AppAssets.xcassets\DeleteButtonKeyboard.imageset\" />
+    <Folder Include="AppAssets.xcassets\scanner_gradient_background.imageset\" />
+    <Folder Include="AppAssets.xcassets\coronapas_logo.imageset\" />
+    <Folder Include="AppAssets.xcassets\eu_info_icon.imageset\" />
+    <Folder Include="AppAssets.xcassets\ExclamationMark.imageset\" />
+    <Folder Include="AppAssets.xcassets\LaunchPageLogo.imageset\" />
+    <Folder Include="AppAssets.xcassets\SplashLogo.imageset\" />
+    <Folder Include="AppAssets.xcassets\flashlight_off.imageset\" />
+    <Folder Include="AppAssets.xcassets\flashlight_on.imageset\" />
+    <Folder Include="AppAssets.xcassets\clock_side_circles.imageset\" />
+    <Folder Include="AppAssets.xcassets\switch_to_eu_view_icon.imageset\" />
+    <Folder Include="AppAssets.xcassets\switch_to_dk_view_icon.imageset\" />
+    <Folder Include="AppAssets.xcassets\info_no_border.imageset\" />
+    <Folder Include="AppAssets.xcassets\question_mark_blue.imageset\" />
+    <Folder Include="AppAssets.xcassets\passport_dk_icon_selected.imageset\" />
+    <Folder Include="AppAssets.xcassets\passport_eu_icon_selected.imageset\" />
+    <Folder Include="AppAssets.xcassets\passport_dk_icon.imageset\" />
+    <Folder Include="AppAssets.xcassets\passport_eu_icon.imageset\" />
+    <Folder Include="AppAssets.xcassets\passport_selected.imageset\" />
+    <Folder Include="AppAssets.xcassets\passport_not_selected.imageset\" />
+    <Folder Include="AppAssets.xcassets\notification_icon.imageset\" />
+    <Folder Include="Resources\Fonts\" />
+    <Folder Include="AppAssets.xcassets\internet_connectivity_issue_icon.imageset\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="AppAssets.xcassets\landing_page_background.imageset\" />
+    <Folder Include="AppAssets.xcassets\landing_page_logo.imageset\" />
+    <Folder Include="AppAssets.xcassets\landing_page_stock_image.imageset\" />
+    <Folder Include="AppAssets.xcassets\landing_page_vector.imageset\" />
+    <Folder Include="AppAssets.xcassets\app_logo.imageset\" />
+    <Folder Include="AppAssets.xcassets\reload_icon.imageset\" />
+    <Folder Include="AppAssets.xcassets\error_lock_icon.imageset\" />
+    <Folder Include="AppAssets.xcassets\error_lock.imageset\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="AppAssets.xcassets\arrow_back.imageset\" />
+    <Folder Include="AppAssets.xcassets\clock_icon.imageset\" />
+    <Folder Include="AppAssets.xcassets\delete_keyboard.imageset\" />
+    <Folder Include="AppAssets.xcassets\error_layout.imageset\" />
+    <Folder Include="AppAssets.xcassets\error_lock_icon.imageset\" />
+    <Folder Include="AppAssets.xcassets\error_maintenance.imageset\" />
+    <Folder Include="AppAssets.xcassets\error_queue.imageset\" />
+    <Folder Include="AppAssets.xcassets\exclamation_icon_blue.imageset\" />
+    <Folder Include="AppAssets.xcassets\exclamation_mark.imageset\" />
+    <Folder Include="AppAssets.xcassets\fingerprint_layout.imageset\" />
+    <Folder Include="AppAssets.xcassets\forward_arrow.imageset\" />
+    <Folder Include="AppAssets.xcassets\hamburger_menu.imageset\" />
+    <Folder Include="AppAssets.xcassets\help_icon_blue.imageset\" />
+    <Folder Include="AppAssets.xcassets\hide_info_icon.imageset\" />
+    <Folder Include="AppAssets.xcassets\icon_down_triangle.imageset\" />
+    <Folder Include="AppAssets.xcassets\icon_right_triangle.imageset\" />
+    <Folder Include="AppAssets.xcassets\info.imageset\" />
+    <Folder Include="AppAssets.xcassets\information_icon.imageset\" />
+    <Folder Include="AppAssets.xcassets\international_passport_icon.imageset\" />
+    <Folder Include="AppAssets.xcassets\inverse_crown_icon.imageset\" />
+    <Folder Include="AppAssets.xcassets\inverse_plane_icon.imageset\" />
+    <Folder Include="AppAssets.xcassets\landing_page_art.imageset\" />
+    <Folder Include="AppAssets.xcassets\landing_page_texture.imageset\" />
+    <Folder Include="AppAssets.xcassets\lightbulb.imageset\" />
+    <Folder Include="AppAssets.xcassets\Logo.imageset\" />
+    <Folder Include="AppAssets.xcassets\main_page_dotted_background.imageset\" />
+    <Folder Include="AppAssets.xcassets\passport_picker_icon.imageset\" />
+    <Folder Include="AppAssets.xcassets\qr_code_scanner.imageset\" />
+    <Folder Include="AppAssets.xcassets\question_mark.imageset\" />
+    <Folder Include="AppAssets.xcassets\selected_dot_blue.imageset\" />
+    <Folder Include="AppAssets.xcassets\setting.imageset\" />
+    <Folder Include="AppAssets.xcassets\sundhedsminiateriet_landing_page_logo.imageset\" />
+    <Folder Include="AppAssets.xcassets\text_page.imageset\" />
+    <Folder Include="AppAssets.xcassets\valid_icon.imageset\" />
+    <Folder Include="AppAssets.xcassets\valid_passport_icon.imageset\" />
+    <Folder Include="AppAssets.xcassets\expander_down_arrow.imageset\" />
+    <Folder Include="AppAssets.xcassets\expander_right_arrow.imageset\" />
+    <Folder Include="AppAssets.xcassets\question_mark_white.imageset\" />
+    <Folder Include="AppAssets.xcassets\covid_19_recovery_icon.imageset\" />
+    <Folder Include="AppAssets.xcassets\covid_19_negative_test_icon.imageset\" />
+    <Folder Include="AppAssets.xcassets\covid_19_vaccine_icon.imageset\" />
+    <Folder Include="AppAssets.xcassets\collapsed_icon.imageset\" />
+    <Folder Include="AppAssets.xcassets\expanded_icon.imageset\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SSICPAS.Core\SSICPAS.Core.csproj">
+      <Project>{74a636e1-f871-48fe-8e56-ac8bd701e16d}</Project>
+      <Name>SSICPAS.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SSICPAS\SSICPAS.csproj">
+      <Project>{CCA7587C-2315-43AE-990C-BF5682BC8E20}</Project>
+      <Name>SSICPAS</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,19 @@
+# Description
+
+[Task: Name of WP / bug](https://link.to.WP.or.bug)
+
+Functional changes:
+- Change 1
+- Change 2
+- Change 3
+
+
+# Definition of Done
+- [ ] Acceptance criteria implemented / bug fixed
+- [ ] iOS is smoke tested to avoid regression errors
+- [ ] Android is smoke tested to avoid regression errors
+- [ ] Unit tests are green
+- [ ] New unit tests are written (if relevant)
+- [ ] New documentation written (if relevant)
+- [ ] Add image or video demonstration (Cannot be added to PR, but please add to a comment on the PR)
+

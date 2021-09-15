@@ -1,0 +1,130 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ViewCell xmlns="http://xamarin.com/schemas/2014/forms" 
+          xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+          xmlns:effects="clr-namespace:SSICPAS.Controls"
+          xmlns:viewModels="clr-namespace:SSICPAS.ViewModels.Certificates"
+          x:Class="SSICPAS.Views.Elements.PassportItemCellView"
+          x:DataType="viewModels:PassportItemCellViewModel">
+    <ViewCell.View>
+        <StackLayout>
+            <effects:FrameWithShadow
+                Margin="20,0,20,2"
+                Padding="0,24,0,0"
+                CornerRadius="0"
+                AutomationProperties.IsInAccessibleTree="True"
+                AutomationProperties.HelpText="{Binding AccessibilityText}"
+                VerticalOptions="FillAndExpand">
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding TapCommand}"/>
+                </Frame.GestureRecognizers>
+                <Frame.HasShadow>
+                    <OnPlatform x:TypeArguments="x:Boolean"
+                                iOS="False"
+                                Android="True" />
+                </Frame.HasShadow>
+                <Grid RowSpacing="0"
+                    ColumnSpacing="16"
+                    Padding="20,0,16,0"
+                    Margin="0,0,0,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Image
+                        x:Name="IconImage"
+                        Grid.Row="0"
+                        Grid.RowSpan="2"
+                        Grid.Column="0"
+                        HorizontalOptions="Start"
+                        Margin="0,0,0,0"
+                        AutomationProperties.IsInAccessibleTree="False"
+                        Source="{StaticResource Covid19VaccineIcon}"
+                        HeightRequest="56"
+                        VerticalOptions="Center" />
+
+                    <Label
+                        x:Name="HeaderLabel"
+                        Grid.Row="0"
+                        Grid.Column="1"
+                        HorizontalOptions="StartAndExpand"
+                        Style="{StaticResource SubtitleStyle}"
+                        Text="{Binding HeaderLabelText}"
+                        VerticalOptions="Center"
+                        AutomationProperties.IsInAccessibleTree="False">
+                        <Label.Effects>
+                            <effects:FontSizeLabelEffect />
+                        </Label.Effects>
+                    </Label>
+
+                    <Label
+                        x:Name="SubHeaderLabel"
+                        Grid.Row="1"
+                        Grid.Column="1"
+                        VerticalOptions="Center"
+                        HorizontalOptions="StartAndExpand"
+                        Style="{StaticResource SecondaryContentItalicStyle}"
+                        Text="{Binding SubHeaderLabelText}"
+                        AutomationProperties.IsInAccessibleTree="False">
+                        <Label.Effects>
+                            <effects:FontSizeLabelEffect />
+                        </Label.Effects>
+                    </Label>
+                    <BoxView BackgroundColor="{StaticResource SeperatorLineColor}" HeightRequest="0.5" Margin="0,12,0,0" Grid.Row="2" Grid.ColumnSpan="2"/>
+                    <Grid Grid.Row="3" Grid.ColumnSpan="2" Margin="0,5,0,5">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Label
+                            x:Name="DurationLabel"
+                            Grid.Row="0"
+                            Grid.Column="0"
+                            Grid.ColumnSpan="1"
+                            HorizontalOptions="Start"
+                            VerticalOptions="Center"
+                            Margin="0,5,0,5"
+                            Padding="0,0,0,2"
+                            Style="{StaticResource SecondaryContentStyle}">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span x:Name="DurationLabelFirstSpan" Text="{Binding DurationLabelFirstSpanText}" />
+                                    <Span x:Name="DurationLabelSecondSpan" Text="{Binding DurationLabelSecondSpanText}" />
+                                </FormattedString>
+                            </Label.FormattedText>
+                            <Label.Effects>
+                                <effects:FontSizeLabelEffect />
+                            </Label.Effects>
+                        </Label>
+                        <Label
+                            x:Name="DoseLabel"
+                            Grid.Row="0"
+                            Grid.Column="1"
+                            Grid.ColumnSpan="1"
+                            HorizontalOptions="End"
+                            VerticalOptions="Center"
+                            Margin="0,5,0,5"
+                            Padding="0,0,0,2"
+                            LineBreakMode="NoWrap"
+                            Style="{StaticResource SecondaryContentBoldStyle}"
+                            Text="{Binding DoseLabelText}"
+                            AutomationProperties.IsInAccessibleTree="False">
+                           
+                            <Label.Effects>
+                                <effects:FontSizeLabelEffect />
+                            </Label.Effects>
+                        </Label>    
+                    </Grid>
+                </Grid>
+            </effects:FrameWithShadow>
+        </StackLayout>
+  </ViewCell.View>
+</ViewCell>

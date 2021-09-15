@@ -1,0 +1,983 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<Application
+    x:Class="SSICPAS.App"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:converters="clr-namespace:SSICPAS.Controls.Converters;assembly=SSICPAS"
+    xmlns:effects="clr-namespace:SSICPAS.Controls">
+    <!--
+        Define global resources and styles here, that apply to all pages in your app.
+    -->
+    <Application.Resources>
+        <ResourceDictionary>
+            <!--  Text  -->
+            <Color x:Key="SSITitleTextColor">#1c1999</Color>
+            <Color x:Key="SSILightTextColor">#77819A</Color>
+            <Color x:Key="SSIContentTextColor">#47526F</Color>
+            <Color x:Key="SSIBaseTextColor">#24215f</Color>
+            <Color x:Key="SSIWhiteTextColor">#ffffff</Color>
+            <Color x:Key="SSIOnBoardTitleTextColor">#052a47</Color>
+            <Color x:Key="SSIGreyTextColor">#6C768E</Color>
+            <Color x:Key="SSIDarkTextColor">#22215D</Color>
+            <Color x:Key="SSILinkColor">#3B37E2</Color>
+            <Color x:Key="SSIToastTextColor">#004631</Color>
+            <Color x:Key="SSILinkPressedColor">#663B37E2</Color>
+
+            <Color x:Key="SSILandingPageStatusBarColor">#13138b</Color>
+
+            <!--  Background Colour  -->
+            <Color x:Key="DefaultBackgroundColor">#F4F9F9</Color>
+            <Color x:Key="NavigationHeaderBackgroundColor">#FFFFFF</Color>
+            <Color x:Key="TabbarItemSelectedColor">#3B37E2</Color>
+            <Color x:Key="TabbarItemColor">#24215F</Color>
+            <Color x:Key="LandingPageColorStart">#303B75</Color>
+            <Color x:Key="LandingPageColorEnd">#1D1F5F</Color>
+            <Color x:Key="ErrorPageButtonColor">#3B37E2</Color>
+            <Color x:Key="MainPageBackgroundColor">#E7F2F2</Color>
+            <Color x:Key="SuccessBorderColor">#44D0A2</Color>
+            <Color x:Key="InvalidBorderColor">#FF2466</Color>
+            <Color x:Key="ExpiredBorderColor">#FDD134</Color>
+            <Color x:Key="PassportListHeaderBackgroundColor">#CACEDA</Color>
+
+            <Color x:Key="SeperatorLineColor">#E7F2F2</Color>
+
+
+            <!--  Image  -->
+            <x:String x:Key="HelpIconBlue">help_icon_blue.png</x:String>
+            <x:String x:Key="HelpSupportQuestion">HelpSupportQuestion.png</x:String>
+            <x:String x:Key="DeleteKeyboardLayout">delete_keyboard.png</x:String>
+            <x:String x:Key="SundhedsminiaterietLandingPageLogo">sundhedsminiateriet_landing_page_logo.png</x:String>
+            <x:String x:Key="LandingPageBackground">landing_page_background</x:String>
+            <x:String x:Key="LandingPageLogo">landing_page_logo</x:String>
+            <x:String x:Key="LandingPageStockImage">landing_page_stock_image</x:String>
+            <x:String x:Key="LandingPageVector">landing_page_vector</x:String>
+            <x:String x:Key="Hamburger">hamburger.png</x:String>
+            <x:String x:Key="FingerPrintLayout">fingerprint_layout.png</x:String>
+            <x:String x:Key="InverseCrownIcon">inverse_crown_icon.png</x:String>
+            <x:String x:Key="InversePlaneIcon">inverse_plane_icon.png</x:String>
+            <x:String x:Key="ArrowBack">arrow_back.png</x:String>
+            <x:String x:Key="ValidPassportIcon">valid_passport_icon.png</x:String>
+            <x:String x:Key="ValidPassportIconGreen">valid_passport_icon_green.png</x:String>
+            <x:String x:Key="Covid19VaccineIcon">covid_19_vaccine_icon.png</x:String>
+            <x:String x:Key="Covid19NegativeTestIcon">covid_19_negative_test_icon.png</x:String>
+            <x:String x:Key="Covid19RecoveryIcon">covid_19_recovery_icon.png</x:String>
+            <x:String x:Key="ExpandedIcon">expanded_icon.png</x:String>
+            <x:String x:Key="CollapsedIcon">collapsed_icon.png</x:String>
+            <x:String x:Key="ErrorCheckLayout">error_layout.png</x:String>
+            <x:String x:Key="HamburgerMenu">HamburgerMenu.png</x:String>
+            <x:String x:Key="XMark">x_mark.png</x:String>
+            <x:String x:Key="ScanRectangle">ScanRectangle.png</x:String>
+            <x:String x:Key="HourGlass">hourGlass.png</x:String>
+            <x:String x:Key="xMarkCircle">x_mark_circle.png</x:String>
+
+            <x:String x:Key="UserIcon">icon_user.png</x:String>
+            <x:String x:Key="ArrowNext">forward_arrow.png</x:String>
+            <x:String x:Key="MenuInfoIcon">info.png</x:String>
+            <x:String x:Key="MenuHelpIcon">question_mark.png</x:String>
+            <x:String x:Key="LandingHelpIcon">question_mark_white.png</x:String>
+            <x:String x:Key="QuestionMarkBlue">question_mark_blue.png</x:String>
+            <x:String x:Key="MenuSettingIcon">setting.png</x:String>
+            <x:String x:Key="MenuTermsIcon">text_page.png</x:String>
+            <x:String x:Key="MainPageDottedBackground">main_page_dotted_background.png</x:String>
+            <x:String x:Key="SelectedDotBlue">selected_dot_blue.png</x:String>
+            <x:String x:Key="InternationalPassportIcon">international_passport_icon.png</x:String>
+            <x:String x:Key="ExclamationIconBlue">exclamation_icon_blue.png</x:String>
+            <x:String x:Key="ErrorUnknown">error_layout.png</x:String>
+            <x:String x:Key="ErrorLock">error_lock.png</x:String>
+            <x:String x:Key="ErrorMaintenance">error_maintenance.png</x:String>
+            <x:String x:Key="ErrorQueue">error_queue.png</x:String>
+            <x:String x:Key="InformationIcon">information_icon.png</x:String>
+            <x:String x:Key="EUInformationIcon">eu_info_icon.png</x:String>
+            <x:String x:Key="AppLogo">app_logo.png</x:String>
+            <x:String x:Key="LightbulbIcon">lightbulb.png</x:String>
+            <x:String x:Key="ShareIcon">share_icon.png</x:String>
+            <x:String x:Key="HideInfoIcon">hide_info_icon.png</x:String>
+            <x:String x:Key="ToEuPassportPickerIcon">switch_to_eu_view_icon.png</x:String>
+            <x:String x:Key="ToDkPassportPickerIcon">switch_to_dk_view_icon.png</x:String>
+            <x:String x:Key="BottombarPassport">bottombar_passport.png</x:String>
+            <x:String x:Key="BottombarScan">bottombar_scan.png</x:String>
+            <x:String x:Key="BottombarInfo">bottombar_info.png</x:String>
+            <x:String x:Key="ToastTick">toast_tick.png</x:String>
+            <x:String x:Key="ShowInfoIcon">show_info_icon.png</x:String>
+            <x:String x:Key="InformationIconLarge">information_icon_large.png</x:String>
+            <x:String x:Key="LockIcon">lock_icon.png</x:String>
+            <x:String x:Key="ValidIcon">valid_icon.png</x:String>
+            <x:String x:Key="ExpiredIcon">expired_icon.png</x:String>
+            <x:String x:Key="CloseIcon">close_icon.png</x:String>
+            <x:String x:Key="BackIcon">back_icon.png</x:String>
+            <x:String x:Key="DeleteButtonKeyboard">DeleteButtonKeyboard.png</x:String>
+            <x:String x:Key="ScannerBackground">scanner_gradient_background.png</x:String>
+            <x:String x:Key="ScannerFlashlightOnIcon">flashlight_on.png</x:String>
+            <x:String x:Key="ScannerFlashlightOffIcon">flashlight_off.png</x:String>
+            <x:String x:Key="CoronapasLogo">coronapas_logo.png</x:String>
+            <x:String x:Key="ExclamationMark">ExclamationMark.png</x:String>
+            <x:String x:Key="SplashLogo">SplashLogo.png</x:String>
+            <x:String x:Key="ClockSideCircles">clock_side_circles.png</x:String>
+            <x:String x:Key="NotificationImage">notification_icon.png</x:String>
+            <x:String x:Key="InternetConnectivityIssueIcon">internet_connectivity_issue_icon.png</x:String>
+
+            <!--  Lottie Animation  -->
+            <x:String x:Key="ValidDKPassport">valid_dk_check.json</x:String>
+            <x:String x:Key="ValidEUPassport">valid_eu_plane.json</x:String>
+            <x:String x:Key="DKInformationIcon">info_no_border.png</x:String>
+            <x:String x:Key="PassportDKIconSelected">passport_dk_icon_selected.png</x:String>
+            <x:String x:Key="PassportEUIconSelected">passport_eu_icon_selected.png</x:String>
+            <x:String x:Key="PassportDKIcon">passport_dk_icon.png</x:String>
+            <x:String x:Key="PassportEUIcon">passport_eu_icon.png</x:String>
+            <x:String x:Key="PassportNotSelected">passport_not_selected.png</x:String>
+            <x:String x:Key="PassportSelected">passport_selected.png</x:String>
+
+            <!--  Others  -->
+            <Color x:Key="SSIButtonBlue">#3B37E2</Color>
+            <Color x:Key="SSIButtonDisable">#A2A8B8</Color>
+            <Color x:Key="SSIIndicatorUnselected">#C7D9D9</Color>
+            <Color x:Key="SSIIndicatorSelected">#24215F</Color>
+            <Color x:Key="SSIButtonPressed">#C4C9D8</Color>
+            <Color x:Key="PinCodeButtonKeyboardColor">#22215D</Color>
+            <Color x:Key="SSIDialogButton">#3B37E2</Color>
+            <Color x:Key="SSIButtonActive">#B7C1DB</Color>
+            <Color x:Key="SSIButtonActiveTransparent">#E6B7C1DB</Color>
+            <Color x:Key="SSICombinedButtonActive">#6C68FF</Color>
+            <Color x:Key="SSIErrorColor">#D41700</Color>
+            <Color x:Key="SSIGreenSuccessColor">#44D0A2</Color>
+            <Color x:Key="SSIExpiredYellowTextColor">#73632C</Color>
+            <Color x:Key="SSIExpiredYellowColor">#FFE896</Color>
+            <Color x:Key="SSILoginButtonDisable">#CACACA</Color>
+            <Color x:Key="SSIMenuPressedColor">#E6F4F9F9</Color>
+            
+            <Color x:Key="SSIWhite">#FFFFFF</Color>
+            <Color x:Key="SSIDark60">#99000000</Color>
+            <Color x:Key="SSIHalfTransparentWhite">#FFFFFF</Color>
+
+            <Color x:Key="SSIStatusPendingYellow">#FFE896</Color>
+
+            <Color x:Key="SwitchColor">#3B37E2</Color>
+            <Color x:Key="CheckBoxBorderColor">#EAF1F1</Color>
+            <Color x:Key="HeaderLineColor">#E8EBF1</Color>
+
+            
+            <x:Array x:Key="MainPageCrownGradient" Type="{x:Type Color}">
+                <Color>#CCE876</Color>
+                <Color>#BEF2B0</Color>
+                <Color>#8DFFB8</Color>
+                <Color>#A8FFFF</Color>
+                <Color>#99EBF5</Color>
+                <Color>#8AD8EC</Color>
+                <Color>#82D1FC</Color>
+                <Color>#4075FF</Color>
+                <Color>#7B95F7</Color>
+                <Color>#ADAFF1</Color>
+                <Color>#C39DF3</Color>
+            </x:Array>
+
+            <x:Array x:Key="ClockGradient" Type="{x:Type Color}">
+                <Color>#CCE876</Color>
+                <Color>#BEF2B0</Color>
+                <Color>#8DFFB8</Color>
+                <Color>#A8FFFF</Color>
+                <Color>#99EBF5</Color>
+                <Color>#8AD8EC</Color>
+                <Color>#82D1FC</Color>
+                <Color>#4075FF</Color>
+                <Color>#7B95F7</Color>
+                <Color>#ADAFF1</Color>
+                <Color>#C39DF3</Color>
+            </x:Array>
+
+            <!--  A thin strip of #B0FFE5 in center on a #51EAB8 background  -->
+            <x:Array x:Key="MainPageStatusGradientGreen" Type="{x:Type Color}">
+                <Color>#51EAB8</Color>
+                <Color>#51EAB8</Color>
+                <Color>#51EAB8</Color>
+                <Color>#B0FFE5</Color>
+                <Color>#51EAB8</Color>
+                <Color>#51EAB8</Color>
+                <Color>#51EAB8</Color>
+                <Color>#B0FFE5</Color>
+                <Color>#51EAB8</Color>
+                <Color>#51EAB8</Color>
+                <Color>#51EAB8</Color>
+                <Color>#B0FFE5</Color>
+            </x:Array>
+
+            <!--  A thin strip of #5A5786 with very bright #D3D1F0 in center on a #24215F background  -->
+            <x:Array x:Key="MainPageStatusGradientBlue" Type="{x:Type Color}">
+                <Color>#24215F</Color>
+                <Color>#24215F</Color>
+                <Color>#24215F</Color>
+                <Color>#5A5786</Color>
+                <Color>#D3D1F0</Color>
+                <Color>#5A5786</Color>
+                <Color>#24215F</Color>
+                <Color>#24215F</Color>
+                <Color>#24215F</Color>
+                <Color>#5A5786</Color>
+                <Color>#D3D1F0</Color>
+                <Color>#5A5786</Color>
+                <Color>#24215F</Color>
+                <Color>#24215F</Color>
+                <Color>#24215F</Color>
+            </x:Array>
+
+            <!--  Global Style  -->
+
+            <Style x:Key="TitleStyle" TargetType="Label">
+                <Setter Property="FontFamily" Value="IBMPlexSansSemiBold" />
+                <Setter Property="FontSize" Value="Large" />
+                <Setter Property="TextColor" Value="{StaticResource SSIBaseTextColor}" />
+                <Setter Property="LineHeight" Value="1.1" />
+                <Setter Property="LineBreakMode" Value="WordWrap" />
+                <Setter Property="effects:FontSizeLabelEffectParams.MaxFontSize" Value="38" />
+                <Setter Property="effects:FontSizeLabelEffectParams.MinFontSize" Value="18" />
+            </Style>
+
+            <Style x:Key="BigTitleStyle" TargetType="Label">
+                <Setter Property="FontFamily" Value="IBMPlexSansSemiBold" />
+                <Setter Property="FontSize" Value="Title" />
+                <Setter Property="TextColor" Value="{StaticResource SSIBaseTextColor}" />
+                <Setter Property="LineHeight" Value="1.1" />
+                <Setter Property="LineBreakMode" Value="WordWrap" />
+                <Setter Property="effects:FontSizeLabelEffectParams.MaxFontSize" Value="40" />
+                <Setter Property="effects:FontSizeLabelEffectParams.MinFontSize" Value="20" />
+            </Style>
+
+            <Style x:Key="SubtitleStyle" TargetType="Label">
+                <Setter Property="FontFamily" Value="IBMPlexSansSemiBold" />
+                <Setter Property="FontSize" Value="Medium" />
+                <Setter Property="TextColor" Value="{StaticResource SSIBaseTextColor}" />
+                <Setter Property="LineBreakMode" Value="WordWrap" />
+                <Setter Property="LineHeight" Value="1.1" />
+                <Setter Property="effects:FontSizeLabelEffectParams.MaxFontSize" Value="36" />
+                <Setter Property="effects:FontSizeLabelEffectParams.MinFontSize" Value="16" />
+            </Style>
+
+             <Style x:Key="InfoHeaderSmallStyle" TargetType="Label">
+                <Setter Property="FontFamily" Value="IBMPlexSansSemiBold" />
+                <Setter Property="FontSize" Value="Medium" />
+                <Setter Property="TextColor" Value="{StaticResource SSIBaseTextColor}" />
+                <Setter Property="LineBreakMode" Value="WordWrap" />
+                <Setter Property="LineHeight" Value="1.1" />
+                <Setter Property="effects:FontSizeLabelEffectParams.MaxFontSize" Value="20" />
+                <Setter Property="effects:FontSizeLabelEffectParams.MinFontSize" Value="16" />
+             </Style>
+
+            <Style x:Key="SubtitleMedStyle" TargetType="Label">
+                <Setter Property="FontFamily" Value="IBMPlexSansMedium" />
+                <Setter Property="FontSize" Value="Medium" />
+                <Setter Property="TextColor" Value="{StaticResource SSIBaseTextColor}" />
+                <Setter Property="LineHeight" Value="1.1" />
+                <Setter Property="LineBreakMode" Value="WordWrap" />
+                <Setter Property="effects:FontSizeLabelEffectParams.MaxFontSize" Value="36" />
+                <Setter Property="effects:FontSizeLabelEffectParams.MinFontSize" Value="16" />
+            </Style>
+
+            <Style x:Key="ContentTitleStyle" TargetType="Label">
+                <Setter Property="FontFamily" Value="IBMPlexSansSemiBold" />
+                <Setter Property="FontSize" Value="Medium" />
+                <Setter Property="TextColor" Value="{StaticResource SSIBaseTextColor}" />
+                <Setter Property="LineHeight" Value="1.2" />
+                <Setter Property="LineBreakMode" Value="WordWrap" />
+                <Setter Property="effects:FontSizeLabelEffectParams.MaxFontSize" Value="32" />
+                <Setter Property="effects:FontSizeLabelEffectParams.MinFontSize" Value="12" />
+            </Style>
+
+            <Style x:Key="ContentStyle" TargetType="Label">
+                <Setter Property="FontFamily" Value="IBMPlexSansRegular" />
+                <Setter Property="FontSize" Value="Medium" />
+                <Setter Property="TextColor" Value="{StaticResource SSIBaseTextColor}" />
+                <Setter Property="LineHeight" Value="1.1" />
+                <Setter Property="LineBreakMode" Value="WordWrap" />
+                <Setter Property="effects:FontSizeLabelEffectParams.MaxFontSize" Value="22" />
+                <Setter Property="effects:FontSizeLabelEffectParams.MinFontSize" Value="12" />
+            </Style>
+  
+            <Style x:Key="ContentStyleAcceptConcent" TargetType="Label">
+                <Setter Property="FontFamily" Value="IBMPlexSansSemiBold" />
+                <Setter Property="FontSize" Value="Medium" />
+                <Setter Property="TextColor" Value="{StaticResource SSIBaseTextColor}" />
+                <Setter Property="LineHeight" Value="1.1" />
+                <Setter Property="LineBreakMode" Value="WordWrap" />
+                <Setter Property="effects:FontSizeLabelEffectParams.MaxFontSize" Value="22" />
+                <Setter Property="effects:FontSizeLabelEffectParams.MinFontSize" Value="12" />
+            </Style>
+
+            <Style x:Key="ContentBoldStyle" TargetType="Label">
+                <Setter Property="FontFamily" Value="IBMPlexSansBold" />
+                <Setter Property="FontSize" Value="Medium" />
+                <Setter Property="TextColor" Value="{StaticResource SSIBaseTextColor}" />
+                <Setter Property="LineHeight" Value="1.1" />
+                <Setter Property="LineBreakMode" Value="WordWrap" />
+                <Setter Property="effects:FontSizeLabelEffectParams.MaxFontSize" Value="32" />
+                <Setter Property="effects:FontSizeLabelEffectParams.MinFontSize" Value="12" />
+            </Style>
+
+            <Style x:Key="ContentItalicStyle" TargetType="Label">
+                <Setter Property="FontFamily" Value="IBMPlexSansItalic" />
+                <Setter Property="FontSize" Value="Medium" />
+                <Setter Property="TextColor" Value="{StaticResource SSIBaseTextColor}" />
+                <Setter Property="LineHeight" Value="1.2" />
+                <Setter Property="LineBreakMode" Value="WordWrap" />
+                <Setter Property="effects:FontSizeLabelEffectParams.MaxFontSize" Value="32" />
+                <Setter Property="effects:FontSizeLabelEffectParams.MinFontSize" Value="12" />
+            </Style>
+
+            <Style x:Key="SecondaryTitleStyle" TargetType="Label">
+                <Setter Property="FontFamily" Value="IBMPlexSansSemiBold" />
+                <Setter Property="FontSize" Value="Small" />
+                <Setter Property="TextColor" Value="{StaticResource SSIBaseTextColor}" />
+                <Setter Property="LineBreakMode" Value="WordWrap" />
+                <Setter Property="effects:FontSizeLabelEffectParams.MaxFontSize" Value="30" />
+                <Setter Property="effects:FontSizeLabelEffectParams.MinFontSize" Value="10" />
+            </Style>
+
+            <Style x:Key="SecondaryContentStyle" TargetType="Label">
+                <Setter Property="FontFamily" Value="IBMPlexSansRegular" />
+                <Setter Property="FontSize" Value="Small" />
+                <Setter Property="TextColor" Value="{StaticResource SSIBaseTextColor}" />
+                <Setter Property="LineHeight" Value="1.1" />
+                <Setter Property="LineBreakMode" Value="WordWrap" />
+                <Setter Property="effects:FontSizeLabelEffectParams.MaxFontSize" Value="30" />
+                <Setter Property="effects:FontSizeLabelEffectParams.MinFontSize" Value="10" />
+            </Style>
+
+            <Style x:Key="SecondaryContentBoldStyle" TargetType="Label">
+                <Setter Property="FontFamily" Value="IBMPlexSansBold" />
+                <Setter Property="FontSize" Value="Small" />
+                <Setter Property="TextColor" Value="{StaticResource SSIBaseTextColor}" />
+                <Setter Property="LineBreakMode" Value="WordWrap" />
+                <Setter Property="effects:FontSizeLabelEffectParams.MaxFontSize" Value="15" />
+                <Setter Property="effects:FontSizeLabelEffectParams.MinFontSize" Value="10" />
+            </Style>
+
+            <Style x:Key="SecondaryContentItalicStyle" TargetType="Label">
+                <Setter Property="FontFamily" Value="IBMPlexSansItalic" />
+                <Setter Property="FontSize" Value="Small" />
+                <Setter Property="LineBreakMode" Value="WordWrap" />
+                <Setter Property="TextColor" Value="{StaticResource SSIBaseTextColor}" />
+                <Setter Property="LineHeight" Value="1.1" />
+                <Setter Property="effects:FontSizeLabelEffectParams.MaxFontSize" Value="30" />
+                <Setter Property="effects:FontSizeLabelEffectParams.MinFontSize" Value="10" />
+            </Style>
+
+            <Style x:Key="RegularLabelStyle" TargetType="Label">
+                <Setter Property="FontFamily" Value="IBMPlexSansRegular" />
+                <Setter Property="FontSize" Value="Small" />
+                <Setter Property="TextColor" Value="{StaticResource SSIContentTextColor}" />
+                <Setter Property="LineHeight" Value="1.2" />
+                <Setter Property="LineBreakMode" Value="WordWrap" />
+                <Setter Property="effects:FontSizeLabelEffectParams.MaxFontSize" Value="30" />
+                <Setter Property="effects:FontSizeLabelEffectParams.MinFontSize" Value="10" />
+            </Style>
+
+            <Style x:Key="TertierStyle" TargetType="Label">
+                <Setter Property="FontFamily" Value="IBMPlexSansRegular" />
+                <Setter Property="FontSize" Value="Caption" />
+                <Setter Property="TextColor" Value="{StaticResource SSIBaseTextColor}" />
+                <Setter Property="LineHeight" Value="1.3" />
+                <Setter Property="LineBreakMode" Value="WordWrap" />
+                <Setter Property="effects:FontSizeLabelEffectParams.MaxFontSize" Value="28" />
+                <Setter Property="effects:FontSizeLabelEffectParams.MinFontSize" Value="8" />
+            </Style>
+
+            <Style x:Key="TertierBoldStyle" TargetType="Label">
+                <Setter Property="FontFamily" Value="IBMPlexSansBold" />
+                <Setter Property="FontSize" Value="Caption" />
+                <Setter Property="TextColor" Value="{StaticResource SSIBaseTextColor}" />
+                <Setter Property="LineHeight" Value="1.3" />
+                <Setter Property="LineBreakMode" Value="WordWrap" />
+                <Setter Property="effects:FontSizeLabelEffectParams.MaxFontSize" Value="28" />
+                <Setter Property="effects:FontSizeLabelEffectParams.MinFontSize" Value="8" />
+            </Style>
+
+            <Style x:Key="TertierSemiBoldStyle" TargetType="Label">
+                <Setter Property="FontFamily" Value="IBMPlexSansSemiBold" />
+                <Setter Property="FontSize" Value="Caption" />
+                <Setter Property="TextColor" Value="{StaticResource SSIBaseTextColor}" />
+                <Setter Property="LineBreakMode" Value="WordWrap" />
+                <Setter Property="effects:FontSizeLabelEffectParams.MaxFontSize" Value="28" />
+                <Setter Property="effects:FontSizeLabelEffectParams.MinFontSize" Value="8" />
+            </Style>
+
+            <Style x:Key="PinNumberStyle" TargetType="Label">
+                <Setter Property="FontFamily" Value="IBMPlexSansRegular" />
+                <Setter Property="FontSize" Value="Title" />
+                <Setter Property="TextColor" Value="{StaticResource SSITitleTextColor}" />
+                <Setter Property="effects:FontSizeLabelEffectParams.MaxFontSize" Value="40" />
+                <Setter Property="effects:FontSizeLabelEffectParams.MinFontSize" Value="20" />
+            </Style>
+
+            <Style x:Key="InfoPaneHeaderStyle" TargetType="Label">
+                <Setter Property="FontFamily" Value="IBMPlexSansSemiBold" />
+                <Setter Property="FontSize" Value="Large" />
+                <Setter Property="TextColor" Value="{StaticResource SSIBaseTextColor}" />
+                <Setter Property="LineBreakMode" Value="WordWrap" />
+                <Setter Property="effects:FontSizeLabelEffectParams.MaxFontSize" Value="38" />
+                <Setter Property="effects:FontSizeLabelEffectParams.MinFontSize" Value="18" />
+            </Style>
+
+            <Style x:Key="InfoPaneSubHeaderStyle" TargetType="Label">
+                <Setter Property="FontFamily" Value="IBMPlexSansItalic" />
+                <Setter Property="FontSize" Value="Medium" />
+                <Setter Property="TextColor" Value="{StaticResource SSIBaseTextColor}" />
+                <Setter Property="LineBreakMode" Value="WordWrap" />
+                <Setter Property="effects:FontSizeLabelEffectParams.MaxFontSize" Value="32" />
+                <Setter Property="effects:FontSizeLabelEffectParams.MinFontSize" Value="12" />
+            </Style>
+
+            <Style x:Key="InfoPaneItemHeaderLight" TargetType="Label">
+                <Setter Property="FontFamily" Value="IBMPlexSansLight" />
+                <Setter Property="FontSize" Value="Small" />
+                <Setter Property="LineBreakMode" Value="WordWrap" />
+                <Setter Property="TextColor" Value="{StaticResource SSIGreyTextColor}" />
+                <Setter Property="effects:FontSizeLabelEffectParams.MaxFontSize" Value="30" />
+                <Setter Property="effects:FontSizeLabelEffectParams.MinFontSize" Value="10" />
+            </Style>
+
+            <Style x:Key="InfoPaneSeparatorLight" TargetType="Label">
+                <Setter Property="FontFamily" Value="IBMPlexSansExtraLight" />
+                <Setter Property="FontSize" Value="Medium" />
+                <Setter Property="LineBreakMode" Value="WordWrap" />
+                <Setter Property="TextColor" Value="{StaticResource SSIGreyTextColor}" />
+                <Setter Property="effects:FontSizeLabelEffectParams.MaxFontSize" Value="30" />
+                <Setter Property="effects:FontSizeLabelEffectParams.MinFontSize" Value="10" />
+            </Style>
+
+            <Style x:Key="InfoPaneItemHeaderMedium" TargetType="Label">
+                <Setter Property="FontFamily" Value="IBMPlexSansMedium" />
+                <Setter Property="FontSize" Value="Small" />
+                <Setter Property="LineBreakMode" Value="WordWrap" />
+                <Setter Property="TextColor" Value="{StaticResource SSIGreyTextColor}" />
+                <Setter Property="effects:FontSizeLabelEffectParams.MaxFontSize" Value="30" />
+                <Setter Property="effects:FontSizeLabelEffectParams.MinFontSize" Value="10" />
+            </Style>
+
+            <Style x:Key="InfoPaneItemValue" TargetType="Label">
+                <Setter Property="FontFamily" Value="IBMPlexSansRegular" />
+                <Setter Property="LineBreakMode" Value="WordWrap" />
+                <Setter Property="FontSize" Value="Medium" />
+                <Setter Property="TextColor" Value="{StaticResource SSIBaseTextColor}" />
+                <Setter Property="effects:FontSizeLabelEffectParams.MaxFontSize" Value="36" />
+                <Setter Property="effects:FontSizeLabelEffectParams.MinFontSize" Value="16" />
+            </Style>
+
+            <Style x:Key="InfoPaneItemValueExtraLight" TargetType="Label">
+                <Setter Property="FontFamily" Value="IBMPlexSansExtraLight" />
+                <Setter Property="LineBreakMode" Value="WordWrap" />
+                <Setter Property="FontSize" Value="Medium" />
+                <Setter Property="TextColor" Value="{StaticResource SSIBaseTextColor}" />
+                <Setter Property="effects:FontSizeLabelEffectParams.MaxFontSize" Value="36" />
+                <Setter Property="effects:FontSizeLabelEffectParams.MinFontSize" Value="16" />
+            </Style>
+
+            <Style x:Key="InfoPaneItemValueBold" TargetType="Label">
+                <Setter Property="FontFamily" Value="IBMPlexSansSemiBold" />
+                <Setter Property="LineBreakMode" Value="WordWrap" />
+                <Setter Property="FontSize" Value="Medium" />
+                <Setter Property="TextColor" Value="{StaticResource SSIBaseTextColor}" />
+                <Setter Property="effects:FontSizeLabelEffectParams.MaxFontSize" Value="36" />
+                <Setter Property="effects:FontSizeLabelEffectParams.MinFontSize" Value="16" />
+            </Style>
+
+            <Style x:Key="InfoPaneSectionHeader" TargetType="Label">
+                <Setter Property="FontFamily" Value="IBMPlexSansSemiBold" />
+                <Setter Property="FontSize" Value="Large" />
+                <Setter Property="TextColor" Value="{StaticResource SSIBaseTextColor}" />
+                <Setter Property="LineBreakMode" Value="WordWrap" />
+                <Setter Property="effects:FontSizeLabelEffectParams.MaxFontSize" Value="38" />
+                <Setter Property="effects:FontSizeLabelEffectParams.MinFontSize" Value="18" />
+            </Style>
+
+            <Style x:Key="InfoPanePassportHeader" TargetType="Label">
+                <Setter Property="FontFamily" Value="IBMPlexSansSemiBold" />
+                <Setter Property="FontSize" Value="Medium" />
+                <Setter Property="TextColor" Value="{StaticResource SSIWhiteTextColor}" />
+                <Setter Property="LineBreakMode" Value="WordWrap" />
+                <Setter Property="effects:FontSizeLabelEffectParams.MaxFontSize" Value="36" />
+                <Setter Property="effects:FontSizeLabelEffectParams.MinFontSize" Value="16" />
+            </Style>
+
+            <Style x:Key="ToastMessageStyle" TargetType="Label">
+                <Setter Property="FontFamily" Value="IBMPlexSansBold" />
+                <Setter Property="FontSize" Value="Medium" />
+                <Setter Property="TextColor" Value="{StaticResource SSIToastTextColor}" />
+                <Setter Property="LineBreakMode" Value="WordWrap" />
+                <Setter Property="effects:FontSizeLabelEffectParams.MaxFontSize" Value="32" />
+                <Setter Property="effects:FontSizeLabelEffectParams.MinFontSize" Value="12" />
+            </Style>
+
+            <Style x:Key="ValidTextStyle" TargetType="Label">
+                <Setter Property="FontFamily" Value="IBMPlexSansSemiBold" />
+                <Setter Property="FontSize" Value="Medium" />
+                <Setter Property="TextColor" Value="{StaticResource SSIToastTextColor}" />
+                <Setter Property="LineBreakMode" Value="WordWrap" />
+                <Setter Property="effects:FontSizeLabelEffectParams.MaxFontSize" Value="32" />
+                <Setter Property="effects:FontSizeLabelEffectParams.MinFontSize" Value="12" />
+            </Style>
+
+            <Style x:Key="ValidDateTextStyle" TargetType="Label">
+                <Setter Property="FontFamily" Value="IBMPlexSansSemiBold" />
+                <Setter Property="FontSize" Value="Small" />
+                <Setter Property="TextColor" Value="{StaticResource SSIToastTextColor}" />
+                <Setter Property="LineBreakMode" Value="WordWrap" />
+                <Setter Property="effects:FontSizeLabelEffectParams.MaxFontSize" Value="30" />
+                <Setter Property="effects:FontSizeLabelEffectParams.MinFontSize" Value="10" />
+            </Style>
+
+            <Style x:Key="ExpiredTextStyle" TargetType="Label">
+                <Setter Property="FontFamily" Value="IBMPlexSansSemiBold" />
+                <Setter Property="FontSize" Value="Medium" />
+                <Setter Property="TextColor" Value="{StaticResource SSIExpiredYellowTextColor}" />
+                <Setter Property="LineBreakMode" Value="WordWrap" />
+                <Setter Property="effects:FontSizeLabelEffectParams.MaxFontSize" Value="32" />
+                <Setter Property="effects:FontSizeLabelEffectParams.MinFontSize" Value="12" />
+            </Style>
+
+            <Style x:Key="CustomDialogCancelLabelStyle" TargetType="Label">
+                <Setter Property="FontFamily" Value="IBMPlexSansRegular" />
+                <Setter Property="FontSize" Value="Medium" />
+                <Setter Property="TextColor" Value="{StaticResource SSIDialogButton}" />
+                <Setter Property="LineBreakMode" Value="WordWrap" />
+                <Setter Property="effects:FontSizeLabelEffectParams.MaxFontSize" Value="22" />
+                <Setter Property="effects:FontSizeLabelEffectParams.MinFontSize" Value="12" />
+            </Style>
+
+            <Style x:Key="ButtonLabelStyle" TargetType="Label">
+                <Setter Property="FontFamily" Value="IBMPlexSansBold" />
+                <Setter Property="FontSize" Value="Medium" />
+                <Setter Property="TextColor" Value="{StaticResource SSIWhite}" />
+                <Setter Property="LineBreakMode" Value="WordWrap" />
+                <Setter Property="effects:FontSizeLabelEffectParams.MaxFontSize" Value="32" />
+                <Setter Property="effects:FontSizeLabelEffectParams.MinFontSize" Value="12" />
+            </Style>
+
+            <Style x:Key="DisabledButtonLabelStyle" TargetType="Label">
+                <Setter Property="FontFamily" Value="IBMPlexSans" />
+                <Setter Property="FontSize" Value="Large" />
+                <Setter Property="TextColor" Value="{StaticResource SSIBaseTextColor}" />
+                <Setter Property="LineBreakMode" Value="WordWrap" />
+                <Setter Property="effects:FontSizeLabelEffectParams.MaxFontSize" Value="38" />
+                <Setter Property="effects:FontSizeLabelEffectParams.MinFontSize" Value="18" />
+            </Style>
+
+            <Style x:Key="CustomPickerLabelStyle" TargetType="Label">
+                <Setter Property="FontFamily" Value="IBMPlexSansSemiBold" />
+                <Setter Property="FontSize" Value="Medium" />
+                <Setter Property="TextColor" Value="{StaticResource SSIBaseTextColor}" />
+                <Setter Property="LineBreakMode" Value="WordWrap" />
+                <Setter Property="effects:FontSizeLabelEffectParams.MaxFontSize" Value="38" />
+                <Setter Property="effects:FontSizeLabelEffectParams.MinFontSize" Value="16" />
+            </Style>
+
+            <Style x:Key="CustomIconPickerLabelStyle" TargetType="Label">
+                <Setter Property="FontFamily" Value="IBMPlexSans" />
+                <Setter Property="FontSize" Value="Medium" />
+                <Setter Property="TextColor" Value="{StaticResource SSIBaseTextColor}" />
+                <Setter Property="LineBreakMode" Value="WordWrap" />
+                <Setter Property="effects:FontSizeLabelEffectParams.MaxFontSize" Value="30" />
+                <Setter Property="effects:FontSizeLabelEffectParams.MinFontSize" Value="16" />
+            </Style>
+
+            <Style x:Key="QRScannerHeaderLabel" TargetType="Label">
+                <Setter Property="FontFamily" Value="IBMPlexSansMedium" />
+                <Setter Property="TextColor" Value="{StaticResource SSIBaseTextColor}" />
+                <Setter Property="LineBreakMode" Value="NoWrap" />
+                <Setter Property="effects:FontSizeLabelEffectParams.MaxFontSize" Value="18" />
+                <Setter Property="effects:FontSizeLabelEffectParams.MinFontSize" Value="16" />
+            </Style>
+
+            <Style x:Key="NameDKPassport" TargetType="Label">
+                <Setter Property="FontFamily" Value="IBMPlexSansSemiBold" />
+                <Setter Property="TextColor" Value="{StaticResource SSIBaseTextColor}" />
+                <Setter Property="LineBreakMode" Value="WordWrap" />
+                <Setter Property="effects:FontSizeLabelEffectParams.MaxFontSize" Value="30" />
+                <Setter Property="effects:FontSizeLabelEffectParams.MinFontSize" Value="18" />
+            </Style>
+
+            <Style x:Key="BirthdateDKPassport" TargetType="Label">
+                <Setter Property="FontFamily" Value="IBMPlexSansRegular" />
+                <Setter Property="TextColor" Value="{StaticResource SSIBaseTextColor}" />
+                <Setter Property="LineBreakMode" Value="WordWrap" />
+                <Setter Property="effects:FontSizeLabelEffectParams.MaxFontSize" Value="25" />
+                <Setter Property="effects:FontSizeLabelEffectParams.MinFontSize" Value="16" />
+            </Style>
+
+             <Style x:Key="ShowInfoStyle" TargetType="Label">
+                <Setter Property="FontFamily" Value="IBMPlexSansRegular" />
+                <Setter Property="TextColor" Value="{StaticResource SSIBaseTextColor}" />
+                <Setter Property="LineBreakMode" Value="WordWrap" />
+                <Setter Property="effects:FontSizeLabelEffectParams.MaxFontSize" Value="22" />
+                <Setter Property="effects:FontSizeLabelEffectParams.MinFontSize" Value="12" />
+            </Style>
+
+            <Style x:Key="SuccesMessageStyle" TargetType="Label">
+                <Setter Property="FontSize" Value="Body" />
+                <Setter Property="TextColor" Value="{StaticResource SSIBaseTextColor}" /> 
+                <Setter Property="effects:FontSizeLabelEffectParams.MaxFontSize" Value="22" />
+                <Setter Property="effects:FontSizeLabelEffectParams.MinFontSize" Value="12" />
+            </Style>
+
+            <Style x:Key="PrimaryButtonStyle" TargetType="Button">
+                <Setter Property="HeightRequest" Value="59" />
+                <Setter Property="CornerRadius" Value="4" />
+                <Setter Property="FontSize" Value="Medium" />
+                <Setter Property="FontFamily" Value="IBMPlexSansSemiBold" />
+                <Setter Property="TextColor" Value="{StaticResource SSIDialogButton}" />
+                <Setter Property="VisualStateManager.VisualStateGroups">
+                    <VisualStateGroupList>
+                        <VisualStateGroup x:Name="CommonStates">
+                            <VisualState x:Name="Normal">
+                                <VisualState.Setters>
+                                    <Setter Property="BackgroundColor" Value="{StaticResource SSIWhite}" />
+                                </VisualState.Setters>
+                            </VisualState>
+                            <VisualState x:Name="Pressed">
+                                <VisualState.Setters>
+                                    <Setter Property="BackgroundColor" Value="{StaticResource SSIButtonActive}" />
+                                </VisualState.Setters>
+                            </VisualState>
+                        </VisualStateGroup>
+                    </VisualStateGroupList>
+                </Setter>
+            </Style>
+
+            <Style x:Key="SecondaryButtonStyle" TargetType="Button">
+                <Setter Property="Visual" Value="CustomRender" />
+                <Setter Property="HeightRequest" Value="59" />
+                <Setter Property="CornerRadius" Value="4" />
+                <Setter Property="FontSize" Value="Medium" />
+                <Setter Property="BorderColor" Value="{StaticResource SSIDialogButton}" />
+                <Setter Property="BorderWidth" Value="0.5" />
+                <Setter Property="FontFamily" Value="IBMPlexSansRegular" />
+                <Setter Property="TextColor" Value="{StaticResource SSIDialogButton}" />
+                <Setter Property="VisualStateManager.VisualStateGroups">
+                    <VisualStateGroupList>
+                        <VisualStateGroup x:Name="CommonStates">
+                            <VisualState x:Name="Normal">
+                                <VisualState.Setters>
+                                    <Setter Property="BackgroundColor" Value="Transparent" />
+                                </VisualState.Setters>
+                            </VisualState>
+                            <VisualState x:Name="Pressed">
+                                <VisualState.Setters>
+                                    <Setter Property="BackgroundColor" Value="{StaticResource SSIMenuPressedColor}" />
+                                </VisualState.Setters>
+                            </VisualState>
+                        </VisualStateGroup>
+                    </VisualStateGroupList>
+                </Setter>
+            </Style>
+
+            <Style x:Key="CombinedButtonPrimaryStyle" TargetType="Button">
+                <Setter Property="HeightRequest" Value="59" />
+                <Setter Property="CornerRadius" Value="4" />
+                <Setter Property="FontSize" Value="Medium" />
+                <Setter Property="FontFamily" Value="IBMPlexSansSemiBold" />
+                <Setter Property="TextColor" Value="{StaticResource SSIWhite}" />
+                <Setter Property="VisualStateManager.VisualStateGroups">
+                    <VisualStateGroupList>
+                        <VisualStateGroup x:Name="CommonStates">
+                            <VisualState x:Name="Normal">
+                                <VisualState.Setters>
+                                    <Setter Property="BackgroundColor" Value="{StaticResource SSIDialogButton}" />
+                                </VisualState.Setters>
+                            </VisualState>
+                            <VisualState x:Name="Pressed">
+                                <VisualState.Setters>
+                                    <Setter Property="BackgroundColor" Value="{StaticResource SSICombinedButtonActive}" />
+                                </VisualState.Setters>
+                            </VisualState>
+                            <VisualState x:Name="Disabled">
+                                <VisualState.Setters>
+                                    <Setter Property="BackgroundColor" Value="{StaticResource SSIButtonDisable}" />
+                                </VisualState.Setters>
+                            </VisualState>
+                        </VisualStateGroup>
+                    </VisualStateGroupList>
+                </Setter>
+            </Style>
+
+            <Style x:Key="CombinedButtonSecondaryStyle" TargetType="Button">
+                <Setter Property="HeightRequest" Value="59" />
+                <Setter Property="CornerRadius" Value="4" />
+                <Setter Property="FontSize" Value="Medium" />
+                <Setter Property="BorderColor" Value="{StaticResource SSIDialogButton}" />
+                <Setter Property="BorderWidth" Value="0.5" />
+                <Setter Property="FontFamily" Value="IBMPlexSansRegular" />
+                <Setter Property="TextColor" Value="{StaticResource SSIDialogButton}" />
+                <Setter Property="VisualStateManager.VisualStateGroups">
+                    <VisualStateGroupList>
+                        <VisualStateGroup x:Name="CommonStates">
+                            <VisualState x:Name="Normal">
+                                <VisualState.Setters>
+                                    <Setter Property="BackgroundColor" Value="Transparent" />
+                                </VisualState.Setters>
+                            </VisualState>
+                            <VisualState x:Name="Pressed">
+                                <VisualState.Setters>
+                                    <Setter Property="BackgroundColor" Value="{StaticResource SSIButtonActive}" />
+                                </VisualState.Setters>
+                            </VisualState>
+                        </VisualStateGroup>
+                    </VisualStateGroupList>
+                </Setter>
+            </Style>
+
+            <Style x:Key="DialogButtonPrimaryStyle" TargetType="Button">
+                <Setter Property="Visual" Value="CustomRender" />
+                <Setter Property="HeightRequest" Value="51" />
+                <Setter Property="CornerRadius" Value="4" />
+                <Setter Property="FontSize" Value="Medium" />
+                <Setter Property="FontFamily" Value="IBMPlexSansBold" />
+                <Setter Property="TextColor" Value="{StaticResource SSIWhite}" />
+                <Setter Property="VisualStateManager.VisualStateGroups">              
+                    <VisualStateGroupList>
+                        <VisualStateGroup x:Name="CommonStates">
+                            <VisualState x:Name="Normal">
+                                <VisualState.Setters>
+                                    <Setter Property="BackgroundColor" Value="{StaticResource SSIDialogButton}" />
+                                </VisualState.Setters>
+                            </VisualState>
+                            <VisualState x:Name="Pressed">
+                                <VisualState.Setters>
+                                    <Setter Property="BackgroundColor" Value="{StaticResource SSICombinedButtonActive}" />
+                                </VisualState.Setters>
+                            </VisualState>
+                        </VisualStateGroup>
+                    </VisualStateGroupList>
+                </Setter>
+            </Style>
+
+            <Style x:Key="DialogButtonSecondaryStyle" TargetType="Button">
+                <Setter Property="Visual" Value="CustomRender" />
+                <Setter Property="HeightRequest" Value="53" />
+                <Setter Property="CornerRadius" Value="4" />
+                <Setter Property="FontSize" Value="Medium" />
+                <Setter Property="BorderColor" Value="{StaticResource SSIDialogButton}" />
+                <Setter Property="BorderWidth" Value="1" />
+                <Setter Property="FontFamily" Value="IBMPlexSansRegular" />
+                <Setter Property="TextColor" Value="{StaticResource SSIDialogButton}" />
+                <Setter Property="VisualStateManager.VisualStateGroups">
+                    <VisualStateGroupList>
+                        <VisualStateGroup x:Name="CommonStates">
+                            <VisualState x:Name="Normal">
+                                <VisualState.Setters>
+                                    <Setter Property="BackgroundColor" Value="Transparent" />
+                                </VisualState.Setters>
+                            </VisualState>
+                            <VisualState x:Name="Pressed">
+                                <VisualState.Setters>
+                                    <Setter Property="BackgroundColor" Value="{StaticResource SSIButtonActive}" />
+                                </VisualState.Setters>
+                            </VisualState>
+                        </VisualStateGroup>
+                    </VisualStateGroupList>
+                </Setter>
+            </Style>
+
+            <Style x:Key="ScreenshotProtectionDialogButtonStyle" TargetType="Button">
+                <Setter Property="HeightRequest" Value="53" />
+                <Setter Property="CornerRadius" Value="4" />
+                <Setter Property="FontSize" Value="Large" />
+                <Setter Property="TextColor" Value="{StaticResource SSIBaseTextColor}" />
+                <Setter Property="VisualStateManager.VisualStateGroups">
+                    <VisualStateGroupList>
+                        <VisualStateGroup x:Name="CommonStates">
+                            <VisualState x:Name="Normal">
+                                <VisualState.Setters>
+                                    <Setter Property="BackgroundColor" Value="{StaticResource SSIDialogButton}" />
+                                    <Setter Property="FontSize" Value="Body" />
+                                    <Setter Property="FontFamily" Value="IBMPlexSansSemiBold" />
+                                </VisualState.Setters>
+                            </VisualState>
+                            <VisualState x:Name="Pressed">
+                                <VisualState.Setters>
+                                    <Setter Property="BackgroundColor" Value="{StaticResource SSICombinedButtonActive}" />
+                                    <Setter Property="FontSize" Value="Body" />
+                                    <Setter Property="FontFamily" Value="IBMPlexSansSemiBold" />
+                                </VisualState.Setters>
+                            </VisualState>
+                            <VisualState x:Name="Disabled">
+                                <VisualState.Setters>
+                                    <Setter Property="BackgroundColor" Value="#E4EAED" />
+                                    <Setter Property="FontSize" Value="Large" />
+                                    <Setter Property="FontFamily" Value="IBMPlexSansRegular" />
+                                </VisualState.Setters>
+                            </VisualState>
+                        </VisualStateGroup>
+                    </VisualStateGroupList>
+                </Setter>
+            </Style>
+
+            <Style x:Key="TertiaryButtonStyle" TargetType="Button">
+                <Setter Property="HeightRequest" Value="39" />
+                <Setter Property="CornerRadius" Value="4" />
+                <Setter Property="FontSize" Value="Medium" />
+                <Setter Property="BorderColor" Value="{StaticResource SSIDialogButton}" />
+                <Setter Property="BorderWidth" Value="0.5" />
+                <Setter Property="FontFamily" Value="IBMPlexSansRegular" />
+                <Setter Property="TextColor" Value="{StaticResource SSIDialogButton}" />
+                <Setter Property="VisualStateManager.VisualStateGroups">
+                    <VisualStateGroupList>
+                        <VisualStateGroup x:Name="CommonStates">
+                            <VisualState x:Name="Normal">
+                                <VisualState.Setters>
+                                    <Setter Property="BackgroundColor" Value="Transparent" />
+                                </VisualState.Setters>
+                            </VisualState>
+                            <VisualState x:Name="Pressed">
+                                <VisualState.Setters>
+                                    <Setter Property="BackgroundColor" Value="{StaticResource SSIButtonActive}" />
+                                </VisualState.Setters>
+                            </VisualState>
+                        </VisualStateGroup>
+                    </VisualStateGroupList>
+                </Setter>
+            </Style>
+
+            <Style x:Key="LandingPrimaryButtonStyle" TargetType="Button">
+                <Setter Property="HeightRequest" Value="59" />
+                <Setter Property="CornerRadius" Value="4" />
+                <Setter Property="FontSize" Value="Medium" />
+                <Setter Property="FontFamily" Value="IBMPlexSansBold" />
+                <Setter Property="TextColor" Value="{StaticResource SSIBaseTextColor}" />
+                <Setter Property="VisualStateManager.VisualStateGroups">
+                    <VisualStateGroupList>
+                        <VisualStateGroup x:Name="CommonStates">
+                            <VisualState x:Name="Normal">
+                                <VisualState.Setters>
+                                    <Setter Property="BackgroundColor" Value="{StaticResource SSIWhite}" />
+                                </VisualState.Setters>
+                            </VisualState>
+                            <VisualState x:Name="Pressed">
+                                <VisualState.Setters>
+                                    <Setter Property="BackgroundColor" Value="{StaticResource SSIButtonActive}" />
+                                </VisualState.Setters>
+                            </VisualState>
+                        </VisualStateGroup>
+                    </VisualStateGroupList>
+                </Setter>
+            </Style>
+
+            <Style x:Key="LandingSecondaryButtonStyle" TargetType="Button">
+                <Setter Property="HeightRequest" Value="59" />
+                <Setter Property="CornerRadius" Value="4" />
+                <Setter Property="FontSize" Value="Medium" />
+                <Setter Property="BorderColor" Value="{StaticResource SSIWhite}" />
+                <Setter Property="BorderWidth" Value="0.5" />
+                <Setter Property="FontFamily" Value="IBMPlexSansBold" />
+                <Setter Property="TextColor" Value="{StaticResource SSIWhite}" />
+                <Setter Property="VisualStateManager.VisualStateGroups">
+                    <VisualStateGroupList>
+                        <VisualStateGroup x:Name="CommonStates">
+                            <VisualState x:Name="Normal">
+                                <VisualState.Setters>
+                                    <Setter Property="BackgroundColor" Value="{StaticResource LandingPageColorEnd}" />
+                                </VisualState.Setters>
+                            </VisualState>
+                            <VisualState x:Name="Pressed">
+                                <VisualState.Setters>
+                                    <Setter Property="BackgroundColor" Value="{StaticResource SSIButtonActive}" />
+                                </VisualState.Setters>
+                            </VisualState>
+                        </VisualStateGroup>
+                    </VisualStateGroupList>
+                </Setter>
+            </Style>
+
+            <Style x:Key="LandingTertiaryButtonStyle" TargetType="Button">
+                <Setter Property="HeightRequest" Value="39" />
+                <Setter Property="CornerRadius" Value="4" />
+                <Setter Property="FontSize" Value="Small" />
+                <Setter Property="BorderColor" Value="{StaticResource SSIWhite}" />
+                <Setter Property="BorderWidth" Value="0.5" />
+                <Setter Property="FontFamily" Value="IBMPlexSansRegular" />
+                <Setter Property="TextColor" Value="{StaticResource SSIWhite}" />
+                <Setter Property="VisualStateManager.VisualStateGroups">
+                    <VisualStateGroupList>
+                        <VisualStateGroup x:Name="CommonStates">
+                            <VisualState x:Name="Normal">
+                                <VisualState.Setters>
+                                    <Setter Property="BackgroundColor" Value="Transparent" />
+                                </VisualState.Setters>
+                            </VisualState>
+                            <VisualState x:Name="Pressed">
+                                <VisualState.Setters>
+                                    <Setter Property="BackgroundColor" Value="{StaticResource SSIButtonActive}" />
+                                </VisualState.Setters>
+                            </VisualState>
+                        </VisualStateGroup>
+                    </VisualStateGroupList>
+                </Setter>
+            </Style>
+
+            <Style x:Key="MenuButtonStyle" TargetType="Button">
+                <Setter Property="Visual" Value="CustomRender" />
+                <Setter Property="VisualStateManager.VisualStateGroups">
+                    <VisualStateGroupList>
+                        <VisualStateGroup x:Name="CommonStates">
+                            <VisualState x:Name="Normal">
+                                <VisualState.Setters>
+                                    <Setter Property="BackgroundColor" Value="Transparent" />
+                                </VisualState.Setters>
+                            </VisualState>
+                            <VisualState x:Name="Pressed">
+                                <VisualState.Setters>
+                                    <Setter Property="BackgroundColor" Value="{StaticResource SSIMenuPressedColor}" />
+                                </VisualState.Setters>
+                            </VisualState>
+                        </VisualStateGroup>
+                    </VisualStateGroupList>
+                </Setter>
+            </Style>
+
+            <Style x:Key="TransparentButtonStyle" TargetType="Button">
+                <Setter Property="VisualStateManager.VisualStateGroups">
+                    <VisualStateGroupList>
+                        <VisualStateGroup x:Name="CommonStates">
+                            <VisualState x:Name="Normal">
+                                <VisualState.Setters>
+                                    <Setter Property="BackgroundColor" Value="Transparent" />
+                                </VisualState.Setters>
+                            </VisualState>
+                            <VisualState x:Name="Pressed">
+                                <VisualState.Setters>
+                                    <Setter Property="BackgroundColor" Value="{StaticResource SSICombinedButtonActive}" />
+                                </VisualState.Setters>
+                            </VisualState>
+                        </VisualStateGroup>
+                    </VisualStateGroupList>
+                </Setter>
+            </Style>
+
+            <Style x:Key="LinkButtonStyle" TargetType="Button">
+            <Setter Property="Visual" Value="CustomRender" />
+                <Setter Property="FontSize" Value="Medium" />
+                <Setter Property="BackgroundColor" Value="Transparent" />
+                <Setter Property="FontFamily" Value="IBMPlexSansRegular" />
+                <Setter Property="TextColor" Value="{StaticResource SSILinkColor}" />
+                <Setter Property="VisualStateManager.VisualStateGroups">
+                    <VisualStateGroupList>
+                        <VisualStateGroup x:Name="CommonStates">
+                            <VisualState x:Name="Normal">
+                                <VisualState.Setters>
+                                    <Setter Property="TextColor" Value="{StaticResource SSILinkColor}" />
+                                </VisualState.Setters>
+                            </VisualState>
+                            <VisualState x:Name="Pressed">
+                                <VisualState.Setters>
+                                    <Setter Property="TextColor" Value="{StaticResource SSILinkPressedColor}" />
+                                </VisualState.Setters>
+                            </VisualState>
+                        </VisualStateGroup>
+                    </VisualStateGroupList>
+                </Setter>
+            </Style>
+
+            <!--  Converters  -->
+            <converters:BoolToInverseBoolConverter x:Key="BoolToInverseBoolConverter" />
+            <converters:NullToVisibilityConverter x:Key="NullToVisibilityConverter" />
+            <converters:DimensionToPercentageConverter x:Key="DimensionToPercentageConverter" />
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

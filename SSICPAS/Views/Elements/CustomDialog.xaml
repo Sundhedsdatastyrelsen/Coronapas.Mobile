@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<extra:DialogView
+    x:Class="SSICPAS.Views.Elements.CustomDialog"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:effects="clr-namespace:SSICPAS.Controls"
+    xmlns:extra="clr-namespace:AiForms.Dialogs.Abstractions;assembly=AiForms.Dialogs.Abstractions"
+    xmlns:viewmodel="clr-namespace:SSICPAS.ViewModels;assembly=SSICPAS"
+    x:DataType="viewmodel:Custom.CustomDialogViewModel"
+    BackgroundColor="Transparent"
+    CornerRadius="10"
+    DialogNotifier="{Binding Notifier}"
+    HorizontalLayoutAlignment="Center"
+    OffsetX="0"
+    OffsetY="0"
+    OverlayColor="{StaticResource SSIDark60}"
+    UseCurrentPageLocation="False"
+    VerticalLayoutAlignment="Center"
+    ProportionalHeight="0.8"
+    ProportionalWidth="1">
+    <Frame BackgroundColor="{StaticResource SSIWhite}"
+           VerticalOptions="CenterAndExpand"
+           HorizontalOptions="CenterAndExpand"
+           Padding="0,32,0,32"
+           Margin="25,0,25,0"
+           CornerRadius="10">
+        <ScrollView Orientation="Vertical">
+            <Grid
+                Margin="25,30,25,30"
+                HorizontalOptions="CenterAndExpand"
+                VerticalOptions="Center">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <StackLayout Grid.Row="0" Margin="0,0,0,15">
+                    <Image
+                        x:Name="DialogImage"
+                        Source="{Binding ImageName}"
+                        HeightRequest="{Binding ImageHeight}"
+                        WidthRequest="{Binding ImageWidth}"
+                        IsVisible="{Binding ImageVisible}" />
+                    <Label
+                        Style="{StaticResource TitleStyle}"
+                        Text="{Binding Title}"
+                        HorizontalTextAlignment="Center">
+                        <Label.Effects>
+                            <effects:FontSizeLabelEffect />
+                        </Label.Effects>
+                    </Label>
+                    <Label
+                        Style="{StaticResource ContentStyle}"
+                        Text="{Binding Body}"
+                        HorizontalTextAlignment="Center">
+                        <Label.Effects>
+                            <effects:FontSizeLabelEffect />
+                        </Label.Effects>
+                    </Label>
+                </StackLayout>
+                <StackLayout Grid.Row="1" Grid.Column="0" Orientation="{Binding ButtonStackOrientation}" IsVisible="{Binding CancelButtonVisible}" 
+                             HorizontalOptions="Fill" VerticalOptions="FillAndExpand" Spacing="10" Margin="0" Padding="0">
+                    <StackLayout.Triggers>
+                        <DataTrigger TargetType="StackLayout" Binding="{Binding IsCancelTheFirstButton}" Value="False">
+                            <Setter Property="Rotation" Value="180" />
+                        </DataTrigger>
+                    </StackLayout.Triggers>
+                    <Grid HorizontalOptions="FillAndExpand" HeightRequest="60" Padding="0,0.5">
+                        <Grid.Triggers>
+                            <DataTrigger TargetType="Grid" Binding="{Binding IsCancelTheFirstButton}" Value="False">
+                                <Setter Property="Rotation" Value="180" />
+                            </DataTrigger>
+                        </Grid.Triggers>
+                        <Button 
+                            Grid.Row="0"
+                            Clicked="Cancel"
+                            HorizontalOptions="FillAndExpand"
+                            Style="{StaticResource DialogButtonSecondaryStyle}"
+                            AutomationProperties.IsInAccessibleTree="False" />
+                        <Label x:Name="CancelButtonLabel"
+                            Grid.Row="0"
+                            AutomationProperties.IsInAccessibleTree="True"
+                            AutomationProperties.HelpText="{Binding Strings[INTERNET_CONNECTIVITY_ISSUE_DIALOG_OK_BUTTON_READ_OUT_LOUD]}"
+                            HorizontalOptions="Center"
+                            HorizontalTextAlignment="Center"
+                            InputTransparent="True"
+                            IsEnabled="False"
+                            Text="{Binding CancelButtonText}"
+                            Style="{StaticResource CustomDialogCancelLabelStyle}"
+                            effects:FontSizeLabelEffectParams.MaxFontSize="18"
+                            effects:FontSizeLabelEffectParams.MinFontSize="12"
+                            VerticalOptions="Center"
+                            VerticalTextAlignment="Center">
+                            <Label.Effects>
+                                <effects:FontSizeLabelEffect />
+                            </Label.Effects>
+                        </Label>
+                    </Grid>
+                    <Grid HorizontalOptions="FillAndExpand" HeightRequest="60"
+                         AutomationProperties.IsInAccessibleTree="False">
+                        <Grid.Triggers>
+                            <DataTrigger TargetType="Grid" Binding="{Binding IsCancelTheFirstButton}" Value="False">
+                                <Setter Property="Rotation" Value="180" />
+                            </DataTrigger>
+                        </Grid.Triggers>
+                        <Button 
+                            Grid.Row="0"
+                            Clicked="Complete"
+                            HorizontalOptions="FillAndExpand"
+                            Style="{StaticResource DialogButtonPrimaryStyle}"
+                            AutomationProperties.IsInAccessibleTree="False" />
+                        <Label x:Name="OkButtonLabel"
+                            Grid.Row="0"
+                            AutomationProperties.IsInAccessibleTree="True"
+                            AutomationProperties.HelpText="{Binding Strings[INTERNET_CONNECTIVITY_ISSUE_DIALOG_OK_BUTTON_READ_OUT_LOUD]}" 
+                            HorizontalOptions="Center"
+                            HorizontalTextAlignment="Center"
+                            InputTransparent="True"
+                            IsEnabled="False"
+                            Text="{Binding OkButtonText}"
+                            Style="{StaticResource ButtonLabelStyle}"
+                            LineHeight="0.9"
+                            effects:FontSizeLabelEffectParams.MaxFontSize="18"
+                            effects:FontSizeLabelEffectParams.MinFontSize="12"
+                            VerticalOptions="Center"
+                            VerticalTextAlignment="Center">
+                            <Label.Effects>
+                                <effects:FontSizeLabelEffect />
+                            </Label.Effects>
+                        </Label>
+                    </Grid>
+                </StackLayout>
+                <Grid Grid.Row="1" HeightRequest="60" HorizontalOptions="FillAndExpand" IsVisible="{Binding CancelButtonVisible, Converter={StaticResource BoolToInverseBoolConverter}}">
+                    <Grid Padding="0,0.5">
+                        <Button 
+                            Grid.Row="0"    
+                            Clicked="Complete"
+                            HorizontalOptions="FillAndExpand"
+                            Style="{StaticResource DialogButtonPrimaryStyle}"
+                            AutomationProperties.IsInAccessibleTree="True"
+                            AutomationProperties.HelpText="{Binding Source={Reference Name=SingleOkButtonLabel}, Path=Text}" />
+                        <Label x:Name="SingleOkButtonLabel"
+                            Grid.Row="0"
+                            AutomationProperties.IsInAccessibleTree="True"
+                            HorizontalOptions="Center"
+                            HorizontalTextAlignment="Center"
+                            InputTransparent="True"
+                            IsEnabled="False"
+                            Text="{Binding OkButtonText}"
+                            Style="{StaticResource ButtonLabelStyle}"
+                            VerticalOptions="Center"
+                            VerticalTextAlignment="Center">
+                            <Label.Effects>
+                                <effects:FontSizeLabelEffect />
+                            </Label.Effects>
+                        </Label>
+                    </Grid>
+                </Grid>
+            </Grid>
+        </ScrollView>
+    </Frame>
+</extra:DialogView>

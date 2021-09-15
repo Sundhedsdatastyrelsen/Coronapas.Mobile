@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ViewCell xmlns="http://xamarin.com/schemas/2014/forms" 
+          xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+          xmlns:effects="clr-namespace:SSICPAS.Controls"
+          xmlns:viewModels="clr-namespace:SSICPAS.ViewModels"
+          x:Class="SSICPAS.Views.Elements.PassportItemGroupHeader"
+          x:DataType="viewModels:Certificates.PassportItemsGroupViewModel">
+  <ViewCell.View>
+      <Grid
+          Margin="20,30,20,0"
+          Padding="0,0,0,0">
+            <BoxView
+              Grid.Row="0"
+              Grid.Column="0"
+              BackgroundColor="{StaticResource PassportListHeaderBackgroundColor}"
+              HeightRequest="10"
+              HorizontalOptions="FillAndExpand"
+              VerticalOptions="End"
+              Margin="0,0,0,0" />
+          
+            <effects:FrameWithShadow
+                Grid.Row="0"
+                Grid.Column="0"
+                CornerRadius="8"
+                BackgroundColor="{StaticResource PassportListHeaderBackgroundColor}"
+                HasShadow="False"
+                Padding="20,0,20,0"
+                Margin="0,0,0,0" >
+                <StackLayout Orientation="Horizontal" Spacing="0">
+                    <Label
+                        x:Name="TitleLabel"
+                        Style="{StaticResource ContentTitleStyle}"
+                        Text="{Binding TitleLabelText}"
+                        AutomationProperties.Name="{Binding TitleLabelTextAccessibility}"
+                        VerticalOptions="Center">
+                        <Label.Effects>
+                            <effects:FontSizeLabelEffect />
+                        </Label.Effects>
+                    </Label>
+                    <BoxView BackgroundColor="Transparent" HeightRequest="40" HorizontalOptions="End" VerticalOptions="Center" />
+                </StackLayout>
+            </effects:FrameWithShadow>
+        </Grid>
+  </ViewCell.View>
+</ViewCell>

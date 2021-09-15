@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ContentPage
+    x:Class="SSICPAS.Views.Certificates.PassportPageEuView"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:effects="clr-namespace:SSICPAS.Controls;assembly=SSICPAS"
+    xmlns:controls="clr-namespace:SSICPAS.Controls"
+    xmlns:elements="clr-namespace:SSICPAS.Views.Elements"
+    xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+    xmlns:localview="clr-namespace:SSICPAS.Views.Elements;assembly=SSICPAS"
+    xmlns:view="clr-namespace:SSICPAS.Views.Certificates"
+    xmlns:viewmodel="clr-namespace:SSICPAS.ViewModels.Certificates;assembly=SSICPAS"
+    xmlns:forms="clr-namespace:Lottie.Forms;assembly=Lottie.Forms"
+    ios:Page.UseSafeArea="True"
+    x:DataType="viewmodel:PassportPageViewModel"
+    NavigationPage.HasNavigationBar="False">
+    <ContentPage.Resources>
+        <Style x:Key="ContentStyle" TargetType="Label">
+            <Setter Property="FontFamily" Value="IBMPlexSansRegular" />
+            <Setter Property="FontSize" Value="Medium" />
+            <Setter Property="TextColor" Value="{StaticResource SSIBaseTextColor}" />
+            <Setter Property="LineBreakMode" Value="WordWrap" />
+        </Style>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <Grid VerticalOptions="FillAndExpand"
+              BackgroundColor="{StaticResource SSIWhite}">
+            <Image
+                Grid.Row="0"
+                Grid.Column="0"
+                Aspect="AspectFill"
+                Source="{StaticResource MainPageDottedBackground}" />
+            <Grid Grid.Row="0" RowSpacing="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <elements:PassportPageNavigationHeader
+                    LeftButtonAccessibilityText="{Binding Strings[MENU_BUTTON_TEXT]}"
+                    LeftButtonCommand="{Binding OpenMenuPage}"
+                    LeftButtonImageSource="{StaticResource HamburgerMenu}"
+                    CenterImageSource="{StaticResource CoronapasLogo}"
+                    RightButtonAccessibilityText="{Binding Strings[PASSPORT_TYPE_PICKER_TEXT]}"
+                    RightButtonCommand="{Binding OpenPassportTypePicker}"
+                    RightButtonImageSource="{StaticResource ToDkPassportPickerIcon}">
+                    <elements:PassportPageNavigationHeader.LeftButtonHeightRequest>
+                        <OnPlatform x:TypeArguments="x:Int32">
+                            <On Platform="iOS" Value="50" />
+                            <On Platform="Android" Value="25" />
+                        </OnPlatform>
+                    </elements:PassportPageNavigationHeader.LeftButtonHeightRequest>
+                    <elements:PassportPageNavigationHeader.RightButtonHeightRequest>
+                        <OnPlatform x:TypeArguments="x:Int32">
+                            <On Platform="iOS" Value="50" />
+                            <On Platform="Android" Value="25" />
+                        </OnPlatform>
+                    </elements:PassportPageNavigationHeader.RightButtonHeightRequest>
+                </elements:PassportPageNavigationHeader>
+                <Grid
+                    x:Name="AnimationView"
+                    Grid.Row="1"
+                    BackgroundColor="Transparent">
+                    <Grid IsVisible="{Binding IsLoadingPassport, Converter={StaticResource BoolToInverseBoolConverter}}">
+                        <RefreshView IsRefreshing="{Binding IsRefreshing}" Command="{Binding RefreshCommand}">
+                            <Grid IsVisible="{Binding IsPassportAvailable, Converter={StaticResource BoolToInverseBoolConverter}}">
+                                    <Grid.Triggers>
+                                    <DataTrigger TargetType="Grid" Binding="{Binding ShowManuelFetchSpinner}" Value="True">
+                                            <Setter Property="Margin" Value="0,86,0,0" />
+                                        </DataTrigger>
+                                    </Grid.Triggers>
+                                    <ScrollView>
+                                        <Grid>
+                                            <Grid IsVisible="{Binding ShowPassportCanNotBeRetrieved}">
+                                            <view:PassportCanNotBeRetrievedView
+                                                x:Name="PassportCanNotBeRetrievedView"
+                                                Padding="30,30,30,30"
+                                                HorizontalOptions="Fill"
+                                                VerticalOptions="FillAndExpand">
+                                                <view:PassportCanNotBeRetrievedView.Triggers>
+                                                    <DataTrigger TargetType="view:PassportCanNotBeRetrievedView" Binding="{Binding ShowManuelFetchSpinner}" Value="True">
+                                                        <Setter Property="Padding" Value="30,0,30,30" />
+                                                    </DataTrigger>
+                                                </view:PassportCanNotBeRetrievedView.Triggers>
+                                            </view:PassportCanNotBeRetrievedView>
+                                            </Grid>
+                                            <Grid IsVisible="{Binding ShowAwaitingPassport}">
+                                            <view:AwaitingPassportView
+                                                x:Name="AwaitingPassportView"
+                                                Padding="30,30,30,30"
+                                                HorizontalOptions="Fill"
+                                                VerticalOptions="FillAndExpand">
+                                                <view:AwaitingPassportView.Triggers>
+                                                    <DataTrigger TargetType="view:AwaitingPassportView" Binding="{Binding ShowManuelFetchSpinner}" Value="True">
+                                                        <Setter Property="Padding" Value="30,0,30,30" />
+                                                    </DataTrigger>
+                                                </view:AwaitingPassportView.Triggers>
+                                            </view:AwaitingPassportView>
+                                            </Grid>
+                                            <Grid IsVisible="{Binding ShowAwaitingPassportHasPassportBefore}">
+                                                <view:ExpiredPassportView
+                                                    x:Name="ExpiredPassportView"
+                                                    Padding="30,50,30,30"
+                                                    HorizontalOptions="Fill"
+                                                    VerticalOptions="FillAndExpand">
+                                                    <view:ExpiredPassportView.Triggers>
+                                                        <DataTrigger TargetType="view:ExpiredPassportView" Binding="{Binding ShowManuelFetchSpinner}" Value="True">
+                                                            <Setter Property="Padding" Value="30,0,30,30" />
+                                                        </DataTrigger>
+                                                    </view:ExpiredPassportView.Triggers>
+                                                </view:ExpiredPassportView>
+                                            </Grid>
+                                        </Grid>
+                                    </ScrollView>
+                             </Grid>
+                        </RefreshView>
+                        <Grid IsVisible="{Binding IsFetchingPassport}">
+                            <ScrollView>
+                                <Grid>
+                                    <view:FetchingPassportEuView
+                                        x:Name="PassportFetchingView"
+                                        Padding="30,50,30,0"
+                                        HorizontalOptions="Fill"
+                                        VerticalOptions="FillAndExpand">
+                                    </view:FetchingPassportEuView>
+                                </Grid>
+                            </ScrollView>
+                        </Grid>
+                        <StackLayout
+                            x:Name="PassportAvailableView"
+                            Grid.Row="0"
+                            IsVisible="{Binding IsPassportAvailable}">
+                                <view:PassportInfoView
+                                x:Name="GenericInfoView"
+                                EuPassportType="{Binding SingleEuPassportType}"
+                                IsVisible="{Binding IsMoreThanOneAvailable, Converter={StaticResource BoolToInverseBoolConverter}}"
+                                PassportItemsViewModel="{Binding ItemsViewModel}" />
+                                <StackLayout IsVisible="{Binding IsMoreThanOneAvailable}">
+                                    <localview:PassportItemListView
+                                    BindingContext="{Binding ItemsListViewModel}" />
+                                </StackLayout>
+                            </StackLayout>
+                        </Grid>
+                        <forms:AnimationView
+                        BackgroundColor="Transparent"
+                        IsVisible="{Binding IsLoadingPassport}"
+                        Grid.Row="0"
+                        Animation="loading.json"
+                        IsPlaying="True"
+                        HorizontalOptions="Center"
+                        HeightRequest="500"
+                        WidthRequest="500"
+                        Loop="True"
+                        VerticalOptions="Center"/>
+                    </Grid>
+                </Grid>
+            </Grid>
+    </ContentPage.Content>
+</ContentPage>

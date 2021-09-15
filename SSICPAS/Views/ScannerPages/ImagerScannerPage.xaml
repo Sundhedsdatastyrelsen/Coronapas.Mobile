@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<ContentPage
+    x:Class="SSICPAS.Views.ScannerPages.ImagerScannerPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core" 
+    xmlns:elements="clr-namespace:SSICPAS.Views.Elements"
+    ios:Page.UseSafeArea="True"
+    BackgroundColor="{StaticResource NavigationHeaderBackgroundColor}"
+    NavigationPage.HasNavigationBar="False">
+    <ContentPage.Content>
+        <StackLayout Margin="0,0,0,100">
+            <elements:NavigationHeader
+                    RightButtonCommand="{Binding OpenMenuCommand}"
+                    RightButtonImageSource="{StaticResource HamburgerMenu}"
+                    RightButtonHeightRequest="50"
+                    LeftButtonCommand="{Binding BackCommand}"
+                    LeftButtonHeightRequest="50"
+                    LeftButtonImageSource="{StaticResource ArrowBack}"
+                    IsVisible="{Binding InTabbar, Converter={StaticResource BoolToInverseBoolConverter}}">
+            </elements:NavigationHeader>
+            <Image
+                Margin="0,50,0,0"
+                HorizontalOptions="Center"
+                MinimumHeightRequest="200"
+                Source="{StaticResource AppLogo}"
+                WidthRequest="150" />
+            <Label
+                HorizontalOptions="CenterAndExpand"
+                Style="{StaticResource TitleStyle}"
+                Text="Scan CORONAPAS"
+                VerticalOptions="CenterAndExpand" />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
